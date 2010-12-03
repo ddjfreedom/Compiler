@@ -1,0 +1,6 @@
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: incomplete implementation of class 'Syntax'
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: method definition for '-treePrint' not found
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: incomplete implementation of class 'Syntax'
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: method definition for '-printIndent:' not found
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: method definition for '-treePrintUsingIndent:' not found
+/Users/ddj/Obj-c/Tiger/Compiler/AbstractSyntax/Syntax.m:14: warning: class 'Syntax' does not fully implement the 'AbstractSyntax' protocol

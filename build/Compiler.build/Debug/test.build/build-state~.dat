@@ -1,0 +1,2000 @@
+Ttest
+v7
+r0
+t312539677.483724
+cCheck dependencies
+cPhaseScriptExecution "Run Script" /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh
+c000000004CF0C29D00000000000000AE
+t1290846877
+s174
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies312539677#312539677#0(0"0(0#1#0"8615061792#0"0#
+
+CPhaseScriptExecution "Run Script" /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh
+s312539677.031803
+e312539677.483680
+r1
+xPhaseScriptExecution
+xRun Script
+x/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh
+o/var/tmp/tmp.0.6GHTKk
+olet 
+o
+o type any = {any : int}
+o var buffer := getchar()
+o
+ofunction readint(any: any) : int =
+o let var i := 0
+o     function isdigit(s : string) : int = 
+o		  ord(buffer)>=ord("0") & ord(buffer)<=ord("9")
+o     function skipto() =
+o       while buffer=" " | buffer="\n"
+o         do buffer := getchar()
+o  in skipto();
+o     any.any := isdigit(buffer);
+o     while isdigit(buffer)
+o       do (i := i*10+ord(buffer)-ord("0"); buffer := getchar());
+o     i
+o end
+o
+o type list = {first: int, rest: list}
+o
+o function readlist() : list =
+o    let var any := any{any=0}
+o        var i := readint(any)
+o     in if any.any
+o         then list{first=i,rest=readlist()}
+o         else nil
+o    end
+o
+o function merge(a: list, b: list) : list =
+o   if a=nil then b
+o   else if b=nil then a
+o   else if a.first < b.first 
+o      then list{first=a.first,rest=merge(a.rest,b)}
+o      else list{first=b.first,rest=merge(a,b.rest)}
+o
+o function printint(i: int) =
+o  let function f(i:int) = if i>0 
+o	     then (f(i/10); print(chr(i-i/10*10+ord("0"))))
+o   in if i<0 then (print("-"); f(-i))
+o      else if i>0 then f(i)
+o      else print("0")
+o  end
+o
+o function printlist(l: list) =
+o   if l=nil then print("\n")
+o   else (printint(l.first); print(" "); printlist(l.rest))
+o
+o   var list1 := readlist()
+o   var list2 := (buffer:=getchar(); readlist())
+o
+o
+o  
+o in printlist(merge(list1,list2))
+oend
+o
+oAn identifier any
+oA punctuation =
+oA punctuation {
+oAn identifier any
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier buffer
+oAn identifier getchar
+oA punctuation (
+oA punctuation )
+oAn identifier readint
+oA punctuation (
+oAn identifier any
+oA punctuation :
+oAn identifier any
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier i
+oAn integer 0 (0)
+oAn identifier isdigit
+oA punctuation (
+oAn identifier s
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier ord
+oA punctuation (
+oAn identifier buffer
+oA punctuation )
+oAn identifier ord
+oA punctuation (
+oA string "0"
+oA punctuation )
+oA punctuation &
+oAn identifier ord
+oA punctuation (
+oAn identifier buffer
+oA punctuation )
+oAn identifier ord
+oA punctuation (
+oA string "9"
+oA punctuation )
+oAn identifier skipto
+oA punctuation (
+oA punctuation )
+oA punctuation =
+oAn identifier buffer
+oA punctuation =
+oA string " "
+oA punctuation |
+oAn identifier buffer
+oA punctuation =
+oA string "\n"
+oAn identifier buffer
+oAn identifier getchar
+oA punctuation (
+oA punctuation )
+oAn identifier skipto
+oA punctuation (
+oA punctuation )
+oA punctuation ;
+oAn identifier any
+oA punctuation .
+oAn identifier any
+oAn identifier isdigit
+oA punctuation (
+oAn identifier buffer
+oA punctuation )
+oA punctuation ;
+oAn identifier isdigit
+oA punctuation (
+oAn identifier buffer
+oA punctuation )
+oA punctuation (
+oAn identifier i
+oAn identifier i
+oA punctuation *
+oAn integer 10 (10)
+oA punctuation +
+oAn identifier ord
+oA punctuation (
+oAn identifier buffer
+oA punctuation )
+oA punctuation -
+oAn identifier ord
+oA punctuation (
+oA string "0"
+oA punctuation )
+oA punctuation ;
+oAn identifier buffer
+oAn identifier getchar
+oA punctuation (
+oA punctuation )
+oA punctuation )
+oA punctuation ;
+oAn identifier i
+oAn identifier list
+oA punctuation =
+oA punctuation {
+oAn identifier first
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier rest
+oA punctuation :
+oAn identifier list
+oA punctuation }
+oAn identifier readlist
+oA punctuation (
+oA punctuation )
+oA punctuation :
+oAn identifier list
+oA punctuation =
+oAn identifier any
+oAn identifier any
+oA punctuation {
+oAn identifier any
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier i
+oAn identifier readint
+oA punctuation (
+oAn identifier any
+oA punctuation )
+oAn identifier any
+oA punctuation .
+oAn identifier any
+oAn identifier list
+oA punctuation {
+oAn identifier first
+oA punctuation =
+oAn identifier i
+oA punctuation ,
+oAn identifier rest
+oA punctuation =
+oAn identifier readlist
+oA punctuation (
+oA punctuation )
+oA punctuation }
+oAn identifier merge
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier list
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier list
+oA punctuation )
+oA punctuation :
+oAn identifier list
+oA punctuation =
+oAn identifier a
+oA punctuation =
+oAn identifier b
+oAn identifier b
+oA punctuation =
+oAn identifier a
+oAn identifier a
+oA punctuation .
+oAn identifier first
+oA punctuation <
+oAn identifier b
+oA punctuation .
+oAn identifier first
+oAn identifier list
+oA punctuation {
+oAn identifier first
+oA punctuation =
+oAn identifier a
+oA punctuation .
+oAn identifier first
+oA punctuation ,
+oAn identifier rest
+oA punctuation =
+oAn identifier merge
+oA punctuation (
+oAn identifier a
+oA punctuation .
+oAn identifier rest
+oA punctuation ,
+oAn identifier b
+oA punctuation )
+oA punctuation }
+oAn identifier list
+oA punctuation {
+oAn identifier first
+oA punctuation =
+oAn identifier b
+oA punctuation .
+oAn identifier first
+oA punctuation ,
+oAn identifier rest
+oA punctuation =
+oAn identifier merge
+oA punctuation (
+oAn identifier a
+oA punctuation ,
+oAn identifier b
+oA punctuation .
+oAn identifier rest
+oA punctuation )
+oA punctuation }
+oAn identifier printint
+oA punctuation (
+oAn identifier i
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation =
+oAn identifier f
+oA punctuation (
+oAn identifier i
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation =
+oAn identifier i
+oA punctuation >
+oAn integer 0 (0)
+oA punctuation (
+oAn identifier f
+oA punctuation (
+oAn identifier i
+oA punctuation /
+oAn integer 10 (10)
+oA punctuation )
+oA punctuation ;
+oAn identifier print
+oA punctuation (
+oAn identifier chr
+oA punctuation (
+oAn identifier i
+oA punctuation -
+oAn identifier i
+oA punctuation /
+oAn integer 10 (10)
+oA punctuation *
+oAn integer 10 (10)
+oA punctuation +
+oAn identifier ord
+oA punctuation (
+oA string "0"
+oA punctuation )
+oA punctuation )
+oA punctuation )
+oA punctuation )
+oAn identifier i
+oA punctuation <
+oAn integer 0 (0)
+oA punctuation (
+oAn identifier print
+oA punctuation (
+oA string "-"
+oA punctuation )
+oA punctuation ;
+oAn identifier f
+oA punctuation (
+oA punctuation -
+oAn identifier i
+oA punctuation )
+oA punctuation )
+oAn identifier i
+oA punctuation >
+oAn integer 0 (0)
+oAn identifier f
+oA punctuation (
+oAn identifier i
+oA punctuation )
+oAn identifier print
+oA punctuation (
+oA string "0"
+oA punctuation )
+oAn identifier printlist
+oA punctuation (
+oAn identifier l
+oA punctuation :
+oAn identifier list
+oA punctuation )
+oA punctuation =
+oAn identifier l
+oA punctuation =
+oAn identifier print
+oA punctuation (
+oA string "\n"
+oA punctuation )
+oA punctuation (
+oAn identifier printint
+oA punctuation (
+oAn identifier l
+oA punctuation .
+oAn identifier first
+oA punctuation )
+oA punctuation ;
+oAn identifier print
+oA punctuation (
+oA string " "
+oA punctuation )
+oA punctuation ;
+oAn identifier printlist
+oA punctuation (
+oAn identifier l
+oA punctuation .
+oAn identifier rest
+oA punctuation )
+oA punctuation )
+oAn identifier list1
+oAn identifier readlist
+oA punctuation (
+oA punctuation )
+oAn identifier list2
+oA punctuation (
+oAn identifier buffer
+oAn identifier getchar
+oA punctuation (
+oA punctuation )
+oA punctuation ;
+oAn identifier readlist
+oA punctuation (
+oA punctuation )
+oA punctuation )
+oAn identifier printlist
+oA punctuation (
+oAn identifier merge
+oA punctuation (
+oAn identifier list1
+oA punctuation ,
+oAn identifier list2
+oA punctuation )
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o16: error: syntax error, unexpected '=', expecting OF
+o/var/tmp/tmp.0.iqYHuP
+o
+o
+olet
+o    var N := 8
+o
+o    type intArray = array of int
+o
+o    var row := intArray [ N ] of 0
+o    var col := intArray [ N ] of 0
+o    var diag1 := intArray [N+N-1] of 0
+o    var diag2 := intArray [N+N-1] of 0
+o
+o    function printboard() =
+o       (for i := 0 to N-1
+o	 do (for j := 0 to N-1 
+o	      do print(if col[i]=j then " O" else " .");
+o	     print("\n"));
+o         print("\n"))
+o
+o    function try(c:int) = 
+o( 
+o     if c=N
+o     then printboard()
+o     else for r := 0 to N-1
+o	   do if row[r]=0 & diag1[r+c]=0 & diag2[r+7-c]=0
+o	           then (row[r]:=1; diag1[r+c]:=1; diag2[r+7-c]:=1;
+o		         col[c]:=r;
+o	                 try(c+1);
+o			 row[r]:=0; diag1[r+c]:=0; diag2[r+7-c]:=0)
+o
+o)
+o in try(0)
+oend
+o	An identifier N
+oAn integer 8 (8)
+oAn identifier intArray
+oA punctuation =
+oAn identifier int
+oAn identifier row
+oAn identifier intArray
+oA punctuation [
+oAn identifier N
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier col
+oAn identifier intArray
+oA punctuation [
+oAn identifier N
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier diag1
+oAn identifier intArray
+oA punctuation [
+oAn identifier N
+oA punctuation +
+oAn identifier N
+oA punctuation -
+oAn integer 1 (1)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier diag2
+oAn identifier intArray
+oA punctuation [
+oAn identifier N
+oA punctuation +
+oAn identifier N
+oA punctuation -
+oAn integer 1 (1)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier printboard
+oA punctuation (
+oA punctuation )
+oA punctuation =
+oA punctuation (
+oAn identifier i
+oAn integer 0 (0)
+oAn identifier N
+oA punctuation -
+oAn integer 1 (1)
+oA punctuation (
+oAn identifier j
+oAn integer 0 (0)
+oAn identifier N
+oA punctuation -
+oAn integer 1 (1)
+oAn identifier print
+oA punctuation (
+oAn identifier col
+oA punctuation [
+oAn identifier i
+oA punctuation ]
+oA punctuation =
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.fny6Da
+o
+olet
+o	type  arrtype = array of int
+o	var arr1:arrtype := arrtype [10] of 0
+oin
+o	arr1
+oend
+oAn identifier arrtype
+oA punctuation =
+oAn identifier int
+oAn identifier arr1
+oA punctuation :
+oAn identifier arrtype
+oAn identifier arrtype
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier arr1
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.PMTeDK
+o
+owhile(10 > 5) do 5+6
+oA punctuation (
+oAn integer 10 (10)
+oA punctuation >
+oAn integer 5 (5)
+oA punctuation )
+oAn integer 5 (5)
+oA punctuation +
+oAn integer 6 (6)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.OOA9T2
+o
+ofor i:=10 to " " do 
+o	i := i - 1
+oAn identifier i
+oAn integer 10 (10)
+oA string " "
+oAn identifier i
+oAn identifier i
+oA punctuation -
+oAn integer 1 (1)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.TC1Dsm
+o
+o
+olet
+o	var a:= 0
+oin 
+o	for i:=0 to 100 do (a:=a+1;())
+oend
+oAn identifier a
+oAn integer 0 (0)
+oAn identifier i
+oAn integer 0 (0)
+oAn integer 100 (100)
+oA punctuation (
+oAn identifier a
+oAn identifier a
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation ;
+oA punctuation (
+oA punctuation )
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.8Yuutz
+o
+o
+o3 > "df"
+oAn integer 3 (3)
+oA punctuation >
+oA string "df"
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.Vu8N7Y
+o
+o
+olet
+o
+o	type arrtype = array of int
+o	type rectype = {name:string, id: int}
+o
+o	var rec := rectype {name="aname", id=0}
+o	var arr := arrtype [3] of 0
+o
+oin
+o	if rec <> arr then 3 else 4
+oend
+oAn identifier arrtype
+oA punctuation =
+oAn identifier int
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rec
+oAn identifier rectype
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "aname"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier arr
+oAn identifier arrtype
+oA punctuation [
+oAn integer 3 (3)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier rec
+oAn identifier arr
+oAn integer 3 (3)
+oAn integer 4 (4)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.R3C3Ef
+o
+o
+oif 20 then 3
+oAn integer 20 (20)
+oAn integer 3 (3)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.uJ2y77
+o
+olet 
+o
+otype a=c
+otype b=a
+otype c=d
+otype d=a
+o
+oin
+o ""
+oend
+oAn identifier a
+oA punctuation =
+oAn identifier c
+oAn identifier b
+oA punctuation =
+oAn identifier a
+oAn identifier c
+oA punctuation =
+oAn identifier d
+oAn identifier d
+oA punctuation =
+oAn identifier a
+oA string ""
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.4MKPNM
+o
+olet
+o
+otype tree ={key: int, children: treelist}
+ovar d:int :=0
+otype treelist = {hd: tree, tl: treelist}
+o
+oin
+o	d
+oend
+oAn identifier tree
+oA punctuation =
+oA punctuation {
+oAn identifier key
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier children
+oA punctuation :
+oAn identifier treelist
+oA punctuation }
+oAn identifier d
+oA punctuation :
+oAn identifier int
+oAn integer 0 (0)
+oAn identifier treelist
+oA punctuation =
+oA punctuation {
+oAn identifier hd
+oA punctuation :
+oAn identifier tree
+oA punctuation ,
+oAn identifier tl
+oA punctuation :
+oAn identifier treelist
+oA punctuation }
+oAn identifier d
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.Mb52hy
+o
+olet
+o
+ofunction do_nothing1(a: int, b: string):int=
+o		(do_nothing2(a+1);0)
+o
+ovar d:=0
+o
+ofunction do_nothing2(d: int):string =
+o		(do_nothing1(d, "str");" ")
+o
+oin
+o	do_nothing1(0, "str2")
+oend
+o
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier a
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation )
+oA punctuation ;
+oAn integer 0 (0)
+oA punctuation )
+oAn identifier d
+oAn integer 0 (0)
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier d
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier string
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier d
+oA punctuation ,
+oA string "str"
+oA punctuation )
+oA punctuation ;
+oA string " "
+oA punctuation )
+oAn identifier do_nothing1
+oA punctuation (
+oAn integer 0 (0)
+oA punctuation ,
+oA string "str2"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.CItnj1
+o
+olet
+o
+ofunction do_nothing1(a: int, b: string):int=
+o		(do_nothing2(a+1);0)
+o
+ofunction do_nothing2(d: int):string =
+o		(do_nothing1(a, "str");" ")
+o
+oin
+o	do_nothing1(0, "str2")
+oend
+o
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier a
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation )
+oA punctuation ;
+oAn integer 0 (0)
+oA punctuation )
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier d
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier string
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier a
+oA punctuation ,
+oA string "str"
+oA punctuation )
+oA punctuation ;
+oA string " "
+oA punctuation )
+oAn identifier do_nothing1
+oA punctuation (
+oAn integer 0 (0)
+oA punctuation ,
+oA string "str2"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.1SkjlE
+o
+olet
+o	type myint = int
+o	type  arrtype = array of myint
+o
+o	var arr1:arrtype := arrtype [10] of 0
+oin
+o	arr1
+oend
+oAn identifier myint
+oA punctuation =
+oAn identifier int
+oAn identifier arrtype
+oA punctuation =
+oAn identifier myint
+oAn identifier arr1
+oA punctuation :
+oAn identifier arrtype
+oAn identifier arrtype
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier arr1
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.pILQlu
+o
+o
+owhile 10 > 5 do (i+1;())
+oAn integer 10 (10)
+oA punctuation >
+oAn integer 5 (5)
+oA punctuation (
+oAn identifier i
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation ;
+oA punctuation (
+oA punctuation )
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.GyNm9B
+o
+olet
+o
+o
+ofunction nfactor(n: int) =
+o		if  n = 0 
+o			then 1
+o			else n * nfactor(n-1)
+o
+oin
+o	nfactor(10)
+oend
+o
+oAn identifier nfactor
+oA punctuation (
+oAn identifier n
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation =
+oAn identifier n
+oA punctuation =
+oAn integer 0 (0)
+oAn integer 1 (1)
+oAn identifier n
+oA punctuation *
+oAn identifier nfactor
+oA punctuation (
+oAn identifier n
+oA punctuation -
+oAn integer 1 (1)
+oA punctuation )
+oAn identifier nfactor
+oA punctuation (
+oAn integer 10 (10)
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.ZqCu8p
+o
+o
+olet 
+o	type rectype = {name:string , id:int}
+o	var rec1 := rectype {name="Name", id=0}
+oin
+o	rec1.nam := "asd"
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rec1
+oAn identifier rectype
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "Name"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier rec1
+oA punctuation .
+oAn identifier nam
+oA string "asd"
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.2i20gK
+o
+o
+olet 
+o	type rectype = {name:string , id:int}
+o	var rec1 := rectype {name="aname", id=0}
+oin
+o	rec1.name := 3;
+o	rec1.id := "" 
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rec1
+oAn identifier rectype
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "aname"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier rec1
+oA punctuation .
+oAn identifier name
+oAn integer 3 (3)
+oA punctuation ;
+oAn identifier rec1
+oA punctuation .
+oAn identifier id
+oA string ""
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o6: error: syntax error, unexpected END, expecting OF
+o/var/tmp/tmp.0.Q634eH
+o
+olet 
+o	var d:=0
+oin
+o	d[3]
+oend
+o
+oAn identifier d
+oAn integer 0 (0)
+oAn identifier d
+oA punctuation [
+oAn integer 3 (3)
+oA punctuation ]
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.uUDmNB
+o
+olet 
+o	var d:=0
+oin
+o	d.f 
+oend
+o
+oAn identifier d
+oAn integer 0 (0)
+oAn identifier d
+oA punctuation .
+oAn identifier f
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.n7KI3x
+o
+o
+o3 + "var"
+oAn integer 3 (3)
+oA punctuation +
+oA string "var"
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.kFZ1x1
+o
+olet
+o	var a:=0
+o
+o	function g(a:int):int = a 
+oin
+o g(2)
+oend
+oAn identifier a
+oAn integer 0 (0)
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oAn integer 2 (2)
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.CP1YL9
+o
+o
+olet
+o	type rectype1 = {name:string , id:int}
+o	type rectype2 = {name:string , id:int}
+o
+o	var rec1: rectype1 := rectype2 {name="Name", id=0}
+oin
+o	rec1
+oend
+oAn identifier rectype1
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rectype2
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rec1
+oA punctuation :
+oAn identifier rectype1
+oAn identifier rectype2
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "Name"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier rec1
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.t3joAD
+o
+o
+olet
+o	type arrtype1 = array of int
+o	type arrtype2 = array of int
+o
+o	var arr1: arrtype1 := arrtype2 [10] of 0
+oin
+o	arr1
+oend
+oAn identifier arrtype1
+oA punctuation =
+oAn identifier int
+oAn identifier arrtype2
+oA punctuation =
+oAn identifier int
+oAn identifier arr1
+oA punctuation :
+oAn identifier arrtype1
+oAn identifier arrtype2
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier arr1
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.7jzwod
+o
+olet
+o	type  rectype = {name:string, age:int}
+o	var rec1:rectype := rectype {name="Nobody", age=1000}
+oin
+o	rec1.name := "Somebody";
+o	rec1
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier age
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier rec1
+oA punctuation :
+oAn identifier rectype
+oAn identifier rectype
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "Nobody"
+oA punctuation ,
+oAn identifier age
+oA punctuation =
+oAn integer 1000 (1000)
+oA punctuation }
+oAn identifier rec1
+oA punctuation .
+oAn identifier name
+oA string "Somebody"
+oA punctuation ;
+oAn identifier rec1
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o10: error: syntax error, unexpected END, expecting OF
+o/var/tmp/tmp.0.JLuF6L
+o
+o
+olet 
+o		type a = array of int
+o		type b = a
+o
+o		var arr1:a := b [10] of 0
+oin
+o		arr1[2]
+oend
+oAn identifier a
+oA punctuation =
+oAn identifier int
+oAn identifier b
+oA punctuation =
+oAn identifier a
+oAn identifier arr1
+oA punctuation :
+oAn identifier a
+oAn identifier b
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier arr1
+oA punctuation [
+oAn integer 2 (2)
+oA punctuation ]
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.ihdHVF
+o
+olet 
+o	var a:int := " "
+oin
+o	a
+oend
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA string " "
+oAn identifier a
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.ix5mct
+o
+o
+olet
+o	type arrayty = array of int
+o
+o	var a := arrayty [10] of " "
+oin
+o	0
+oend
+oAn identifier arrayty
+oA punctuation =
+oAn identifier int
+oAn identifier a
+oAn identifier arrayty
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oA string " "
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.bRxj4M
+o
+olet
+o	var a:= rectype {}
+oin
+o	0
+oend
+oAn identifier a
+oAn identifier rectype
+oA punctuation {
+oA punctuation }
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.Cyh6Hs
+o
+olet
+o	function g (a:int , b:string):int = a
+oin
+o	g("one", "two")
+oend
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oA string "one"
+oA punctuation ,
+oA string "two"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.FCs0mM
+o
+olet
+o	function g (a:int , b:string):int = a
+oin
+o	g("one")
+oend
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oA string "one"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.NU4zf8
+o
+olet
+o	function g (a:int , b:string):int = a
+oin
+o	g(3,"one",5)
+oend
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oAn integer 3 (3)
+oA punctuation ,
+oA string "one"
+oA punctuation ,
+oAn integer 5 (5)
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.emItrK
+o
+olet
+o	var a := 0
+o	var a := " "
+oin
+o	0
+oend
+oAn identifier a
+oAn integer 0 (0)
+oAn identifier a
+oA string " "
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.qd9cKq
+o
+olet
+o	type a = int
+o	type a = string
+oin
+o	0
+oend
+oAn identifier a
+oA punctuation =
+oAn identifier int
+oAn identifier a
+oA punctuation =
+oAn identifier string
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.wZDlTO
+o
+olet
+o	function g(a:int):int = a
+o	function g(a:int):int = a
+oin
+o	0
+oend
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.G8eX58
+o
+olet
+o
+o
+ofunction nfactor(n: int): int =
+o		if  n = 0 
+o			then 1
+o			else n * nfactor(n-1)
+o
+oin
+o	nfactor(10)
+oend
+o
+oAn identifier nfactor
+oA punctuation (
+oAn identifier n
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier n
+oA punctuation =
+oAn integer 0 (0)
+oAn integer 1 (1)
+oAn identifier n
+oA punctuation *
+oAn identifier nfactor
+oA punctuation (
+oAn identifier n
+oA punctuation -
+oAn integer 1 (1)
+oA punctuation )
+oAn identifier nfactor
+oA punctuation (
+oAn integer 10 (10)
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.RAxc3Y
+o
+olet
+o	function g(a:int) = a
+oin 
+o	g(2)
+oend
+o
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation =
+oAn identifier a
+oAn identifier g
+oA punctuation (
+oAn integer 2 (2)
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.D6ltQr
+o
+olet
+o	type a = int
+oin
+o	let
+o		type a = string
+o	in
+o		0
+o	end
+oend
+oAn identifier a
+oA punctuation =
+oAn identifier int
+oAn identifier a
+oA punctuation =
+oAn identifier string
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o20: error: syntax error, unexpected :=, expecting OF
+o/var/tmp/tmp.0.CVhW20
+o
+olet 
+o
+otype arrtype1 = array of int
+otype rectype1 = {name:string, address:string, id: int , age: int}
+otype arrtype2 = array of rectype1
+otype rectype2 = {name : string, dates: arrtype1}
+o
+otype arrtype3 = array of string
+o
+ovar arr1 := arrtype1 [10] of 0
+ovar arr2  := arrtype2 [5] of rectype1 {name="aname", address="somewhere", id=0, age=0}
+ovar arr3:arrtype3 := arrtype3 [100] of ""
+o
+ovar rec1 := rectype1 {name="Kapoios", address="Kapou", id=02432, age=44}
+ovar rec2 := rectype2 {name="Allos", dates= arrtype1 [3] of 1900}
+o
+oin
+o
+oarr1[0] := 1; 
+oarr1[9] := 3;
+oarr2[3].name := "kati";
+oarr2[1].age := 23;
+oarr3[34] := "sfd";
+o
+orec1.name := "sdf";
+orec2.dates[0] := 2323;
+orec2.dates[2] := 2323
+o
+oend
+oAn identifier arrtype1
+oA punctuation =
+oAn identifier int
+oAn identifier rectype1
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier address
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier age
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier arrtype2
+oA punctuation =
+oAn identifier rectype1
+oAn identifier rectype2
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier dates
+oA punctuation :
+oAn identifier arrtype1
+oA punctuation }
+oAn identifier arrtype3
+oA punctuation =
+oAn identifier string
+oAn identifier arr1
+oAn identifier arrtype1
+oA punctuation [
+oAn integer 10 (10)
+oA punctuation ]
+oAn integer 0 (0)
+oAn identifier arr2
+oAn identifier arrtype2
+oA punctuation [
+oAn integer 5 (5)
+oA punctuation ]
+oAn identifier rectype1
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "aname"
+oA punctuation ,
+oAn identifier address
+oA punctuation =
+oA string "somewhere"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation ,
+oAn identifier age
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation }
+oAn identifier arr3
+oA punctuation :
+oAn identifier arrtype3
+oAn identifier arrtype3
+oA punctuation [
+oAn integer 100 (100)
+oA punctuation ]
+oA string ""
+oAn identifier rec1
+oAn identifier rectype1
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "Kapoios"
+oA punctuation ,
+oAn identifier address
+oA punctuation =
+oA string "Kapou"
+oA punctuation ,
+oAn identifier id
+oA punctuation =
+oAn integer 02432 (2432)
+oA punctuation ,
+oAn identifier age
+oA punctuation =
+oAn integer 44 (44)
+oA punctuation }
+oAn identifier rec2
+oAn identifier rectype2
+oA punctuation {
+oAn identifier name
+oA punctuation =
+oA string "Allos"
+oA punctuation ,
+oAn identifier dates
+oA punctuation =
+oAn identifier arrtype1
+oA punctuation [
+oAn integer 3 (3)
+oA punctuation ]
+oAn integer 1900 (1900)
+oA punctuation }
+oAn identifier arr1
+oA punctuation [
+oAn integer 0 (0)
+oA punctuation ]
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.X12XyB
+o
+o
+olet 
+o	var a := ()
+oin
+o	a + 3
+oend
+oAn identifier a
+oA punctuation (
+oA punctuation )
+oAn identifier a
+oA punctuation +
+oAn integer 3 (3)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.uTCMu5
+o
+olet 
+o
+o	type rectype = {name:string, id:int}
+o	var b:rectype := nil
+o
+oin
+o
+o	b := nil
+o
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier b
+oA punctuation :
+oAn identifier rectype
+oAn identifier b
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.CpJ62O
+o
+olet 
+o	type rectype = {name:string, id:int}
+o
+o	var a:= nil
+oin
+o	a
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier a
+oAn identifier a
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.qEChPc
+o
+olet 
+o	type rectype = {name:string, id:int}
+o	var b:rectype := nil
+oin
+o	b = nil;
+o	b <> nil
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier b
+oA punctuation :
+oAn identifier rectype
+oAn identifier b
+oA punctuation =
+oA punctuation ;
+oAn identifier b
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.0zElHL
+o
+olet
+o	type a = int
+o	var b := 4
+o	type a = string
+oin
+o	0
+oend
+oAn identifier a
+oA punctuation =
+oAn identifier int
+oAn identifier b
+oAn integer 4 (4)
+oAn identifier a
+oA punctuation =
+oAn identifier string
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.elosbx
+o
+olet
+o	function g(a:int):int = a
+o	type t = int
+o	function g(a:int):int = a
+oin
+o	0
+oend
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn identifier t
+oA punctuation =
+oAn identifier int
+oAn identifier g
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oAn identifier a
+oAn integer 0 (0)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o5: error: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR
+o/var/tmp/tmp.0.74lF4N
+o
+olet 
+o	type rectype = {name:string, id:int}
+o
+o	var a:= rectype nil
+oin
+o	a
+oend
+oAn identifier rectype
+oA punctuation =
+oA punctuation {
+oAn identifier name
+oA punctuation :
+oAn identifier string
+oA punctuation ,
+oAn identifier id
+oA punctuation :
+oAn identifier int
+oA punctuation }
+oAn identifier a
+oAn identifier rectype
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.2yn2aN
+o
+olet
+o
+otype intlist = {hd: int, tl: intlist} 
+o
+o
+otype tree ={key: int, children: treelist}
+otype treelist = {hd: tree, tl: treelist}
+o
+ovar lis:intlist := intlist { hd=0, tl= nil } 
+o
+oin
+o	lis
+oend
+oAn identifier intlist
+oA punctuation =
+oA punctuation {
+oAn identifier hd
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier tl
+oA punctuation :
+oAn identifier intlist
+oA punctuation }
+oAn identifier tree
+oA punctuation =
+oA punctuation {
+oAn identifier key
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier children
+oA punctuation :
+oAn identifier treelist
+oA punctuation }
+oAn identifier treelist
+oA punctuation =
+oA punctuation {
+oAn identifier hd
+oA punctuation :
+oAn identifier tree
+oA punctuation ,
+oAn identifier tl
+oA punctuation :
+oAn identifier treelist
+oA punctuation }
+oAn identifier lis
+oA punctuation :
+oAn identifier intlist
+oAn identifier intlist
+oA punctuation {
+oAn identifier hd
+oA punctuation =
+oAn integer 0 (0)
+oA punctuation ,
+oAn identifier tl
+oA punctuation =
+oA punctuation }
+oAn identifier lis
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.Jw2W4G
+o
+olet
+o
+ofunction do_nothing1(a: int, b: string)=
+o		do_nothing2(a+1)
+o
+ofunction do_nothing2(d: int) =
+o		do_nothing1(d, "str")
+o
+oin
+o	do_nothing1(0, "str2")
+oend
+o
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation =
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier a
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation )
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier d
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation =
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier d
+oA punctuation ,
+oA string "str"
+oA punctuation )
+oAn identifier do_nothing1
+oA punctuation (
+oAn integer 0 (0)
+oA punctuation ,
+oA string "str2"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.n3rROE
+o
+olet
+o
+ofunction do_nothing1(a: int, b: string):int=
+o		(do_nothing2(a+1);0)
+o
+ofunction do_nothing2(d: int):string =
+o		(do_nothing1(d, "str");" ")
+o
+oin
+o	do_nothing1(0, "str2")
+oend
+o
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier a
+oA punctuation :
+oAn identifier int
+oA punctuation ,
+oAn identifier b
+oA punctuation :
+oAn identifier string
+oA punctuation )
+oA punctuation :
+oAn identifier int
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier a
+oA punctuation +
+oAn integer 1 (1)
+oA punctuation )
+oA punctuation ;
+oAn integer 0 (0)
+oA punctuation )
+oAn identifier do_nothing2
+oA punctuation (
+oAn identifier d
+oA punctuation :
+oAn identifier int
+oA punctuation )
+oA punctuation :
+oAn identifier string
+oA punctuation =
+oA punctuation (
+oAn identifier do_nothing1
+oA punctuation (
+oAn identifier d
+oA punctuation ,
+oA string "str"
+oA punctuation )
+oA punctuation ;
+oA string " "
+oA punctuation )
+oAn identifier do_nothing1
+oA punctuation (
+oAn integer 0 (0)
+oA punctuation ,
+oA string "str2"
+oA punctuation )
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.OJLDD3
+o
+oif (10 > 20) then 30 else 40	
+oA punctuation (
+oAn integer 10 (10)
+oA punctuation >
+oAn integer 20 (20)
+oA punctuation )
+oAn integer 30 (30)
+oAn integer 40 (40)
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+o/var/tmp/tmp.0.Tm0uow
+o
+o
+oif (5>4) then 13 else  " "
+oA punctuation (
+oAn integer 5 (5)
+oA punctuation >
+oAn integer 4 (4)
+oA punctuation )
+oAn integer 13 (13)
+oA string " "
+o/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected
+lSLF07#2@36"Run custom shell script 'Run Script'312539677#312539677#0(38903"/var/tmp/tmp.0.6GHTKklet  type any = {any : int} var buffer := getchar()function readint(any: any) : int = let var i := 0     function isdigit(s : string) : int = 		  ord(buffer)>=ord("0") & ord(buffer)<=ord("9")     function skipto() =       while buffer=" " | buffer="\n"         do buffer := getchar()  in skipto();     any.any := isdigit(buffer);     while isdigit(buffer)       do (i := i*10+ord(buffer)-ord("0"); buffer := getchar());     i end type list = {first: int, rest: list} function readlist() : list =    let var any := any{any=0}        var i := readint(any)     in if any.any         then list{first=i,rest=readlist()}         else nil    end function merge(a: list, b: list) : list =   if a=nil then b   else if b=nil then a   else if a.first < b.first       then list{first=a.first,rest=merge(a.rest,b)}      else list{first=b.first,rest=merge(a,b.rest)} function printint(i: int) =  let function f(i:int) = if i>0 	     then (f(i/10); print(chr(i-i/10*10+ord("0"))))   in if i<0 then (print("-"); f(-i))      else if i>0 then f(i)      else print("0")  end function printlist(l: list) =   if l=nil then print("\n")   else (printint(l.first); print(" "); printlist(l.rest))   var list1 := readlist()   var list2 := (buffer:=getchar(); readlist())   in printlist(merge(list1,list2))endAn identifier anyA punctuation =A punctuation {An identifier anyA punctuation :An identifier intA punctuation }An identifier bufferAn identifier getcharA punctuation (A punctuation )An identifier readintA punctuation (An identifier anyA punctuation :An identifier anyA punctuation )A punctuation :An identifier intA punctuation =An identifier iAn integer 0 (0)An identifier isdigitA punctuation (An identifier sA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =An identifier ordA punctuation (An identifier bufferA punctuation )An identifier ordA punctuation (A string "0"A punctuation )A punctuation &An identifier ordA punctuation (An identifier bufferA punctuation )An identifier ordA punctuation (A string "9"A punctuation )An identifier skiptoA punctuation (A punctuation )A punctuation =An identifier bufferA punctuation =A string " "A punctuation |An identifier bufferA punctuation =A string "\n"An identifier bufferAn identifier getcharA punctuation (A punctuation )An identifier skiptoA punctuation (A punctuation )A punctuation ;An identifier anyA punctuation .An identifier anyAn identifier isdigitA punctuation (An identifier bufferA punctuation )A punctuation ;An identifier isdigitA punctuation (An identifier bufferA punctuation )A punctuation (An identifier iAn identifier iA punctuation *An integer 10 (10)A punctuation +An identifier ordA punctuation (An identifier bufferA punctuation )A punctuation -An identifier ordA punctuation (A string "0"A punctuation )A punctuation ;An identifier bufferAn identifier getcharA punctuation (A punctuation )A punctuation )A punctuation ;An identifier iAn identifier listA punctuation =A punctuation {An identifier firstA punctuation :An identifier intA punctuation ,An identifier restA punctuation :An identifier listA punctuation }An identifier readlistA punctuation (A punctuation )A punctuation :An identifier listA punctuation =An identifier anyAn identifier anyA punctuation {An identifier anyA punctuation =An integer 0 (0)A punctuation }An identifier iAn identifier readintA punctuation (An identifier anyA punctuation )An identifier anyA punctuation .An identifier anyAn identifier listA punctuation {An identifier firstA punctuation =An identifier iA punctuation ,An identifier restA punctuation =An identifier readlistA punctuation (A punctuation )A punctuation }An identifier mergeA punctuation (An identifier aA punctuation :An identifier listA punctuation ,An identifier bA punctuation :An identifier listA punctuation )A punctuation :An identifier listA punctuation =An identifier aA punctuation =An identifier bAn identifier bA punctuation =An identifier aAn identifier aA punctuation .An identifier firstA punctuation <An identifier bA punctuation .An identifier firstAn identifier listA punctuation {An identifier firstA punctuation =An identifier aA punctuation .An identifier firstA punctuation ,An identifier restA punctuation =An identifier mergeA punctuation (An identifier aA punctuation .An identifier restA punctuation ,An identifier bA punctuation )A punctuation }An identifier listA punctuation {An identifier firstA punctuation =An identifier bA punctuation .An identifier firstA punctuation ,An identifier restA punctuation =An identifier mergeA punctuation (An identifier aA punctuation ,An identifier bA punctuation .An identifier restA punctuation )A punctuation }An identifier printintA punctuation (An identifier iA punctuation :An identifier intA punctuation )A punctuation =An identifier fA punctuation (An identifier iA punctuation :An identifier intA punctuation )A punctuation =An identifier iA punctuation >An integer 0 (0)A punctuation (An identifier fA punctuation (An identifier iA punctuation /An integer 10 (10)A punctuation )A punctuation ;An identifier printA punctuation (An identifier chrA punctuation (An identifier iA punctuation -An identifier iA punctuation /An integer 10 (10)A punctuation *An integer 10 (10)A punctuation +An identifier ordA punctuation (A string "0"A punctuation )A punctuation )A punctuation )A punctuation )An identifier iA punctuation <An integer 0 (0)A punctuation (An identifier printA punctuation (A string "-"A punctuation )A punctuation ;An identifier fA punctuation (A punctuation -An identifier iA punctuation )A punctuation )An identifier iA punctuation >An integer 0 (0)An identifier fA punctuation (An identifier iA punctuation )An identifier printA punctuation (A string "0"A punctuation )An identifier printlistA punctuation (An identifier lA punctuation :An identifier listA punctuation )A punctuation =An identifier lA punctuation =An identifier printA punctuation (A string "\n"A punctuation )A punctuation (An identifier printintA punctuation (An identifier lA punctuation .An identifier firstA punctuation )A punctuation ;An identifier printA punctuation (A string " "A punctuation )A punctuation ;An identifier printlistA punctuation (An identifier lA punctuation .An identifier restA punctuation )A punctuation )An identifier list1An identifier readlistA punctuation (A punctuation )An identifier list2A punctuation (An identifier bufferAn identifier getcharA punctuation (A punctuation )A punctuation ;An identifier readlistA punctuation (A punctuation )A punctuation )An identifier printlistA punctuation (An identifier mergeA punctuation (An identifier list1A punctuation ,An identifier list2A punctuation )A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected16: error: syntax error, unexpected '=', expecting OF/var/tmp/tmp.0.iqYHuPlet    var N := 8    type intArray = array of int    var row := intArray [ N ] of 0    var col := intArray [ N ] of 0    var diag1 := intArray [N+N-1] of 0    var diag2 := intArray [N+N-1] of 0    function printboard() =       (for i := 0 to N-1	 do (for j := 0 to N-1 	      do print(if col[i]=j then " O" else " .");	     print("\n"));         print("\n"))    function try(c:int) = (      if c=N     then printboard()     else for r := 0 to N-1	   do if row[r]=0 & diag1[r+c]=0 & diag2[r+7-c]=0	           then (row[r]:=1; diag1[r+c]:=1; diag2[r+7-c]:=1;		         col[c]:=r;	                 try(c+1);			 row[r]:=0; diag1[r+c]:=0; diag2[r+7-c]:=0)) in try(0)end	An identifier NAn integer 8 (8)An identifier intArrayA punctuation =An identifier intAn identifier rowAn identifier intArrayA punctuation [An identifier NA punctuation ]An integer 0 (0)An identifier colAn identifier intArrayA punctuation [An identifier NA punctuation ]An integer 0 (0)An identifier diag1An identifier intArrayA punctuation [An identifier NA punctuation +An identifier NA punctuation -An integer 1 (1)A punctuation ]An integer 0 (0)An identifier diag2An identifier intArrayA punctuation [An identifier NA punctuation +An identifier NA punctuation -An integer 1 (1)A punctuation ]An integer 0 (0)An identifier printboardA punctuation (A punctuation )A punctuation =A punctuation (An identifier iAn integer 0 (0)An identifier NA punctuation -An integer 1 (1)A punctuation (An identifier jAn integer 0 (0)An identifier NA punctuation -An integer 1 (1)An identifier printA punctuation (An identifier colA punctuation [An identifier iA punctuation ]A punctuation =/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.fny6Dalet	type  arrtype = array of int	var arr1:arrtype := arrtype [10] of 0in	arr1endAn identifier arrtypeA punctuation =An identifier intAn identifier arr1A punctuation :An identifier arrtypeAn identifier arrtypeA punctuation [An integer 10 (10)A punctuation ]An integer 0 (0)An identifier arr1/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.PMTeDKwhile(10 > 5) do 5+6A punctuation (An integer 10 (10)A punctuation >An integer 5 (5)A punctuation )An integer 5 (5)A punctuation +An integer 6 (6)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.OOA9T2for i:=10 to " " do 	i := i - 1An identifier iAn integer 10 (10)A string " "An identifier iAn identifier iA punctuation -An integer 1 (1)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.TC1Dsmlet	var a:= 0in 	for i:=0 to 100 do (a:=a+1;())endAn identifier aAn integer 0 (0)An identifier iAn integer 0 (0)An integer 100 (100)A punctuation (An identifier aAn identifier aA punctuation +An integer 1 (1)A punctuation ;A punctuation (A punctuation )A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.8Yuutz3 > "df"An integer 3 (3)A punctuation >A string "df"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.Vu8N7Ylet	type arrtype = array of int	type rectype = {name:string, id: int}	var rec := rectype {name="aname", id=0}	var arr := arrtype [3] of 0in	if rec <> arr then 3 else 4endAn identifier arrtypeA punctuation =An identifier intAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier recAn identifier rectypeA punctuation {An identifier nameA punctuation =A string "aname"A punctuation ,An identifier idA punctuation =An integer 0 (0)A punctuation }An identifier arrAn identifier arrtypeA punctuation [An integer 3 (3)A punctuation ]An integer 0 (0)An identifier recAn identifier arrAn integer 3 (3)An integer 4 (4)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.R3C3Efif 20 then 3An integer 20 (20)An integer 3 (3)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.uJ2y77let type a=ctype b=atype c=dtype d=ain ""endAn identifier aA punctuation =An identifier cAn identifier bA punctuation =An identifier aAn identifier cA punctuation =An identifier dAn identifier dA punctuation =An identifier aA string ""/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.4MKPNMlettype tree ={key: int, children: treelist}var d:int :=0type treelist = {hd: tree, tl: treelist}in	dendAn identifier treeA punctuation =A punctuation {An identifier keyA punctuation :An identifier intA punctuation ,An identifier childrenA punctuation :An identifier treelistA punctuation }An identifier dA punctuation :An identifier intAn integer 0 (0)An identifier treelistA punctuation =A punctuation {An identifier hdA punctuation :An identifier treeA punctuation ,An identifier tlA punctuation :An identifier treelistA punctuation }An identifier d/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.Mb52hyletfunction do_nothing1(a: int, b: string):int=		(do_nothing2(a+1);0)var d:=0function do_nothing2(d: int):string =		(do_nothing1(d, "str");" ")in	do_nothing1(0, "str2")endAn identifier do_nothing1A punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =A punctuation (An identifier do_nothing2A punctuation (An identifier aA punctuation +An integer 1 (1)A punctuation )A punctuation ;An integer 0 (0)A punctuation )An identifier dAn integer 0 (0)An identifier do_nothing2A punctuation (An identifier dA punctuation :An identifier intA punctuation )A punctuation :An identifier stringA punctuation =A punctuation (An identifier do_nothing1A punctuation (An identifier dA punctuation ,A string "str"A punctuation )A punctuation ;A string " "A punctuation )An identifier do_nothing1A punctuation (An integer 0 (0)A punctuation ,A string "str2"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.CItnj1letfunction do_nothing1(a: int, b: string):int=		(do_nothing2(a+1);0)function do_nothing2(d: int):string =		(do_nothing1(a, "str");" ")in	do_nothing1(0, "str2")endAn identifier do_nothing1A punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =A punctuation (An identifier do_nothing2A punctuation (An identifier aA punctuation +An integer 1 (1)A punctuation )A punctuation ;An integer 0 (0)A punctuation )An identifier do_nothing2A punctuation (An identifier dA punctuation :An identifier intA punctuation )A punctuation :An identifier stringA punctuation =A punctuation (An identifier do_nothing1A punctuation (An identifier aA punctuation ,A string "str"A punctuation )A punctuation ;A string " "A punctuation )An identifier do_nothing1A punctuation (An integer 0 (0)A punctuation ,A string "str2"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.1SkjlElet	type myint = int	type  arrtype = array of myint	var arr1:arrtype := arrtype [10] of 0in	arr1endAn identifier myintA punctuation =An identifier intAn identifier arrtypeA punctuation =An identifier myintAn identifier arr1A punctuation :An identifier arrtypeAn identifier arrtypeA punctuation [An integer 10 (10)A punctuation ]An integer 0 (0)An identifier arr1/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.pILQluwhile 10 > 5 do (i+1;())An integer 10 (10)A punctuation >An integer 5 (5)A punctuation (An identifier iA punctuation +An integer 1 (1)A punctuation ;A punctuation (A punctuation )A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.GyNm9Bletfunction nfactor(n: int) =		if  n = 0 			then 1			else n * nfactor(n-1)in	nfactor(10)endAn identifier nfactorA punctuation (An identifier nA punctuation :An identifier intA punctuation )A punctuation =An identifier nA punctuation =An integer 0 (0)An integer 1 (1)An identifier nA punctuation *An identifier nfactorA punctuation (An identifier nA punctuation -An integer 1 (1)A punctuation )An identifier nfactorA punctuation (An integer 10 (10)A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.ZqCu8plet 	type rectype = {name:string , id:int}	var rec1 := rectype {name="Name", id=0}in	rec1.nam := "asd"endAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier rec1An identifier rectypeA punctuation {An identifier nameA punctuation =A string "Name"A punctuation ,An identifier idA punctuation =An integer 0 (0)A punctuation }An identifier rec1A punctuation .An identifier namA string "asd"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.2i20gKlet 	type rectype = {name:string , id:int}	var rec1 := rectype {name="aname", id=0}in	rec1.name := 3;	rec1.id := "" endAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier rec1An identifier rectypeA punctuation {An identifier nameA punctuation =A string "aname"A punctuation ,An identifier idA punctuation =An integer 0 (0)A punctuation }An identifier rec1A punctuation .An identifier nameAn integer 3 (3)A punctuation ;An identifier rec1A punctuation .An identifier idA string ""/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected6: error: syntax error, unexpected END, expecting OF/var/tmp/tmp.0.Q634eHlet 	var d:=0in	d[3]endAn identifier dAn integer 0 (0)An identifier dA punctuation [An integer 3 (3)A punctuation ]/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.uUDmNBlet 	var d:=0in	d.f endAn identifier dAn integer 0 (0)An identifier dA punctuation .An identifier f/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.n7KI3x3 + "var"An integer 3 (3)A punctuation +A string "var"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.kFZ1x1let	var a:=0	function g(a:int):int = a in g(2)endAn identifier aAn integer 0 (0)An identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier gA punctuation (An integer 2 (2)A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.CP1YL9let	type rectype1 = {name:string , id:int}	type rectype2 = {name:string , id:int}	var rec1: rectype1 := rectype2 {name="Name", id=0}in	rec1endAn identifier rectype1A punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier rectype2A punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier rec1A punctuation :An identifier rectype1An identifier rectype2A punctuation {An identifier nameA punctuation =A string "Name"A punctuation ,An identifier idA punctuation =An integer 0 (0)A punctuation }An identifier rec1/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.t3joADlet	type arrtype1 = array of int	type arrtype2 = array of int	var arr1: arrtype1 := arrtype2 [10] of 0in	arr1endAn identifier arrtype1A punctuation =An identifier intAn identifier arrtype2A punctuation =An identifier intAn identifier arr1A punctuation :An identifier arrtype1An identifier arrtype2A punctuation [An integer 10 (10)A punctuation ]An integer 0 (0)An identifier arr1/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.7jzwodlet	type  rectype = {name:string, age:int}	var rec1:rectype := rectype {name="Nobody", age=1000}in	rec1.name := "Somebody";	rec1endAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier ageA punctuation :An identifier intA punctuation }An identifier rec1A punctuation :An identifier rectypeAn identifier rectypeA punctuation {An identifier nameA punctuation =A string "Nobody"A punctuation ,An identifier ageA punctuation =An integer 1000 (1000)A punctuation }An identifier rec1A punctuation .An identifier nameA string "Somebody"A punctuation ;An identifier rec1/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected10: error: syntax error, unexpected END, expecting OF/var/tmp/tmp.0.JLuF6Llet 		type a = array of int		type b = a		var arr1:a := b [10] of 0in		arr1[2]endAn identifier aA punctuation =An identifier intAn identifier bA punctuation =An identifier aAn identifier arr1A punctuation :An identifier aAn identifier bA punctuation [An integer 10 (10)A punctuation ]An integer 0 (0)An identifier arr1A punctuation [An integer 2 (2)A punctuation ]/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.ihdHVFlet 	var a:int := " "in	aendAn identifier aA punctuation :An identifier intA string " "An identifier a/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.ix5mctlet	type arrayty = array of int	var a := arrayty [10] of " "in	0endAn identifier arraytyA punctuation =An identifier intAn identifier aAn identifier arraytyA punctuation [An integer 10 (10)A punctuation ]A string " "An integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.bRxj4Mlet	var a:= rectype {}in	0endAn identifier aAn identifier rectypeA punctuation {A punctuation }An integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.Cyh6Hslet	function g (a:int , b:string):int = ain	g("one", "two")endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier gA punctuation (A string "one"A punctuation ,A string "two"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.FCs0mMlet	function g (a:int , b:string):int = ain	g("one")endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier gA punctuation (A string "one"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.NU4zf8let	function g (a:int , b:string):int = ain	g(3,"one",5)endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier gA punctuation (An integer 3 (3)A punctuation ,A string "one"A punctuation ,An integer 5 (5)A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.emItrKlet	var a := 0	var a := " "in	0endAn identifier aAn integer 0 (0)An identifier aA string " "An integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.qd9cKqlet	type a = int	type a = stringin	0endAn identifier aA punctuation =An identifier intAn identifier aA punctuation =An identifier stringAn integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.wZDlTOlet	function g(a:int):int = a	function g(a:int):int = ain	0endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.G8eX58letfunction nfactor(n: int): int =		if  n = 0 			then 1			else n * nfactor(n-1)in	nfactor(10)endAn identifier nfactorA punctuation (An identifier nA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier nA punctuation =An integer 0 (0)An integer 1 (1)An identifier nA punctuation *An identifier nfactorA punctuation (An identifier nA punctuation -An integer 1 (1)A punctuation )An identifier nfactorA punctuation (An integer 10 (10)A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.RAxc3Ylet	function g(a:int) = ain 	g(2)endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation =An identifier aAn identifier gA punctuation (An integer 2 (2)A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.D6ltQrlet	type a = intin	let		type a = string	in		0	endendAn identifier aA punctuation =An identifier intAn identifier aA punctuation =An identifier stringAn integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected20: error: syntax error, unexpected :=, expecting OF/var/tmp/tmp.0.CVhW20let type arrtype1 = array of inttype rectype1 = {name:string, address:string, id: int , age: int}type arrtype2 = array of rectype1type rectype2 = {name : string, dates: arrtype1}type arrtype3 = array of stringvar arr1 := arrtype1 [10] of 0var arr2  := arrtype2 [5] of rectype1 {name="aname", address="somewhere", id=0, age=0}var arr3:arrtype3 := arrtype3 [100] of ""var rec1 := rectype1 {name="Kapoios", address="Kapou", id=02432, age=44}var rec2 := rectype2 {name="Allos", dates= arrtype1 [3] of 1900}inarr1[0] := 1; arr1[9] := 3;arr2[3].name := "kati";arr2[1].age := 23;arr3[34] := "sfd";rec1.name := "sdf";rec2.dates[0] := 2323;rec2.dates[2] := 2323endAn identifier arrtype1A punctuation =An identifier intAn identifier rectype1A punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier addressA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation ,An identifier ageA punctuation :An identifier intA punctuation }An identifier arrtype2A punctuation =An identifier rectype1An identifier rectype2A punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier datesA punctuation :An identifier arrtype1A punctuation }An identifier arrtype3A punctuation =An identifier stringAn identifier arr1An identifier arrtype1A punctuation [An integer 10 (10)A punctuation ]An integer 0 (0)An identifier arr2An identifier arrtype2A punctuation [An integer 5 (5)A punctuation ]An identifier rectype1A punctuation {An identifier nameA punctuation =A string "aname"A punctuation ,An identifier addressA punctuation =A string "somewhere"A punctuation ,An identifier idA punctuation =An integer 0 (0)A punctuation ,An identifier ageA punctuation =An integer 0 (0)A punctuation }An identifier arr3A punctuation :An identifier arrtype3An identifier arrtype3A punctuation [An integer 100 (100)A punctuation ]A string ""An identifier rec1An identifier rectype1A punctuation {An identifier nameA punctuation =A string "Kapoios"A punctuation ,An identifier addressA punctuation =A string "Kapou"A punctuation ,An identifier idA punctuation =An integer 02432 (2432)A punctuation ,An identifier ageA punctuation =An integer 44 (44)A punctuation }An identifier rec2An identifier rectype2A punctuation {An identifier nameA punctuation =A string "Allos"A punctuation ,An identifier datesA punctuation =An identifier arrtype1A punctuation [An integer 3 (3)A punctuation ]An integer 1900 (1900)A punctuation }An identifier arr1A punctuation [An integer 0 (0)A punctuation ]/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.X12XyBlet 	var a := ()in	a + 3endAn identifier aA punctuation (A punctuation )An identifier aA punctuation +An integer 3 (3)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.uTCMu5let 	type rectype = {name:string, id:int}	var b:rectype := nilin	b := nilendAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier bA punctuation :An identifier rectypeAn identifier b/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.CpJ62Olet 	type rectype = {name:string, id:int}	var a:= nilin	aendAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier aAn identifier a/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.qEChPclet 	type rectype = {name:string, id:int}	var b:rectype := nilin	b = nil;	b <> nilendAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier bA punctuation :An identifier rectypeAn identifier bA punctuation =A punctuation ;An identifier b/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.0zElHLlet	type a = int	var b := 4	type a = stringin	0endAn identifier aA punctuation =An identifier intAn identifier bAn integer 4 (4)An identifier aA punctuation =An identifier stringAn integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.elosbxlet	function g(a:int):int = a	type t = int	function g(a:int):int = ain	0endAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn identifier tA punctuation =An identifier intAn identifier gA punctuation (An identifier aA punctuation :An identifier intA punctuation )A punctuation :An identifier intA punctuation =An identifier aAn integer 0 (0)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected5: error: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR/var/tmp/tmp.0.74lF4Nlet 	type rectype = {name:string, id:int}	var a:= rectype nilin	aendAn identifier rectypeA punctuation =A punctuation {An identifier nameA punctuation :An identifier stringA punctuation ,An identifier idA punctuation :An identifier intA punctuation }An identifier aAn identifier rectype/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.2yn2aNlettype intlist = {hd: int, tl: intlist} type tree ={key: int, children: treelist}type treelist = {hd: tree, tl: treelist}var lis:intlist := intlist { hd=0, tl= nil } in	lisendAn identifier intlistA punctuation =A punctuation {An identifier hdA punctuation :An identifier intA punctuation ,An identifier tlA punctuation :An identifier intlistA punctuation }An identifier treeA punctuation =A punctuation {An identifier keyA punctuation :An identifier intA punctuation ,An identifier childrenA punctuation :An identifier treelistA punctuation }An identifier treelistA punctuation =A punctuation {An identifier hdA punctuation :An identifier treeA punctuation ,An identifier tlA punctuation :An identifier treelistA punctuation }An identifier lisA punctuation :An identifier intlistAn identifier intlistA punctuation {An identifier hdA punctuation =An integer 0 (0)A punctuation ,An identifier tlA punctuation =A punctuation }An identifier lis/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.Jw2W4Gletfunction do_nothing1(a: int, b: string)=		do_nothing2(a+1)function do_nothing2(d: int) =		do_nothing1(d, "str")in	do_nothing1(0, "str2")endAn identifier do_nothing1A punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation =An identifier do_nothing2A punctuation (An identifier aA punctuation +An integer 1 (1)A punctuation )An identifier do_nothing2A punctuation (An identifier dA punctuation :An identifier intA punctuation )A punctuation =An identifier do_nothing1A punctuation (An identifier dA punctuation ,A string "str"A punctuation )An identifier do_nothing1A punctuation (An integer 0 (0)A punctuation ,A string "str2"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.n3rROEletfunction do_nothing1(a: int, b: string):int=		(do_nothing2(a+1);0)function do_nothing2(d: int):string =		(do_nothing1(d, "str");" ")in	do_nothing1(0, "str2")endAn identifier do_nothing1A punctuation (An identifier aA punctuation :An identifier intA punctuation ,An identifier bA punctuation :An identifier stringA punctuation )A punctuation :An identifier intA punctuation =A punctuation (An identifier do_nothing2A punctuation (An identifier aA punctuation +An integer 1 (1)A punctuation )A punctuation ;An integer 0 (0)A punctuation )An identifier do_nothing2A punctuation (An identifier dA punctuation :An identifier intA punctuation )A punctuation :An identifier stringA punctuation =A punctuation (An identifier do_nothing1A punctuation (An identifier dA punctuation ,A string "str"A punctuation )A punctuation ;A string " "A punctuation )An identifier do_nothing1A punctuation (An integer 0 (0)A punctuation ,A string "str2"A punctuation )/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.OJLDD3if (10 > 20) then 30 else 40	A punctuation (An integer 10 (10)A punctuation >An integer 20 (20)A punctuation )An integer 30 (30)An integer 40 (40)/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected/var/tmp/tmp.0.Tm0uowif (5>4) then 13 else  " "A punctuation (An integer 5 (5)A punctuation >An integer 4 (4)A punctuation )An integer 13 (13)A string " "/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected1834(13@22"/var/tmp/tmp.0.6GHTKk312539677#0#22#0(1@0"0(13@5"let 312539677#22#5#0(1@0"0(13@24" type any = {any : int}312539677#28#24#0(1@0"0(13@25" var buffer := getchar()312539677#52#25#0(1@0"0(13@35"function readint(any: any) : int =312539677#78#35#0(1@0"0(13@16" let var i := 0312539677#113#16#0(1@0"0(13@43"     function isdigit(s : string) : int = 312539677#129#43#0(1@0"0(13@50"		  ord(buffer)>=ord("0") & ord(buffer)<=ord("9")312539677#172#50#0(1@0"0(13@25"     function skipto() =312539677#222#25#0(1@0"0(13@38"       while buffer=" " | buffer="\n"312539677#247#38#0(1@0"0(13@32"         do buffer := getchar()312539677#285#32#0(1@0"0(13@15"  in skipto();312539677#317#15#0(1@0"0(13@33"     any.any := isdigit(buffer);312539677#332#33#0(1@0"0(13@27"     while isdigit(buffer)312539677#365#27#0(1@0"0(13@65"       do (i := i*10+ord(buffer)-ord("0"); buffer := getchar());312539677#392#65#0(1@0"0(13@7"     i312539677#457#7#0(1@0"0(13@5" end312539677#464#5#0(1@0"0(13@38" type list = {first: int, rest: list}312539677#470#38#0(1@0"0(13@30" function readlist() : list =312539677#509#30#0(1@0"0(13@30"    let var any := any{any=0}312539677#539#30#0(1@0"0(13@30"        var i := readint(any)312539677#569#30#0(1@0"0(13@19"     in if any.any312539677#599#19#0(1@0"0(13@44"         then list{first=i,rest=readlist()}312539677#618#44#0(1@0"0(13@18"         else nil312539677#662#18#0(1@0"0(13@8"    end312539677#680#8#0(1@0"0(13@43" function merge(a: list, b: list) : list =312539677#689#43#0(1@0"0(13@19"   if a=nil then b312539677#732#19#0(1@0"0(13@24"   else if b=nil then a312539677#751#24#0(1@0"0(13@30"   else if a.first < b.first 312539677#775#30#0(1@0"0(13@52"      then list{first=a.first,rest=merge(a.rest,b)}312539677#805#52#0(1@0"0(13@52"      else list{first=b.first,rest=merge(a,b.rest)}312539677#857#52#0(1@0"0(13@29" function printint(i: int) =312539677#910#29#0(1@0"0(13@34"  let function f(i:int) = if i>0 312539677#939#34#0(1@0"0(13@53"	     then (f(i/10); print(chr(i-i/10*10+ord("0"))))312539677#973#53#0(1@0"0(13@38"   in if i<0 then (print("-"); f(-i))312539677#1026#38#0(1@0"0(13@28"      else if i>0 then f(i)312539677#1064#28#0(1@0"0(13@22"      else print("0")312539677#1092#22#0(1@0"0(13@6"  end312539677#1114#6#0(1@0"0(13@31" function printlist(l: list) =312539677#1121#31#0(1@0"0(13@29"   if l=nil then print("\n")312539677#1152#29#0(1@0"0(13@59"   else (printint(l.first); print(" "); printlist(l.rest))312539677#1181#59#0(1@0"0(13@27"   var list1 := readlist()312539677#1241#27#0(1@0"0(13@48"   var list2 := (buffer:=getchar(); readlist())312539677#1268#48#0(1@0"0(13@3"  312539677#1318#3#0(1@0"0(13@34" in printlist(merge(list1,list2))312539677#1321#34#0(1@0"0(13@4"end312539677#1355#4#0(1@0"0(13@18"An identifier any312539677#1360#18#0(1@0"0(13@16"A punctuation =312539677#1378#16#0(1@0"0(13@16"A punctuation {312539677#1394#16#0(1@0"0(13@18"An identifier any312539677#1410#18#0(1@0"0(13@16"A punctuation :312539677#1428#16#0(1@0"0(13@18"An identifier int312539677#1444#18#0(1@0"0(13@16"A punctuation }312539677#1462#16#0(1@0"0(13@21"An identifier buffer312539677#1478#21#0(1@0"0(13@22"An identifier getchar312539677#1499#22#0(1@0"0(13@16"A punctuation (312539677#1521#16#0(1@0"0(13@16"A punctuation )312539677#1537#16#0(1@0"0(13@22"An identifier readint312539677#1553#22#0(1@0"0(13@16"A punctuation (312539677#1575#16#0(1@0"0(13@18"An identifier any312539677#1591#18#0(1@0"0(13@16"A punctuation :312539677#1609#16#0(1@0"0(13@18"An identifier any312539677#1625#18#0(1@0"0(13@16"A punctuation )312539677#1643#16#0(1@0"0(13@16"A punctuation :312539677#1659#16#0(1@0"0(13@18"An identifier int312539677#1675#18#0(1@0"0(13@16"A punctuation =312539677#1693#16#0(1@0"0(13@16"An identifier i312539677#1709#16#0(1@0"0(13@17"An integer 0 (0)312539677#1725#17#0(1@0"0(13@22"An identifier isdigit312539677#1742#22#0(1@0"0(13@16"A punctuation (312539677#1764#16#0(1@0"0(13@16"An identifier s312539677#1780#16#0(1@0"0(13@16"A punctuation :312539677#1796#16#0(1@0"0(13@21"An identifier string312539677#1812#21#0(1@0"0(13@16"A punctuation )312539677#1833#16#0(1@0"0(13@16"A punctuation :312539677#1849#16#0(1@0"0(13@18"An identifier int312539677#1865#18#0(1@0"0(13@16"A punctuation =312539677#1883#16#0(1@0"0(13@18"An identifier ord312539677#1899#18#0(1@0"0(13@16"A punctuation (312539677#1917#16#0(1@0"0(13@21"An identifier buffer312539677#1933#21#0(1@0"0(13@16"A punctuation )312539677#1954#16#0(1@0"0(13@18"An identifier ord312539677#1970#18#0(1@0"0(13@16"A punctuation (312539677#1988#16#0(1@0"0(13@13"A string "0"312539677#2004#13#0(1@0"0(13@16"A punctuation )312539677#2017#16#0(1@0"0(13@16"A punctuation &312539677#2033#16#0(1@0"0(13@18"An identifier ord312539677#2049#18#0(1@0"0(13@16"A punctuation (312539677#2067#16#0(1@0"0(13@21"An identifier buffer312539677#2083#21#0(1@0"0(13@16"A punctuation )312539677#2104#16#0(1@0"0(13@18"An identifier ord312539677#2120#18#0(1@0"0(13@16"A punctuation (312539677#2138#16#0(1@0"0(13@13"A string "9"312539677#2154#13#0(1@0"0(13@16"A punctuation )312539677#2167#16#0(1@0"0(13@21"An identifier skipto312539677#2183#21#0(1@0"0(13@16"A punctuation (312539677#2204#16#0(1@0"0(13@16"A punctuation )312539677#2220#16#0(1@0"0(13@16"A punctuation =312539677#2236#16#0(1@0"0(13@21"An identifier buffer312539677#2252#21#0(1@0"0(13@16"A punctuation =312539677#2273#16#0(1@0"0(13@13"A string " "312539677#2289#13#0(1@0"0(13@16"A punctuation |312539677#2302#16#0(1@0"0(13@21"An identifier buffer312539677#2318#21#0(1@0"0(13@16"A punctuation =312539677#2339#16#0(1@0"0(13@14"A string "\n"312539677#2355#14#0(1@0"0(13@21"An identifier buffer312539677#2369#21#0(1@0"0(13@22"An identifier getchar312539677#2390#22#0(1@0"0(13@16"A punctuation (312539677#2412#16#0(1@0"0(13@16"A punctuation )312539677#2428#16#0(1@0"0(13@21"An identifier skipto312539677#2444#21#0(1@0"0(13@16"A punctuation (312539677#2465#16#0(1@0"0(13@16"A punctuation )312539677#2481#16#0(1@0"0(13@16"A punctuation ;312539677#2497#16#0(1@0"0(13@18"An identifier any312539677#2513#18#0(1@0"0(13@16"A punctuation .312539677#2531#16#0(1@0"0(13@18"An identifier any312539677#2547#18#0(1@0"0(13@22"An identifier isdigit312539677#2565#22#0(1@0"0(13@16"A punctuation (312539677#2587#16#0(1@0"0(13@21"An identifier buffer312539677#2603#21#0(1@0"0(13@16"A punctuation )312539677#2624#16#0(1@0"0(13@16"A punctuation ;312539677#2640#16#0(1@0"0(13@22"An identifier isdigit312539677#2656#22#0(1@0"0(13@16"A punctuation (312539677#2678#16#0(1@0"0(13@21"An identifier buffer312539677#2694#21#0(1@0"0(13@16"A punctuation )312539677#2715#16#0(1@0"0(13@16"A punctuation (312539677#2731#16#0(1@0"0(13@16"An identifier i312539677#2747#16#0(1@0"0(13@16"An identifier i312539677#2763#16#0(1@0"0(13@16"A punctuation *312539677#2779#16#0(1@0"0(13@19"An integer 10 (10)312539677#2795#19#0(1@0"0(13@16"A punctuation +312539677#2814#16#0(1@0"0(13@18"An identifier ord312539677#2830#18#0(1@0"0(13@16"A punctuation (312539677#2848#16#0(1@0"0(13@21"An identifier buffer312539677#2864#21#0(1@0"0(13@16"A punctuation )312539677#2885#16#0(1@0"0(13@16"A punctuation -312539677#2901#16#0(1@0"0(13@18"An identifier ord312539677#2917#18#0(1@0"0(13@16"A punctuation (312539677#2935#16#0(1@0"0(13@13"A string "0"312539677#2951#13#0(1@0"0(13@16"A punctuation )312539677#2964#16#0(1@0"0(13@16"A punctuation ;312539677#2980#16#0(1@0"0(13@21"An identifier buffer312539677#2996#21#0(1@0"0(13@22"An identifier getchar312539677#3017#22#0(1@0"0(13@16"A punctuation (312539677#3039#16#0(1@0"0(13@16"A punctuation )312539677#3055#16#0(1@0"0(13@16"A punctuation )312539677#3071#16#0(1@0"0(13@16"A punctuation ;312539677#3087#16#0(1@0"0(13@16"An identifier i312539677#3103#16#0(1@0"0(13@19"An identifier list312539677#3119#19#0(1@0"0(13@16"A punctuation =312539677#3138#16#0(1@0"0(13@16"A punctuation {312539677#3154#16#0(1@0"0(13@20"An identifier first312539677#3170#20#0(1@0"0(13@16"A punctuation :312539677#3190#16#0(1@0"0(13@18"An identifier int312539677#3206#18#0(1@0"0(13@16"A punctuation ,312539677#3224#16#0(1@0"0(13@19"An identifier rest312539677#3240#19#0(1@0"0(13@16"A punctuation :312539677#3259#16#0(1@0"0(13@19"An identifier list312539677#3275#19#0(1@0"0(13@16"A punctuation }312539677#3294#16#0(1@0"0(13@23"An identifier readlist312539677#3310#23#0(1@0"0(13@16"A punctuation (312539677#3333#16#0(1@0"0(13@16"A punctuation )312539677#3349#16#0(1@0"0(13@16"A punctuation :312539677#3365#16#0(1@0"0(13@19"An identifier list312539677#3381#19#0(1@0"0(13@16"A punctuation =312539677#3400#16#0(1@0"0(13@18"An identifier any312539677#3416#18#0(1@0"0(13@18"An identifier any312539677#3434#18#0(1@0"0(13@16"A punctuation {312539677#3452#16#0(1@0"0(13@18"An identifier any312539677#3468#18#0(1@0"0(13@16"A punctuation =312539677#3486#16#0(1@0"0(13@17"An integer 0 (0)312539677#3502#17#0(1@0"0(13@16"A punctuation }312539677#3519#16#0(1@0"0(13@16"An identifier i312539677#3535#16#0(1@0"0(13@22"An identifier readint312539677#3551#22#0(1@0"0(13@16"A punctuation (312539677#3573#16#0(1@0"0(13@18"An identifier any312539677#3589#18#0(1@0"0(13@16"A punctuation )312539677#3607#16#0(1@0"0(13@18"An identifier any312539677#3623#18#0(1@0"0(13@16"A punctuation .312539677#3641#16#0(1@0"0(13@18"An identifier any312539677#3657#18#0(1@0"0(13@19"An identifier list312539677#3675#19#0(1@0"0(13@16"A punctuation {312539677#3694#16#0(1@0"0(13@20"An identifier first312539677#3710#20#0(1@0"0(13@16"A punctuation =312539677#3730#16#0(1@0"0(13@16"An identifier i312539677#3746#16#0(1@0"0(13@16"A punctuation ,312539677#3762#16#0(1@0"0(13@19"An identifier rest312539677#3778#19#0(1@0"0(13@16"A punctuation =312539677#3797#16#0(1@0"0(13@23"An identifier readlist312539677#3813#23#0(1@0"0(13@16"A punctuation (312539677#3836#16#0(1@0"0(13@16"A punctuation )312539677#3852#16#0(1@0"0(13@16"A punctuation }312539677#3868#16#0(1@0"0(13@20"An identifier merge312539677#3884#20#0(1@0"0(13@16"A punctuation (312539677#3904#16#0(1@0"0(13@16"An identifier a312539677#3920#16#0(1@0"0(13@16"A punctuation :312539677#3936#16#0(1@0"0(13@19"An identifier list312539677#3952#19#0(1@0"0(13@16"A punctuation ,312539677#3971#16#0(1@0"0(13@16"An identifier b312539677#3987#16#0(1@0"0(13@16"A punctuation :312539677#4003#16#0(1@0"0(13@19"An identifier list312539677#4019#19#0(1@0"0(13@16"A punctuation )312539677#4038#16#0(1@0"0(13@16"A punctuation :312539677#4054#16#0(1@0"0(13@19"An identifier list312539677#4070#19#0(1@0"0(13@16"A punctuation =312539677#4089#16#0(1@0"0(13@16"An identifier a312539677#4105#16#0(1@0"0(13@16"A punctuation =312539677#4121#16#0(1@0"0(13@16"An identifier b312539677#4137#16#0(1@0"0(13@16"An identifier b312539677#4153#16#0(1@0"0(13@16"A punctuation =312539677#4169#16#0(1@0"0(13@16"An identifier a312539677#4185#16#0(1@0"0(13@16"An identifier a312539677#4201#16#0(1@0"0(13@16"A punctuation .312539677#4217#16#0(1@0"0(13@20"An identifier first312539677#4233#20#0(1@0"0(13@16"A punctuation <312539677#4253#16#0(1@0"0(13@16"An identifier b312539677#4269#16#0(1@0"0(13@16"A punctuation .312539677#4285#16#0(1@0"0(13@20"An identifier first312539677#4301#20#0(1@0"0(13@19"An identifier list312539677#4321#19#0(1@0"0(13@16"A punctuation {312539677#4340#16#0(1@0"0(13@20"An identifier first312539677#4356#20#0(1@0"0(13@16"A punctuation =312539677#4376#16#0(1@0"0(13@16"An identifier a312539677#4392#16#0(1@0"0(13@16"A punctuation .312539677#4408#16#0(1@0"0(13@20"An identifier first312539677#4424#20#0(1@0"0(13@16"A punctuation ,312539677#4444#16#0(1@0"0(13@19"An identifier rest312539677#4460#19#0(1@0"0(13@16"A punctuation =312539677#4479#16#0(1@0"0(13@20"An identifier merge312539677#4495#20#0(1@0"0(13@16"A punctuation (312539677#4515#16#0(1@0"0(13@16"An identifier a312539677#4531#16#0(1@0"0(13@16"A punctuation .312539677#4547#16#0(1@0"0(13@19"An identifier rest312539677#4563#19#0(1@0"0(13@16"A punctuation ,312539677#4582#16#0(1@0"0(13@16"An identifier b312539677#4598#16#0(1@0"0(13@16"A punctuation )312539677#4614#16#0(1@0"0(13@16"A punctuation }312539677#4630#16#0(1@0"0(13@19"An identifier list312539677#4646#19#0(1@0"0(13@16"A punctuation {312539677#4665#16#0(1@0"0(13@20"An identifier first312539677#4681#20#0(1@0"0(13@16"A punctuation =312539677#4701#16#0(1@0"0(13@16"An identifier b312539677#4717#16#0(1@0"0(13@16"A punctuation .312539677#4733#16#0(1@0"0(13@20"An identifier first312539677#4749#20#0(1@0"0(13@16"A punctuation ,312539677#4769#16#0(1@0"0(13@19"An identifier rest312539677#4785#19#0(1@0"0(13@16"A punctuation =312539677#4804#16#0(1@0"0(13@20"An identifier merge312539677#4820#20#0(1@0"0(13@16"A punctuation (312539677#4840#16#0(1@0"0(13@16"An identifier a312539677#4856#16#0(1@0"0(13@16"A punctuation ,312539677#4872#16#0(1@0"0(13@16"An identifier b312539677#4888#16#0(1@0"0(13@16"A punctuation .312539677#4904#16#0(1@0"0(13@19"An identifier rest312539677#4920#19#0(1@0"0(13@16"A punctuation )312539677#4939#16#0(1@0"0(13@16"A punctuation }312539677#4955#16#0(1@0"0(13@23"An identifier printint312539677#4971#23#0(1@0"0(13@16"A punctuation (312539677#4994#16#0(1@0"0(13@16"An identifier i312539677#5010#16#0(1@0"0(13@16"A punctuation :312539677#5026#16#0(1@0"0(13@18"An identifier int312539677#5042#18#0(1@0"0(13@16"A punctuation )312539677#5060#16#0(1@0"0(13@16"A punctuation =312539677#5076#16#0(1@0"0(13@16"An identifier f312539677#5092#16#0(1@0"0(13@16"A punctuation (312539677#5108#16#0(1@0"0(13@16"An identifier i312539677#5124#16#0(1@0"0(13@16"A punctuation :312539677#5140#16#0(1@0"0(13@18"An identifier int312539677#5156#18#0(1@0"0(13@16"A punctuation )312539677#5174#16#0(1@0"0(13@16"A punctuation =312539677#5190#16#0(1@0"0(13@16"An identifier i312539677#5206#16#0(1@0"0(13@16"A punctuation >312539677#5222#16#0(1@0"0(13@17"An integer 0 (0)312539677#5238#17#0(1@0"0(13@16"A punctuation (312539677#5255#16#0(1@0"0(13@16"An identifier f312539677#5271#16#0(1@0"0(13@16"A punctuation (312539677#5287#16#0(1@0"0(13@16"An identifier i312539677#5303#16#0(1@0"0(13@16"A punctuation /312539677#5319#16#0(1@0"0(13@19"An integer 10 (10)312539677#5335#19#0(1@0"0(13@16"A punctuation )312539677#5354#16#0(1@0"0(13@16"A punctuation ;312539677#5370#16#0(1@0"0(13@20"An identifier print312539677#5386#20#0(1@0"0(13@16"A punctuation (312539677#5406#16#0(1@0"0(13@18"An identifier chr312539677#5422#18#0(1@0"0(13@16"A punctuation (312539677#5440#16#0(1@0"0(13@16"An identifier i312539677#5456#16#0(1@0"0(13@16"A punctuation -312539677#5472#16#0(1@0"0(13@16"An identifier i312539677#5488#16#0(1@0"0(13@16"A punctuation /312539677#5504#16#0(1@0"0(13@19"An integer 10 (10)312539677#5520#19#0(1@0"0(13@16"A punctuation *312539677#5539#16#0(1@0"0(13@19"An integer 10 (10)312539677#5555#19#0(1@0"0(13@16"A punctuation +312539677#5574#16#0(1@0"0(13@18"An identifier ord312539677#5590#18#0(1@0"0(13@16"A punctuation (312539677#5608#16#0(1@0"0(13@13"A string "0"312539677#5624#13#0(1@0"0(13@16"A punctuation )312539677#5637#16#0(1@0"0(13@16"A punctuation )312539677#5653#16#0(1@0"0(13@16"A punctuation )312539677#5669#16#0(1@0"0(13@16"A punctuation )312539677#5685#16#0(1@0"0(13@16"An identifier i312539677#5701#16#0(1@0"0(13@16"A punctuation <312539677#5717#16#0(1@0"0(13@17"An integer 0 (0)312539677#5733#17#0(1@0"0(13@16"A punctuation (312539677#5750#16#0(1@0"0(13@20"An identifier print312539677#5766#20#0(1@0"0(13@16"A punctuation (312539677#5786#16#0(1@0"0(13@13"A string "-"312539677#5802#13#0(1@0"0(13@16"A punctuation )312539677#5815#16#0(1@0"0(13@16"A punctuation ;312539677#5831#16#0(1@0"0(13@16"An identifier f312539677#5847#16#0(1@0"0(13@16"A punctuation (312539677#5863#16#0(1@0"0(13@16"A punctuation -312539677#5879#16#0(1@0"0(13@16"An identifier i312539677#5895#16#0(1@0"0(13@16"A punctuation )312539677#5911#16#0(1@0"0(13@16"A punctuation )312539677#5927#16#0(1@0"0(13@16"An identifier i312539677#5943#16#0(1@0"0(13@16"A punctuation >312539677#5959#16#0(1@0"0(13@17"An integer 0 (0)312539677#5975#17#0(1@0"0(13@16"An identifier f312539677#5992#16#0(1@0"0(13@16"A punctuation (312539677#6008#16#0(1@0"0(13@16"An identifier i312539677#6024#16#0(1@0"0(13@16"A punctuation )312539677#6040#16#0(1@0"0(13@20"An identifier print312539677#6056#20#0(1@0"0(13@16"A punctuation (312539677#6076#16#0(1@0"0(13@13"A string "0"312539677#6092#13#0(1@0"0(13@16"A punctuation )312539677#6105#16#0(1@0"0(13@24"An identifier printlist312539677#6121#24#0(1@0"0(13@16"A punctuation (312539677#6145#16#0(1@0"0(13@16"An identifier l312539677#6161#16#0(1@0"0(13@16"A punctuation :312539677#6177#16#0(1@0"0(13@19"An identifier list312539677#6193#19#0(1@0"0(13@16"A punctuation )312539677#6212#16#0(1@0"0(13@16"A punctuation =312539677#6228#16#0(1@0"0(13@16"An identifier l312539677#6244#16#0(1@0"0(13@16"A punctuation =312539677#6260#16#0(1@0"0(13@20"An identifier print312539677#6276#20#0(1@0"0(13@16"A punctuation (312539677#6296#16#0(1@0"0(13@14"A string "\n"312539677#6312#14#0(1@0"0(13@16"A punctuation )312539677#6326#16#0(1@0"0(13@16"A punctuation (312539677#6342#16#0(1@0"0(13@23"An identifier printint312539677#6358#23#0(1@0"0(13@16"A punctuation (312539677#6381#16#0(1@0"0(13@16"An identifier l312539677#6397#16#0(1@0"0(13@16"A punctuation .312539677#6413#16#0(1@0"0(13@20"An identifier first312539677#6429#20#0(1@0"0(13@16"A punctuation )312539677#6449#16#0(1@0"0(13@16"A punctuation ;312539677#6465#16#0(1@0"0(13@20"An identifier print312539677#6481#20#0(1@0"0(13@16"A punctuation (312539677#6501#16#0(1@0"0(13@13"A string " "312539677#6517#13#0(1@0"0(13@16"A punctuation )312539677#6530#16#0(1@0"0(13@16"A punctuation ;312539677#6546#16#0(1@0"0(13@24"An identifier printlist312539677#6562#24#0(1@0"0(13@16"A punctuation (312539677#6586#16#0(1@0"0(13@16"An identifier l312539677#6602#16#0(1@0"0(13@16"A punctuation .312539677#6618#16#0(1@0"0(13@19"An identifier rest312539677#6634#19#0(1@0"0(13@16"A punctuation )312539677#6653#16#0(1@0"0(13@16"A punctuation )312539677#6669#16#0(1@0"0(13@20"An identifier list1312539677#6685#20#0(1@0"0(13@23"An identifier readlist312539677#6705#23#0(1@0"0(13@16"A punctuation (312539677#6728#16#0(1@0"0(13@16"A punctuation )312539677#6744#16#0(1@0"0(13@20"An identifier list2312539677#6760#20#0(1@0"0(13@16"A punctuation (312539677#6780#16#0(1@0"0(13@21"An identifier buffer312539677#6796#21#0(1@0"0(13@22"An identifier getchar312539677#6817#22#0(1@0"0(13@16"A punctuation (312539677#6839#16#0(1@0"0(13@16"A punctuation )312539677#6855#16#0(1@0"0(13@16"A punctuation ;312539677#6871#16#0(1@0"0(13@23"An identifier readlist312539677#6887#23#0(1@0"0(13@16"A punctuation (312539677#6910#16#0(1@0"0(13@16"A punctuation )312539677#6926#16#0(1@0"0(13@16"A punctuation )312539677#6942#16#0(1@0"0(13@24"An identifier printlist312539677#6958#24#0(1@0"0(13@16"A punctuation (312539677#6982#16#0(1@0"0(13@20"An identifier merge312539677#6998#20#0(1@0"0(13@16"A punctuation (312539677#7018#16#0(1@0"0(13@20"An identifier list1312539677#7034#20#0(1@0"0(13@16"A punctuation ,312539677#7054#16#0(1@0"0(13@20"An identifier list2312539677#7070#20#0(1@0"0(13@16"A punctuation )312539677#7090#16#0(1@0"0(13@16"A punctuation )312539677#7106#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#7122#145#0(1@0"0(13@54"16: error: syntax error, unexpected '=', expecting OF312539677#7267#54#0(1@0"0(13@22"/var/tmp/tmp.0.iqYHuP312539677#7321#22#0(1@0"0(13@4"let312539677#7345#4#0(1@0"0(13@15"    var N := 8312539677#7349#15#0(1@0"0(13@33"    type intArray = array of int312539677#7365#33#0(1@0"0(13@35"    var row := intArray [ N ] of 0312539677#7399#35#0(1@0"0(13@35"    var col := intArray [ N ] of 0312539677#7434#35#0(1@0"0(13@39"    var diag1 := intArray [N+N-1] of 0312539677#7469#39#0(1@0"0(13@39"    var diag2 := intArray [N+N-1] of 0312539677#7508#39#0(1@0"0(13@28"    function printboard() =312539677#7548#28#0(1@0"0(13@26"       (for i := 0 to N-1312539677#7576#26#0(1@0"0(13@25"	 do (for j := 0 to N-1 312539677#7602#25#0(1@0"0(13@50"	      do print(if col[i]=j then " O" else " .");312539677#7627#50#0(1@0"0(13@20"	     print("\n"));312539677#7677#20#0(1@0"0(13@22"         print("\n"))312539677#7697#22#0(1@0"0(13@27"    function try(c:int) = 312539677#7720#27#0(1@0"0(13@3"( 312539677#7747#3#0(1@0"0(13@12"     if c=N312539677#7750#12#0(1@0"0(13@23"     then printboard()312539677#7762#23#0(1@0"0(13@28"     else for r := 0 to N-1312539677#7785#28#0(1@0"0(13@51"	   do if row[r]=0 & diag1[r+c]=0 & diag2[r+7-c]=0312539677#7813#51#0(1@0"0(13@61"	           then (row[r]:=1; diag1[r+c]:=1; diag2[r+7-c]:=1;312539677#7864#61#0(1@0"0(13@22"		         col[c]:=r;312539677#7925#22#0(1@0"0(13@28"	                 try(c+1);312539677#7947#28#0(1@0"0(13@47"			 row[r]:=0; diag1[r+c]:=0; diag2[r+7-c]:=0)312539677#7975#47#0(1@0"0(13@2")312539677#8023#2#0(1@0"0(13@11" in try(0)312539677#8025#11#0(1@0"0(13@4"end312539677#8036#4#0(1@0"0(13@17"	An identifier N312539677#8040#17#0(1@0"0(13@17"An integer 8 (8)312539677#8057#17#0(1@0"0(13@23"An identifier intArray312539677#8074#23#0(1@0"0(13@16"A punctuation =312539677#8097#16#0(1@0"0(13@18"An identifier int312539677#8113#18#0(1@0"0(13@18"An identifier row312539677#8131#18#0(1@0"0(13@23"An identifier intArray312539677#8149#23#0(1@0"0(13@16"A punctuation [312539677#8172#16#0(1@0"0(13@16"An identifier N312539677#8188#16#0(1@0"0(13@16"A punctuation ]312539677#8204#16#0(1@0"0(13@17"An integer 0 (0)312539677#8220#17#0(1@0"0(13@18"An identifier col312539677#8237#18#0(1@0"0(13@23"An identifier intArray312539677#8255#23#0(1@0"0(13@16"A punctuation [312539677#8278#16#0(1@0"0(13@16"An identifier N312539677#8294#16#0(1@0"0(13@16"A punctuation ]312539677#8310#16#0(1@0"0(13@17"An integer 0 (0)312539677#8326#17#0(1@0"0(13@20"An identifier diag1312539677#8343#20#0(1@0"0(13@23"An identifier intArray312539677#8363#23#0(1@0"0(13@16"A punctuation [312539677#8386#16#0(1@0"0(13@16"An identifier N312539677#8402#16#0(1@0"0(13@16"A punctuation +312539677#8418#16#0(1@0"0(13@16"An identifier N312539677#8434#16#0(1@0"0(13@16"A punctuation -312539677#8450#16#0(1@0"0(13@17"An integer 1 (1)312539677#8466#17#0(1@0"0(13@16"A punctuation ]312539677#8483#16#0(1@0"0(13@17"An integer 0 (0)312539677#8499#17#0(1@0"0(13@20"An identifier diag2312539677#8516#20#0(1@0"0(13@23"An identifier intArray312539677#8536#23#0(1@0"0(13@16"A punctuation [312539677#8559#16#0(1@0"0(13@16"An identifier N312539677#8575#16#0(1@0"0(13@16"A punctuation +312539677#8591#16#0(1@0"0(13@16"An identifier N312539677#8607#16#0(1@0"0(13@16"A punctuation -312539677#8623#16#0(1@0"0(13@17"An integer 1 (1)312539677#8639#17#0(1@0"0(13@16"A punctuation ]312539677#8656#16#0(1@0"0(13@17"An integer 0 (0)312539677#8672#17#0(1@0"0(13@25"An identifier printboard312539677#8689#25#0(1@0"0(13@16"A punctuation (312539677#8714#16#0(1@0"0(13@16"A punctuation )312539677#8730#16#0(1@0"0(13@16"A punctuation =312539677#8746#16#0(1@0"0(13@16"A punctuation (312539677#8762#16#0(1@0"0(13@16"An identifier i312539677#8778#16#0(1@0"0(13@17"An integer 0 (0)312539677#8794#17#0(1@0"0(13@16"An identifier N312539677#8811#16#0(1@0"0(13@16"A punctuation -312539677#8827#16#0(1@0"0(13@17"An integer 1 (1)312539677#8843#17#0(1@0"0(13@16"A punctuation (312539677#8860#16#0(1@0"0(13@16"An identifier j312539677#8876#16#0(1@0"0(13@17"An integer 0 (0)312539677#8892#17#0(1@0"0(13@16"An identifier N312539677#8909#16#0(1@0"0(13@16"A punctuation -312539677#8925#16#0(1@0"0(13@17"An integer 1 (1)312539677#8941#17#0(1@0"0(13@20"An identifier print312539677#8958#20#0(1@0"0(13@16"A punctuation (312539677#8978#16#0(1@0"0(13@18"An identifier col312539677#8994#18#0(1@0"0(13@16"A punctuation [312539677#9012#16#0(1@0"0(13@16"An identifier i312539677#9028#16#0(1@0"0(13@16"A punctuation ]312539677#9044#16#0(1@0"0(13@16"A punctuation =312539677#9060#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#9076#145#0(1@0"0(13@22"/var/tmp/tmp.0.fny6Da312539677#9221#22#0(1@0"0(13@4"let312539677#9244#4#0(1@0"0(13@30"	type  arrtype = array of int312539677#9248#30#0(1@0"0(13@39"	var arr1:arrtype := arrtype [10] of 0312539677#9278#39#0(1@0"0(13@3"in312539677#9317#3#0(1@0"0(13@6"	arr1312539677#9320#6#0(1@0"0(13@4"end312539677#9326#4#0(1@0"0(13@22"An identifier arrtype312539677#9330#22#0(1@0"0(13@16"A punctuation =312539677#9352#16#0(1@0"0(13@18"An identifier int312539677#9368#18#0(1@0"0(13@19"An identifier arr1312539677#9386#19#0(1@0"0(13@16"A punctuation :312539677#9405#16#0(1@0"0(13@22"An identifier arrtype312539677#9421#22#0(1@0"0(13@22"An identifier arrtype312539677#9443#22#0(1@0"0(13@16"A punctuation [312539677#9465#16#0(1@0"0(13@19"An integer 10 (10)312539677#9481#19#0(1@0"0(13@16"A punctuation ]312539677#9500#16#0(1@0"0(13@17"An integer 0 (0)312539677#9516#17#0(1@0"0(13@19"An identifier arr1312539677#9533#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#9552#145#0(1@0"0(13@22"/var/tmp/tmp.0.PMTeDK312539677#9697#22#0(1@0"0(13@21"while(10 > 5) do 5+6312539677#9720#21#0(1@0"0(13@16"A punctuation (312539677#9741#16#0(1@0"0(13@19"An integer 10 (10)312539677#9757#19#0(1@0"0(13@16"A punctuation >312539677#9776#16#0(1@0"0(13@17"An integer 5 (5)312539677#9792#17#0(1@0"0(13@16"A punctuation )312539677#9809#16#0(1@0"0(13@17"An integer 5 (5)312539677#9825#17#0(1@0"0(13@16"A punctuation +312539677#9842#16#0(1@0"0(13@17"An integer 6 (6)312539677#9858#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#9875#145#0(1@0"0(13@22"/var/tmp/tmp.0.OOA9T2312539677#10020#22#0(1@0"0(13@21"for i:=10 to " " do 312539677#10043#21#0(1@0"0(13@12"	i := i - 1312539677#10064#12#0(1@0"0(13@16"An identifier i312539677#10076#16#0(1@0"0(13@19"An integer 10 (10)312539677#10092#19#0(1@0"0(13@13"A string " "312539677#10111#13#0(1@0"0(13@16"An identifier i312539677#10124#16#0(1@0"0(13@16"An identifier i312539677#10140#16#0(1@0"0(13@16"A punctuation -312539677#10156#16#0(1@0"0(13@17"An integer 1 (1)312539677#10172#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#10189#145#0(1@0"0(13@22"/var/tmp/tmp.0.TC1Dsm312539677#10334#22#0(1@0"0(13@4"let312539677#10358#4#0(1@0"0(13@11"	var a:= 0312539677#10362#11#0(1@0"0(13@4"in 312539677#10373#4#0(1@0"0(13@32"	for i:=0 to 100 do (a:=a+1;())312539677#10377#32#0(1@0"0(13@4"end312539677#10409#4#0(1@0"0(13@16"An identifier a312539677#10413#16#0(1@0"0(13@17"An integer 0 (0)312539677#10429#17#0(1@0"0(13@16"An identifier i312539677#10446#16#0(1@0"0(13@17"An integer 0 (0)312539677#10462#17#0(1@0"0(13@21"An integer 100 (100)312539677#10479#21#0(1@0"0(13@16"A punctuation (312539677#10500#16#0(1@0"0(13@16"An identifier a312539677#10516#16#0(1@0"0(13@16"An identifier a312539677#10532#16#0(1@0"0(13@16"A punctuation +312539677#10548#16#0(1@0"0(13@17"An integer 1 (1)312539677#10564#17#0(1@0"0(13@16"A punctuation ;312539677#10581#16#0(1@0"0(13@16"A punctuation (312539677#10597#16#0(1@0"0(13@16"A punctuation )312539677#10613#16#0(1@0"0(13@16"A punctuation )312539677#10629#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#10645#145#0(1@0"0(13@22"/var/tmp/tmp.0.8Yuutz312539677#10790#22#0(1@0"0(13@9"3 > "df"312539677#10814#9#0(1@0"0(13@17"An integer 3 (3)312539677#10823#17#0(1@0"0(13@16"A punctuation >312539677#10840#16#0(1@0"0(13@14"A string "df"312539677#10856#14#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#10870#145#0(1@0"0(13@22"/var/tmp/tmp.0.Vu8N7Y312539677#11015#22#0(1@0"0(13@4"let312539677#11039#4#0(1@0"0(13@29"	type arrtype = array of int312539677#11044#29#0(1@0"0(13@39"	type rectype = {name:string, id: int}312539677#11073#39#0(1@0"0(13@41"	var rec := rectype {name="aname", id=0}312539677#11113#41#0(1@0"0(13@29"	var arr := arrtype [3] of 0312539677#11154#29#0(1@0"0(13@3"in312539677#11184#3#0(1@0"0(13@29"	if rec <> arr then 3 else 4312539677#11187#29#0(1@0"0(13@4"end312539677#11216#4#0(1@0"0(13@22"An identifier arrtype312539677#11220#22#0(1@0"0(13@16"A punctuation =312539677#11242#16#0(1@0"0(13@18"An identifier int312539677#11258#18#0(1@0"0(13@22"An identifier rectype312539677#11276#22#0(1@0"0(13@16"A punctuation =312539677#11298#16#0(1@0"0(13@16"A punctuation {312539677#11314#16#0(1@0"0(13@19"An identifier name312539677#11330#19#0(1@0"0(13@16"A punctuation :312539677#11349#16#0(1@0"0(13@21"An identifier string312539677#11365#21#0(1@0"0(13@16"A punctuation ,312539677#11386#16#0(1@0"0(13@17"An identifier id312539677#11402#17#0(1@0"0(13@16"A punctuation :312539677#11419#16#0(1@0"0(13@18"An identifier int312539677#11435#18#0(1@0"0(13@16"A punctuation }312539677#11453#16#0(1@0"0(13@18"An identifier rec312539677#11469#18#0(1@0"0(13@22"An identifier rectype312539677#11487#22#0(1@0"0(13@16"A punctuation {312539677#11509#16#0(1@0"0(13@19"An identifier name312539677#11525#19#0(1@0"0(13@16"A punctuation =312539677#11544#16#0(1@0"0(13@17"A string "aname"312539677#11560#17#0(1@0"0(13@16"A punctuation ,312539677#11577#16#0(1@0"0(13@17"An identifier id312539677#11593#17#0(1@0"0(13@16"A punctuation =312539677#11610#16#0(1@0"0(13@17"An integer 0 (0)312539677#11626#17#0(1@0"0(13@16"A punctuation }312539677#11643#16#0(1@0"0(13@18"An identifier arr312539677#11659#18#0(1@0"0(13@22"An identifier arrtype312539677#11677#22#0(1@0"0(13@16"A punctuation [312539677#11699#16#0(1@0"0(13@17"An integer 3 (3)312539677#11715#17#0(1@0"0(13@16"A punctuation ]312539677#11732#16#0(1@0"0(13@17"An integer 0 (0)312539677#11748#17#0(1@0"0(13@18"An identifier rec312539677#11765#18#0(1@0"0(13@18"An identifier arr312539677#11783#18#0(1@0"0(13@17"An integer 3 (3)312539677#11801#17#0(1@0"0(13@17"An integer 4 (4)312539677#11818#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#11835#145#0(1@0"0(13@22"/var/tmp/tmp.0.R3C3Ef312539677#11980#22#0(1@0"0(13@13"if 20 then 3312539677#12004#13#0(1@0"0(13@19"An integer 20 (20)312539677#12017#19#0(1@0"0(13@17"An integer 3 (3)312539677#12036#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#12053#145#0(1@0"0(13@22"/var/tmp/tmp.0.uJ2y77312539677#12198#22#0(1@0"0(13@5"let 312539677#12221#5#0(1@0"0(13@9"type a=c312539677#12227#9#0(1@0"0(13@9"type b=a312539677#12236#9#0(1@0"0(13@9"type c=d312539677#12245#9#0(1@0"0(13@9"type d=a312539677#12254#9#0(1@0"0(13@3"in312539677#12264#3#0(1@0"0(13@4" ""312539677#12267#4#0(1@0"0(13@4"end312539677#12271#4#0(1@0"0(13@16"An identifier a312539677#12275#16#0(1@0"0(13@16"A punctuation =312539677#12291#16#0(1@0"0(13@16"An identifier c312539677#12307#16#0(1@0"0(13@16"An identifier b312539677#12323#16#0(1@0"0(13@16"A punctuation =312539677#12339#16#0(1@0"0(13@16"An identifier a312539677#12355#16#0(1@0"0(13@16"An identifier c312539677#12371#16#0(1@0"0(13@16"A punctuation =312539677#12387#16#0(1@0"0(13@16"An identifier d312539677#12403#16#0(1@0"0(13@16"An identifier d312539677#12419#16#0(1@0"0(13@16"A punctuation =312539677#12435#16#0(1@0"0(13@16"An identifier a312539677#12451#16#0(1@0"0(13@12"A string ""312539677#12467#12#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#12479#145#0(1@0"0(13@22"/var/tmp/tmp.0.4MKPNM312539677#12624#22#0(1@0"0(13@4"let312539677#12647#4#0(1@0"0(13@42"type tree ={key: int, children: treelist}312539677#12652#42#0(1@0"0(13@14"var d:int :=0312539677#12694#14#0(1@0"0(13@41"type treelist = {hd: tree, tl: treelist}312539677#12708#41#0(1@0"0(13@3"in312539677#12750#3#0(1@0"0(13@3"	d312539677#12753#3#0(1@0"0(13@4"end312539677#12756#4#0(1@0"0(13@19"An identifier tree312539677#12760#19#0(1@0"0(13@16"A punctuation =312539677#12779#16#0(1@0"0(13@16"A punctuation {312539677#12795#16#0(1@0"0(13@18"An identifier key312539677#12811#18#0(1@0"0(13@16"A punctuation :312539677#12829#16#0(1@0"0(13@18"An identifier int312539677#12845#18#0(1@0"0(13@16"A punctuation ,312539677#12863#16#0(1@0"0(13@23"An identifier children312539677#12879#23#0(1@0"0(13@16"A punctuation :312539677#12902#16#0(1@0"0(13@23"An identifier treelist312539677#12918#23#0(1@0"0(13@16"A punctuation }312539677#12941#16#0(1@0"0(13@16"An identifier d312539677#12957#16#0(1@0"0(13@16"A punctuation :312539677#12973#16#0(1@0"0(13@18"An identifier int312539677#12989#18#0(1@0"0(13@17"An integer 0 (0)312539677#13007#17#0(1@0"0(13@23"An identifier treelist312539677#13024#23#0(1@0"0(13@16"A punctuation =312539677#13047#16#0(1@0"0(13@16"A punctuation {312539677#13063#16#0(1@0"0(13@17"An identifier hd312539677#13079#17#0(1@0"0(13@16"A punctuation :312539677#13096#16#0(1@0"0(13@19"An identifier tree312539677#13112#19#0(1@0"0(13@16"A punctuation ,312539677#13131#16#0(1@0"0(13@17"An identifier tl312539677#13147#17#0(1@0"0(13@16"A punctuation :312539677#13164#16#0(1@0"0(13@23"An identifier treelist312539677#13180#23#0(1@0"0(13@16"A punctuation }312539677#13203#16#0(1@0"0(13@16"An identifier d312539677#13219#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#13235#145#0(1@0"0(13@22"/var/tmp/tmp.0.Mb52hy312539677#13380#22#0(1@0"0(13@4"let312539677#13403#4#0(1@0"0(13@45"function do_nothing1(a: int, b: string):int=312539677#13408#45#0(1@0"0(13@23"		(do_nothing2(a+1);0)312539677#13453#23#0(1@0"0(13@9"var d:=0312539677#13477#9#0(1@0"0(13@38"function do_nothing2(d: int):string =312539677#13487#38#0(1@0"0(13@30"		(do_nothing1(d, "str");" ")312539677#13525#30#0(1@0"0(13@3"in312539677#13556#3#0(1@0"0(13@24"	do_nothing1(0, "str2")312539677#13559#24#0(1@0"0(13@4"end312539677#13583#4#0(1@0"0(13@26"An identifier do_nothing1312539677#13588#26#0(1@0"0(13@16"A punctuation (312539677#13614#16#0(1@0"0(13@16"An identifier a312539677#13630#16#0(1@0"0(13@16"A punctuation :312539677#13646#16#0(1@0"0(13@18"An identifier int312539677#13662#18#0(1@0"0(13@16"A punctuation ,312539677#13680#16#0(1@0"0(13@16"An identifier b312539677#13696#16#0(1@0"0(13@16"A punctuation :312539677#13712#16#0(1@0"0(13@21"An identifier string312539677#13728#21#0(1@0"0(13@16"A punctuation )312539677#13749#16#0(1@0"0(13@16"A punctuation :312539677#13765#16#0(1@0"0(13@18"An identifier int312539677#13781#18#0(1@0"0(13@16"A punctuation =312539677#13799#16#0(1@0"0(13@16"A punctuation (312539677#13815#16#0(1@0"0(13@26"An identifier do_nothing2312539677#13831#26#0(1@0"0(13@16"A punctuation (312539677#13857#16#0(1@0"0(13@16"An identifier a312539677#13873#16#0(1@0"0(13@16"A punctuation +312539677#13889#16#0(1@0"0(13@17"An integer 1 (1)312539677#13905#17#0(1@0"0(13@16"A punctuation )312539677#13922#16#0(1@0"0(13@16"A punctuation ;312539677#13938#16#0(1@0"0(13@17"An integer 0 (0)312539677#13954#17#0(1@0"0(13@16"A punctuation )312539677#13971#16#0(1@0"0(13@16"An identifier d312539677#13987#16#0(1@0"0(13@17"An integer 0 (0)312539677#14003#17#0(1@0"0(13@26"An identifier do_nothing2312539677#14020#26#0(1@0"0(13@16"A punctuation (312539677#14046#16#0(1@0"0(13@16"An identifier d312539677#14062#16#0(1@0"0(13@16"A punctuation :312539677#14078#16#0(1@0"0(13@18"An identifier int312539677#14094#18#0(1@0"0(13@16"A punctuation )312539677#14112#16#0(1@0"0(13@16"A punctuation :312539677#14128#16#0(1@0"0(13@21"An identifier string312539677#14144#21#0(1@0"0(13@16"A punctuation =312539677#14165#16#0(1@0"0(13@16"A punctuation (312539677#14181#16#0(1@0"0(13@26"An identifier do_nothing1312539677#14197#26#0(1@0"0(13@16"A punctuation (312539677#14223#16#0(1@0"0(13@16"An identifier d312539677#14239#16#0(1@0"0(13@16"A punctuation ,312539677#14255#16#0(1@0"0(13@15"A string "str"312539677#14271#15#0(1@0"0(13@16"A punctuation )312539677#14286#16#0(1@0"0(13@16"A punctuation ;312539677#14302#16#0(1@0"0(13@13"A string " "312539677#14318#13#0(1@0"0(13@16"A punctuation )312539677#14331#16#0(1@0"0(13@26"An identifier do_nothing1312539677#14347#26#0(1@0"0(13@16"A punctuation (312539677#14373#16#0(1@0"0(13@17"An integer 0 (0)312539677#14389#17#0(1@0"0(13@16"A punctuation ,312539677#14406#16#0(1@0"0(13@16"A string "str2"312539677#14422#16#0(1@0"0(13@16"A punctuation )312539677#14438#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#14454#145#0(1@0"0(13@22"/var/tmp/tmp.0.CItnj1312539677#14599#22#0(1@0"0(13@4"let312539677#14622#4#0(1@0"0(13@45"function do_nothing1(a: int, b: string):int=312539677#14627#45#0(1@0"0(13@23"		(do_nothing2(a+1);0)312539677#14672#23#0(1@0"0(13@38"function do_nothing2(d: int):string =312539677#14696#38#0(1@0"0(13@30"		(do_nothing1(a, "str");" ")312539677#14734#30#0(1@0"0(13@3"in312539677#14765#3#0(1@0"0(13@24"	do_nothing1(0, "str2")312539677#14768#24#0(1@0"0(13@4"end312539677#14792#4#0(1@0"0(13@26"An identifier do_nothing1312539677#14797#26#0(1@0"0(13@16"A punctuation (312539677#14823#16#0(1@0"0(13@16"An identifier a312539677#14839#16#0(1@0"0(13@16"A punctuation :312539677#14855#16#0(1@0"0(13@18"An identifier int312539677#14871#18#0(1@0"0(13@16"A punctuation ,312539677#14889#16#0(1@0"0(13@16"An identifier b312539677#14905#16#0(1@0"0(13@16"A punctuation :312539677#14921#16#0(1@0"0(13@21"An identifier string312539677#14937#21#0(1@0"0(13@16"A punctuation )312539677#14958#16#0(1@0"0(13@16"A punctuation :312539677#14974#16#0(1@0"0(13@18"An identifier int312539677#14990#18#0(1@0"0(13@16"A punctuation =312539677#15008#16#0(1@0"0(13@16"A punctuation (312539677#15024#16#0(1@0"0(13@26"An identifier do_nothing2312539677#15040#26#0(1@0"0(13@16"A punctuation (312539677#15066#16#0(1@0"0(13@16"An identifier a312539677#15082#16#0(1@0"0(13@16"A punctuation +312539677#15098#16#0(1@0"0(13@17"An integer 1 (1)312539677#15114#17#0(1@0"0(13@16"A punctuation )312539677#15131#16#0(1@0"0(13@16"A punctuation ;312539677#15147#16#0(1@0"0(13@17"An integer 0 (0)312539677#15163#17#0(1@0"0(13@16"A punctuation )312539677#15180#16#0(1@0"0(13@26"An identifier do_nothing2312539677#15196#26#0(1@0"0(13@16"A punctuation (312539677#15222#16#0(1@0"0(13@16"An identifier d312539677#15238#16#0(1@0"0(13@16"A punctuation :312539677#15254#16#0(1@0"0(13@18"An identifier int312539677#15270#18#0(1@0"0(13@16"A punctuation )312539677#15288#16#0(1@0"0(13@16"A punctuation :312539677#15304#16#0(1@0"0(13@21"An identifier string312539677#15320#21#0(1@0"0(13@16"A punctuation =312539677#15341#16#0(1@0"0(13@16"A punctuation (312539677#15357#16#0(1@0"0(13@26"An identifier do_nothing1312539677#15373#26#0(1@0"0(13@16"A punctuation (312539677#15399#16#0(1@0"0(13@16"An identifier a312539677#15415#16#0(1@0"0(13@16"A punctuation ,312539677#15431#16#0(1@0"0(13@15"A string "str"312539677#15447#15#0(1@0"0(13@16"A punctuation )312539677#15462#16#0(1@0"0(13@16"A punctuation ;312539677#15478#16#0(1@0"0(13@13"A string " "312539677#15494#13#0(1@0"0(13@16"A punctuation )312539677#15507#16#0(1@0"0(13@26"An identifier do_nothing1312539677#15523#26#0(1@0"0(13@16"A punctuation (312539677#15549#16#0(1@0"0(13@17"An integer 0 (0)312539677#15565#17#0(1@0"0(13@16"A punctuation ,312539677#15582#16#0(1@0"0(13@16"A string "str2"312539677#15598#16#0(1@0"0(13@16"A punctuation )312539677#15614#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#15630#145#0(1@0"0(13@22"/var/tmp/tmp.0.1SkjlE312539677#15775#22#0(1@0"0(13@4"let312539677#15798#4#0(1@0"0(13@18"	type myint = int312539677#15802#18#0(1@0"0(13@32"	type  arrtype = array of myint312539677#15820#32#0(1@0"0(13@39"	var arr1:arrtype := arrtype [10] of 0312539677#15853#39#0(1@0"0(13@3"in312539677#15892#3#0(1@0"0(13@6"	arr1312539677#15895#6#0(1@0"0(13@4"end312539677#15901#4#0(1@0"0(13@20"An identifier myint312539677#15905#20#0(1@0"0(13@16"A punctuation =312539677#15925#16#0(1@0"0(13@18"An identifier int312539677#15941#18#0(1@0"0(13@22"An identifier arrtype312539677#15959#22#0(1@0"0(13@16"A punctuation =312539677#15981#16#0(1@0"0(13@20"An identifier myint312539677#15997#20#0(1@0"0(13@19"An identifier arr1312539677#16017#19#0(1@0"0(13@16"A punctuation :312539677#16036#16#0(1@0"0(13@22"An identifier arrtype312539677#16052#22#0(1@0"0(13@22"An identifier arrtype312539677#16074#22#0(1@0"0(13@16"A punctuation [312539677#16096#16#0(1@0"0(13@19"An integer 10 (10)312539677#16112#19#0(1@0"0(13@16"A punctuation ]312539677#16131#16#0(1@0"0(13@17"An integer 0 (0)312539677#16147#17#0(1@0"0(13@19"An identifier arr1312539677#16164#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#16183#145#0(1@0"0(13@22"/var/tmp/tmp.0.pILQlu312539677#16328#22#0(1@0"0(13@25"while 10 > 5 do (i+1;())312539677#16352#25#0(1@0"0(13@19"An integer 10 (10)312539677#16377#19#0(1@0"0(13@16"A punctuation >312539677#16396#16#0(1@0"0(13@17"An integer 5 (5)312539677#16412#17#0(1@0"0(13@16"A punctuation (312539677#16429#16#0(1@0"0(13@16"An identifier i312539677#16445#16#0(1@0"0(13@16"A punctuation +312539677#16461#16#0(1@0"0(13@17"An integer 1 (1)312539677#16477#17#0(1@0"0(13@16"A punctuation ;312539677#16494#16#0(1@0"0(13@16"A punctuation (312539677#16510#16#0(1@0"0(13@16"A punctuation )312539677#16526#16#0(1@0"0(13@16"A punctuation )312539677#16542#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#16558#145#0(1@0"0(13@22"/var/tmp/tmp.0.GyNm9B312539677#16703#22#0(1@0"0(13@4"let312539677#16726#4#0(1@0"0(13@27"function nfactor(n: int) =312539677#16732#27#0(1@0"0(13@13"		if  n = 0 312539677#16759#13#0(1@0"0(13@10"			then 1312539677#16772#10#0(1@0"0(13@25"			else n * nfactor(n-1)312539677#16782#25#0(1@0"0(13@3"in312539677#16808#3#0(1@0"0(13@13"	nfactor(10)312539677#16811#13#0(1@0"0(13@4"end312539677#16824#4#0(1@0"0(13@22"An identifier nfactor312539677#16829#22#0(1@0"0(13@16"A punctuation (312539677#16851#16#0(1@0"0(13@16"An identifier n312539677#16867#16#0(1@0"0(13@16"A punctuation :312539677#16883#16#0(1@0"0(13@18"An identifier int312539677#16899#18#0(1@0"0(13@16"A punctuation )312539677#16917#16#0(1@0"0(13@16"A punctuation =312539677#16933#16#0(1@0"0(13@16"An identifier n312539677#16949#16#0(1@0"0(13@16"A punctuation =312539677#16965#16#0(1@0"0(13@17"An integer 0 (0)312539677#16981#17#0(1@0"0(13@17"An integer 1 (1)312539677#16998#17#0(1@0"0(13@16"An identifier n312539677#17015#16#0(1@0"0(13@16"A punctuation *312539677#17031#16#0(1@0"0(13@22"An identifier nfactor312539677#17047#22#0(1@0"0(13@16"A punctuation (312539677#17069#16#0(1@0"0(13@16"An identifier n312539677#17085#16#0(1@0"0(13@16"A punctuation -312539677#17101#16#0(1@0"0(13@17"An integer 1 (1)312539677#17117#17#0(1@0"0(13@16"A punctuation )312539677#17134#16#0(1@0"0(13@22"An identifier nfactor312539677#17150#22#0(1@0"0(13@16"A punctuation (312539677#17172#16#0(1@0"0(13@19"An integer 10 (10)312539677#17188#19#0(1@0"0(13@16"A punctuation )312539677#17207#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#17223#145#0(1@0"0(13@22"/var/tmp/tmp.0.ZqCu8p312539677#17368#22#0(1@0"0(13@5"let 312539677#17392#5#0(1@0"0(13@39"	type rectype = {name:string , id:int}312539677#17397#39#0(1@0"0(13@41"	var rec1 := rectype {name="Name", id=0}312539677#17436#41#0(1@0"0(13@3"in312539677#17477#3#0(1@0"0(13@19"	rec1.nam := "asd"312539677#17480#19#0(1@0"0(13@4"end312539677#17499#4#0(1@0"0(13@22"An identifier rectype312539677#17503#22#0(1@0"0(13@16"A punctuation =312539677#17525#16#0(1@0"0(13@16"A punctuation {312539677#17541#16#0(1@0"0(13@19"An identifier name312539677#17557#19#0(1@0"0(13@16"A punctuation :312539677#17576#16#0(1@0"0(13@21"An identifier string312539677#17592#21#0(1@0"0(13@16"A punctuation ,312539677#17613#16#0(1@0"0(13@17"An identifier id312539677#17629#17#0(1@0"0(13@16"A punctuation :312539677#17646#16#0(1@0"0(13@18"An identifier int312539677#17662#18#0(1@0"0(13@16"A punctuation }312539677#17680#16#0(1@0"0(13@19"An identifier rec1312539677#17696#19#0(1@0"0(13@22"An identifier rectype312539677#17715#22#0(1@0"0(13@16"A punctuation {312539677#17737#16#0(1@0"0(13@19"An identifier name312539677#17753#19#0(1@0"0(13@16"A punctuation =312539677#17772#16#0(1@0"0(13@16"A string "Name"312539677#17788#16#0(1@0"0(13@16"A punctuation ,312539677#17804#16#0(1@0"0(13@17"An identifier id312539677#17820#17#0(1@0"0(13@16"A punctuation =312539677#17837#16#0(1@0"0(13@17"An integer 0 (0)312539677#17853#17#0(1@0"0(13@16"A punctuation }312539677#17870#16#0(1@0"0(13@19"An identifier rec1312539677#17886#19#0(1@0"0(13@16"A punctuation .312539677#17905#16#0(1@0"0(13@18"An identifier nam312539677#17921#18#0(1@0"0(13@15"A string "asd"312539677#17939#15#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#17954#145#0(1@0"0(13@22"/var/tmp/tmp.0.2i20gK312539677#18099#22#0(1@0"0(13@5"let 312539677#18123#5#0(1@0"0(13@39"	type rectype = {name:string , id:int}312539677#18128#39#0(1@0"0(13@42"	var rec1 := rectype {name="aname", id=0}312539677#18167#42#0(1@0"0(13@3"in312539677#18209#3#0(1@0"0(13@17"	rec1.name := 3;312539677#18212#17#0(1@0"0(13@16"	rec1.id := "" 312539677#18229#16#0(1@0"0(13@4"end312539677#18245#4#0(1@0"0(13@22"An identifier rectype312539677#18249#22#0(1@0"0(13@16"A punctuation =312539677#18271#16#0(1@0"0(13@16"A punctuation {312539677#18287#16#0(1@0"0(13@19"An identifier name312539677#18303#19#0(1@0"0(13@16"A punctuation :312539677#18322#16#0(1@0"0(13@21"An identifier string312539677#18338#21#0(1@0"0(13@16"A punctuation ,312539677#18359#16#0(1@0"0(13@17"An identifier id312539677#18375#17#0(1@0"0(13@16"A punctuation :312539677#18392#16#0(1@0"0(13@18"An identifier int312539677#18408#18#0(1@0"0(13@16"A punctuation }312539677#18426#16#0(1@0"0(13@19"An identifier rec1312539677#18442#19#0(1@0"0(13@22"An identifier rectype312539677#18461#22#0(1@0"0(13@16"A punctuation {312539677#18483#16#0(1@0"0(13@19"An identifier name312539677#18499#19#0(1@0"0(13@16"A punctuation =312539677#18518#16#0(1@0"0(13@17"A string "aname"312539677#18534#17#0(1@0"0(13@16"A punctuation ,312539677#18551#16#0(1@0"0(13@17"An identifier id312539677#18567#17#0(1@0"0(13@16"A punctuation =312539677#18584#16#0(1@0"0(13@17"An integer 0 (0)312539677#18600#17#0(1@0"0(13@16"A punctuation }312539677#18617#16#0(1@0"0(13@19"An identifier rec1312539677#18633#19#0(1@0"0(13@16"A punctuation .312539677#18652#16#0(1@0"0(13@19"An identifier name312539677#18668#19#0(1@0"0(13@17"An integer 3 (3)312539677#18687#17#0(1@0"0(13@16"A punctuation ;312539677#18704#16#0(1@0"0(13@19"An identifier rec1312539677#18720#19#0(1@0"0(13@16"A punctuation .312539677#18739#16#0(1@0"0(13@17"An identifier id312539677#18755#17#0(1@0"0(13@12"A string ""312539677#18772#12#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#18784#145#0(1@0"0(13@53"6: error: syntax error, unexpected END, expecting OF312539677#18929#53#0(1@0"0(13@22"/var/tmp/tmp.0.Q634eH312539677#18982#22#0(1@0"0(13@5"let 312539677#19005#5#0(1@0"0(13@10"	var d:=0312539677#19010#10#0(1@0"0(13@3"in312539677#19020#3#0(1@0"0(13@6"	d[3]312539677#19023#6#0(1@0"0(13@4"end312539677#19029#4#0(1@0"0(13@16"An identifier d312539677#19034#16#0(1@0"0(13@17"An integer 0 (0)312539677#19050#17#0(1@0"0(13@16"An identifier d312539677#19067#16#0(1@0"0(13@16"A punctuation [312539677#19083#16#0(1@0"0(13@17"An integer 3 (3)312539677#19099#17#0(1@0"0(13@16"A punctuation ]312539677#19116#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#19132#145#0(1@0"0(13@22"/var/tmp/tmp.0.uUDmNB312539677#19277#22#0(1@0"0(13@5"let 312539677#19300#5#0(1@0"0(13@10"	var d:=0312539677#19305#10#0(1@0"0(13@3"in312539677#19315#3#0(1@0"0(13@6"	d.f 312539677#19318#6#0(1@0"0(13@4"end312539677#19324#4#0(1@0"0(13@16"An identifier d312539677#19329#16#0(1@0"0(13@17"An integer 0 (0)312539677#19345#17#0(1@0"0(13@16"An identifier d312539677#19362#16#0(1@0"0(13@16"A punctuation .312539677#19378#16#0(1@0"0(13@16"An identifier f312539677#19394#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#19410#145#0(1@0"0(13@22"/var/tmp/tmp.0.n7KI3x312539677#19555#22#0(1@0"0(13@10"3 + "var"312539677#19579#10#0(1@0"0(13@17"An integer 3 (3)312539677#19589#17#0(1@0"0(13@16"A punctuation +312539677#19606#16#0(1@0"0(13@15"A string "var"312539677#19622#15#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#19637#145#0(1@0"0(13@22"/var/tmp/tmp.0.kFZ1x1312539677#19782#22#0(1@0"0(13@4"let312539677#19805#4#0(1@0"0(13@10"	var a:=0312539677#19809#10#0(1@0"0(13@28"	function g(a:int):int = a 312539677#19820#28#0(1@0"0(13@3"in312539677#19848#3#0(1@0"0(13@6" g(2)312539677#19851#6#0(1@0"0(13@4"end312539677#19857#4#0(1@0"0(13@16"An identifier a312539677#19861#16#0(1@0"0(13@17"An integer 0 (0)312539677#19877#17#0(1@0"0(13@16"An identifier g312539677#19894#16#0(1@0"0(13@16"A punctuation (312539677#19910#16#0(1@0"0(13@16"An identifier a312539677#19926#16#0(1@0"0(13@16"A punctuation :312539677#19942#16#0(1@0"0(13@18"An identifier int312539677#19958#18#0(1@0"0(13@16"A punctuation )312539677#19976#16#0(1@0"0(13@16"A punctuation :312539677#19992#16#0(1@0"0(13@18"An identifier int312539677#20008#18#0(1@0"0(13@16"A punctuation =312539677#20026#16#0(1@0"0(13@16"An identifier a312539677#20042#16#0(1@0"0(13@16"An identifier g312539677#20058#16#0(1@0"0(13@16"A punctuation (312539677#20074#16#0(1@0"0(13@17"An integer 2 (2)312539677#20090#17#0(1@0"0(13@16"A punctuation )312539677#20107#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#20123#145#0(1@0"0(13@22"/var/tmp/tmp.0.CP1YL9312539677#20268#22#0(1@0"0(13@4"let312539677#20292#4#0(1@0"0(13@40"	type rectype1 = {name:string , id:int}312539677#20296#40#0(1@0"0(13@40"	type rectype2 = {name:string , id:int}312539677#20336#40#0(1@0"0(13@52"	var rec1: rectype1 := rectype2 {name="Name", id=0}312539677#20377#52#0(1@0"0(13@3"in312539677#20429#3#0(1@0"0(13@6"	rec1312539677#20432#6#0(1@0"0(13@4"end312539677#20438#4#0(1@0"0(13@23"An identifier rectype1312539677#20442#23#0(1@0"0(13@16"A punctuation =312539677#20465#16#0(1@0"0(13@16"A punctuation {312539677#20481#16#0(1@0"0(13@19"An identifier name312539677#20497#19#0(1@0"0(13@16"A punctuation :312539677#20516#16#0(1@0"0(13@21"An identifier string312539677#20532#21#0(1@0"0(13@16"A punctuation ,312539677#20553#16#0(1@0"0(13@17"An identifier id312539677#20569#17#0(1@0"0(13@16"A punctuation :312539677#20586#16#0(1@0"0(13@18"An identifier int312539677#20602#18#0(1@0"0(13@16"A punctuation }312539677#20620#16#0(1@0"0(13@23"An identifier rectype2312539677#20636#23#0(1@0"0(13@16"A punctuation =312539677#20659#16#0(1@0"0(13@16"A punctuation {312539677#20675#16#0(1@0"0(13@19"An identifier name312539677#20691#19#0(1@0"0(13@16"A punctuation :312539677#20710#16#0(1@0"0(13@21"An identifier string312539677#20726#21#0(1@0"0(13@16"A punctuation ,312539677#20747#16#0(1@0"0(13@17"An identifier id312539677#20763#17#0(1@0"0(13@16"A punctuation :312539677#20780#16#0(1@0"0(13@18"An identifier int312539677#20796#18#0(1@0"0(13@16"A punctuation }312539677#20814#16#0(1@0"0(13@19"An identifier rec1312539677#20830#19#0(1@0"0(13@16"A punctuation :312539677#20849#16#0(1@0"0(13@23"An identifier rectype1312539677#20865#23#0(1@0"0(13@23"An identifier rectype2312539677#20888#23#0(1@0"0(13@16"A punctuation {312539677#20911#16#0(1@0"0(13@19"An identifier name312539677#20927#19#0(1@0"0(13@16"A punctuation =312539677#20946#16#0(1@0"0(13@16"A string "Name"312539677#20962#16#0(1@0"0(13@16"A punctuation ,312539677#20978#16#0(1@0"0(13@17"An identifier id312539677#20994#17#0(1@0"0(13@16"A punctuation =312539677#21011#16#0(1@0"0(13@17"An integer 0 (0)312539677#21027#17#0(1@0"0(13@16"A punctuation }312539677#21044#16#0(1@0"0(13@19"An identifier rec1312539677#21060#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#21079#145#0(1@0"0(13@22"/var/tmp/tmp.0.t3joAD312539677#21224#22#0(1@0"0(13@4"let312539677#21248#4#0(1@0"0(13@30"	type arrtype1 = array of int312539677#21252#30#0(1@0"0(13@30"	type arrtype2 = array of int312539677#21282#30#0(1@0"0(13@42"	var arr1: arrtype1 := arrtype2 [10] of 0312539677#21313#42#0(1@0"0(13@3"in312539677#21355#3#0(1@0"0(13@6"	arr1312539677#21358#6#0(1@0"0(13@4"end312539677#21364#4#0(1@0"0(13@23"An identifier arrtype1312539677#21368#23#0(1@0"0(13@16"A punctuation =312539677#21391#16#0(1@0"0(13@18"An identifier int312539677#21407#18#0(1@0"0(13@23"An identifier arrtype2312539677#21425#23#0(1@0"0(13@16"A punctuation =312539677#21448#16#0(1@0"0(13@18"An identifier int312539677#21464#18#0(1@0"0(13@19"An identifier arr1312539677#21482#19#0(1@0"0(13@16"A punctuation :312539677#21501#16#0(1@0"0(13@23"An identifier arrtype1312539677#21517#23#0(1@0"0(13@23"An identifier arrtype2312539677#21540#23#0(1@0"0(13@16"A punctuation [312539677#21563#16#0(1@0"0(13@19"An integer 10 (10)312539677#21579#19#0(1@0"0(13@16"A punctuation ]312539677#21598#16#0(1@0"0(13@17"An integer 0 (0)312539677#21614#17#0(1@0"0(13@19"An identifier arr1312539677#21631#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#21650#145#0(1@0"0(13@22"/var/tmp/tmp.0.7jzwod312539677#21795#22#0(1@0"0(13@4"let312539677#21818#4#0(1@0"0(13@40"	type  rectype = {name:string, age:int}312539677#21822#40#0(1@0"0(13@55"	var rec1:rectype := rectype {name="Nobody", age=1000}312539677#21862#55#0(1@0"0(13@3"in312539677#21917#3#0(1@0"0(13@26"	rec1.name := "Somebody";312539677#21920#26#0(1@0"0(13@6"	rec1312539677#21946#6#0(1@0"0(13@4"end312539677#21952#4#0(1@0"0(13@22"An identifier rectype312539677#21956#22#0(1@0"0(13@16"A punctuation =312539677#21978#16#0(1@0"0(13@16"A punctuation {312539677#21994#16#0(1@0"0(13@19"An identifier name312539677#22010#19#0(1@0"0(13@16"A punctuation :312539677#22029#16#0(1@0"0(13@21"An identifier string312539677#22045#21#0(1@0"0(13@16"A punctuation ,312539677#22066#16#0(1@0"0(13@18"An identifier age312539677#22082#18#0(1@0"0(13@16"A punctuation :312539677#22100#16#0(1@0"0(13@18"An identifier int312539677#22116#18#0(1@0"0(13@16"A punctuation }312539677#22134#16#0(1@0"0(13@19"An identifier rec1312539677#22150#19#0(1@0"0(13@16"A punctuation :312539677#22169#16#0(1@0"0(13@22"An identifier rectype312539677#22185#22#0(1@0"0(13@22"An identifier rectype312539677#22207#22#0(1@0"0(13@16"A punctuation {312539677#22229#16#0(1@0"0(13@19"An identifier name312539677#22245#19#0(1@0"0(13@16"A punctuation =312539677#22264#16#0(1@0"0(13@18"A string "Nobody"312539677#22280#18#0(1@0"0(13@16"A punctuation ,312539677#22298#16#0(1@0"0(13@18"An identifier age312539677#22314#18#0(1@0"0(13@16"A punctuation =312539677#22332#16#0(1@0"0(13@23"An integer 1000 (1000)312539677#22348#23#0(1@0"0(13@16"A punctuation }312539677#22371#16#0(1@0"0(13@19"An identifier rec1312539677#22387#19#0(1@0"0(13@16"A punctuation .312539677#22406#16#0(1@0"0(13@19"An identifier name312539677#22422#19#0(1@0"0(13@20"A string "Somebody"312539677#22441#20#0(1@0"0(13@16"A punctuation ;312539677#22461#16#0(1@0"0(13@19"An identifier rec1312539677#22477#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#22496#145#0(1@0"0(13@54"10: error: syntax error, unexpected END, expecting OF312539677#22641#54#0(1@0"0(13@22"/var/tmp/tmp.0.JLuF6L312539677#22695#22#0(1@0"0(13@5"let 312539677#22719#5#0(1@0"0(13@24"		type a = array of int312539677#22724#24#0(1@0"0(13@13"		type b = a312539677#22748#13#0(1@0"0(13@28"		var arr1:a := b [10] of 0312539677#22762#28#0(1@0"0(13@3"in312539677#22790#3#0(1@0"0(13@10"		arr1[2]312539677#22793#10#0(1@0"0(13@4"end312539677#22803#4#0(1@0"0(13@16"An identifier a312539677#22807#16#0(1@0"0(13@16"A punctuation =312539677#22823#16#0(1@0"0(13@18"An identifier int312539677#22839#18#0(1@0"0(13@16"An identifier b312539677#22857#16#0(1@0"0(13@16"A punctuation =312539677#22873#16#0(1@0"0(13@16"An identifier a312539677#22889#16#0(1@0"0(13@19"An identifier arr1312539677#22905#19#0(1@0"0(13@16"A punctuation :312539677#22924#16#0(1@0"0(13@16"An identifier a312539677#22940#16#0(1@0"0(13@16"An identifier b312539677#22956#16#0(1@0"0(13@16"A punctuation [312539677#22972#16#0(1@0"0(13@19"An integer 10 (10)312539677#22988#19#0(1@0"0(13@16"A punctuation ]312539677#23007#16#0(1@0"0(13@17"An integer 0 (0)312539677#23023#17#0(1@0"0(13@19"An identifier arr1312539677#23040#19#0(1@0"0(13@16"A punctuation [312539677#23059#16#0(1@0"0(13@17"An integer 2 (2)312539677#23075#17#0(1@0"0(13@16"A punctuation ]312539677#23092#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#23108#145#0(1@0"0(13@22"/var/tmp/tmp.0.ihdHVF312539677#23253#22#0(1@0"0(13@5"let 312539677#23276#5#0(1@0"0(13@18"	var a:int := " "312539677#23281#18#0(1@0"0(13@3"in312539677#23299#3#0(1@0"0(13@3"	a312539677#23302#3#0(1@0"0(13@4"end312539677#23305#4#0(1@0"0(13@16"An identifier a312539677#23309#16#0(1@0"0(13@16"A punctuation :312539677#23325#16#0(1@0"0(13@18"An identifier int312539677#23341#18#0(1@0"0(13@13"A string " "312539677#23359#13#0(1@0"0(13@16"An identifier a312539677#23372#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#23388#145#0(1@0"0(13@22"/var/tmp/tmp.0.ix5mct312539677#23533#22#0(1@0"0(13@4"let312539677#23557#4#0(1@0"0(13@29"	type arrayty = array of int312539677#23561#29#0(1@0"0(13@30"	var a := arrayty [10] of " "312539677#23591#30#0(1@0"0(13@3"in312539677#23621#3#0(1@0"0(13@3"	0312539677#23624#3#0(1@0"0(13@4"end312539677#23627#4#0(1@0"0(13@22"An identifier arrayty312539677#23631#22#0(1@0"0(13@16"A punctuation =312539677#23653#16#0(1@0"0(13@18"An identifier int312539677#23669#18#0(1@0"0(13@16"An identifier a312539677#23687#16#0(1@0"0(13@22"An identifier arrayty312539677#23703#22#0(1@0"0(13@16"A punctuation [312539677#23725#16#0(1@0"0(13@19"An integer 10 (10)312539677#23741#19#0(1@0"0(13@16"A punctuation ]312539677#23760#16#0(1@0"0(13@13"A string " "312539677#23776#13#0(1@0"0(13@17"An integer 0 (0)312539677#23789#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#23806#145#0(1@0"0(13@22"/var/tmp/tmp.0.bRxj4M312539677#23951#22#0(1@0"0(13@4"let312539677#23974#4#0(1@0"0(13@20"	var a:= rectype {}312539677#23978#20#0(1@0"0(13@3"in312539677#23998#3#0(1@0"0(13@3"	0312539677#24001#3#0(1@0"0(13@4"end312539677#24004#4#0(1@0"0(13@16"An identifier a312539677#24008#16#0(1@0"0(13@22"An identifier rectype312539677#24024#22#0(1@0"0(13@16"A punctuation {312539677#24046#16#0(1@0"0(13@16"A punctuation }312539677#24062#16#0(1@0"0(13@17"An integer 0 (0)312539677#24078#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#24095#145#0(1@0"0(13@22"/var/tmp/tmp.0.Cyh6Hs312539677#24240#22#0(1@0"0(13@4"let312539677#24263#4#0(1@0"0(13@39"	function g (a:int , b:string):int = a312539677#24267#39#0(1@0"0(13@3"in312539677#24306#3#0(1@0"0(13@17"	g("one", "two")312539677#24309#17#0(1@0"0(13@4"end312539677#24326#4#0(1@0"0(13@16"An identifier g312539677#24330#16#0(1@0"0(13@16"A punctuation (312539677#24346#16#0(1@0"0(13@16"An identifier a312539677#24362#16#0(1@0"0(13@16"A punctuation :312539677#24378#16#0(1@0"0(13@18"An identifier int312539677#24394#18#0(1@0"0(13@16"A punctuation ,312539677#24412#16#0(1@0"0(13@16"An identifier b312539677#24428#16#0(1@0"0(13@16"A punctuation :312539677#24444#16#0(1@0"0(13@21"An identifier string312539677#24460#21#0(1@0"0(13@16"A punctuation )312539677#24481#16#0(1@0"0(13@16"A punctuation :312539677#24497#16#0(1@0"0(13@18"An identifier int312539677#24513#18#0(1@0"0(13@16"A punctuation =312539677#24531#16#0(1@0"0(13@16"An identifier a312539677#24547#16#0(1@0"0(13@16"An identifier g312539677#24563#16#0(1@0"0(13@16"A punctuation (312539677#24579#16#0(1@0"0(13@15"A string "one"312539677#24595#15#0(1@0"0(13@16"A punctuation ,312539677#24610#16#0(1@0"0(13@15"A string "two"312539677#24626#15#0(1@0"0(13@16"A punctuation )312539677#24641#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#24657#145#0(1@0"0(13@22"/var/tmp/tmp.0.FCs0mM312539677#24802#22#0(1@0"0(13@4"let312539677#24825#4#0(1@0"0(13@39"	function g (a:int , b:string):int = a312539677#24829#39#0(1@0"0(13@3"in312539677#24868#3#0(1@0"0(13@10"	g("one")312539677#24871#10#0(1@0"0(13@4"end312539677#24881#4#0(1@0"0(13@16"An identifier g312539677#24885#16#0(1@0"0(13@16"A punctuation (312539677#24901#16#0(1@0"0(13@16"An identifier a312539677#24917#16#0(1@0"0(13@16"A punctuation :312539677#24933#16#0(1@0"0(13@18"An identifier int312539677#24949#18#0(1@0"0(13@16"A punctuation ,312539677#24967#16#0(1@0"0(13@16"An identifier b312539677#24983#16#0(1@0"0(13@16"A punctuation :312539677#24999#16#0(1@0"0(13@21"An identifier string312539677#25015#21#0(1@0"0(13@16"A punctuation )312539677#25036#16#0(1@0"0(13@16"A punctuation :312539677#25052#16#0(1@0"0(13@18"An identifier int312539677#25068#18#0(1@0"0(13@16"A punctuation =312539677#25086#16#0(1@0"0(13@16"An identifier a312539677#25102#16#0(1@0"0(13@16"An identifier g312539677#25118#16#0(1@0"0(13@16"A punctuation (312539677#25134#16#0(1@0"0(13@15"A string "one"312539677#25150#15#0(1@0"0(13@16"A punctuation )312539677#25165#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#25181#145#0(1@0"0(13@22"/var/tmp/tmp.0.NU4zf8312539677#25326#22#0(1@0"0(13@4"let312539677#25349#4#0(1@0"0(13@39"	function g (a:int , b:string):int = a312539677#25353#39#0(1@0"0(13@3"in312539677#25392#3#0(1@0"0(13@14"	g(3,"one",5)312539677#25395#14#0(1@0"0(13@4"end312539677#25409#4#0(1@0"0(13@16"An identifier g312539677#25413#16#0(1@0"0(13@16"A punctuation (312539677#25429#16#0(1@0"0(13@16"An identifier a312539677#25445#16#0(1@0"0(13@16"A punctuation :312539677#25461#16#0(1@0"0(13@18"An identifier int312539677#25477#18#0(1@0"0(13@16"A punctuation ,312539677#25495#16#0(1@0"0(13@16"An identifier b312539677#25511#16#0(1@0"0(13@16"A punctuation :312539677#25527#16#0(1@0"0(13@21"An identifier string312539677#25543#21#0(1@0"0(13@16"A punctuation )312539677#25564#16#0(1@0"0(13@16"A punctuation :312539677#25580#16#0(1@0"0(13@18"An identifier int312539677#25596#18#0(1@0"0(13@16"A punctuation =312539677#25614#16#0(1@0"0(13@16"An identifier a312539677#25630#16#0(1@0"0(13@16"An identifier g312539677#25646#16#0(1@0"0(13@16"A punctuation (312539677#25662#16#0(1@0"0(13@17"An integer 3 (3)312539677#25678#17#0(1@0"0(13@16"A punctuation ,312539677#25695#16#0(1@0"0(13@15"A string "one"312539677#25711#15#0(1@0"0(13@16"A punctuation ,312539677#25726#16#0(1@0"0(13@17"An integer 5 (5)312539677#25742#17#0(1@0"0(13@16"A punctuation )312539677#25759#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#25775#145#0(1@0"0(13@22"/var/tmp/tmp.0.emItrK312539677#25920#22#0(1@0"0(13@4"let312539677#25943#4#0(1@0"0(13@12"	var a := 0312539677#25947#12#0(1@0"0(13@14"	var a := " "312539677#25959#14#0(1@0"0(13@3"in312539677#25973#3#0(1@0"0(13@3"	0312539677#25976#3#0(1@0"0(13@4"end312539677#25979#4#0(1@0"0(13@16"An identifier a312539677#25983#16#0(1@0"0(13@17"An integer 0 (0)312539677#25999#17#0(1@0"0(13@16"An identifier a312539677#26016#16#0(1@0"0(13@13"A string " "312539677#26032#13#0(1@0"0(13@17"An integer 0 (0)312539677#26045#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#26062#145#0(1@0"0(13@22"/var/tmp/tmp.0.qd9cKq312539677#26207#22#0(1@0"0(13@4"let312539677#26230#4#0(1@0"0(13@14"	type a = int312539677#26234#14#0(1@0"0(13@17"	type a = string312539677#26248#17#0(1@0"0(13@3"in312539677#26265#3#0(1@0"0(13@3"	0312539677#26268#3#0(1@0"0(13@4"end312539677#26271#4#0(1@0"0(13@16"An identifier a312539677#26275#16#0(1@0"0(13@16"A punctuation =312539677#26291#16#0(1@0"0(13@18"An identifier int312539677#26307#18#0(1@0"0(13@16"An identifier a312539677#26325#16#0(1@0"0(13@16"A punctuation =312539677#26341#16#0(1@0"0(13@21"An identifier string312539677#26357#21#0(1@0"0(13@17"An integer 0 (0)312539677#26378#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#26395#145#0(1@0"0(13@22"/var/tmp/tmp.0.wZDlTO312539677#26540#22#0(1@0"0(13@4"let312539677#26563#4#0(1@0"0(13@27"	function g(a:int):int = a312539677#26567#27#0(1@0"0(13@27"	function g(a:int):int = a312539677#26594#27#0(1@0"0(13@3"in312539677#26621#3#0(1@0"0(13@3"	0312539677#26624#3#0(1@0"0(13@4"end312539677#26627#4#0(1@0"0(13@16"An identifier g312539677#26631#16#0(1@0"0(13@16"A punctuation (312539677#26647#16#0(1@0"0(13@16"An identifier a312539677#26663#16#0(1@0"0(13@16"A punctuation :312539677#26679#16#0(1@0"0(13@18"An identifier int312539677#26695#18#0(1@0"0(13@16"A punctuation )312539677#26713#16#0(1@0"0(13@16"A punctuation :312539677#26729#16#0(1@0"0(13@18"An identifier int312539677#26745#18#0(1@0"0(13@16"A punctuation =312539677#26763#16#0(1@0"0(13@16"An identifier a312539677#26779#16#0(1@0"0(13@16"An identifier g312539677#26795#16#0(1@0"0(13@16"A punctuation (312539677#26811#16#0(1@0"0(13@16"An identifier a312539677#26827#16#0(1@0"0(13@16"A punctuation :312539677#26843#16#0(1@0"0(13@18"An identifier int312539677#26859#18#0(1@0"0(13@16"A punctuation )312539677#26877#16#0(1@0"0(13@16"A punctuation :312539677#26893#16#0(1@0"0(13@18"An identifier int312539677#26909#18#0(1@0"0(13@16"A punctuation =312539677#26927#16#0(1@0"0(13@16"An identifier a312539677#26943#16#0(1@0"0(13@17"An integer 0 (0)312539677#26959#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#26976#145#0(1@0"0(13@22"/var/tmp/tmp.0.G8eX58312539677#27121#22#0(1@0"0(13@4"let312539677#27144#4#0(1@0"0(13@32"function nfactor(n: int): int =312539677#27150#32#0(1@0"0(13@13"		if  n = 0 312539677#27182#13#0(1@0"0(13@10"			then 1312539677#27195#10#0(1@0"0(13@25"			else n * nfactor(n-1)312539677#27205#25#0(1@0"0(13@3"in312539677#27231#3#0(1@0"0(13@13"	nfactor(10)312539677#27234#13#0(1@0"0(13@4"end312539677#27247#4#0(1@0"0(13@22"An identifier nfactor312539677#27252#22#0(1@0"0(13@16"A punctuation (312539677#27274#16#0(1@0"0(13@16"An identifier n312539677#27290#16#0(1@0"0(13@16"A punctuation :312539677#27306#16#0(1@0"0(13@18"An identifier int312539677#27322#18#0(1@0"0(13@16"A punctuation )312539677#27340#16#0(1@0"0(13@16"A punctuation :312539677#27356#16#0(1@0"0(13@18"An identifier int312539677#27372#18#0(1@0"0(13@16"A punctuation =312539677#27390#16#0(1@0"0(13@16"An identifier n312539677#27406#16#0(1@0"0(13@16"A punctuation =312539677#27422#16#0(1@0"0(13@17"An integer 0 (0)312539677#27438#17#0(1@0"0(13@17"An integer 1 (1)312539677#27455#17#0(1@0"0(13@16"An identifier n312539677#27472#16#0(1@0"0(13@16"A punctuation *312539677#27488#16#0(1@0"0(13@22"An identifier nfactor312539677#27504#22#0(1@0"0(13@16"A punctuation (312539677#27526#16#0(1@0"0(13@16"An identifier n312539677#27542#16#0(1@0"0(13@16"A punctuation -312539677#27558#16#0(1@0"0(13@17"An integer 1 (1)312539677#27574#17#0(1@0"0(13@16"A punctuation )312539677#27591#16#0(1@0"0(13@22"An identifier nfactor312539677#27607#22#0(1@0"0(13@16"A punctuation (312539677#27629#16#0(1@0"0(13@19"An integer 10 (10)312539677#27645#19#0(1@0"0(13@16"A punctuation )312539677#27664#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#27680#145#0(1@0"0(13@22"/var/tmp/tmp.0.RAxc3Y312539677#27825#22#0(1@0"0(13@4"let312539677#27848#4#0(1@0"0(13@23"	function g(a:int) = a312539677#27852#23#0(1@0"0(13@4"in 312539677#27875#4#0(1@0"0(13@6"	g(2)312539677#27879#6#0(1@0"0(13@4"end312539677#27885#4#0(1@0"0(13@16"An identifier g312539677#27890#16#0(1@0"0(13@16"A punctuation (312539677#27906#16#0(1@0"0(13@16"An identifier a312539677#27922#16#0(1@0"0(13@16"A punctuation :312539677#27938#16#0(1@0"0(13@18"An identifier int312539677#27954#18#0(1@0"0(13@16"A punctuation )312539677#27972#16#0(1@0"0(13@16"A punctuation =312539677#27988#16#0(1@0"0(13@16"An identifier a312539677#28004#16#0(1@0"0(13@16"An identifier g312539677#28020#16#0(1@0"0(13@16"A punctuation (312539677#28036#16#0(1@0"0(13@17"An integer 2 (2)312539677#28052#17#0(1@0"0(13@16"A punctuation )312539677#28069#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#28085#145#0(1@0"0(13@22"/var/tmp/tmp.0.D6ltQr312539677#28230#22#0(1@0"0(13@4"let312539677#28253#4#0(1@0"0(13@14"	type a = int312539677#28257#14#0(1@0"0(13@3"in312539677#28271#3#0(1@0"0(13@5"	let312539677#28274#5#0(1@0"0(13@18"		type a = string312539677#28279#18#0(1@0"0(13@4"	in312539677#28297#4#0(1@0"0(13@4"		0312539677#28301#4#0(1@0"0(13@5"	end312539677#28305#5#0(1@0"0(13@4"end312539677#28310#4#0(1@0"0(13@16"An identifier a312539677#28314#16#0(1@0"0(13@16"A punctuation =312539677#28330#16#0(1@0"0(13@18"An identifier int312539677#28346#18#0(1@0"0(13@16"An identifier a312539677#28364#16#0(1@0"0(13@16"A punctuation =312539677#28380#16#0(1@0"0(13@21"An identifier string312539677#28396#21#0(1@0"0(13@17"An integer 0 (0)312539677#28417#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#28434#145#0(1@0"0(13@53"20: error: syntax error, unexpected :=, expecting OF312539677#28579#53#0(1@0"0(13@22"/var/tmp/tmp.0.CVhW20312539677#28632#22#0(1@0"0(13@5"let 312539677#28655#5#0(1@0"0(13@29"type arrtype1 = array of int312539677#28661#29#0(1@0"0(13@66"type rectype1 = {name:string, address:string, id: int , age: int}312539677#28690#66#0(1@0"0(13@34"type arrtype2 = array of rectype1312539677#28756#34#0(1@0"0(13@49"type rectype2 = {name : string, dates: arrtype1}312539677#28790#49#0(1@0"0(13@32"type arrtype3 = array of string312539677#28840#32#0(1@0"0(13@31"var arr1 := arrtype1 [10] of 0312539677#28873#31#0(1@0"0(13@87"var arr2  := arrtype2 [5] of rectype1 {name="aname", address="somewhere", id=0, age=0}312539677#28904#87#0(1@0"0(13@42"var arr3:arrtype3 := arrtype3 [100] of ""312539677#28991#42#0(1@0"0(13@73"var rec1 := rectype1 {name="Kapoios", address="Kapou", id=02432, age=44}312539677#29034#73#0(1@0"0(13@65"var rec2 := rectype2 {name="Allos", dates= arrtype1 [3] of 1900}312539677#29107#65#0(1@0"0(13@3"in312539677#29173#3#0(1@0"0(13@15"arr1[0] := 1; 312539677#29177#15#0(1@0"0(13@14"arr1[9] := 3;312539677#29192#14#0(1@0"0(13@24"arr2[3].name := "kati";312539677#29206#24#0(1@0"0(13@19"arr2[1].age := 23;312539677#29230#19#0(1@0"0(13@19"arr3[34] := "sfd";312539677#29249#19#0(1@0"0(13@20"rec1.name := "sdf";312539677#29269#20#0(1@0"0(13@23"rec2.dates[0] := 2323;312539677#29289#23#0(1@0"0(13@22"rec2.dates[2] := 2323312539677#29312#22#0(1@0"0(13@4"end312539677#29335#4#0(1@0"0(13@23"An identifier arrtype1312539677#29339#23#0(1@0"0(13@16"A punctuation =312539677#29362#16#0(1@0"0(13@18"An identifier int312539677#29378#18#0(1@0"0(13@23"An identifier rectype1312539677#29396#23#0(1@0"0(13@16"A punctuation =312539677#29419#16#0(1@0"0(13@16"A punctuation {312539677#29435#16#0(1@0"0(13@19"An identifier name312539677#29451#19#0(1@0"0(13@16"A punctuation :312539677#29470#16#0(1@0"0(13@21"An identifier string312539677#29486#21#0(1@0"0(13@16"A punctuation ,312539677#29507#16#0(1@0"0(13@22"An identifier address312539677#29523#22#0(1@0"0(13@16"A punctuation :312539677#29545#16#0(1@0"0(13@21"An identifier string312539677#29561#21#0(1@0"0(13@16"A punctuation ,312539677#29582#16#0(1@0"0(13@17"An identifier id312539677#29598#17#0(1@0"0(13@16"A punctuation :312539677#29615#16#0(1@0"0(13@18"An identifier int312539677#29631#18#0(1@0"0(13@16"A punctuation ,312539677#29649#16#0(1@0"0(13@18"An identifier age312539677#29665#18#0(1@0"0(13@16"A punctuation :312539677#29683#16#0(1@0"0(13@18"An identifier int312539677#29699#18#0(1@0"0(13@16"A punctuation }312539677#29717#16#0(1@0"0(13@23"An identifier arrtype2312539677#29733#23#0(1@0"0(13@16"A punctuation =312539677#29756#16#0(1@0"0(13@23"An identifier rectype1312539677#29772#23#0(1@0"0(13@23"An identifier rectype2312539677#29795#23#0(1@0"0(13@16"A punctuation =312539677#29818#16#0(1@0"0(13@16"A punctuation {312539677#29834#16#0(1@0"0(13@19"An identifier name312539677#29850#19#0(1@0"0(13@16"A punctuation :312539677#29869#16#0(1@0"0(13@21"An identifier string312539677#29885#21#0(1@0"0(13@16"A punctuation ,312539677#29906#16#0(1@0"0(13@20"An identifier dates312539677#29922#20#0(1@0"0(13@16"A punctuation :312539677#29942#16#0(1@0"0(13@23"An identifier arrtype1312539677#29958#23#0(1@0"0(13@16"A punctuation }312539677#29981#16#0(1@0"0(13@23"An identifier arrtype3312539677#29997#23#0(1@0"0(13@16"A punctuation =312539677#30020#16#0(1@0"0(13@21"An identifier string312539677#30036#21#0(1@0"0(13@19"An identifier arr1312539677#30057#19#0(1@0"0(13@23"An identifier arrtype1312539677#30076#23#0(1@0"0(13@16"A punctuation [312539677#30099#16#0(1@0"0(13@19"An integer 10 (10)312539677#30115#19#0(1@0"0(13@16"A punctuation ]312539677#30134#16#0(1@0"0(13@17"An integer 0 (0)312539677#30150#17#0(1@0"0(13@19"An identifier arr2312539677#30167#19#0(1@0"0(13@23"An identifier arrtype2312539677#30186#23#0(1@0"0(13@16"A punctuation [312539677#30209#16#0(1@0"0(13@17"An integer 5 (5)312539677#30225#17#0(1@0"0(13@16"A punctuation ]312539677#30242#16#0(1@0"0(13@23"An identifier rectype1312539677#30258#23#0(1@0"0(13@16"A punctuation {312539677#30281#16#0(1@0"0(13@19"An identifier name312539677#30297#19#0(1@0"0(13@16"A punctuation =312539677#30316#16#0(1@0"0(13@17"A string "aname"312539677#30332#17#0(1@0"0(13@16"A punctuation ,312539677#30349#16#0(1@0"0(13@22"An identifier address312539677#30365#22#0(1@0"0(13@16"A punctuation =312539677#30387#16#0(1@0"0(13@21"A string "somewhere"312539677#30403#21#0(1@0"0(13@16"A punctuation ,312539677#30424#16#0(1@0"0(13@17"An identifier id312539677#30440#17#0(1@0"0(13@16"A punctuation =312539677#30457#16#0(1@0"0(13@17"An integer 0 (0)312539677#30473#17#0(1@0"0(13@16"A punctuation ,312539677#30490#16#0(1@0"0(13@18"An identifier age312539677#30506#18#0(1@0"0(13@16"A punctuation =312539677#30524#16#0(1@0"0(13@17"An integer 0 (0)312539677#30540#17#0(1@0"0(13@16"A punctuation }312539677#30557#16#0(1@0"0(13@19"An identifier arr3312539677#30573#19#0(1@0"0(13@16"A punctuation :312539677#30592#16#0(1@0"0(13@23"An identifier arrtype3312539677#30608#23#0(1@0"0(13@23"An identifier arrtype3312539677#30631#23#0(1@0"0(13@16"A punctuation [312539677#30654#16#0(1@0"0(13@21"An integer 100 (100)312539677#30670#21#0(1@0"0(13@16"A punctuation ]312539677#30691#16#0(1@0"0(13@12"A string ""312539677#30707#12#0(1@0"0(13@19"An identifier rec1312539677#30719#19#0(1@0"0(13@23"An identifier rectype1312539677#30738#23#0(1@0"0(13@16"A punctuation {312539677#30761#16#0(1@0"0(13@19"An identifier name312539677#30777#19#0(1@0"0(13@16"A punctuation =312539677#30796#16#0(1@0"0(13@19"A string "Kapoios"312539677#30812#19#0(1@0"0(13@16"A punctuation ,312539677#30831#16#0(1@0"0(13@22"An identifier address312539677#30847#22#0(1@0"0(13@16"A punctuation =312539677#30869#16#0(1@0"0(13@17"A string "Kapou"312539677#30885#17#0(1@0"0(13@16"A punctuation ,312539677#30902#16#0(1@0"0(13@17"An identifier id312539677#30918#17#0(1@0"0(13@16"A punctuation =312539677#30935#16#0(1@0"0(13@24"An integer 02432 (2432)312539677#30951#24#0(1@0"0(13@16"A punctuation ,312539677#30975#16#0(1@0"0(13@18"An identifier age312539677#30991#18#0(1@0"0(13@16"A punctuation =312539677#31009#16#0(1@0"0(13@19"An integer 44 (44)312539677#31025#19#0(1@0"0(13@16"A punctuation }312539677#31044#16#0(1@0"0(13@19"An identifier rec2312539677#31060#19#0(1@0"0(13@23"An identifier rectype2312539677#31079#23#0(1@0"0(13@16"A punctuation {312539677#31102#16#0(1@0"0(13@19"An identifier name312539677#31118#19#0(1@0"0(13@16"A punctuation =312539677#31137#16#0(1@0"0(13@17"A string "Allos"312539677#31153#17#0(1@0"0(13@16"A punctuation ,312539677#31170#16#0(1@0"0(13@20"An identifier dates312539677#31186#20#0(1@0"0(13@16"A punctuation =312539677#31206#16#0(1@0"0(13@23"An identifier arrtype1312539677#31222#23#0(1@0"0(13@16"A punctuation [312539677#31245#16#0(1@0"0(13@17"An integer 3 (3)312539677#31261#17#0(1@0"0(13@16"A punctuation ]312539677#31278#16#0(1@0"0(13@23"An integer 1900 (1900)312539677#31294#23#0(1@0"0(13@16"A punctuation }312539677#31317#16#0(1@0"0(13@19"An identifier arr1312539677#31333#19#0(1@0"0(13@16"A punctuation [312539677#31352#16#0(1@0"0(13@17"An integer 0 (0)312539677#31368#17#0(1@0"0(13@16"A punctuation ]312539677#31385#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#31401#145#0(1@0"0(13@22"/var/tmp/tmp.0.X12XyB312539677#31546#22#0(1@0"0(13@5"let 312539677#31570#5#0(1@0"0(13@13"	var a := ()312539677#31575#13#0(1@0"0(13@3"in312539677#31588#3#0(1@0"0(13@7"	a + 3312539677#31591#7#0(1@0"0(13@4"end312539677#31598#4#0(1@0"0(13@16"An identifier a312539677#31602#16#0(1@0"0(13@16"A punctuation (312539677#31618#16#0(1@0"0(13@16"A punctuation )312539677#31634#16#0(1@0"0(13@16"An identifier a312539677#31650#16#0(1@0"0(13@16"A punctuation +312539677#31666#16#0(1@0"0(13@17"An integer 3 (3)312539677#31682#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#31699#145#0(1@0"0(13@22"/var/tmp/tmp.0.uTCMu5312539677#31844#22#0(1@0"0(13@5"let 312539677#31867#5#0(1@0"0(13@38"	type rectype = {name:string, id:int}312539677#31873#38#0(1@0"0(13@22"	var b:rectype := nil312539677#31911#22#0(1@0"0(13@3"in312539677#31934#3#0(1@0"0(13@10"	b := nil312539677#31938#10#0(1@0"0(13@4"end312539677#31949#4#0(1@0"0(13@22"An identifier rectype312539677#31953#22#0(1@0"0(13@16"A punctuation =312539677#31975#16#0(1@0"0(13@16"A punctuation {312539677#31991#16#0(1@0"0(13@19"An identifier name312539677#32007#19#0(1@0"0(13@16"A punctuation :312539677#32026#16#0(1@0"0(13@21"An identifier string312539677#32042#21#0(1@0"0(13@16"A punctuation ,312539677#32063#16#0(1@0"0(13@17"An identifier id312539677#32079#17#0(1@0"0(13@16"A punctuation :312539677#32096#16#0(1@0"0(13@18"An identifier int312539677#32112#18#0(1@0"0(13@16"A punctuation }312539677#32130#16#0(1@0"0(13@16"An identifier b312539677#32146#16#0(1@0"0(13@16"A punctuation :312539677#32162#16#0(1@0"0(13@22"An identifier rectype312539677#32178#22#0(1@0"0(13@16"An identifier b312539677#32200#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#32216#145#0(1@0"0(13@22"/var/tmp/tmp.0.CpJ62O312539677#32361#22#0(1@0"0(13@5"let 312539677#32384#5#0(1@0"0(13@38"	type rectype = {name:string, id:int}312539677#32389#38#0(1@0"0(13@13"	var a:= nil312539677#32428#13#0(1@0"0(13@3"in312539677#32441#3#0(1@0"0(13@3"	a312539677#32444#3#0(1@0"0(13@4"end312539677#32447#4#0(1@0"0(13@22"An identifier rectype312539677#32451#22#0(1@0"0(13@16"A punctuation =312539677#32473#16#0(1@0"0(13@16"A punctuation {312539677#32489#16#0(1@0"0(13@19"An identifier name312539677#32505#19#0(1@0"0(13@16"A punctuation :312539677#32524#16#0(1@0"0(13@21"An identifier string312539677#32540#21#0(1@0"0(13@16"A punctuation ,312539677#32561#16#0(1@0"0(13@17"An identifier id312539677#32577#17#0(1@0"0(13@16"A punctuation :312539677#32594#16#0(1@0"0(13@18"An identifier int312539677#32610#18#0(1@0"0(13@16"A punctuation }312539677#32628#16#0(1@0"0(13@16"An identifier a312539677#32644#16#0(1@0"0(13@16"An identifier a312539677#32660#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#32676#145#0(1@0"0(13@22"/var/tmp/tmp.0.qEChPc312539677#32821#22#0(1@0"0(13@5"let 312539677#32844#5#0(1@0"0(13@38"	type rectype = {name:string, id:int}312539677#32849#38#0(1@0"0(13@22"	var b:rectype := nil312539677#32887#22#0(1@0"0(13@3"in312539677#32909#3#0(1@0"0(13@10"	b = nil;312539677#32912#10#0(1@0"0(13@10"	b <> nil312539677#32922#10#0(1@0"0(13@4"end312539677#32932#4#0(1@0"0(13@22"An identifier rectype312539677#32936#22#0(1@0"0(13@16"A punctuation =312539677#32958#16#0(1@0"0(13@16"A punctuation {312539677#32974#16#0(1@0"0(13@19"An identifier name312539677#32990#19#0(1@0"0(13@16"A punctuation :312539677#33009#16#0(1@0"0(13@21"An identifier string312539677#33025#21#0(1@0"0(13@16"A punctuation ,312539677#33046#16#0(1@0"0(13@17"An identifier id312539677#33062#17#0(1@0"0(13@16"A punctuation :312539677#33079#16#0(1@0"0(13@18"An identifier int312539677#33095#18#0(1@0"0(13@16"A punctuation }312539677#33113#16#0(1@0"0(13@16"An identifier b312539677#33129#16#0(1@0"0(13@16"A punctuation :312539677#33145#16#0(1@0"0(13@22"An identifier rectype312539677#33161#22#0(1@0"0(13@16"An identifier b312539677#33183#16#0(1@0"0(13@16"A punctuation =312539677#33199#16#0(1@0"0(13@16"A punctuation ;312539677#33215#16#0(1@0"0(13@16"An identifier b312539677#33231#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#33247#145#0(1@0"0(13@22"/var/tmp/tmp.0.0zElHL312539677#33392#22#0(1@0"0(13@4"let312539677#33415#4#0(1@0"0(13@14"	type a = int312539677#33419#14#0(1@0"0(13@12"	var b := 4312539677#33433#12#0(1@0"0(13@17"	type a = string312539677#33445#17#0(1@0"0(13@3"in312539677#33462#3#0(1@0"0(13@3"	0312539677#33465#3#0(1@0"0(13@4"end312539677#33468#4#0(1@0"0(13@16"An identifier a312539677#33472#16#0(1@0"0(13@16"A punctuation =312539677#33488#16#0(1@0"0(13@18"An identifier int312539677#33504#18#0(1@0"0(13@16"An identifier b312539677#33522#16#0(1@0"0(13@17"An integer 4 (4)312539677#33538#17#0(1@0"0(13@16"An identifier a312539677#33555#16#0(1@0"0(13@16"A punctuation =312539677#33571#16#0(1@0"0(13@21"An identifier string312539677#33587#21#0(1@0"0(13@17"An integer 0 (0)312539677#33608#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#33625#145#0(1@0"0(13@22"/var/tmp/tmp.0.elosbx312539677#33770#22#0(1@0"0(13@4"let312539677#33793#4#0(1@0"0(13@27"	function g(a:int):int = a312539677#33797#27#0(1@0"0(13@14"	type t = int312539677#33824#14#0(1@0"0(13@27"	function g(a:int):int = a312539677#33838#27#0(1@0"0(13@3"in312539677#33865#3#0(1@0"0(13@3"	0312539677#33868#3#0(1@0"0(13@4"end312539677#33871#4#0(1@0"0(13@16"An identifier g312539677#33875#16#0(1@0"0(13@16"A punctuation (312539677#33891#16#0(1@0"0(13@16"An identifier a312539677#33907#16#0(1@0"0(13@16"A punctuation :312539677#33923#16#0(1@0"0(13@18"An identifier int312539677#33939#18#0(1@0"0(13@16"A punctuation )312539677#33957#16#0(1@0"0(13@16"A punctuation :312539677#33973#16#0(1@0"0(13@18"An identifier int312539677#33989#18#0(1@0"0(13@16"A punctuation =312539677#34007#16#0(1@0"0(13@16"An identifier a312539677#34023#16#0(1@0"0(13@16"An identifier t312539677#34039#16#0(1@0"0(13@16"A punctuation =312539677#34055#16#0(1@0"0(13@18"An identifier int312539677#34071#18#0(1@0"0(13@16"An identifier g312539677#34089#16#0(1@0"0(13@16"A punctuation (312539677#34105#16#0(1@0"0(13@16"An identifier a312539677#34121#16#0(1@0"0(13@16"A punctuation :312539677#34137#16#0(1@0"0(13@18"An identifier int312539677#34153#18#0(1@0"0(13@16"A punctuation )312539677#34171#16#0(1@0"0(13@16"A punctuation :312539677#34187#16#0(1@0"0(13@18"An identifier int312539677#34203#18#0(1@0"0(13@16"A punctuation =312539677#34221#16#0(1@0"0(13@16"An identifier a312539677#34237#16#0(1@0"0(13@17"An integer 0 (0)312539677#34253#17#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#34270#145#0(1@0"0(13@80"5: error: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR312539677#34415#80#0(1@0"0(13@22"/var/tmp/tmp.0.74lF4N312539677#34495#22#0(1@0"0(13@5"let 312539677#34518#5#0(1@0"0(13@38"	type rectype = {name:string, id:int}312539677#34523#38#0(1@0"0(13@21"	var a:= rectype nil312539677#34562#21#0(1@0"0(13@3"in312539677#34583#3#0(1@0"0(13@3"	a312539677#34586#3#0(1@0"0(13@4"end312539677#34589#4#0(1@0"0(13@22"An identifier rectype312539677#34593#22#0(1@0"0(13@16"A punctuation =312539677#34615#16#0(1@0"0(13@16"A punctuation {312539677#34631#16#0(1@0"0(13@19"An identifier name312539677#34647#19#0(1@0"0(13@16"A punctuation :312539677#34666#16#0(1@0"0(13@21"An identifier string312539677#34682#21#0(1@0"0(13@16"A punctuation ,312539677#34703#16#0(1@0"0(13@17"An identifier id312539677#34719#17#0(1@0"0(13@16"A punctuation :312539677#34736#16#0(1@0"0(13@18"An identifier int312539677#34752#18#0(1@0"0(13@16"A punctuation }312539677#34770#16#0(1@0"0(13@16"An identifier a312539677#34786#16#0(1@0"0(13@22"An identifier rectype312539677#34802#22#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#34824#145#0(1@0"0(13@22"/var/tmp/tmp.0.2yn2aN312539677#34969#22#0(1@0"0(13@4"let312539677#34992#4#0(1@0"0(13@39"type intlist = {hd: int, tl: intlist} 312539677#34997#39#0(1@0"0(13@42"type tree ={key: int, children: treelist}312539677#35038#42#0(1@0"0(13@41"type treelist = {hd: tree, tl: treelist}312539677#35080#41#0(1@0"0(13@46"var lis:intlist := intlist { hd=0, tl= nil } 312539677#35122#46#0(1@0"0(13@3"in312539677#35169#3#0(1@0"0(13@5"	lis312539677#35172#5#0(1@0"0(13@4"end312539677#35177#4#0(1@0"0(13@22"An identifier intlist312539677#35181#22#0(1@0"0(13@16"A punctuation =312539677#35203#16#0(1@0"0(13@16"A punctuation {312539677#35219#16#0(1@0"0(13@17"An identifier hd312539677#35235#17#0(1@0"0(13@16"A punctuation :312539677#35252#16#0(1@0"0(13@18"An identifier int312539677#35268#18#0(1@0"0(13@16"A punctuation ,312539677#35286#16#0(1@0"0(13@17"An identifier tl312539677#35302#17#0(1@0"0(13@16"A punctuation :312539677#35319#16#0(1@0"0(13@22"An identifier intlist312539677#35335#22#0(1@0"0(13@16"A punctuation }312539677#35357#16#0(1@0"0(13@19"An identifier tree312539677#35373#19#0(1@0"0(13@16"A punctuation =312539677#35392#16#0(1@0"0(13@16"A punctuation {312539677#35408#16#0(1@0"0(13@18"An identifier key312539677#35424#18#0(1@0"0(13@16"A punctuation :312539677#35442#16#0(1@0"0(13@18"An identifier int312539677#35458#18#0(1@0"0(13@16"A punctuation ,312539677#35476#16#0(1@0"0(13@23"An identifier children312539677#35492#23#0(1@0"0(13@16"A punctuation :312539677#35515#16#0(1@0"0(13@23"An identifier treelist312539677#35531#23#0(1@0"0(13@16"A punctuation }312539677#35554#16#0(1@0"0(13@23"An identifier treelist312539677#35570#23#0(1@0"0(13@16"A punctuation =312539677#35593#16#0(1@0"0(13@16"A punctuation {312539677#35609#16#0(1@0"0(13@17"An identifier hd312539677#35625#17#0(1@0"0(13@16"A punctuation :312539677#35642#16#0(1@0"0(13@19"An identifier tree312539677#35658#19#0(1@0"0(13@16"A punctuation ,312539677#35677#16#0(1@0"0(13@17"An identifier tl312539677#35693#17#0(1@0"0(13@16"A punctuation :312539677#35710#16#0(1@0"0(13@23"An identifier treelist312539677#35726#23#0(1@0"0(13@16"A punctuation }312539677#35749#16#0(1@0"0(13@18"An identifier lis312539677#35765#18#0(1@0"0(13@16"A punctuation :312539677#35783#16#0(1@0"0(13@22"An identifier intlist312539677#35799#22#0(1@0"0(13@22"An identifier intlist312539677#35821#22#0(1@0"0(13@16"A punctuation {312539677#35843#16#0(1@0"0(13@17"An identifier hd312539677#35859#17#0(1@0"0(13@16"A punctuation =312539677#35876#16#0(1@0"0(13@17"An integer 0 (0)312539677#35892#17#0(1@0"0(13@16"A punctuation ,312539677#35909#16#0(1@0"0(13@17"An identifier tl312539677#35925#17#0(1@0"0(13@16"A punctuation =312539677#35942#16#0(1@0"0(13@16"A punctuation }312539677#35958#16#0(1@0"0(13@18"An identifier lis312539677#35974#18#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#35992#145#0(1@0"0(13@22"/var/tmp/tmp.0.Jw2W4G312539677#36137#22#0(1@0"0(13@4"let312539677#36160#4#0(1@0"0(13@41"function do_nothing1(a: int, b: string)=312539677#36165#41#0(1@0"0(13@19"		do_nothing2(a+1)312539677#36206#19#0(1@0"0(13@31"function do_nothing2(d: int) =312539677#36226#31#0(1@0"0(13@24"		do_nothing1(d, "str")312539677#36257#24#0(1@0"0(13@3"in312539677#36282#3#0(1@0"0(13@24"	do_nothing1(0, "str2")312539677#36285#24#0(1@0"0(13@4"end312539677#36309#4#0(1@0"0(13@26"An identifier do_nothing1312539677#36314#26#0(1@0"0(13@16"A punctuation (312539677#36340#16#0(1@0"0(13@16"An identifier a312539677#36356#16#0(1@0"0(13@16"A punctuation :312539677#36372#16#0(1@0"0(13@18"An identifier int312539677#36388#18#0(1@0"0(13@16"A punctuation ,312539677#36406#16#0(1@0"0(13@16"An identifier b312539677#36422#16#0(1@0"0(13@16"A punctuation :312539677#36438#16#0(1@0"0(13@21"An identifier string312539677#36454#21#0(1@0"0(13@16"A punctuation )312539677#36475#16#0(1@0"0(13@16"A punctuation =312539677#36491#16#0(1@0"0(13@26"An identifier do_nothing2312539677#36507#26#0(1@0"0(13@16"A punctuation (312539677#36533#16#0(1@0"0(13@16"An identifier a312539677#36549#16#0(1@0"0(13@16"A punctuation +312539677#36565#16#0(1@0"0(13@17"An integer 1 (1)312539677#36581#17#0(1@0"0(13@16"A punctuation )312539677#36598#16#0(1@0"0(13@26"An identifier do_nothing2312539677#36614#26#0(1@0"0(13@16"A punctuation (312539677#36640#16#0(1@0"0(13@16"An identifier d312539677#36656#16#0(1@0"0(13@16"A punctuation :312539677#36672#16#0(1@0"0(13@18"An identifier int312539677#36688#18#0(1@0"0(13@16"A punctuation )312539677#36706#16#0(1@0"0(13@16"A punctuation =312539677#36722#16#0(1@0"0(13@26"An identifier do_nothing1312539677#36738#26#0(1@0"0(13@16"A punctuation (312539677#36764#16#0(1@0"0(13@16"An identifier d312539677#36780#16#0(1@0"0(13@16"A punctuation ,312539677#36796#16#0(1@0"0(13@15"A string "str"312539677#36812#15#0(1@0"0(13@16"A punctuation )312539677#36827#16#0(1@0"0(13@26"An identifier do_nothing1312539677#36843#26#0(1@0"0(13@16"A punctuation (312539677#36869#16#0(1@0"0(13@17"An integer 0 (0)312539677#36885#17#0(1@0"0(13@16"A punctuation ,312539677#36902#16#0(1@0"0(13@16"A string "str2"312539677#36918#16#0(1@0"0(13@16"A punctuation )312539677#36934#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#36950#145#0(1@0"0(13@22"/var/tmp/tmp.0.n3rROE312539677#37095#22#0(1@0"0(13@4"let312539677#37118#4#0(1@0"0(13@45"function do_nothing1(a: int, b: string):int=312539677#37123#45#0(1@0"0(13@23"		(do_nothing2(a+1);0)312539677#37168#23#0(1@0"0(13@38"function do_nothing2(d: int):string =312539677#37192#38#0(1@0"0(13@30"		(do_nothing1(d, "str");" ")312539677#37230#30#0(1@0"0(13@3"in312539677#37261#3#0(1@0"0(13@24"	do_nothing1(0, "str2")312539677#37264#24#0(1@0"0(13@4"end312539677#37288#4#0(1@0"0(13@26"An identifier do_nothing1312539677#37293#26#0(1@0"0(13@16"A punctuation (312539677#37319#16#0(1@0"0(13@16"An identifier a312539677#37335#16#0(1@0"0(13@16"A punctuation :312539677#37351#16#0(1@0"0(13@18"An identifier int312539677#37367#18#0(1@0"0(13@16"A punctuation ,312539677#37385#16#0(1@0"0(13@16"An identifier b312539677#37401#16#0(1@0"0(13@16"A punctuation :312539677#37417#16#0(1@0"0(13@21"An identifier string312539677#37433#21#0(1@0"0(13@16"A punctuation )312539677#37454#16#0(1@0"0(13@16"A punctuation :312539677#37470#16#0(1@0"0(13@18"An identifier int312539677#37486#18#0(1@0"0(13@16"A punctuation =312539677#37504#16#0(1@0"0(13@16"A punctuation (312539677#37520#16#0(1@0"0(13@26"An identifier do_nothing2312539677#37536#26#0(1@0"0(13@16"A punctuation (312539677#37562#16#0(1@0"0(13@16"An identifier a312539677#37578#16#0(1@0"0(13@16"A punctuation +312539677#37594#16#0(1@0"0(13@17"An integer 1 (1)312539677#37610#17#0(1@0"0(13@16"A punctuation )312539677#37627#16#0(1@0"0(13@16"A punctuation ;312539677#37643#16#0(1@0"0(13@17"An integer 0 (0)312539677#37659#17#0(1@0"0(13@16"A punctuation )312539677#37676#16#0(1@0"0(13@26"An identifier do_nothing2312539677#37692#26#0(1@0"0(13@16"A punctuation (312539677#37718#16#0(1@0"0(13@16"An identifier d312539677#37734#16#0(1@0"0(13@16"A punctuation :312539677#37750#16#0(1@0"0(13@18"An identifier int312539677#37766#18#0(1@0"0(13@16"A punctuation )312539677#37784#16#0(1@0"0(13@16"A punctuation :312539677#37800#16#0(1@0"0(13@21"An identifier string312539677#37816#21#0(1@0"0(13@16"A punctuation =312539677#37837#16#0(1@0"0(13@16"A punctuation (312539677#37853#16#0(1@0"0(13@26"An identifier do_nothing1312539677#37869#26#0(1@0"0(13@16"A punctuation (312539677#37895#16#0(1@0"0(13@16"An identifier d312539677#37911#16#0(1@0"0(13@16"A punctuation ,312539677#37927#16#0(1@0"0(13@15"A string "str"312539677#37943#15#0(1@0"0(13@16"A punctuation )312539677#37958#16#0(1@0"0(13@16"A punctuation ;312539677#37974#16#0(1@0"0(13@13"A string " "312539677#37990#13#0(1@0"0(13@16"A punctuation )312539677#38003#16#0(1@0"0(13@26"An identifier do_nothing1312539677#38019#26#0(1@0"0(13@16"A punctuation (312539677#38045#16#0(1@0"0(13@17"An integer 0 (0)312539677#38061#17#0(1@0"0(13@16"A punctuation ,312539677#38078#16#0(1@0"0(13@16"A string "str2"312539677#38094#16#0(1@0"0(13@16"A punctuation )312539677#38110#16#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#38126#145#0(1@0"0(13@22"/var/tmp/tmp.0.OJLDD3312539677#38271#22#0(1@0"0(13@30"if (10 > 20) then 30 else 40	312539677#38294#30#0(1@0"0(13@16"A punctuation (312539677#38324#16#0(1@0"0(13@19"An integer 10 (10)312539677#38340#19#0(1@0"0(13@16"A punctuation >312539677#38359#16#0(1@0"0(13@19"An integer 20 (20)312539677#38375#19#0(1@0"0(13@16"A punctuation )312539677#38394#16#0(1@0"0(13@19"An integer 30 (30)312539677#38410#19#0(1@0"0(13@19"An integer 40 (40)312539677#38429#19#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#38448#145#0(1@0"0(13@22"/var/tmp/tmp.0.Tm0uow312539677#38593#22#0(1@0"0(13@27"if (5>4) then 13 else  " "312539677#38617#27#0(1@0"0(13@16"A punctuation (312539677#38644#16#0(1@0"0(13@17"An integer 5 (5)312539677#38660#17#0(1@0"0(13@16"A punctuation >312539677#38677#16#0(1@0"0(13@17"An integer 4 (4)312539677#38693#17#0(1@0"0(13@16"A punctuation )312539677#38710#16#0(1@0"0(13@19"An integer 13 (13)312539677#38726#19#0(1@0"0(13@13"A string " "312539677#38745#13#0(1@0"0(13@145"/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh: line 7: [: !=: unary operator expected312539677#38758#145#0(1@0"0(0#0#0"8613322976#12869"    cd /Users/ddj/Obj-c/Tiger/Compiler    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER ddj    setenv ALWAYS_SEARCH_USER_PATHS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS x86_64    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386 ppc"    setenv ARCHS_STANDARD_32_BIT "i386 ppc"    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/ddj/Obj-c/Tiger/Compiler/build    setenv BUILD_ROOT /Users/ddj/Obj-c/Tiger/Compiler/build    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Debug    setenv CACHE_ROOT /var/folders/TA/TAM6M9ZjFcSdTe0GNrxxc++++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/TA/TAM6M9ZjFcSdTe0GNrxxc++++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/TA/TAM6M9ZjFcSdTe0GNrxxc++++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Debug    setenv CONFIGURATION_TEMP_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH x86_64    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Compiler.dst    setenv DWARF_DSYM_FILE_NAME .dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/ddj/Obj-c/Tiger/Compiler/build/Debug    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn .git CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv FILE_LIST /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/FixedFiles    setenv FRAMEWORK_VERSION A    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD gnu99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION 4.2    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR /tmp/Compiler.dst    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER ddj    setenv INSTALL_ROOT /tmp/Compiler.dst    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/test-LinkMap-normal-x86_64.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_x86_64     setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_VERSION_ACTUAL 1065    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0605    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Objects-normal    setenv OBJROOT /Users/ddj/Obj-c/Tiger/Compiler/build    setenv ONLY_ACTIVE_ARCH YES    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PKGINFO_FILE_PATH /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLATFORM_PRODUCT_BUILD_VERSION 10M2423    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRODUCT_NAME test    setenv PRODUCT_SETTINGS_PATH     setenv PROFILING_CODE NO    setenv PROJECT Compiler    setenv PROJECT_DERIVED_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/DerivedSources    setenv PROJECT_DIR /Users/ddj/Obj-c/Tiger/Compiler    setenv PROJECT_FILE_PATH /Users/ddj/Obj-c/Tiger/Compiler/Compiler.xcodeproj    setenv PROJECT_NAME Compiler    setenv PROJECT_TEMP_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/ResourceManagerResources/Objects    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_DIR /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_NAME macosx10.6    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/DerivedSources    setenv SHARED_PRECOMPS_DIR /var/folders/TA/TAM6M9ZjFcSdTe0GNrxxc++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/ddj/Obj-c/Tiger/Compiler    setenv SRCROOT /Users/ddj/Obj-c/Tiger/Compiler    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SYMBOL_REPOSITORY_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/SymbolRepositories    setenv SYMROOT /Users/ddj/Obj-c/Tiger/Compiler/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME test    setenv TARGET_BUILD_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Debug    setenv TARGET_NAME test    setenv TARGET_TEMP_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build    setenv TEMP_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build    setenv TEMP_FILES_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build    setenv TEMP_FILE_DIR /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build    setenv TEMP_ROOT /Users/ddj/Obj-c/Tiger/Compiler/build    setenv UID 501    setenv UNSTRIPPED_PRODUCT NO    setenv USER ddj    setenv USER_APPS_DIR /Users/ddj/Applications    setenv USER_LIBRARY_DIR /Users/ddj/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSION_INFO_BUILDER ddj    setenv VERSION_INFO_FILE test_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:test  PROJECT:Compiler-\""    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 10M2423    setenv XCODE_VERSION_ACTUAL 0325    setenv XCODE_VERSION_MAJOR 0300    setenv XCODE_VERSION_MINOR 0320    setenv YACC /Developer/usr/bin/yacc    setenv _REAL_SDKROOT macosx10.6    /bin/sh -c /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/test.build/Script-4763474E12A0F6F40021736A.sh0#
+

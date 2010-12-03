@@ -1,0 +1,56 @@
+Tstringtest
+v7
+r0
+t312880744.499857
+cCheck dependencies
+cCompileC build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c normal x86_64 c com.apple.compilers.gcc.4_2
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CAA740B00000000000000EE
+t1286239243
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004BBD2CE90000000000004174
+t1270689001
+s16756
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.LinkFileList
+c000000004CF5F6E8000000000000006F
+t1291187944
+s111
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o
+t2
+s0
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest
+t2
+s0
+
+N/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c
+c000000004CF5F6E20000000000000151
+t1291187938
+s337
+i<stdio.h>
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies312880744#312880744#0(0"0(0#1#0"3343187568374212096#0"0#
+
+CCompileC build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c normal x86_64 c com.apple.compilers.gcc.4_2
+s312880744.498768
+e312880744.499800
+r0
+xCompileC
+xbuild/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o
+x/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c
+xnormal
+xx86_64
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@52"Compile /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c312880744#312880744#0(98"/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c:11: error: expected ';', ',' or ')' before '*' token1(4@41"Expected ';', ',' or ')' before '*' token312880744#0#98#0(6@44"/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c312880738#11#0#11#0#19"expected * before *0(0#0#44"/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c3907004821821025792#1245"    cd /Users/ddj/Obj-c/Tiger/Compiler    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-generated-files.hmap -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-own-target-headers.hmap -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-all-target-headers.hmap -iquote /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-project-headers.hmap -F/Users/ddj/Obj-c/Tiger/Compiler/build/Debug -I/Users/ddj/Obj-c/Tiger/Compiler/build/Debug/include -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/DerivedSources/x86_64 -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/DerivedSources -c /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c -o /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o1#
+
+CLd /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest normal x86_64
+r0
+

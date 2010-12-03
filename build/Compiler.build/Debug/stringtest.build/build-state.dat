@@ -1,0 +1,64 @@
+Tstringtest
+v7
+r0
+t312958564.774247
+cCheck dependencies
+cCompileC build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c normal x86_64 c com.apple.compilers.gcc.4_2
+cLd /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest normal x86_64
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CAA740B00000000000000EE
+t1286239243
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004BBD2CE90000000000004174
+t1270689001
+s16756
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.LinkFileList
+c000000004CF5F6E8000000000000006F
+t1291187944
+s111
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o
+t1291265690
+s5052
+
+N/Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest
+t1291265764
+s9112
+
+N/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c
+c000000004CF7269A00000000000003E2
+t1291265690
+s994
+i<stdio.h>
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies312958564#312958564#0(0"0(0#1#0"8625039200#0"0#
+
+CCompileC build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c normal x86_64 c com.apple.compilers.gcc.4_2
+s312958564.755804
+e312958564.757317
+r1
+xCompileC
+xbuild/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o
+x/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c
+xnormal
+xx86_64
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@52"Compile /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c312958564#312958564#0(0"0(0#0#44"/Users/ddj/Obj-c/Tiger/Compiler/stringtest.c8624461376#1245"    cd /Users/ddj/Obj-c/Tiger/Compiler    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-generated-files.hmap -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-own-target-headers.hmap -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-all-target-headers.hmap -iquote /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/stringtest-project-headers.hmap -F/Users/ddj/Obj-c/Tiger/Compiler/build/Debug -I/Users/ddj/Obj-c/Tiger/Compiler/build/Debug/include -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/DerivedSources/x86_64 -I/Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/DerivedSources -c /Users/ddj/Obj-c/Tiger/Compiler/stringtest.c -o /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.o0#
+
+CLd /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest normal x86_64
+s312958564.757385
+e312958564.774202
+r1
+xLd
+x/Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest
+xnormal
+xx86_64
+lSLF07#2@59"Link /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest312958564#312958564#0(0"0(0#0#0"8624225664#473"    cd /Users/ddj/Obj-c/Tiger/Compiler    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/ddj/Obj-c/Tiger/Compiler/build/Debug -F/Users/ddj/Obj-c/Tiger/Compiler/build/Debug -filelist /Users/ddj/Obj-c/Tiger/Compiler/build/Compiler.build/Debug/stringtest.build/Objects-normal/x86_64/stringtest.LinkFileList -mmacosx-version-min=10.6 -o /Users/ddj/Obj-c/Tiger/Compiler/build/Debug/stringtest0#
+
