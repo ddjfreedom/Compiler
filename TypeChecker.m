@@ -230,7 +230,7 @@
     IMExpression *elseClause = [self typeCheckExpression:expr.elseClause];
     if (![thenClause.type.actualType isSameType:elseClause.type.actualType])
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
-                                     withFormat:"Error: Type mismatch. Two clauses should return the same type"];
+                                     withFormat:"Error: Type mismatch. Types of then-else differ"];
     else 
       return [IMExpression IMExpressionWithTranslatedExpression:nil
                                                 andSemanticType:thenClause.type];
@@ -385,10 +385,11 @@
   SemanticType *type = [self typeCheckExpression:varDecl.expr].type.actualType;
   SemanticType *decltype;
   if (!varDecl.typeIdentifier) {
-    if (type == [SemanticNilType sharedNilType])
+    if (type == [SemanticNilType sharedNilType]) {
       [ErrorMessage printErrorMessageLineNumber:varDecl.lineNumber
                                      withFormat:"Error: Need type constraint"];
-    else
+      [self setSemanticEntry:[SemanticVarEntry varEntry] forSymbol:varDecl.identifier];
+    } else
       [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:type]
                    forSymbol:varDecl.identifier];
   } else {
@@ -410,7 +411,7 @@
   for (TypeDecl *typedecl in typesList)
     if ([tmpenv semanticTypeForSymbol:typedecl.typeIdentifier])
       [ErrorMessage printErrorMessageLineNumber:typedecl.lineNumber
-                                     withFormat:"Error: Type %s is defined in the batch of mutually recursive types",
+                                     withFormat:"Error: Type %s has been defined in the batch of mutually recursive types",
        [typedecl.typeIdentifier cString]];
   	else 
     	[tmpenv setSemanticType:[SemanticNamedType namedTypeWithTypeName:typedecl.typeIdentifier]
