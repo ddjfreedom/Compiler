@@ -13,9 +13,11 @@
 {
 	Symbol *name;
   SemanticType *type;
+  BOOL inCycle;
 }
 @property (readonly) Symbol *name;
 @property (retain) SemanticType *type;
+@property (readonly) BOOL inCycle;
 - (id)initWithTypeName:(Symbol *)aName;
 - (BOOL)isCycle;
 + (id)namedTypeWithTypeName:(Symbol *)aName;

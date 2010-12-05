@@ -12,9 +12,11 @@
 @implementation SemanticNamedType
 @synthesize name;
 @synthesize type;
-// TODO: isSameType
+@synthesize inCycle;
 - (SemanticType *)actualType
 {
+  if (inCycle)
+    return nil;
   return type.actualType;
 }
 - (id)initWithTypeName:(Symbol *)aName
@@ -22,6 +24,7 @@
   if (self = [super init]) {
     name = [aName retain];
     self.type = nil;
+    inCycle = NO;
   }
   return self;
 }
@@ -36,6 +39,7 @@
   else 
     ans = NO;
   type = t;
+  inCycle = ans;
   return ans;
 }
 - (void)dealloc
