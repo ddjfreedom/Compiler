@@ -25,6 +25,19 @@
   }
   return self;
 }
+- (BOOL)isCycle
+{
+  BOOL ans;
+  SemanticType *t = type;
+  type = nil;
+  if (!t) return YES;
+  if ([t isMemberOfClass:[SemanticNamedType class]])
+    ans = [(SemanticNamedType *)t isCycle];
+  else 
+    ans = NO;
+  type = t;
+  return ans;
+}
 - (void)dealloc
 {
   [name release];

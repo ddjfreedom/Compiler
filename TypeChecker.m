@@ -418,6 +418,11 @@
   	type = [self typeCheckType:typedecl.type];
     [(SemanticNamedType *)[tmpenv semanticTypeForSymbol:typedecl.typeIdentifier] setType:type];
   }
+  for (TypeDecl *typedecl in typesList)
+    if ([(SemanticNamedType *)[tmpenv semanticTypeForSymbol:typedecl.typeIdentifier] isCycle])
+      [ErrorMessage printErrorMessageLineNumber:typedecl.lineNumber
+                                     withFormat:"Error: Type %s is in a type definition cycle",
+       [typedecl.typeIdentifier cString]];
   [envs removeLastObject];
   [[envs lastObject] addSemanticElementsFromEnvironment:tmpenv];
   [tmpenv release];

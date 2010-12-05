@@ -17,5 +17,6 @@
 @property (readonly) Symbol *name;
 @property (retain) SemanticType *type;
 - (id)initWithTypeName:(Symbol *)aName;
+- (BOOL)isCycle;
 + (id)namedTypeWithTypeName:(Symbol *)aName;
 @end
