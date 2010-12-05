@@ -16,4 +16,5 @@
 @property (readonly) SemanticType *type;
 - (id)initWithSemanticType:(SemanticType *)aType;
 + (id)varEntryWithSemanticType:(SemanticType *)aType;
++ (id)varEntry; // Used as a placeholder
 @end

@@ -27,4 +27,8 @@
 {
   return [[[SemanticVarEntry alloc] initWithSemanticType:aType] autorelease];
 }
++ (id)varEntry
+{
+  return [SemanticVarEntry varEntryWithSemanticType:nil];
+}
 @end
