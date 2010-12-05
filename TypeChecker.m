@@ -22,7 +22,7 @@
 - (void)setSemanticType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol;
 - (BOOL)isIntType:(IMExpression *)expr lineNumber:(int)lineno;
 - (BOOL)isStringType:(IMExpression *)expr lineNumber:(int)lineno;
-- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno;
+- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name;
 - (IMExpression *)typeCheckExpression:(Expression *)expr;
 - (IMExpression *)typeCheckOperationExpression:(OperationExpression *)expr;
 - (IMExpression *)typeCheckAssignExpression:(AssignExpression *)expr;
@@ -106,12 +106,12 @@
                                  withFormat:"Error: Type mismatch. Expected string"];
   return NO;
 }
-- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno
+- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name
 {
   if (expr.type.actualType == [SemanticVoidType sharedVoidType])
     return YES;
   [ErrorMessage printErrorMessageLineNumber:lineno
-                                 withFormat:"Error: Shouldn't return a value"];
+                                 withFormat:"Error: %s shouldn't return a value", name];
   return NO;
 }
 - (IMExpression *)typeCheckExpression:(Expression *)expr
@@ -137,7 +137,8 @@
     [self isIntType:[self typeCheckExpression:[(WhileExpression *)expr test]]
          lineNumber:[(WhileExpression *)expr test].lineNumber];
   	[self isVoidType:[self typeCheckExpression:[(WhileExpression *)expr body]]
-          lineNumber:[(WhileExpression *)expr body].lineNumber];
+          lineNumber:[(WhileExpression *)expr body].lineNumber 
+      expressionName:"Body of while expression"];
     return [IMExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[BreakExpression class]]) {
@@ -187,13 +188,12 @@
       [self isIntType:right lineNumber:expr.rightOperand.lineNumber];
       break;
     case lt: case le: case gt: case ge:
-      if ([left.type.actualType isSameType:[SemanticIntType sharedIntType]])
-        [self isIntType:right lineNumber:expr.rightOperand.lineNumber];
-      else if ([left.type.actualType isSameType:[SemanticStringType sharedStringType] ])
-        [self isStringType:right lineNumber:expr.rightOperand.lineNumber];
-      else
+      if (([left.type.actualType isSameType:[SemanticIntType sharedIntType]] &&
+           ![right.type.actualType isSameType:[SemanticIntType sharedIntType]]) ||
+          ([left.type.actualType isSameType:[SemanticStringType sharedStringType]] &&
+           ![right.type.actualType isSameType:[SemanticStringType sharedStringType]]))
         [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
-                                       withFormat:"Error: Type mismatch. Expected int or string"];
+                                       withFormat:"Error: Comparison of incompatible types"];
       break;
     case eq: case ne:
       if (![left.type.actualType isSameType:right.type.actualType])
@@ -235,7 +235,9 @@
       return [IMExpression IMExpressionWithTranslatedExpression:nil
                                                 andSemanticType:thenClause.type];
   } else
-    [self isVoidType:thenClause lineNumber:expr.thenClause.lineNumber];
+    [self isVoidType:thenClause 
+          lineNumber:expr.thenClause.lineNumber 
+      expressionName:"Then clause"];
   return [IMExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];  
 }
