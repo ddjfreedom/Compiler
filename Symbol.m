@@ -32,6 +32,12 @@ static NSMutableDictionary *dict;
   }
   return NO;
 }
+- (id)copyWithZone:(NSZone *)zone
+{
+  Symbol *symbol = [[Symbol allocWithZone:zone] init];
+  symbol->string = [self.string retain];
+  return symbol;
+}
 - (void)dealloc
 {
   [string release];
