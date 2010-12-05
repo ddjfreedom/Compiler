@@ -10,8 +10,5 @@
 
 
 @implementation SemanticEntry
-+ (id)entry
-{
-  return [[[SemanticEntry alloc] init] autorelease];
-}
+
 @end

@@ -10,5 +10,5 @@
 @interface SemanticEntry : NSObject
 {
 }
-+ (id)entry;
+
 @end
