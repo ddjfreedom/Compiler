@@ -15,6 +15,8 @@
   // envs is a stack holding mutiple environments 
   // the topmost (last in envs) is the current scope
   NSMutableArray *envs;
+  NSMutableArray *loopVars;
+  int nestedLoopLevel;
 }
 - (IMExpression *)typeCheckProgram:(Expression *)expr;
 + (IMExpression *)typeCheckProgram:(Expression *)expr;

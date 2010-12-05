@@ -49,6 +49,8 @@
 {
   if (self = [super init]) {
     envs = [[NSMutableArray alloc] init];
+    loopVars = [[NSMutableArray alloc] init];
+    nestedLoopLevel = 0;
   }
   return self;
 }
@@ -136,13 +138,18 @@
   else if ([expr isMemberOfClass:[WhileExpression class]]) {
     [self isIntType:[self typeCheckExpression:[(WhileExpression *)expr test]]
          lineNumber:[(WhileExpression *)expr test].lineNumber];
+    nestedLoopLevel++;
   	[self isVoidType:[self typeCheckExpression:[(WhileExpression *)expr body]]
           lineNumber:[(WhileExpression *)expr body].lineNumber 
       expressionName:"Body of while expression"];
+    nestedLoopLevel--;
     return [IMExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[BreakExpression class]]) {
     // TODO: check whether in a loop
+    if (!nestedLoopLevel)
+      [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
+                                     withFormat:"Error: Using break in a non-loop expression"];
   	return [IMExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[CallExpression class]])
@@ -211,10 +218,15 @@
 {
   IMExpression *left = [self typeCheckVar:[expr variable]];
   IMExpression *right = [self typeCheckExpression:[expr expression]];
+  if ([expr.variable isMemberOfClass:[SimpleVar class]] &&
+      [loopVars indexOfObject:((SimpleVar *)expr.variable).name] != NSNotFound)
+    [ErrorMessage printErrorMessageLineNumber:expr.variable.lineNumber
+                                   withFormat:"Warning: Loop variable %s is being assigned to",
+     [((SimpleVar *)expr.variable).name cString]];
   if ([right.type.actualType isSameType:[SemanticNilType sharedNilType]] && 
       ![left.type.actualType isMemberOfClass:[SemanticRecordType class]])
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
-                                   withFormat:"Error: Lvalue is not a record. nil should be assigned to a record"];
+                                   withFormat:"Error: Attempt to assign nil to a non-record type."];
   else if (![left.type.actualType isSameType:right.type.actualType])
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                    withFormat:"Error: Lvalue and rvalue type mismatch"];
@@ -309,7 +321,11 @@
     [envs addObject:[SemanticEnvironment environment]];
     [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:lowertype]
                  forSymbol:vardecl.identifier];
+    [loopVars addObject:expr.varDecl.identifier];
+    nestedLoopLevel++;
     result = [self typeCheckExpression:expr.body];
+    [loopVars removeLastObject];
+    nestedLoopLevel--;
     [envs removeLastObject];
     return result;
   } else 
@@ -593,6 +609,7 @@
 - (void)dealloc
 {
   [envs release];
+  [loopVars release];
   [super dealloc];
 }
 @end
