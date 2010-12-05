@@ -280,6 +280,7 @@ exprseq: /* empty */ { $$ = nil; }
 { $$ = [[SyntaxList alloc] initWithObject:$1]; [$1 release]; }
 | exprseq ';' expr 
 { $$ = $1; [$$ addObject:$3]; [$3 release]; }
+| exprseq error { $$ = $1; }
 ;
 
 //MARK: expr-list
