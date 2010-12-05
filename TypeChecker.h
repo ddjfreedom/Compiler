@@ -8,15 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Expression.h"
-#import "IntermediateExpression.h"
+#import "IMExpression.h"
 
 @interface TypeChecker : NSObject
 {
+  // envs is a stack holding mutiple environments 
+  // the topmost (last in envs) is the current scope
   NSMutableArray *envs;
 }
-//  Initialize the environment
-//  Add predefined types and functions to the environment
-- (IntermediateExpression *)typeCheckProgram:(Expression *)expr;
-- (void)symbolInitialization;
-+ (IntermediateExpression *)typeCheckProgram:(Expression *)expr;
+- (IMExpression *)typeCheckProgram:(Expression *)expr;
++ (IMExpression *)typeCheckProgram:(Expression *)expr;
 @end

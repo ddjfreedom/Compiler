@@ -149,7 +149,7 @@ void printExpression(NSMutableArray *indent, Expression *expr)
       case plus: printf("+\n");break;
       case minus: printf("-\n");break;
       case multiply: printf("*\n");break;
-      case divid: printf("/\n");break;
+      case divide: printf("/\n");break;
       case eq: printf("=\n");break;
       case ne: printf("<>\n");break;
       case lt: printf("<\n");break;

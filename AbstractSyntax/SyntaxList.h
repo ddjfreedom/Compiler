@@ -20,15 +20,16 @@ typedef enum {
   FieldList,
   DeclarationList,
   TypeFields,
-  UnknownType
 } SyntaxListType;
 @interface SyntaxList : Syntax <NSFastEnumeration>
 {
 	NSMutableArray *list;
 }
 @property (readonly) SyntaxListType type;
+@property (readonly) NSUInteger count;
 - (id)initWithObject:(id)anObject;
 - (void)addObject:(id)anObject;
+- (id)objectAtIndex:(NSUInteger)index;
 - (id)lastObject;
 + (id)syntaxListWithObject:(id)anObject;
 @end

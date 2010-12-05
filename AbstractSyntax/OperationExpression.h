@@ -13,7 +13,7 @@ typedef enum {
   plus = 0,
   minus,
   multiply,
-  divid,
+  divide,
   eq,
   ne,
   lt,

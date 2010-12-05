@@ -1,3 +1,4 @@
+testcases/merge.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -389,10 +390,7 @@ Let
                           |Call
                               |merge
                               |SyntaxList
-                                        |Var
-                                        |  |SimpleVar: list1
-                                        |Var
-                                           |SimpleVar: list2
+   testcases/queens.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -640,6 +638,12 @@ Let
                 |try
                 |SyntaxList
                           |Int: 0
+Line 16: Error: Number of parameters mismatch
+Line 17: Error: Number of parameters mismatch
+Line 18: Error: Number of parameters mismatch
+Line 13: Error: Procedure printboard returns a value
+Line 22: Error: Type mismatch. Two clauses should return the same type
+testcases/stringtest.tig
 Line 4: Warning: \r Unrecognized escape sequence
 Line 4: Warning: \f Unrecognized escape sequence
 Line 8: Warning: \565 Unrecognized escape sequence(565 larger than 0xff)
@@ -661,6 +665,7 @@ Sequence
                  |String: string with new line 
 	and tab
                  |String: Unclosed string
+testcases/test1.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -677,6 +682,7 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: arr1
+testcases/test10.tig
 While
     |Sequence
     |       |SyntaxList
@@ -688,6 +694,8 @@ While
              |Int: 5
              |+
              |Int: 6
+Line 2: Error: Shouldn't return a value
+testcases/test11.tig
 For
   |VarDecl
   |      |i
@@ -700,6 +708,8 @@ For
                  |  |SimpleVar: i
                  |-
                  |Int: 1
+Line 2: Error: lower bound type and upper bound type mismatch
+testcases/test12.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -722,10 +732,13 @@ Let
                                  |              |Int: 1
                                  |Sequence
                                          |Empty
+testcases/test13.tig
 Operation
         |Int: 3
         |>
         |String: df
+Line 3: Error: Type mismatch. Expected int
+testcases/test14.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -765,9 +778,13 @@ Let
               |           |SimpleVar: arr
               |Int: 3
               |Int: 4
+Line 12: Error: Type mismatch. Two operands should be the same type
+testcases/test15.tig
 If
  |Int: 20
  |Int: 3
+Line 3: Error: Shouldn't return a value
+testcases/test16.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -785,6 +802,7 @@ Let
   |                           |NameType: a
   |SyntaxList
             |String: 
+testcases/test17.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -808,6 +826,8 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: d
+Line 4: Error: Undefined type treelist
+testcases/test18.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -852,6 +872,8 @@ Let
                 |SyntaxList
                           |Int: 0
                           |String: str2
+Line 5: Error: Undefined function do_nothing2
+testcases/test19.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -892,6 +914,9 @@ Let
                 |SyntaxList
                           |Int: 0
                           |String: str2
+Line 8: Error: Undefined variable: a
+Line 8: Error: Formal parameters and actual parameters type mismatch
+testcases/test2.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -911,6 +936,7 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: arr1
+testcases/test20.tig
 While
     |Operation
     |        |Int: 10
@@ -925,6 +951,9 @@ While
                       |        |Int: 1
                       |Sequence
                               |Empty
+Line 3: Error: Undefined variable: i
+Line 3: Error: Type mismatch. Expected int
+testcases/test21.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -956,6 +985,9 @@ Let
                 |nfactor
                 |SyntaxList
                           |Int: 10
+Line 8: Error: Type mismatch. Expected int
+Line 5: Error: Procedure nfactor returns a value
+testcases/test22.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -982,6 +1014,9 @@ Let
                   |       |SimpleVar: rec1
                   |       |nam
                   |String: asd
+Line 7: Error: Variable doesn't have field nam
+Line 7: Error: Lvalue and rvalue type mismatch
+testcases/test23.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1013,6 +1048,9 @@ Let
                   |       |SimpleVar: rec1
                   |       |id
                   |String: 
+Line 7: Error: Lvalue and rvalue type mismatch
+Line 8: Error: Lvalue and rvalue type mismatch
+testcases/test24.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1023,6 +1061,8 @@ Let
                |SubscriptVar
                            |SimpleVar: d
                            |Int: 3
+Line 5: Error: Variable is not an array.
+testcases/test25.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1033,10 +1073,14 @@ Let
                |FieldVar
                        |SimpleVar: d
                        |f
+Line 5: Error: Variable is not a record
+testcases/test26.tig
 Operation
         |Int: 3
         |+
         |String: var
+Line 3: Error: Type mismatch. Expected int
+testcases/test27.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1055,6 +1099,7 @@ Let
                 |g
                 |SyntaxList
                           |Int: 2
+testcases/test28.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1085,6 +1130,8 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: rec1
+Line 7: Error: Type constraint and initial value differ. Expected rectype1
+testcases/test29.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1104,6 +1151,8 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: arr1
+Line 7: Error: Type constraint and initial value differ. Expected arrtype1
+testcases/test3.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1133,6 +1182,7 @@ Let
             |     |String: Somebody
             |Var
                |SimpleVar: rec1
+testcases/test30.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1154,6 +1204,7 @@ Let
                |SubscriptVar
                            |SimpleVar: arr1
                            |Int: 2
+testcases/test31.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1163,6 +1214,8 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: a
+Line 3: Error: Type constraint and initial value differ. Expected int
+testcases/test32.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1177,6 +1230,8 @@ Let
   |                     |String:  
   |SyntaxList
             |Int: 0
+Line 6: Error: Initial value type and array element type mismatch.
+testcases/test33.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1186,6 +1241,8 @@ Let
   |                      |Empty
   |SyntaxList
             |Int: 0
+Line 3: Error: Undefined record type rectype
+testcases/test34.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1203,6 +1260,8 @@ Let
                 |SyntaxList
                           |String: one
                           |String: two
+Line 5: Error: Formal parameters and actual parameters type mismatch
+testcases/test35.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1219,6 +1278,8 @@ Let
                 |g
                 |SyntaxList
                           |String: one
+Line 5: Error: Number of parameters mismatch
+testcases/test36.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1237,6 +1298,8 @@ Let
                           |Int: 3
                           |String: one
                           |Int: 5
+Line 5: Error: Number of parameters mismatch
+testcases/test37.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1247,6 +1310,7 @@ Let
   |                |String:  
   |SyntaxList
             |Int: 0
+testcases/test38.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1258,6 +1322,8 @@ Let
   |                           |NameType: string
   |SyntaxList
             |Int: 0
+Line 6: Error: Type a is defined in the batch of mutually recursive types
+testcases/test39.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1277,6 +1343,8 @@ Let
   |                                  |SimpleVar: a
   |SyntaxList
             |Int: 0
+Line 6: Error: Function g has been defined in the batch of mutually recursive functions
+testcases/test4.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1309,6 +1377,7 @@ Let
                 |nfactor
                 |SyntaxList
                           |Int: 10
+testcases/test40.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1323,6 +1392,8 @@ Let
                 |g
                 |SyntaxList
                           |Int: 2
+Line 3: Error: Procedure g returns a value
+testcases/test41.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1338,6 +1409,7 @@ Let
                |                           |NameType: string
                |SyntaxList
                          |Int: 0
+testcases/test42.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1477,6 +1549,7 @@ Let
                   |           |       |dates
                   |           |Int: 2
                   |Int: 2323
+testcases/test43.tig
 Let
   |SyntaxList
   |         |VarDecl
@@ -1489,6 +1562,8 @@ Let
                      |  |SimpleVar: a
                      |+
                      |Int: 3
+Line 6: Error: Type mismatch. Expected int
+testcases/test44.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1506,6 +1581,7 @@ Let
             |Assign
                   |SimpleVar: b
                   |Nil
+testcases/test45.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1521,6 +1597,9 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: a
+Line 5: Error: Need type constraint
+Line 7: Error: Undefined variable: a
+testcases/test46.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1545,6 +1624,7 @@ Let
                      |  |SimpleVar: b
                      |<>
                      |Nil
+testcases/test47.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1560,6 +1640,7 @@ Let
   |                           |NameType: string
   |SyntaxList
             |Int: 0
+testcases/test48.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1584,8 +1665,10 @@ Let
   |                                  |SimpleVar: a
   |SyntaxList
             |Int: 0
+testcases/test49.tig
 Line 5: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR
 Empty
+testcases/test5.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1622,6 +1705,7 @@ Let
   |SyntaxList
             |Var
                |SimpleVar: lis
+testcases/test6.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1654,6 +1738,7 @@ Let
                 |SyntaxList
                           |Int: 0
                           |String: str2
+testcases/test7.tig
 Let
   |SyntaxList
   |         |SyntaxList
@@ -1694,6 +1779,7 @@ Let
                 |SyntaxList
                           |Int: 0
                           |String: str2
+testcases/test8.tig
 If
  |Sequence
  |       |SyntaxList
@@ -1703,6 +1789,7 @@ If
  |                          |Int: 20
  |Int: 30
  |Int: 40
+testcases/test9.tig
 If
  |Sequence
  |       |SyntaxList
@@ -1712,3 +1799,4 @@ If
  |                          |Int: 4
  |Int: 13
  |String:  
+Line 3: Error: Type mismatch. Two clauses should return the same type

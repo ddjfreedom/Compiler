@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Symbol : NSObject
+@interface Symbol : NSObject <NSCopying>
 {
 	NSString *string;
 }

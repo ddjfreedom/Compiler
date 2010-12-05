@@ -7,10 +7,15 @@
 //
 
 #import "SemanticNilType.h"
+#import "SemanticRecordType.h"
 
 static SemanticNilType *nilSingleton = nil;
 
 @implementation SemanticNilType
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return nilSingleton == aType || [aType.actualType isMemberOfClass:[SemanticRecordType class]];
+}
 - (id)copyWithZone:(NSZone *)zone
 {
   return self;
@@ -34,7 +39,7 @@ static SemanticNilType *nilSingleton = nil;
 + (void)initialize
 {
   if (self == [SemanticNilType class]) {
-  	nilSingleton = [[SemanticNilType alloc] init];
+  	nilSingleton = [[super allocWithZone:NULL] init];
   }
 }
 + (id)sharedNilType

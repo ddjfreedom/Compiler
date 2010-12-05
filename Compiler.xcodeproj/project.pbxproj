@@ -22,7 +22,7 @@
 		4765CF3C12A782C200A20AD1 /* SemanticEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF3B12A782C200A20AD1 /* SemanticEnvironment.m */; };
 		4765CF5B12A78AD100A20AD1 /* SemanticEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */; };
 		4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */; };
-		477C180F12A891D10045F672 /* IntermediateExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* IntermediateExpression.m */; };
+		477C180F12A891D10045F672 /* IMExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* IMExpression.m */; };
 		477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C185D12A8A9410045F672 /* ErrorMessage.m */; };
 		47D69C4412A345AB00E426E6 /* SingleTypeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C4312A345AB00E426E6 /* SingleTypeField.m */; };
 		47D69C5A12A34B0800E426E6 /* FieldExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C5912A34B0800E426E6 /* FieldExpression.m */; };
@@ -186,8 +186,8 @@
 		4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticEntry.m; path = Semantics/SemanticEntry.m; sourceTree = "<group>"; };
 		4765CF5C12A78AFD00A20AD1 /* SemanticVarEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticVarEntry.h; path = Semantics/SemanticVarEntry.h; sourceTree = "<group>"; };
 		4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticVarEntry.m; path = Semantics/SemanticVarEntry.m; sourceTree = "<group>"; };
-		477C180D12A891D10045F672 /* IntermediateExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntermediateExpression.h; path = Intermediate/IntermediateExpression.h; sourceTree = "<group>"; };
-		477C180E12A891D10045F672 /* IntermediateExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntermediateExpression.m; path = Intermediate/IntermediateExpression.m; sourceTree = "<group>"; };
+		477C180D12A891D10045F672 /* IMExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMExpression.h; path = Intermediate/IMExpression.h; sourceTree = "<group>"; };
+		477C180E12A891D10045F672 /* IMExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMExpression.m; path = Intermediate/IMExpression.m; sourceTree = "<group>"; };
 		477C185C12A8A9410045F672 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
 		477C185D12A8A9410045F672 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
 		477C189712A8B16B0045F672 /* Semantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Semantics.h; path = Semantics/Semantics.h; sourceTree = "<group>"; };
@@ -442,8 +442,8 @@
 		477C17FF12A891800045F672 /* Intermediate */ = {
 			isa = PBXGroup;
 			children = (
-				477C180D12A891D10045F672 /* IntermediateExpression.h */,
-				477C180E12A891D10045F672 /* IntermediateExpression.m */,
+				477C180D12A891D10045F672 /* IMExpression.h */,
+				477C180E12A891D10045F672 /* IMExpression.m */,
 			);
 			name = Intermediate;
 			sourceTree = "<group>";
@@ -707,7 +707,7 @@
 				4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */,
 				4740121112A78C4C005B761F /* SemanticFuncEntry.m in Sources */,
 				4740122A12A79322005B761F /* SemanticNamedType.m in Sources */,
-				477C180F12A891D10045F672 /* IntermediateExpression.m in Sources */,
+				477C180F12A891D10045F672 /* IMExpression.m in Sources */,
 				477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

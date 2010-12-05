@@ -17,4 +17,5 @@
 @property (readonly) Symbol *name;
 @property (retain) SemanticType *type;
 - (id)initWithTypeName:(Symbol *)aName;
++ (id)namedTypeWithTypeName:(Symbol *)aName;
 @end

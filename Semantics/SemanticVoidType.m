@@ -11,6 +11,10 @@
 static SemanticVoidType *voidSingleton = nil;
 
 @implementation SemanticVoidType
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return voidSingleton == aType;
+}
 - (id)copyWithZone:(NSZone *)zone
 {
   return self;
@@ -34,7 +38,7 @@ static SemanticVoidType *voidSingleton = nil;
 + (void)initialize
 {
   if (self == [SemanticVoidType class]) {
-    voidSingleton = [[SemanticVoidType alloc] init];
+    voidSingleton = [[super allocWithZone:NULL] init];
   }
 }
 + (id)sharedVoidType

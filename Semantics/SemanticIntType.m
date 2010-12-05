@@ -11,6 +11,10 @@
 static SemanticIntType *intSingleton = nil;
 
 @implementation SemanticIntType
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return intSingleton == aType;
+}
 - (id)copyWithZone:(NSZone *)zone
 {
   return self;
@@ -34,7 +38,7 @@ static SemanticIntType *intSingleton = nil;
 + (void)initialize
 {
   if (self == [SemanticIntType class]) {
-    intSingleton = [[SemanticIntType alloc] init];
+    intSingleton = [[super allocWithZone:NULL] init];
   }
 }
 + (id)sharedIntType

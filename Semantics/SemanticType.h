@@ -11,5 +11,7 @@
 @interface SemanticType : NSObject
 {
 }
-
+@property (readonly) SemanticType *actualType;
+- (BOOL)isSameType:(SemanticType *)aType;
++ (SemanticType *)type;
 @end

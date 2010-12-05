@@ -7,9 +7,13 @@
 //
 
 #import "SemanticRecordType.h"
-
+#import "SemanticNilType.h"
 
 @implementation SemanticRecordType
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return self == aType || aType == [SemanticNilType sharedNilType];
+}
 - (id)init
 {
   if (self = [super init]) {
@@ -18,14 +22,32 @@
   }
   return self;
 }
-- (void)setSemanticType:(SemanticType *)type forField:(Symbol *)name
+- (NSUInteger)count
 {
-  [fields addObject:name.string];
+  return fields.count;
+}
+- (void)addSemanticType:(SemanticType *)type forField:(Symbol *)name
+{
+  [fields addObject:name];
   [types addObject:type];
 }
 - (SemanticType *)semanticTypeForField:(Symbol *)name
 {
-  return [types objectAtIndex:[fields indexOfObject:name.string]];
+  return [types objectAtIndex:[fields indexOfObject:name]];
+}
+- (SemanticType *)semanticTypeAtIndex:(NSUInteger)index
+{
+  return [types objectAtIndex:index];
+}
+- (Symbol *)fieldAtIndex:(NSUInteger)index
+{
+  return [fields objectAtIndex:index];
+}
+- (BOOL)hasField:(Symbol *)field
+{
+  if ([fields indexOfObject:field] == NSNotFound)
+    return NO;
+  return YES;
 }
 - (void)dealloc
 {

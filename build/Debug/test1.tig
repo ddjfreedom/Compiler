@@ -1,8 +1,0 @@
-/* an array /*type */and an array variable */
-let
-	type  arraytype = array of int
-	var arr1:arraytype := arraytype [10] of 0
-in
-	"a   aaa";
-  arraytype [10][10] := 30
-end

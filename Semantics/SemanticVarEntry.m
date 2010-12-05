@@ -23,4 +23,8 @@
   [type release];
   [super dealloc];
 }
++ (id)varEntryWithSemanticType:(SemanticType *)aType
+{
+  return [[[SemanticVarEntry alloc] initWithSemanticType:aType] autorelease];
+}
 @end

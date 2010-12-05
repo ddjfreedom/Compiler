@@ -20,5 +20,8 @@
 - (void)setSemanticEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol;
 - (SemanticType *)semanticTypeForSymbol:(Symbol *)aSymbol;
 - (SemanticEntry *)semanticEntryForSymbol:(Symbol *)aSymbol;
+- (void)removeSemanticTypeForSymbol:(Symbol *)aSymbol;
+- (void)removeSemanticEntryForSymbol:(Symbol *)aSymbol;
 - (void)addSemanticElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment;
++ (SemanticEnvironment *)environment;
 @end

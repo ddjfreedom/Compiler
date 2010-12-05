@@ -6,6 +6,8 @@
 //  Copyright 2010 SJTU. All rights reserved.
 //
 //  expr: let declaration-list in expr-seq end
+//  In declList, every batch of TypeDecls or FunctionDecls is a SyntaxList
+//  The elements in declList are instances of either VarDecl or SyntaxList 
 
 #import "Expression.h"
 #import "SyntaxList.h"

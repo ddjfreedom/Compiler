@@ -10,5 +10,16 @@
 
 
 @implementation SemanticType
-
+- (SemanticType *)actualType
+{
+  return self;
+}
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return NO;
+}
++ (SemanticType *)type
+{
+  return [[[SemanticType alloc] init] autorelease];
+}
 @end

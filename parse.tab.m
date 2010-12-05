@@ -1623,7 +1623,7 @@ yyreduce:
   case 12:
 #line 106 "parse.y"
     { (yyval) = [[OperationExpression alloc] initWithLeftOperand:(yyvsp[(1) - (3)])
-                                              operation:divid 
+                                              operation:divide 
                                            rightOperand:(yyvsp[(3) - (3)])
                                           andLineNumber:[(yyvsp[(1) - (3)]) lineNumber]];
   [(yyvsp[(1) - (3)]) release];
@@ -2297,6 +2297,6 @@ void yyerror(id *epxr, const char *s, ...)
 {
   va_list ap;
   va_start(ap, s);
-  [ErrorMessage printErrorMessageToFile:stderr lineNumber:yylloc.first_line withFormat:s arguments:ap];
+  [ErrorMessage printErrorMessageLineNumber:yylloc.first_line withFormat:s arguments:ap];
 	va_end(ap);
 }

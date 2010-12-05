@@ -12,6 +12,11 @@
 @implementation SemanticNamedType
 @synthesize name;
 @synthesize type;
+// TODO: isSameType
+- (SemanticType *)actualType
+{
+  return type.actualType;
+}
 - (id)initWithTypeName:(Symbol *)aName
 {
   if (self = [super init]) {
@@ -25,5 +30,9 @@
   [name release];
   [type release];
   [super dealloc];
+}
++ (id)namedTypeWithTypeName:(Symbol *)aName
+{
+  return [[[SemanticNamedType alloc] initWithTypeName:aName] autorelease];
 }
 @end

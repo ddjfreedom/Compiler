@@ -36,6 +36,14 @@
 {
   return [varEnv objectForKey:aSymbol];
 }
+- (void)removeSemanticTypeForSymbol:(Symbol *)aSymbol
+{
+  [typeEnv removeObjectForKey:aSymbol];
+}
+- (void)removeSemanticEntryForSymbol:(Symbol *)aSymbol
+{
+  [typeEnv removeObjectForKey:aSymbol];
+}
 - (void)addSemanticElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment
 {
   [typeEnv addEntriesFromDictionary:otherEnvironment->typeEnv];
@@ -46,5 +54,9 @@
   [typeEnv release];
   [varEnv release];
   [super dealloc];
+}
++ (SemanticEnvironment *)environment
+{
+  return [[[SemanticEnvironment alloc] init] autorelease];
 }
 @end

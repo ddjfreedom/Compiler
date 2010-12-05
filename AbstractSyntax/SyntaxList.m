@@ -21,9 +21,17 @@
   }
   return self;
 }
+- (NSUInteger)count
+{
+  return list.count;
+}
 - (void)addObject:(id)anObject
 {
   [list addObject:anObject];
+}
+- (id)objectAtIndex:(NSUInteger)index
+{
+  return [list objectAtIndex:index];
 }
 - (id)lastObject
 {
@@ -43,11 +51,8 @@
     return FieldList;
   else if ([[list lastObject] isKindOfClass:[SingleTypeField class]])
     return TypeFields;
-  else if ([[list lastObject] isKindOfClass:[Decl class]] ||
-           [[list lastObject] class] == [SyntaxList class])
+  else
     return DeclarationList;
-  else 
-    return UnknownType;
 }
 - (void)dealloc
 {

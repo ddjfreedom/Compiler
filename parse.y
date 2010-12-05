@@ -104,7 +104,7 @@ STRING
 
 | expr '/' expr
 { $$ = [[OperationExpression alloc] initWithLeftOperand:$1
-                                              operation:divid 
+                                              operation:divide 
                                            rightOperand:$3
                                           andLineNumber:[$1 lineNumber]];
   [$1 release];
@@ -457,6 +457,6 @@ void yyerror(id *epxr, const char *s, ...)
 {
   va_list ap;
   va_start(ap, s);
-  [ErrorMessage printErrorMessageToFile:stderr lineNumber:yylloc.first_line withFormat:s arguments:ap];
+  [ErrorMessage printErrorMessageLineNumber:yylloc.first_line withFormat:s arguments:ap];
 	va_end(ap);
 }

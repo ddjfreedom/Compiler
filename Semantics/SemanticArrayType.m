@@ -11,6 +11,10 @@
 
 @implementation SemanticArrayType
 @synthesize type;
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return self == aType;
+}
 - (id)initWithSemanticType:(SemanticType *)aType
 {
   if (self = [super init]) {
@@ -22,5 +26,9 @@
 {
   [type release];
   [super dealloc];
+}
++ (id)arrayTypeWithSemanticType:(SemanticType *)aType
+{
+  return [[[SemanticArrayType alloc] initWithSemanticType:aType] autorelease];
 }
 @end

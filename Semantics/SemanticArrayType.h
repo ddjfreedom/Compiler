@@ -14,4 +14,5 @@
 }
 @property (readonly) SemanticType *type;
 - (id)initWithSemanticType:(SemanticType *)aType;
++ (id)arrayTypeWithSemanticType:(SemanticType *)aType;
 @end

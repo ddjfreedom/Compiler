@@ -10,6 +10,10 @@
 
 static SemanticStringType *stringSingleton = nil;
 @implementation SemanticStringType
+- (BOOL)isSameType:(SemanticType *)aType
+{
+  return stringSingleton == aType;
+}
 - (id)retain
 {
   return self;
@@ -29,7 +33,7 @@ static SemanticStringType *stringSingleton = nil;
 + (void)initialize
 {
   if (self == [SemanticStringType class]) {
-    stringSingleton = [[SemanticStringType alloc] init];
+    stringSingleton = [[super allocWithZone:NULL] init];
   }
 }
 + (id)allocWithZone:(NSZone *)zone
