@@ -6,7 +6,6 @@
 //  Copyright 2010 SJTU. All rights reserved.
 //
 
-
 #import "TypeChecker.h"
 #import "AbstractSyntax.h"
 #import "Semantics.h"
@@ -113,7 +112,7 @@
   if (expr.type.actualType == [SemanticVoidType sharedVoidType])
     return YES;
   [ErrorMessage printErrorMessageLineNumber:lineno
-                                 withFormat:"Error: %s shouldn't return a value", name];
+                                 withFormat:"Error: %s return a value", name];
   return NO;
 }
 - (IMExpression *)typeCheckExpression:(Expression *)expr
@@ -146,7 +145,6 @@
     return [IMExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[BreakExpression class]]) {
-    // TODO: check whether in a loop
     if (!nestedLoopLevel)
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                      withFormat:"Error: Using break in a non-loop expression"];
@@ -205,7 +203,7 @@
     case eq: case ne:
       if (![left.type.actualType isSameType:right.type.actualType])
         [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
-                                       withFormat:"Error: Type mismatch. Two operands should be the same type"];
+                                       withFormat:"Error: Type mismatch. Two operands type differ"];
       break;
     default:
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
@@ -221,7 +219,7 @@
   if ([expr.variable isMemberOfClass:[SimpleVar class]] &&
       [loopVars indexOfObject:((SimpleVar *)expr.variable).name] != NSNotFound)
     [ErrorMessage printErrorMessageLineNumber:expr.variable.lineNumber
-                                   withFormat:"Warning: Loop variable %s is being assigned to",
+                                   withFormat:"Warning: Loop variable %s being assigned to",
      [((SimpleVar *)expr.variable).name cString]];
   if ([right.type.actualType isSameType:[SemanticNilType sharedNilType]] && 
       ![left.type.actualType isMemberOfClass:[SemanticRecordType class]])
@@ -410,13 +408,15 @@
                    forSymbol:varDecl.identifier];
   } else {
     decltype = [self typeCheckType:varDecl.typeIdentifier].actualType;
-    if (!decltype) return nil;
-  	if (![type isSameType:decltype])
+    if (!decltype)
+      [self setSemanticEntry:[SemanticVarEntry varEntry] forSymbol:varDecl.identifier];
+    else if (![type isSameType:decltype])
       [ErrorMessage printErrorMessageLineNumber:varDecl.expr.lineNumber
                                      withFormat:"Error: Type constraint and initial value differ. Expected %s",
        [varDecl.typeIdentifier.name cString]];
-    [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:decltype]
-                 forSymbol:varDecl.identifier];
+    else 
+      [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:decltype]
+      	           forSymbol:varDecl.identifier];
   }
   return nil;
 }
@@ -437,11 +437,13 @@
   	type = [self typeCheckType:typedecl.type];
     [(SemanticNamedType *)[tmpenv semanticTypeForSymbol:typedecl.typeIdentifier] setType:type];
   }
-  for (TypeDecl *typedecl in typesList)
-    if ([(SemanticNamedType *)[tmpenv semanticTypeForSymbol:typedecl.typeIdentifier] isCycle])
+  for (TypeDecl *typedecl in typesList) {
+    type = [tmpenv semanticTypeForSymbol:typedecl.typeIdentifier];
+    if (!((SemanticNamedType *)type).inCycle && [(SemanticNamedType *)type isCycle])
       [ErrorMessage printErrorMessageLineNumber:typedecl.lineNumber
-                                     withFormat:"Error: Type %s is in a type definition cycle",
+                                     withFormat:"Error: Type definition cycle detected",
        [typedecl.typeIdentifier cString]];
+  }
   [envs removeLastObject];
   [[envs lastObject] addSemanticElementsFromEnvironment:tmpenv];
   [tmpenv release];
