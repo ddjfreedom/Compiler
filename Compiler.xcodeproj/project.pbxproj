@@ -22,7 +22,7 @@
 		4765CF3C12A782C200A20AD1 /* SemanticEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF3B12A782C200A20AD1 /* SemanticEnvironment.m */; };
 		4765CF5B12A78AD100A20AD1 /* SemanticEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */; };
 		4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */; };
-		477C180F12A891D10045F672 /* IMExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* IMExpression.m */; };
+		477C180F12A891D10045F672 /* IRExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* IRExpression.m */; };
 		477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C185D12A8A9410045F672 /* ErrorMessage.m */; };
 		47D69C4412A345AB00E426E6 /* SingleTypeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C4312A345AB00E426E6 /* SingleTypeField.m */; };
 		47D69C5A12A34B0800E426E6 /* FieldExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C5912A34B0800E426E6 /* FieldExpression.m */; };
@@ -113,57 +113,6 @@
 		475B097F12A62DBE004990DA /* stringtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stringtest.c; sourceTree = "<group>"; };
 		4763469612A0A15C0021736A /* lexical.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = lexical.l; sourceTree = "<group>"; };
 		4763469712A0A15C0021736A /* parse.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = parse.y; sourceTree = "<group>"; };
-		4763475812A0F74F0021736A /* merge.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = merge.tig; sourceTree = "<group>"; };
-		4763475912A0F74F0021736A /* queens.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queens.tig; sourceTree = "<group>"; };
-		4763475A12A0F74F0021736A /* test1.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.tig; sourceTree = "<group>"; };
-		4763475B12A0F74F0021736A /* test10.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test10.tig; sourceTree = "<group>"; };
-		4763475C12A0F74F0021736A /* test11.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test11.tig; sourceTree = "<group>"; };
-		4763475D12A0F74F0021736A /* test12.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test12.tig; sourceTree = "<group>"; };
-		4763475E12A0F74F0021736A /* test13.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test13.tig; sourceTree = "<group>"; };
-		4763475F12A0F74F0021736A /* test14.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test14.tig; sourceTree = "<group>"; };
-		4763476012A0F74F0021736A /* test15.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test15.tig; sourceTree = "<group>"; };
-		4763476112A0F74F0021736A /* test16.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test16.tig; sourceTree = "<group>"; };
-		4763476212A0F74F0021736A /* test17.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test17.tig; sourceTree = "<group>"; };
-		4763476312A0F74F0021736A /* test18.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test18.tig; sourceTree = "<group>"; };
-		4763476412A0F74F0021736A /* test19.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test19.tig; sourceTree = "<group>"; };
-		4763476512A0F74F0021736A /* test2.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.tig; sourceTree = "<group>"; };
-		4763476612A0F74F0021736A /* test20.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test20.tig; sourceTree = "<group>"; };
-		4763476712A0F74F0021736A /* test21.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test21.tig; sourceTree = "<group>"; };
-		4763476812A0F74F0021736A /* test22.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test22.tig; sourceTree = "<group>"; };
-		4763476912A0F74F0021736A /* test23.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test23.tig; sourceTree = "<group>"; };
-		4763476A12A0F74F0021736A /* test24.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test24.tig; sourceTree = "<group>"; };
-		4763476B12A0F74F0021736A /* test25.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test25.tig; sourceTree = "<group>"; };
-		4763476C12A0F74F0021736A /* test26.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test26.tig; sourceTree = "<group>"; };
-		4763476D12A0F74F0021736A /* test27.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test27.tig; sourceTree = "<group>"; };
-		4763476E12A0F74F0021736A /* test28.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test28.tig; sourceTree = "<group>"; };
-		4763476F12A0F74F0021736A /* test29.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test29.tig; sourceTree = "<group>"; };
-		4763477012A0F74F0021736A /* test3.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.tig; sourceTree = "<group>"; };
-		4763477112A0F74F0021736A /* test30.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test30.tig; sourceTree = "<group>"; };
-		4763477212A0F74F0021736A /* test31.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test31.tig; sourceTree = "<group>"; };
-		4763477312A0F74F0021736A /* test32.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test32.tig; sourceTree = "<group>"; };
-		4763477412A0F74F0021736A /* test33.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test33.tig; sourceTree = "<group>"; };
-		4763477512A0F74F0021736A /* test34.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test34.tig; sourceTree = "<group>"; };
-		4763477612A0F74F0021736A /* test35.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test35.tig; sourceTree = "<group>"; };
-		4763477712A0F74F0021736A /* test36.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test36.tig; sourceTree = "<group>"; };
-		4763477812A0F74F0021736A /* test37.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test37.tig; sourceTree = "<group>"; };
-		4763477912A0F74F0021736A /* test38.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test38.tig; sourceTree = "<group>"; };
-		4763477A12A0F74F0021736A /* test39.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test39.tig; sourceTree = "<group>"; };
-		4763477B12A0F74F0021736A /* test4.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test4.tig; sourceTree = "<group>"; };
-		4763477C12A0F74F0021736A /* test40.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test40.tig; sourceTree = "<group>"; };
-		4763477D12A0F74F0021736A /* test41.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test41.tig; sourceTree = "<group>"; };
-		4763477E12A0F74F0021736A /* test42.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test42.tig; sourceTree = "<group>"; };
-		4763477F12A0F74F0021736A /* test43.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test43.tig; sourceTree = "<group>"; };
-		4763478012A0F74F0021736A /* test44.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test44.tig; sourceTree = "<group>"; };
-		4763478112A0F74F0021736A /* test45.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test45.tig; sourceTree = "<group>"; };
-		4763478212A0F74F0021736A /* test46.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test46.tig; sourceTree = "<group>"; };
-		4763478312A0F74F0021736A /* test47.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test47.tig; sourceTree = "<group>"; };
-		4763478412A0F74F0021736A /* test48.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test48.tig; sourceTree = "<group>"; };
-		4763478512A0F74F0021736A /* test49.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test49.tig; sourceTree = "<group>"; };
-		4763478612A0F74F0021736A /* test5.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test5.tig; sourceTree = "<group>"; };
-		4763478712A0F74F0021736A /* test6.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test6.tig; sourceTree = "<group>"; };
-		4763478812A0F74F0021736A /* test7.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test7.tig; sourceTree = "<group>"; };
-		4763478912A0F74F0021736A /* test8.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test8.tig; sourceTree = "<group>"; };
-		4763478A12A0F74F0021736A /* test9.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test9.tig; sourceTree = "<group>"; };
 		4765CEFE12A76EB500A20AD1 /* SemanticType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticType.h; path = Semantics/SemanticType.h; sourceTree = "<group>"; };
 		4765CEFF12A76EB500A20AD1 /* SemanticType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticType.m; path = Semantics/SemanticType.m; sourceTree = "<group>"; };
 		4765CF0512A76F6F00A20AD1 /* SemanticIntType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticIntType.h; path = Semantics/SemanticIntType.h; sourceTree = "<group>"; };
@@ -186,11 +135,65 @@
 		4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticEntry.m; path = Semantics/SemanticEntry.m; sourceTree = "<group>"; };
 		4765CF5C12A78AFD00A20AD1 /* SemanticVarEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticVarEntry.h; path = Semantics/SemanticVarEntry.h; sourceTree = "<group>"; };
 		4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticVarEntry.m; path = Semantics/SemanticVarEntry.m; sourceTree = "<group>"; };
-		477C180D12A891D10045F672 /* IMExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMExpression.h; path = Intermediate/IMExpression.h; sourceTree = "<group>"; };
-		477C180E12A891D10045F672 /* IMExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMExpression.m; path = Intermediate/IMExpression.m; sourceTree = "<group>"; };
+		477C180D12A891D10045F672 /* IRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRExpression.h; path = Intermediate/IRExpression.h; sourceTree = "<group>"; };
+		477C180E12A891D10045F672 /* IRExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRExpression.m; path = Intermediate/IRExpression.m; sourceTree = "<group>"; };
 		477C185C12A8A9410045F672 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
 		477C185D12A8A9410045F672 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
 		477C189712A8B16B0045F672 /* Semantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Semantics.h; path = Semantics/Semantics.h; sourceTree = "<group>"; };
+		47A30D2D12AB8D5500721FAD /* decl.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = decl.tig; sourceTree = "<group>"; };
+		47A30D2E12AB8D5500721FAD /* for.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = for.tig; sourceTree = "<group>"; };
+		47A30D2F12AB8D5500721FAD /* merge.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = merge.tig; sourceTree = "<group>"; };
+		47A30D3012AB8D5500721FAD /* queens.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queens.tig; sourceTree = "<group>"; };
+		47A30D3112AB8D5500721FAD /* stringtest.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stringtest.tig; sourceTree = "<group>"; };
+		47A30D3212AB8D5500721FAD /* test1.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.tig; sourceTree = "<group>"; };
+		47A30D3312AB8D5500721FAD /* test10.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test10.tig; sourceTree = "<group>"; };
+		47A30D3412AB8D5500721FAD /* test11.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test11.tig; sourceTree = "<group>"; };
+		47A30D3512AB8D5500721FAD /* test12.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test12.tig; sourceTree = "<group>"; };
+		47A30D3612AB8D5500721FAD /* test13.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test13.tig; sourceTree = "<group>"; };
+		47A30D3712AB8D5500721FAD /* test14.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test14.tig; sourceTree = "<group>"; };
+		47A30D3812AB8D5500721FAD /* test15.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test15.tig; sourceTree = "<group>"; };
+		47A30D3912AB8D5500721FAD /* test16.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test16.tig; sourceTree = "<group>"; };
+		47A30D3A12AB8D5500721FAD /* test17.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test17.tig; sourceTree = "<group>"; };
+		47A30D3B12AB8D5500721FAD /* test18.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test18.tig; sourceTree = "<group>"; };
+		47A30D3C12AB8D5500721FAD /* test19.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test19.tig; sourceTree = "<group>"; };
+		47A30D3D12AB8D5500721FAD /* test2.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.tig; sourceTree = "<group>"; };
+		47A30D3E12AB8D5500721FAD /* test20.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test20.tig; sourceTree = "<group>"; };
+		47A30D3F12AB8D5500721FAD /* test21.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test21.tig; sourceTree = "<group>"; };
+		47A30D4012AB8D5500721FAD /* test22.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test22.tig; sourceTree = "<group>"; };
+		47A30D4112AB8D5500721FAD /* test23.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test23.tig; sourceTree = "<group>"; };
+		47A30D4212AB8D5500721FAD /* test24.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test24.tig; sourceTree = "<group>"; };
+		47A30D4312AB8D5500721FAD /* test25.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test25.tig; sourceTree = "<group>"; };
+		47A30D4412AB8D5500721FAD /* test26.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test26.tig; sourceTree = "<group>"; };
+		47A30D4512AB8D5500721FAD /* test27.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test27.tig; sourceTree = "<group>"; };
+		47A30D4612AB8D5500721FAD /* test28.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test28.tig; sourceTree = "<group>"; };
+		47A30D4712AB8D5500721FAD /* test29.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test29.tig; sourceTree = "<group>"; };
+		47A30D4812AB8D5500721FAD /* test3.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.tig; sourceTree = "<group>"; };
+		47A30D4912AB8D5500721FAD /* test30.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test30.tig; sourceTree = "<group>"; };
+		47A30D4A12AB8D5500721FAD /* test31.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test31.tig; sourceTree = "<group>"; };
+		47A30D4B12AB8D5500721FAD /* test32.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test32.tig; sourceTree = "<group>"; };
+		47A30D4C12AB8D5500721FAD /* test33.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test33.tig; sourceTree = "<group>"; };
+		47A30D4D12AB8D5500721FAD /* test34.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test34.tig; sourceTree = "<group>"; };
+		47A30D4E12AB8D5500721FAD /* test35.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test35.tig; sourceTree = "<group>"; };
+		47A30D4F12AB8D5500721FAD /* test36.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test36.tig; sourceTree = "<group>"; };
+		47A30D5012AB8D5500721FAD /* test37.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test37.tig; sourceTree = "<group>"; };
+		47A30D5112AB8D5500721FAD /* test38.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test38.tig; sourceTree = "<group>"; };
+		47A30D5212AB8D5500721FAD /* test39.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test39.tig; sourceTree = "<group>"; };
+		47A30D5312AB8D5500721FAD /* test4.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test4.tig; sourceTree = "<group>"; };
+		47A30D5412AB8D5500721FAD /* test40.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test40.tig; sourceTree = "<group>"; };
+		47A30D5512AB8D5500721FAD /* test41.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test41.tig; sourceTree = "<group>"; };
+		47A30D5612AB8D5500721FAD /* test42.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test42.tig; sourceTree = "<group>"; };
+		47A30D5712AB8D5500721FAD /* test43.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test43.tig; sourceTree = "<group>"; };
+		47A30D5812AB8D5500721FAD /* test44.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test44.tig; sourceTree = "<group>"; };
+		47A30D5912AB8D5500721FAD /* test45.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test45.tig; sourceTree = "<group>"; };
+		47A30D5A12AB8D5500721FAD /* test46.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test46.tig; sourceTree = "<group>"; };
+		47A30D5B12AB8D5500721FAD /* test47.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test47.tig; sourceTree = "<group>"; };
+		47A30D5C12AB8D5500721FAD /* test48.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test48.tig; sourceTree = "<group>"; };
+		47A30D5D12AB8D5500721FAD /* test49.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test49.tig; sourceTree = "<group>"; };
+		47A30D5E12AB8D5500721FAD /* test5.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test5.tig; sourceTree = "<group>"; };
+		47A30D5F12AB8D5500721FAD /* test6.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test6.tig; sourceTree = "<group>"; };
+		47A30D6012AB8D5500721FAD /* test7.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test7.tig; sourceTree = "<group>"; };
+		47A30D6112AB8D5500721FAD /* test8.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test8.tig; sourceTree = "<group>"; };
+		47A30D6212AB8D5500721FAD /* test9.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test9.tig; sourceTree = "<group>"; };
 		47D69C4212A345AB00E426E6 /* SingleTypeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleTypeField.h; path = AbstractSyntax/SingleTypeField.h; sourceTree = "<group>"; };
 		47D69C4312A345AB00E426E6 /* SingleTypeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleTypeField.m; path = AbstractSyntax/SingleTypeField.m; sourceTree = "<group>"; };
 		47D69C5812A34B0800E426E6 /* FieldExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FieldExpression.h; path = AbstractSyntax/FieldExpression.h; sourceTree = "<group>"; };
@@ -341,68 +344,10 @@
 			name = Test;
 			sourceTree = "<group>";
 		};
-		4763475712A0F74F0021736A /* testcases */ = {
-			isa = PBXGroup;
-			children = (
-				4763475812A0F74F0021736A /* merge.tig */,
-				4763475912A0F74F0021736A /* queens.tig */,
-				4763475A12A0F74F0021736A /* test1.tig */,
-				4763475B12A0F74F0021736A /* test10.tig */,
-				4763475C12A0F74F0021736A /* test11.tig */,
-				4763475D12A0F74F0021736A /* test12.tig */,
-				4763475E12A0F74F0021736A /* test13.tig */,
-				4763475F12A0F74F0021736A /* test14.tig */,
-				4763476012A0F74F0021736A /* test15.tig */,
-				4763476112A0F74F0021736A /* test16.tig */,
-				4763476212A0F74F0021736A /* test17.tig */,
-				4763476312A0F74F0021736A /* test18.tig */,
-				4763476412A0F74F0021736A /* test19.tig */,
-				4763476512A0F74F0021736A /* test2.tig */,
-				4763476612A0F74F0021736A /* test20.tig */,
-				4763476712A0F74F0021736A /* test21.tig */,
-				4763476812A0F74F0021736A /* test22.tig */,
-				4763476912A0F74F0021736A /* test23.tig */,
-				4763476A12A0F74F0021736A /* test24.tig */,
-				4763476B12A0F74F0021736A /* test25.tig */,
-				4763476C12A0F74F0021736A /* test26.tig */,
-				4763476D12A0F74F0021736A /* test27.tig */,
-				4763476E12A0F74F0021736A /* test28.tig */,
-				4763476F12A0F74F0021736A /* test29.tig */,
-				4763477012A0F74F0021736A /* test3.tig */,
-				4763477112A0F74F0021736A /* test30.tig */,
-				4763477212A0F74F0021736A /* test31.tig */,
-				4763477312A0F74F0021736A /* test32.tig */,
-				4763477412A0F74F0021736A /* test33.tig */,
-				4763477512A0F74F0021736A /* test34.tig */,
-				4763477612A0F74F0021736A /* test35.tig */,
-				4763477712A0F74F0021736A /* test36.tig */,
-				4763477812A0F74F0021736A /* test37.tig */,
-				4763477912A0F74F0021736A /* test38.tig */,
-				4763477A12A0F74F0021736A /* test39.tig */,
-				4763477B12A0F74F0021736A /* test4.tig */,
-				4763477C12A0F74F0021736A /* test40.tig */,
-				4763477D12A0F74F0021736A /* test41.tig */,
-				4763477E12A0F74F0021736A /* test42.tig */,
-				4763477F12A0F74F0021736A /* test43.tig */,
-				4763478012A0F74F0021736A /* test44.tig */,
-				4763478112A0F74F0021736A /* test45.tig */,
-				4763478212A0F74F0021736A /* test46.tig */,
-				4763478312A0F74F0021736A /* test47.tig */,
-				4763478412A0F74F0021736A /* test48.tig */,
-				4763478512A0F74F0021736A /* test49.tig */,
-				4763478612A0F74F0021736A /* test5.tig */,
-				4763478712A0F74F0021736A /* test6.tig */,
-				4763478812A0F74F0021736A /* test7.tig */,
-				4763478912A0F74F0021736A /* test8.tig */,
-				4763478A12A0F74F0021736A /* test9.tig */,
-			);
-			path = testcases;
-			sourceTree = "<group>";
-		};
 		4763478B12A0F7580021736A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				4763475712A0F74F0021736A /* testcases */,
+				47A30D2C12AB8D5500721FAD /* testcases */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -442,10 +387,71 @@
 		477C17FF12A891800045F672 /* Intermediate */ = {
 			isa = PBXGroup;
 			children = (
-				477C180D12A891D10045F672 /* IMExpression.h */,
-				477C180E12A891D10045F672 /* IMExpression.m */,
+				477C180D12A891D10045F672 /* IRExpression.h */,
+				477C180E12A891D10045F672 /* IRExpression.m */,
 			);
 			name = Intermediate;
+			sourceTree = "<group>";
+		};
+		47A30D2C12AB8D5500721FAD /* testcases */ = {
+			isa = PBXGroup;
+			children = (
+				47A30D2D12AB8D5500721FAD /* decl.tig */,
+				47A30D2E12AB8D5500721FAD /* for.tig */,
+				47A30D2F12AB8D5500721FAD /* merge.tig */,
+				47A30D3012AB8D5500721FAD /* queens.tig */,
+				47A30D3112AB8D5500721FAD /* stringtest.tig */,
+				47A30D3212AB8D5500721FAD /* test1.tig */,
+				47A30D3312AB8D5500721FAD /* test10.tig */,
+				47A30D3412AB8D5500721FAD /* test11.tig */,
+				47A30D3512AB8D5500721FAD /* test12.tig */,
+				47A30D3612AB8D5500721FAD /* test13.tig */,
+				47A30D3712AB8D5500721FAD /* test14.tig */,
+				47A30D3812AB8D5500721FAD /* test15.tig */,
+				47A30D3912AB8D5500721FAD /* test16.tig */,
+				47A30D3A12AB8D5500721FAD /* test17.tig */,
+				47A30D3B12AB8D5500721FAD /* test18.tig */,
+				47A30D3C12AB8D5500721FAD /* test19.tig */,
+				47A30D3D12AB8D5500721FAD /* test2.tig */,
+				47A30D3E12AB8D5500721FAD /* test20.tig */,
+				47A30D3F12AB8D5500721FAD /* test21.tig */,
+				47A30D4012AB8D5500721FAD /* test22.tig */,
+				47A30D4112AB8D5500721FAD /* test23.tig */,
+				47A30D4212AB8D5500721FAD /* test24.tig */,
+				47A30D4312AB8D5500721FAD /* test25.tig */,
+				47A30D4412AB8D5500721FAD /* test26.tig */,
+				47A30D4512AB8D5500721FAD /* test27.tig */,
+				47A30D4612AB8D5500721FAD /* test28.tig */,
+				47A30D4712AB8D5500721FAD /* test29.tig */,
+				47A30D4812AB8D5500721FAD /* test3.tig */,
+				47A30D4912AB8D5500721FAD /* test30.tig */,
+				47A30D4A12AB8D5500721FAD /* test31.tig */,
+				47A30D4B12AB8D5500721FAD /* test32.tig */,
+				47A30D4C12AB8D5500721FAD /* test33.tig */,
+				47A30D4D12AB8D5500721FAD /* test34.tig */,
+				47A30D4E12AB8D5500721FAD /* test35.tig */,
+				47A30D4F12AB8D5500721FAD /* test36.tig */,
+				47A30D5012AB8D5500721FAD /* test37.tig */,
+				47A30D5112AB8D5500721FAD /* test38.tig */,
+				47A30D5212AB8D5500721FAD /* test39.tig */,
+				47A30D5312AB8D5500721FAD /* test4.tig */,
+				47A30D5412AB8D5500721FAD /* test40.tig */,
+				47A30D5512AB8D5500721FAD /* test41.tig */,
+				47A30D5612AB8D5500721FAD /* test42.tig */,
+				47A30D5712AB8D5500721FAD /* test43.tig */,
+				47A30D5812AB8D5500721FAD /* test44.tig */,
+				47A30D5912AB8D5500721FAD /* test45.tig */,
+				47A30D5A12AB8D5500721FAD /* test46.tig */,
+				47A30D5B12AB8D5500721FAD /* test47.tig */,
+				47A30D5C12AB8D5500721FAD /* test48.tig */,
+				47A30D5D12AB8D5500721FAD /* test49.tig */,
+				47A30D5E12AB8D5500721FAD /* test5.tig */,
+				47A30D5F12AB8D5500721FAD /* test6.tig */,
+				47A30D6012AB8D5500721FAD /* test7.tig */,
+				47A30D6112AB8D5500721FAD /* test8.tig */,
+				47A30D6212AB8D5500721FAD /* test9.tig */,
+			);
+			path = testcases;
 			sourceTree = "<group>";
 		};
 		47D7D9BE12A243ED005DE04C /* AbstractSyntax */ = {
@@ -707,7 +713,7 @@
 				4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */,
 				4740121112A78C4C005B761F /* SemanticFuncEntry.m in Sources */,
 				4740122A12A79322005B761F /* SemanticNamedType.m in Sources */,
-				477C180F12A891D10045F672 /* IMExpression.m in Sources */,
+				477C180F12A891D10045F672 /* IRExpression.m in Sources */,
 				477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

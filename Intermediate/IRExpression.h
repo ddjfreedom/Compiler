@@ -8,7 +8,7 @@
 
 #import "SemanticType.h"
 
-@interface IMExpression : NSObject 
+@interface IRExpression : NSObject 
 {
 	SemanticType *type;
 }

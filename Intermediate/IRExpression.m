@@ -6,10 +6,10 @@
 //  Copyright 2010 SJTU. All rights reserved.
 //
 
-#import "IMExpression.h"
+#import "IRExpression.h"
 
 
-@implementation IMExpression
+@implementation IRExpression
 @synthesize type;
 - (id)initWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType
 {
@@ -25,7 +25,7 @@
 }
 + (id)IMExpressionWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType
 {
-  return [[[IMExpression alloc] initWithTranslatedExpression:anExpr 
+  return [[[IRExpression alloc] initWithTranslatedExpression:anExpr 
                                              andSemanticType:aType] autorelease];
 }
 @end

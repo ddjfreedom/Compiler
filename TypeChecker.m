@@ -16,21 +16,21 @@
 - (void)symbolInitialization;
 - (SemanticEntry *)semanticEntryForSymbol:(Symbol *)aSymbol;
 - (SemanticType *)semanticTypeForSymbol:(Symbol *)aSymbol;
-// The following four methods operate on the current environment (last in envs)
+// The following two methods operate on the current environment (last in envs)
 - (void)setSemanticEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol;
 - (void)setSemanticType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol;
-- (BOOL)isIntType:(IMExpression *)expr lineNumber:(int)lineno;
-- (BOOL)isStringType:(IMExpression *)expr lineNumber:(int)lineno;
-- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name;
-- (IMExpression *)typeCheckExpression:(Expression *)expr;
-- (IMExpression *)typeCheckOperationExpression:(OperationExpression *)expr;
-- (IMExpression *)typeCheckAssignExpression:(AssignExpression *)expr;
-- (IMExpression *)typeCheckIfExpression:(IfExpression *)expr;
-- (IMExpression *)typeCheckCallExpression:(CallExpression *)expr;
-- (IMExpression *)typeCheckRecordExpression:(RecordExpression *)expr;
-- (IMExpression *)typeCheckLetExpression:(LetExpression *)expr;
-- (IMExpression *)typeCheckForExpression:(ForExpression *)expr;
-- (IMExpression *)typeCheckVar:(Var *)var;
+- (BOOL)isIntType:(IRExpression *)expr lineNumber:(int)lineno;
+- (BOOL)isStringType:(IRExpression *)expr lineNumber:(int)lineno;
+- (BOOL)isVoidType:(IRExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name;
+- (IRExpression *)typeCheckExpression:(Expression *)expr;
+- (IRExpression *)typeCheckOperationExpression:(OperationExpression *)expr;
+- (IRExpression *)typeCheckAssignExpression:(AssignExpression *)expr;
+- (IRExpression *)typeCheckIfExpression:(IfExpression *)expr;
+- (IRExpression *)typeCheckCallExpression:(CallExpression *)expr;
+- (IRExpression *)typeCheckRecordExpression:(RecordExpression *)expr;
+- (IRExpression *)typeCheckLetExpression:(LetExpression *)expr;
+- (IRExpression *)typeCheckForExpression:(ForExpression *)expr;
+- (IRExpression *)typeCheckVar:(Var *)var;
 - (id)typeCheckVarDecl:(VarDecl *)varDecl;
 - (id)typeCheckTypeDecl:(SyntaxList *)typesList;
 - (id)typeCheckFuncDecl:(SyntaxList *)funcsList;
@@ -39,7 +39,7 @@
 @end
 
 @implementation TypeChecker
-+ (IMExpression *)typeCheckProgram:(Expression *)expr
++ (IRExpression *)typeCheckProgram:(Expression *)expr
 {
   TypeChecker *checker = [[[TypeChecker alloc] init] autorelease];
   return [checker typeCheckProgram:expr];
@@ -53,7 +53,7 @@
   }
   return self;
 }
-- (IMExpression *)typeCheckProgram:(Expression *)expr
+- (IRExpression *)typeCheckProgram:(Expression *)expr
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   [self symbolInitialization];
@@ -91,7 +91,7 @@
 {
   [[envs lastObject] setSemanticType:aType forSymbol:aSymbol];
 }
-- (BOOL)isIntType:(IMExpression *)expr lineNumber:(int)lineno
+- (BOOL)isIntType:(IRExpression *)expr lineNumber:(int)lineno
 {
   if (expr.type.actualType == [SemanticIntType sharedIntType])
     return YES;
@@ -99,7 +99,7 @@
                                  withFormat:"Error: Type mismatch. Expected int"];
   return NO;
 }
-- (BOOL)isStringType:(IMExpression *)expr lineNumber:(int)lineno
+- (BOOL)isStringType:(IRExpression *)expr lineNumber:(int)lineno
 {
   if (expr.type.actualType == [SemanticStringType sharedStringType])
     return YES;
@@ -107,7 +107,7 @@
                                  withFormat:"Error: Type mismatch. Expected string"];
   return NO;
 }
-- (BOOL)isVoidType:(IMExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name
+- (BOOL)isVoidType:(IRExpression *)expr lineNumber:(int)lineno expressionName:(const char *)name
 {
   if (expr.type.actualType == [SemanticVoidType sharedVoidType])
     return YES;
@@ -115,16 +115,16 @@
                                  withFormat:"Error: %s return a value", name];
   return NO;
 }
-- (IMExpression *)typeCheckExpression:(Expression *)expr
+- (IRExpression *)typeCheckExpression:(Expression *)expr
 {
   if ([expr isMemberOfClass:[IntExpression class]])
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticIntType sharedIntType]];
   else if ([expr isMemberOfClass:[StringExpression class]])
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticStringType sharedStringType]];
   else if ([expr isMemberOfClass:[NilExpression class]])
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticNilType sharedNilType]];
   else if ([expr isMemberOfClass:[OperationExpression class]])
   	return [self typeCheckOperationExpression:(OperationExpression *)expr];  
@@ -142,13 +142,13 @@
           lineNumber:[(WhileExpression *)expr body].lineNumber 
       expressionName:"Body of while expression"];
     nestedLoopLevel--;
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[BreakExpression class]]) {
     if (!nestedLoopLevel)
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
-                                     withFormat:"Error: Using break in a non-loop expression"];
-  	return [IMExpression IMExpressionWithTranslatedExpression:nil
+                                     withFormat:"Error: break not in a loop"];
+  	return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[CallExpression class]])
   	return [self typeCheckCallExpression:(CallExpression *)expr];
@@ -174,19 +174,19 @@
           [(SemanticArrayType *)type.actualType type].actualType])
         [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                        withFormat:"Error: Initial value type and array element type mismatch."];
-      return [IMExpression IMExpressionWithTranslatedExpression:nil
+      return [IRExpression IMExpressionWithTranslatedExpression:nil
                                                 andSemanticType:type];
     } else 
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                      withFormat:"Error: Undefined array type"];
   }
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];
 }
-- (IMExpression *)typeCheckOperationExpression:(OperationExpression *)expr
+- (IRExpression *)typeCheckOperationExpression:(OperationExpression *)expr
 {
-  IMExpression *left = [self typeCheckExpression:[expr leftOperand]];
-  IMExpression *right = [self typeCheckExpression:[expr rightOperand]];
+  IRExpression *left = [self typeCheckExpression:[expr leftOperand]];
+  IRExpression *right = [self typeCheckExpression:[expr rightOperand]];
   switch ([expr operation]) {
     case plus: case minus: case multiply: case divide:
       [self isIntType:left lineNumber:expr.leftOperand.lineNumber];
@@ -209,13 +209,13 @@
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                      withFormat:"Error: Unknown operator"];
   }
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticIntType sharedIntType]];
 }
-- (IMExpression *)typeCheckAssignExpression:(AssignExpression *)expr
+- (IRExpression *)typeCheckAssignExpression:(AssignExpression *)expr
 {
-  IMExpression *left = [self typeCheckVar:[expr variable]];
-  IMExpression *right = [self typeCheckExpression:[expr expression]];
+  IRExpression *left = [self typeCheckVar:[expr variable]];
+  IRExpression *right = [self typeCheckExpression:[expr expression]];
   if ([expr.variable isMemberOfClass:[SimpleVar class]] &&
       [loopVars indexOfObject:((SimpleVar *)expr.variable).name] != NSNotFound)
     [ErrorMessage printErrorMessageLineNumber:expr.variable.lineNumber
@@ -228,30 +228,30 @@
   else if (![left.type.actualType isSameType:right.type.actualType])
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                    withFormat:"Error: Lvalue and rvalue type mismatch"];
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];
 }
-- (IMExpression *)typeCheckIfExpression:(IfExpression *)expr
+- (IRExpression *)typeCheckIfExpression:(IfExpression *)expr
 {
   [self isIntType:[self typeCheckExpression:expr.test] 
        lineNumber:expr.test.lineNumber];
-  IMExpression *thenClause = [self typeCheckExpression:[expr thenClause]];
+  IRExpression *thenClause = [self typeCheckExpression:[expr thenClause]];
   if ([expr elseClause]) {
-    IMExpression *elseClause = [self typeCheckExpression:expr.elseClause];
+    IRExpression *elseClause = [self typeCheckExpression:expr.elseClause];
     if (![thenClause.type.actualType isSameType:elseClause.type.actualType])
       [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                      withFormat:"Error: Type mismatch. Types of then-else differ"];
     else 
-      return [IMExpression IMExpressionWithTranslatedExpression:nil
+      return [IRExpression IMExpressionWithTranslatedExpression:nil
                                                 andSemanticType:thenClause.type];
   } else
     [self isVoidType:thenClause 
           lineNumber:expr.thenClause.lineNumber 
-      expressionName:"Then clause"];
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+      expressionName:"If-then"];
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];  
 }
-- (IMExpression *)typeCheckCallExpression:(CallExpression *)expr
+- (IRExpression *)typeCheckCallExpression:(CallExpression *)expr
 {
   SemanticEntry *entry = [self semanticEntryForSymbol:expr.functionName];
   if ([entry isMemberOfClass:[SemanticFuncEntry class]]) {
@@ -271,15 +271,15 @@
     	  }
     	}
     }
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:[(SemanticFuncEntry *)entry returnType].actualType];
   } else
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                    withFormat:"Error: Undefined function %s", [expr.functionName cString]];
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];
 }
-- (IMExpression *)typeCheckRecordExpression:(RecordExpression *)expr
+- (IRExpression *)typeCheckRecordExpression:(RecordExpression *)expr
 {
   SemanticType *type = [self semanticTypeForSymbol:expr.typeIdentifier];
   if ([type.actualType isMemberOfClass:[SemanticRecordType class]]) {
@@ -301,18 +301,18 @@
         break;
       }
     }
-    return [IMExpression IMExpressionWithTranslatedExpression:nil
+    return [IRExpression IMExpressionWithTranslatedExpression:nil
                                               andSemanticType:type.actualType];
   } else
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                    withFormat:"Error: Undefined record type %s", [expr.typeIdentifier cString]];
   return nil;
 }
-- (IMExpression *)typeCheckForExpression:(ForExpression *)expr
+- (IRExpression *)typeCheckForExpression:(ForExpression *)expr
 {
   SemanticType *lowertype, *uppertype;
   VarDecl *vardecl = expr.varDecl;
-  IMExpression *result;
+  IRExpression *result;
   lowertype = [self typeCheckExpression:vardecl.expr].type.actualType;
   uppertype = [self typeCheckExpression:expr.end].type.actualType;
   if ([lowertype isSameType:uppertype]) {
@@ -329,13 +329,13 @@
   } else 
     [ErrorMessage printErrorMessageLineNumber:expr.lineNumber
                                    withFormat:"Error: lower bound type and upper bound type mismatch"];
-  return [IMExpression IMExpressionWithTranslatedExpression:nil
+  return [IRExpression IMExpressionWithTranslatedExpression:nil
                                             andSemanticType:[SemanticVoidType sharedVoidType]];  
 }
-- (IMExpression *)typeCheckLetExpression:(LetExpression *)expr
+- (IRExpression *)typeCheckLetExpression:(LetExpression *)expr
 {
   int i, count = expr.exprList.count - 1;
-  IMExpression *result;
+  IRExpression *result;
   [envs addObject:[SemanticEnvironment environment]];
   for (id obj in expr.declList)
     if ([obj isMemberOfClass:[VarDecl class]])
@@ -352,7 +352,7 @@
   [envs removeLastObject];
   return result;
 }
-- (IMExpression *)typeCheckVar:(Var *)var
+- (IRExpression *)typeCheckVar:(Var *)var
 {
   SemanticEntry *entry = nil;
   Symbol *symbol = nil;
@@ -360,7 +360,7 @@
     symbol = [(SimpleVar *)var name];
     entry = [self semanticEntryForSymbol:symbol];
     if ([entry isMemberOfClass:[SemanticVarEntry class]])
-      return [IMExpression IMExpressionWithTranslatedExpression:nil
+      return [IRExpression IMExpressionWithTranslatedExpression:nil
                                                 andSemanticType:[(SemanticVarEntry *)entry type].actualType];
     else 
       [ErrorMessage printErrorMessageLineNumber:var.lineNumber
@@ -371,7 +371,7 @@
     if ([type.actualType isMemberOfClass:[SemanticRecordType class]]) {
     	if ([(SemanticRecordType *)type hasField:symbol]) {
       	symbol = [(FieldVar *)var field];
-      	return [IMExpression IMExpressionWithTranslatedExpression:nil
+      	return [IRExpression IMExpressionWithTranslatedExpression:nil
         	                                        andSemanticType:[(SemanticRecordType *)type semanticTypeForField:symbol].actualType];
       } else 
         [ErrorMessage printErrorMessageLineNumber:var.lineNumber
@@ -384,7 +384,7 @@
     SemanticType *type = [[self typeCheckVar:[(SubscriptVar *)var variable]] type].actualType;
     if ([type isMemberOfClass:[SemanticArrayType class]]) {
       if ([self isIntType:[self typeCheckExpression:[(SubscriptVar *)var subscript]] lineNumber:var.lineNumber])
-      	return [IMExpression IMExpressionWithTranslatedExpression:nil
+      	return [IRExpression IMExpressionWithTranslatedExpression:nil
                                                 	andSemanticType:[(SemanticArrayType *)type type].actualType];
     }else 
       [ErrorMessage printErrorMessageLineNumber:var.lineNumber
@@ -397,8 +397,8 @@
 - (id)typeCheckVarDecl:(VarDecl *)varDecl
 {
   SemanticType *type = [self typeCheckExpression:varDecl.expr].type.actualType;
-  SemanticType *decltype;
-  if (!varDecl.typeIdentifier) {
+  SemanticType *decltype = [self typeCheckType:varDecl.typeIdentifier].actualType;
+  if (!decltype) {
     if (type == [SemanticNilType sharedNilType]) {
       [ErrorMessage printErrorMessageLineNumber:varDecl.lineNumber
                                      withFormat:"Error: Need type constraint"];
@@ -407,16 +407,12 @@
       [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:type]
                    forSymbol:varDecl.identifier];
   } else {
-    decltype = [self typeCheckType:varDecl.typeIdentifier].actualType;
-    if (!decltype)
-      [self setSemanticEntry:[SemanticVarEntry varEntry] forSymbol:varDecl.identifier];
-    else if (![type isSameType:decltype])
+    if (![type isSameType:decltype])
       [ErrorMessage printErrorMessageLineNumber:varDecl.expr.lineNumber
                                      withFormat:"Error: Type constraint and initial value differ. Expected %s",
        [varDecl.typeIdentifier.name cString]];
-    else 
-      [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:decltype]
-      	           forSymbol:varDecl.identifier];
+    [self setSemanticEntry:[SemanticVarEntry varEntryWithSemanticType:decltype]
+                 forSymbol:varDecl.identifier];
   }
   return nil;
 }
@@ -455,7 +451,7 @@
   SemanticEnvironment *funcenv;
   SemanticType *type = nil;
   SemanticRecordType *pararecord;
-  IMExpression *imexpr;
+  IRExpression *imexpr;
   NSMutableArray *array = [[NSMutableArray alloc] init];
   int i = 0;
   for (FunctionDecl *fundecl in funcsList) {
@@ -523,9 +519,7 @@
   } else if ([type isMemberOfClass:[RecordType class]]) {
     SemanticRecordType *result = [self typeCheckTypeFields:[(RecordType *)type typefields]];
     return result;
-  } else 
-    [ErrorMessage printErrorMessageLineNumber:type.lineNumber
-                                   withFormat:"Error: Unknown object"];
+  }
   return nil;
 }
 // If the type of a field is undefined, make it a SemanticType

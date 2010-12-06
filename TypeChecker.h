@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Expression.h"
-#import "IMExpression.h"
+#import "IRExpression.h"
 
 @interface TypeChecker : NSObject
 {
@@ -18,6 +18,6 @@
   NSMutableArray *loopVars;
   int nestedLoopLevel;
 }
-- (IMExpression *)typeCheckProgram:(Expression *)expr;
-+ (IMExpression *)typeCheckProgram:(Expression *)expr;
+- (IRExpression *)typeCheckProgram:(Expression *)expr;
++ (IRExpression *)typeCheckProgram:(Expression *)expr;
 @end

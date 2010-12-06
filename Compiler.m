@@ -17,8 +17,9 @@ int main(int argc, const char * argv[])
   printf("%s\n", argv[1]);
   [ErrorMessage setOutputFile:stdout];
   parse(fin, &expr);
-  print(expr);
+  //print(expr);
   [TypeChecker typeCheckProgram:expr];
+  putchar('\n');
   fclose(fin);
   [pool drain];
   return 0;
