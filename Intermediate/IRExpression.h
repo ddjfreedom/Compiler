@@ -1,5 +1,5 @@
 //
-//  IMExpression.h
+//  IRExpression.h
 //  Compiler
 //
 //  Created by Duan Dajun on 12/3/10.
