@@ -15,4 +15,12 @@
 {
   return formals;
 }
+- (id)newFrameWith:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList
+{
+  return nil;
+}
+- (Access *)generateLocal:(BOOL)isEscaped
+{
+  return nil;
+}
 @end

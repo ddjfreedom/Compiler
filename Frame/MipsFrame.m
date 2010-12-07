@@ -15,27 +15,34 @@
 
 @implementation MipsFrame
 @synthesize frameCount;
+- (id)init
+{
+  return [self initWithLabel:nil boolList:nil];
+}
 - (id)initWithLabel:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList
 {
   if (self = [super init]) {
     name = [aLabel retain];
-    formals = [[NSMutableArray alloc] init];
     frameCount = 0;
-    for (; aBoolList; aBoolList = aBoolList.tail) {
-      if (aBoolList.head)
-        [formals addObject:[MipsInFrame inFrameWithOffset:CALC_OFFSET(frameCount)]];
-      else
-        [formals addObject:[MipsInReg inRegWithTemp:[TmpTemp temp]]];
-    }
+    if (aBoolList) {
+    	formals = [[NSMutableArray alloc] init];
+    	for (; aBoolList; aBoolList = aBoolList.tail) {
+    	  if (aBoolList.head)
+    	    [formals addObject:[MipsInFrame inFrameWithOffset:CALC_OFFSET(frameCount)]];
+    	  else
+    	    [formals addObject:[MipsInReg inRegWithTemp:[TmpTemp temp]]];
+    	}
+    } else
+      formals = nil;
   }
   return self;
 }
-- (Access *)allocLocal:(BOOL)isEscaped
+- (Access *)generateLocal:(BOOL)isEscaped
 {
   if (isEscaped)
-    return [[MipsInFrame alloc] initWithOffset:CALC_OFFSET(frameCount)];
+    return [MipsInFrame inFrameWithOffset:CALC_OFFSET(frameCount)];
   else
-    return [[MipsInReg alloc] initWithTemp:[TmpTemp temp]];
+    return [MipsInReg inRegWithTemp:[TmpTemp temp]];
 }
 - (Frame *)newFrameWith:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList
 {

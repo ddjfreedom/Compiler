@@ -8,10 +8,11 @@
 
 #import "Frame.h"
 
-@interface MipsFrame : Frame <Frame>
+@interface MipsFrame : Frame
 {
 	int frameCount;
 }
 @property (readonly) int frameCount;
+- (id)init;
 - (id)initWithLabel:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
 @end

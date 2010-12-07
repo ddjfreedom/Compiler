@@ -12,14 +12,6 @@
 #import "Access.h"
 #import "BoolList.h"
 
-@class Frame;
-@protocol Frame
-
-- (Frame *)newFrameWith:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
-- (Access *)allocLocal:(BOOL)isEscaped;
-
-@end
-
 @interface Frame : NSObject 
 {
 	TmpLabel *name;
@@ -27,4 +19,6 @@
 }
 @property (readonly) TmpLabel *name;
 @property (readonly) NSArray *formals;
+- (Frame *)newFrameWith:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
+- (Access *)generateLocal:(BOOL)isEscaped;
 @end
