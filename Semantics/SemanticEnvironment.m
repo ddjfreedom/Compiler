@@ -20,31 +20,31 @@
   }
   return self;
 }
-- (void)setSemanticType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol
+- (void)setType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol
 {
   [typeEnv setObject:aType forKey:aSymbol];
 }
-- (void)setSemanticEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol
+- (void)setEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol
 {
   [varEnv setObject:anEntry forKey:aSymbol];
 }
-- (SemanticType *)semanticTypeForSymbol:(Symbol *)aSymbol
+- (SemanticType *)typeForSymbol:(Symbol *)aSymbol
 {
 	return [typeEnv objectForKey:aSymbol];
 }
-- (SemanticEntry *)semanticEntryForSymbol:(Symbol *)aSymbol
+- (SemanticEntry *)entryForSymbol:(Symbol *)aSymbol
 {
   return [varEnv objectForKey:aSymbol];
 }
-- (void)removeSemanticTypeForSymbol:(Symbol *)aSymbol
+- (void)removeTypeForSymbol:(Symbol *)aSymbol
 {
   [typeEnv removeObjectForKey:aSymbol];
 }
-- (void)removeSemanticEntryForSymbol:(Symbol *)aSymbol
+- (void)removeEntryForSymbol:(Symbol *)aSymbol
 {
   [typeEnv removeObjectForKey:aSymbol];
 }
-- (void)addSemanticElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment
+- (void)addElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment
 {
   [typeEnv addEntriesFromDictionary:otherEnvironment->typeEnv];
   [varEnv addEntriesFromDictionary:otherEnvironment->varEnv];

@@ -11,24 +11,27 @@
 
 @implementation SemanticVarEntry
 @synthesize type;
-- (id)initWithSemanticType:(SemanticType *)aType
+@synthesize access;
+- (id)initWithType:(SemanticType *)aType access:(TRAccess *)anAccess
 {
   if (self = [super init]) {
     type = [aType retain];
+    access = [anAccess retain];
   }
   return self;
 }
 - (void)dealloc
 {
   [type release];
+  [access release];
   [super dealloc];
 }
-+ (id)varEntryWithSemanticType:(SemanticType *)aType
++ (id)varEntryWithType:(SemanticType *)aType access:(TRAccess *)anAccess
 {
-  return [[[SemanticVarEntry alloc] initWithSemanticType:aType] autorelease];
+  return [[[SemanticVarEntry alloc] initWithType:aType access:(TRAccess *)anAccess] autorelease];
 }
 + (id)varEntry
 {
-  return [SemanticVarEntry varEntryWithSemanticType:nil];
+  return [SemanticVarEntry varEntryWithType:nil access:nil];
 }
 @end

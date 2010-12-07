@@ -12,12 +12,17 @@
 @implementation SemanticFuncEntry
 @synthesize returnType;
 @synthesize formalParas;
-- (id)initWithFormalParameters:(SemanticRecordType *)aRecordType 
-                 andReturnType:(SemanticType *)aReturnType
+@synthesize label;
+- (id)initWithFormalParameters:(SemanticRecordType *)aRecordType
+                  	returnType:(SemanticType *)aReturnType 
+                         level:(TRLevel *)aLevel 
+                         label:(TmpLabel *)aLabel
 {
   if (self = [super init]) {
     formalParas = [aRecordType retain];
     returnType = [aReturnType retain];
+    level = [aLevel retain];
+    label = [aLabel retain];
   }
   return self;
 }
@@ -25,12 +30,18 @@
 {
   [formalParas release];
   [returnType release];
+  [level release];
+  [label release];
   [super dealloc];
 }
 + (id)funcEntryWithFormalParameters:(SemanticRecordType *)aRecordType 
-                      andReturnType:(SemanticType *)aReturnType
+                         returnType:(SemanticType *)aReturnType 
+                              level:(TRLevel *)aLevel 
+                              label:(TmpLabel *)aLabel
 {
-  return [[[SemanticFuncEntry alloc] initWithFormalParameters:aRecordType
-                                                andReturnType:aReturnType] autorelease];
+  return [[[SemanticFuncEntry alloc] initWithFormalParameters:(SemanticRecordType *)aRecordType
+                                                   returnType:(SemanticType *)aReturnType 
+                                                        level:(TRLevel *)aLevel 
+                                                        label:(TmpLabel *)aLabel] autorelease];
 }
 @end

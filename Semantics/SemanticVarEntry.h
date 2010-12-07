@@ -8,13 +8,16 @@
 
 #import "SemanticEntry.h"
 #import "SemanticType.h"
+#import "TRAccess.h"
 
 @interface SemanticVarEntry : SemanticEntry
 {
+  TRAccess *access;
 	SemanticType *type;
 }
 @property (readonly) SemanticType *type;
-- (id)initWithSemanticType:(SemanticType *)aType;
-+ (id)varEntryWithSemanticType:(SemanticType *)aType;
+@property (readonly) TRAccess *access;
+- (id)initWithType:(SemanticType *)aType access:(TRAccess *)anAccess;
++ (id)varEntryWithType:(SemanticType *)aType access:(TRAccess *)anAccess;
 + (id)varEntry; // Used as a placeholder
 @end

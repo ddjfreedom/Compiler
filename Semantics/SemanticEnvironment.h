@@ -16,12 +16,12 @@
 	NSMutableDictionary *typeEnv;
   NSMutableDictionary *varEnv;
 }
-- (void)setSemanticType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol;
-- (void)setSemanticEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol;
-- (SemanticType *)semanticTypeForSymbol:(Symbol *)aSymbol;
-- (SemanticEntry *)semanticEntryForSymbol:(Symbol *)aSymbol;
-- (void)removeSemanticTypeForSymbol:(Symbol *)aSymbol;
-- (void)removeSemanticEntryForSymbol:(Symbol *)aSymbol;
-- (void)addSemanticElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment;
+- (void)setType:(SemanticType *)aType forSymbol:(Symbol *)aSymbol;
+- (void)setEntry:(SemanticEntry *)anEntry forSymbol:(Symbol *)aSymbol;
+- (SemanticType *)typeForSymbol:(Symbol *)aSymbol;
+- (SemanticEntry *)entryForSymbol:(Symbol *)aSymbol;
+- (void)removeTypeForSymbol:(Symbol *)aSymbol;
+- (void)removeEntryForSymbol:(Symbol *)aSymbol;
+- (void)addElementsFromEnvironment:(SemanticEnvironment *)otherEnvironment;
 + (SemanticEnvironment *)environment;
 @end

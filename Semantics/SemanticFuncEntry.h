@@ -9,16 +9,25 @@
 #import "SemanticEntry.h"
 #import "SemanticType.h"
 #import "SemanticRecordType.h"
+#import "TRLevel.h"
+#import "TmpLabel.h"
 
 @interface SemanticFuncEntry : SemanticEntry
 {
+  TRLevel *level;
+  TmpLabel *label;
 	SemanticType *returnType;
   SemanticRecordType *formalParas;
 }
 @property (readonly) SemanticType *returnType;
 @property (readonly) SemanticRecordType *formalParas;
-- (id)initWithFormalParameters:(SemanticRecordType *)aRecordType 
-                 andReturnType:(SemanticType *)aReturnType;
+@property (readonly) TmpLabel *label;
+- (id)initWithFormalParameters:(SemanticRecordType *)aRecordType
+                  	returnType:(SemanticType *)aReturnType 
+                         level:(TRLevel *)aLevel 
+                         label:(TmpLabel *)aLabel;
 + (id)funcEntryWithFormalParameters:(SemanticRecordType *)aRecordType 
-                      andReturnType:(SemanticType *)aReturnType;
+                         returnType:(SemanticType *)aReturnType 
+                              level:(TRLevel *)aLevel 
+                              label:(TmpLabel *)aLabel;
 @end
