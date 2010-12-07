@@ -16,6 +16,9 @@
 @property (readwrite, retain) BoolList *tail;
 - (id)initWithBool:(BOOL)aBool;
 - (id)initWithBool:(BOOL)aBool boolList:(BoolList *)aBoolList;
+- (id)initWithNumberOfBools:(int)number bools:(BOOL)firstBool, ...;
+- (id)initWithNumberOfBools:(int)number andBool:(BOOL)firstBool arguments:(va_list)args;
 + (id)boolListWithBool:(BOOL)aBool;
 + (id)boolListWithBool:(BOOL)aBool boolList:(BoolList *)aBoolList;
++ (id)boolListWithNumberOfBools:(int)number bools:(BOOL)firstBool, ...;
 @end
