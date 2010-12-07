@@ -16,17 +16,17 @@ static FILE *file = NULL;
 {
   file = aFile;
 }
-+ (void)printErrorMessageLineNumber:(int)lineno
-                         withFormat:(const char *)format, ...
++ (void)printLineNumber:(int)lineno
+             withFormat:(const char *)format, ...
 {
   va_list ap;
   va_start(ap, format);
-  [ErrorMessage printErrorMessageLineNumber:lineno withFormat:format arguments:ap];
+  [ErrorMessage printLineNumber:lineno withFormat:format arguments:ap];
   va_end(ap);
 }
-+ (void)printErrorMessageLineNumber:(int)lineno 
-                         withFormat:(const char *)format 
-                          arguments:(va_list)ap
++ (void)printLineNumber:(int)lineno
+             withFormat:(const char *)format
+              arguments:(va_list)ap
 {
   fprintf(file, "Line %d: ", lineno);
   vfprintf(file, format, ap);

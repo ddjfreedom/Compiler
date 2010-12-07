@@ -458,6 +458,6 @@ void yyerror(id *epxr, const char *s, ...)
 {
   va_list ap;
   va_start(ap, s);
-  [ErrorMessage printErrorMessageLineNumber:yylloc.first_line withFormat:s arguments:ap];
+  [ErrorMessage printLineNumber:yylloc.first_line withFormat:s arguments:ap];
 	va_end(ap);
 }

@@ -11,7 +11,7 @@
 
 @implementation IRExpression
 @synthesize type;
-- (id)initWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType
+- (id)initWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType
 {
   if (self = [super init]) {
     type = [aType retain];
@@ -23,9 +23,9 @@
   [type release];
   [super dealloc];
 }
-+ (id)IMExpressionWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType
++ (id)exprWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType
 {
-  return [[[IRExpression alloc] initWithTranslatedExpression:anExpr 
-                                             andSemanticType:aType] autorelease];
+  return [[[IRExpression alloc] initWithTranslatedExpr:anExpr
+                                               andType:aType] autorelease];
 }
 @end

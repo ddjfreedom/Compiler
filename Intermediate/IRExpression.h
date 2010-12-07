@@ -13,6 +13,6 @@
 	SemanticType *type;
 }
 @property (readonly) SemanticType *type;
-- (id)initWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType;
-+ (id)IMExpressionWithTranslatedExpression:(id)anExpr andSemanticType:(SemanticType *)aType;
+- (id)initWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType;
++ (id)exprWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType;
 @end

@@ -13,9 +13,9 @@
 
 }
 + (void)setOutputFile:(FILE *)aFile;
-+ (void)printErrorMessageLineNumber:(int)lineno
-                         withFormat:(const char *)format, ...;
-+ (void)printErrorMessageLineNumber:(int)lineno 
-                         withFormat:(const char *)format 
-                          arguments:(va_list)ap;
++ (void)printLineNumber:(int)lineno
+             withFormat:(const char *)format, ...;
++ (void)printLineNumber:(int)lineno
+             withFormat:(const char *)format
+              arguments:(va_list)ap;
 @end
