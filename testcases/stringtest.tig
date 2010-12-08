@@ -1,15 +1,0 @@
-(
-"Closed string";
-"";
-"\\r \r \\f \f \\n \n";
-"String spanning \ 	
- \  	multiple lines";
-"string with \\ddd \065=A";
-"string with \\ddd too large \565";
-"string with \\dd \65";
-"string with escaped quote \"";
-"string with ctrl seq: ^] \^]";
-"string with ctrl seq: ^A \^A";
-"string with new line \n\tand tab";
-"Unclosed string
-)
