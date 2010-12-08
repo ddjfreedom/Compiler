@@ -496,7 +496,7 @@
       last = last.tail;
     }
     tmplevel = [TRLevel levelWithLevel:[levels lastObject]
-                                  label:[(SemanticFuncEntry *)[tmpenv entryForSymbol:fundecl.name] label]
+                                 label:[(SemanticFuncEntry *)[tmpenv entryForSymbol:fundecl.name] label]
                               boolList:boolList.tail];
     [levels addObject:tmplevel];
     // Add parameters into environment

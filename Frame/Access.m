@@ -10,5 +10,8 @@
 
 
 @implementation Access
-
+- (TreeExpr *)exprWithFramePointer:(TreeExpr *)framePtr;
+{
+  return nil;
+}
 @end

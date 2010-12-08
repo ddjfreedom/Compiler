@@ -15,5 +15,6 @@
 }
 @property (retain) TmpTemp *temp;
 - (id)initWithTemp:(TmpTemp *)aTemp;
+- (TreeExpr *)exprWithFramePointer:(TreeExpr *)framePtr;
 + (id)inRegWithTemp:(TmpTemp *)aTemp;
 @end

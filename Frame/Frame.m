@@ -11,6 +11,8 @@
 
 @implementation Frame
 @synthesize name;
+@synthesize wordSize;
+@synthesize fp;
 - (NSArray *)formals
 {
   return formals;

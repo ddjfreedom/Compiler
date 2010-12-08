@@ -15,6 +15,7 @@
 
 @implementation MipsFrame
 @synthesize frameCount;
+
 - (id)init
 {
   return [self initWithLabel:nil boolList:nil];
@@ -24,6 +25,8 @@
   if (self = [super init]) {
     name = [aLabel retain];
     frameCount = 0;
+    wordSize = WORDLENGTH;
+    fp = [TmpTemp temp];
     if (aBoolList) {
     	formals = [[NSMutableArray alloc] init];
     	for (; aBoolList; aBoolList = aBoolList.tail) {

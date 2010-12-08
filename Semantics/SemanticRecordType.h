@@ -18,6 +18,7 @@
 @property (readonly) NSUInteger count;
 - (void)addSemanticType:(SemanticType *)type forField:(Symbol *)name;
 - (BOOL)hasField:(Symbol *)field;
+- (NSUInteger)indexOfField:(Symbol *)field;
 - (SemanticType *)semanticTypeForField:(Symbol *)name;
 - (SemanticType *)semanticTypeAtIndex:(NSUInteger)index;
 - (Symbol *)fieldAtIndex:(NSUInteger)index;

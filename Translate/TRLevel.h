@@ -21,6 +21,7 @@
 }
 @property (readonly) NSArray *formals;
 @property (readonly) TRLevel *parent;
+@property (readonly) Frame *frame;
 - (id)initWithLevel:(TRLevel *)aLevel name:(Symbol *)aName boolList:(BoolList *)aBoolList;
 - (id)initWithLevel:(TRLevel *)aLevel label:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
 - (id)initWithFrame:(Frame *)aFrame;

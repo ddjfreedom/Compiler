@@ -11,6 +11,7 @@
 
 @implementation TRLevel
 @synthesize parent;
+@synthesize frame;
 - (NSArray *)formals
 {
   return formals;

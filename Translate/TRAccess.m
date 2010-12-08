@@ -10,6 +10,8 @@
 
 
 @implementation TRAccess
+@synthesize level;
+@synthesize acc;
 - (id)initWithLevel:(TRLevel *)aLevel access:(Access *)anAccess
 {
   if (self = [super init]) {

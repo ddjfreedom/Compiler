@@ -7,7 +7,7 @@
 //
 
 #import "MipsInReg.h"
-
+#import "TreeTemp.h"
 
 @implementation MipsInReg
 @synthesize temp;
@@ -20,6 +20,10 @@
 - (NSString *)description
 {
   return [NSString stringWithFormat:@"InReg: %@", temp];
+}
+- (TreeExpr *)exprWithFramePointer:(TreeExpr *)framePtr
+{
+  return [TreeTemp treeTempWithTemp:temp];
 }
 - (void)dealloc
 {

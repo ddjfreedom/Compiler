@@ -6,6 +6,7 @@
 #import "parse.tab.m"
 #import "ErrorMessage.h"
 #import "TypeChecker.h"
+#import "MipsFrame.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -18,6 +19,8 @@ int main(int argc, const char * argv[])
   [ErrorMessage setOutputFile:stdout];
   parse(fin, &expr);
   //print(expr);
+  Frame *frame = [[MipsFrame alloc] init];
+  NSLog(@"%@", [frame generateLocal:YES]);
   [TypeChecker typeCheckProgram:expr];
   putchar('\n');
   fclose(fin);

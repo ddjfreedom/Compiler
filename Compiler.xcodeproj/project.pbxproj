@@ -7,10 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4721AE1D12AD0A1F00D37514 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE1C12AD0A1F00D37514 /* Frame.m */; };
+		4721AE2112AD0AF700D37514 /* TmpLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2012AD0AF700D37514 /* TmpLabel.m */; };
+		4721AE2612AD0C4E00D37514 /* TmpTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2512AD0C4E00D37514 /* TmpTemp.m */; };
+		4721AE2912AD0D3C00D37514 /* TmpTempList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2812AD0D3C00D37514 /* TmpTempList.m */; };
+		4721AE3012AD100500D37514 /* TmpLabelList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2F12AD100500D37514 /* TmpLabelList.m */; };
+		4721AE4B12AD172E00D37514 /* BoolList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE4A12AD172E00D37514 /* BoolList.m */; };
+		4724B2FA12AF244D00F2A09D /* TreeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B2F912AF244D00F2A09D /* TreeLabel.m */; };
+		4724B31312AF258B00F2A09D /* TreeMem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B31212AF258B00F2A09D /* TreeMem.m */; };
+		4724B31C12AF266200F2A09D /* TreeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B31B12AF266200F2A09D /* TreeMove.m */; };
+		4724B32712AF3FFC00F2A09D /* TRExpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B32612AF3FFC00F2A09D /* TRExpr.m */; };
+		4724B32C12AF418D00F2A09D /* TREx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B32B12AF418D00F2A09D /* TREx.m */; };
+		4724B35012AF489D00F2A09D /* TRNx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B34F12AF489D00F2A09D /* TRNx.m */; };
+		4724B37412AF4D4000F2A09D /* TRCx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B37312AF4D4000F2A09D /* TRCx.m */; };
+		4724B39D12AF6BD300F2A09D /* TR.m in Sources */ = {isa = PBXBuildFile; fileRef = 4724B39C12AF6BD300F2A09D /* TR.m */; };
 		472F29CF12A00AFF0068F180 /* prettyprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 472F29CE12A00AFF0068F180 /* prettyprint.m */; };
 		4740121112A78C4C005B761F /* SemanticFuncEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4740121012A78C4C005B761F /* SemanticFuncEntry.m */; };
 		4740122A12A79322005B761F /* SemanticNamedType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4740122912A79322005B761F /* SemanticNamedType.m */; };
+		47434B7412AE5CDC00259061 /* TreeExpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434B7312AE5CDC00259061 /* TreeExpr.m */; };
+		47434B7D12AE5E6600259061 /* TreeStmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434B7C12AE5E6600259061 /* TreeStmt.m */; };
+		47434B8312AE5E9400259061 /* TreeStmtList.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434B8212AE5E9400259061 /* TreeStmtList.m */; };
+		47434B8812AE5F9100259061 /* TreeExprList.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434B8712AE5F9100259061 /* TreeExprList.m */; };
+		47434B9E12AE634500259061 /* TreeName.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434B9D12AE634500259061 /* TreeName.m */; };
+		47434BA312AE644200259061 /* TreeSeq.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BA212AE644200259061 /* TreeSeq.m */; };
+		47434BAF12AE655800259061 /* TreeTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BAE12AE655800259061 /* TreeTemp.m */; };
+		47434BB912AE663500259061 /* TreeExprStmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BB812AE663500259061 /* TreeExprStmt.m */; };
+		47434BBE12AE670A00259061 /* TreeBinop.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BBD12AE670A00259061 /* TreeBinop.m */; };
+		47434BC512AE68D500259061 /* TreeCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BC412AE68D500259061 /* TreeCall.m */; };
+		47434BCA12AE69F100259061 /* TreeCJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BC912AE69F100259061 /* TreeCJump.m */; };
+		47434BF912AE6F0700259061 /* TreeConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BF812AE6F0700259061 /* TreeConst.m */; };
+		47434BFE12AE6FB900259061 /* TreeESeq.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BFD12AE6FB900259061 /* TreeESeq.m */; };
+		47434C0E12AE713D00259061 /* TreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434C0D12AE713D00259061 /* TreeJump.m */; };
 		475B098012A62DBE004990DA /* stringtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 475B097F12A62DBE004990DA /* stringtest.c */; };
+		475FA8C412ADD077002F0399 /* Access.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8C312ADD077002F0399 /* Access.m */; };
+		475FA8CD12ADD0EB002F0399 /* MipsFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8CC12ADD0EB002F0399 /* MipsFrame.m */; };
+		475FA8D012ADD173002F0399 /* MipsInFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8CF12ADD173002F0399 /* MipsInFrame.m */; };
+		475FA8D312ADD1FC002F0399 /* MipsInReg.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8D212ADD1FC002F0399 /* MipsInReg.m */; };
+		475FA97912ADFC2B002F0399 /* TRAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA97812ADFC2B002F0399 /* TRAccess.m */; };
+		475FA97C12ADFC41002F0399 /* TRLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA97B12ADFC41002F0399 /* TRLevel.m */; };
 		4765CF0012A76EB500A20AD1 /* SemanticType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CEFF12A76EB500A20AD1 /* SemanticType.m */; };
 		4765CF0712A76F6F00A20AD1 /* SemanticIntType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF0612A76F6F00A20AD1 /* SemanticIntType.m */; };
 		4765CF0A12A76FB200A20AD1 /* SemanticStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF0912A76FB200A20AD1 /* SemanticStringType.m */; };
@@ -103,14 +137,82 @@
 		08FB7796FE84155DC02AAC07 /* Compiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Compiler.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* Compiler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compiler_Prefix.pch; sourceTree = "<group>"; };
+		4721AE1B12AD0A1F00D37514 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = Frame/Frame.h; sourceTree = "<group>"; };
+		4721AE1C12AD0A1F00D37514 /* Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Frame.m; path = Frame/Frame.m; sourceTree = "<group>"; };
+		4721AE1F12AD0AF700D37514 /* TmpLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpLabel.h; path = Temp/TmpLabel.h; sourceTree = "<group>"; };
+		4721AE2012AD0AF700D37514 /* TmpLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TmpLabel.m; path = Temp/TmpLabel.m; sourceTree = "<group>"; };
+		4721AE2412AD0C4E00D37514 /* TmpTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpTemp.h; path = Temp/TmpTemp.h; sourceTree = "<group>"; };
+		4721AE2512AD0C4E00D37514 /* TmpTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TmpTemp.m; path = Temp/TmpTemp.m; sourceTree = "<group>"; };
+		4721AE2712AD0D3C00D37514 /* TmpTempList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpTempList.h; path = Temp/TmpTempList.h; sourceTree = "<group>"; };
+		4721AE2812AD0D3C00D37514 /* TmpTempList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TmpTempList.m; path = Temp/TmpTempList.m; sourceTree = "<group>"; };
+		4721AE2E12AD100500D37514 /* TmpLabelList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpLabelList.h; path = Temp/TmpLabelList.h; sourceTree = "<group>"; };
+		4721AE2F12AD100500D37514 /* TmpLabelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TmpLabelList.m; path = Temp/TmpLabelList.m; sourceTree = "<group>"; };
+		4721AE4912AD172E00D37514 /* BoolList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolList.h; sourceTree = "<group>"; };
+		4721AE4A12AD172E00D37514 /* BoolList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoolList.m; sourceTree = "<group>"; };
+		4724B2F812AF244D00F2A09D /* TreeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeLabel.h; path = Tree/TreeLabel.h; sourceTree = "<group>"; };
+		4724B2F912AF244D00F2A09D /* TreeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeLabel.m; path = Tree/TreeLabel.m; sourceTree = "<group>"; };
+		4724B31112AF258B00F2A09D /* TreeMem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeMem.h; path = Tree/TreeMem.h; sourceTree = "<group>"; };
+		4724B31212AF258B00F2A09D /* TreeMem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeMem.m; path = Tree/TreeMem.m; sourceTree = "<group>"; };
+		4724B31A12AF266200F2A09D /* TreeMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeMove.h; path = Tree/TreeMove.h; sourceTree = "<group>"; };
+		4724B31B12AF266200F2A09D /* TreeMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeMove.m; path = Tree/TreeMove.m; sourceTree = "<group>"; };
+		4724B32512AF3FFC00F2A09D /* TRExpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRExpr.h; path = Translate/TRExpr.h; sourceTree = "<group>"; };
+		4724B32612AF3FFC00F2A09D /* TRExpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRExpr.m; path = Translate/TRExpr.m; sourceTree = "<group>"; };
+		4724B32A12AF418D00F2A09D /* TREx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TREx.h; path = Translate/TREx.h; sourceTree = "<group>"; };
+		4724B32B12AF418D00F2A09D /* TREx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TREx.m; path = Translate/TREx.m; sourceTree = "<group>"; };
+		4724B34E12AF489D00F2A09D /* TRNx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRNx.h; path = Translate/TRNx.h; sourceTree = "<group>"; };
+		4724B34F12AF489D00F2A09D /* TRNx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRNx.m; path = Translate/TRNx.m; sourceTree = "<group>"; };
+		4724B37212AF4D4000F2A09D /* TRCx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRCx.h; path = Translate/TRCx.h; sourceTree = "<group>"; };
+		4724B37312AF4D4000F2A09D /* TRCx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRCx.m; path = Translate/TRCx.m; sourceTree = "<group>"; };
+		4724B39B12AF6BD300F2A09D /* TR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TR.h; path = Translate/TR.h; sourceTree = "<group>"; };
+		4724B39C12AF6BD300F2A09D /* TR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TR.m; path = Translate/TR.m; sourceTree = "<group>"; };
 		472F29CE12A00AFF0068F180 /* prettyprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prettyprint.m; sourceTree = "<group>"; };
 		472F29D012A00B070068F180 /* helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helper.h; sourceTree = "<group>"; };
 		4740120F12A78C4C005B761F /* SemanticFuncEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticFuncEntry.h; path = Semantics/SemanticFuncEntry.h; sourceTree = "<group>"; };
 		4740121012A78C4C005B761F /* SemanticFuncEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticFuncEntry.m; path = Semantics/SemanticFuncEntry.m; sourceTree = "<group>"; };
 		4740122812A79322005B761F /* SemanticNamedType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticNamedType.h; path = Semantics/SemanticNamedType.h; sourceTree = "<group>"; };
 		4740122912A79322005B761F /* SemanticNamedType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticNamedType.m; path = Semantics/SemanticNamedType.m; sourceTree = "<group>"; };
+		47434B7212AE5CDC00259061 /* TreeExpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeExpr.h; path = Tree/TreeExpr.h; sourceTree = "<group>"; };
+		47434B7312AE5CDC00259061 /* TreeExpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeExpr.m; path = Tree/TreeExpr.m; sourceTree = "<group>"; };
+		47434B7C12AE5E6600259061 /* TreeStmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeStmt.m; path = Tree/TreeStmt.m; sourceTree = "<group>"; };
+		47434B8112AE5E9400259061 /* TreeStmtList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeStmtList.h; path = Tree/TreeStmtList.h; sourceTree = "<group>"; };
+		47434B8212AE5E9400259061 /* TreeStmtList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeStmtList.m; path = Tree/TreeStmtList.m; sourceTree = "<group>"; };
+		47434B8612AE5F9100259061 /* TreeExprList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeExprList.h; path = Tree/TreeExprList.h; sourceTree = "<group>"; };
+		47434B8712AE5F9100259061 /* TreeExprList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeExprList.m; path = Tree/TreeExprList.m; sourceTree = "<group>"; };
+		47434B9C12AE634500259061 /* TreeName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeName.h; path = Tree/TreeName.h; sourceTree = "<group>"; };
+		47434B9D12AE634500259061 /* TreeName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeName.m; path = Tree/TreeName.m; sourceTree = "<group>"; };
+		47434BA112AE644200259061 /* TreeSeq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeSeq.h; path = Tree/TreeSeq.h; sourceTree = "<group>"; };
+		47434BA212AE644200259061 /* TreeSeq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeSeq.m; path = Tree/TreeSeq.m; sourceTree = "<group>"; };
+		47434BAD12AE655800259061 /* TreeTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeTemp.h; path = Tree/TreeTemp.h; sourceTree = "<group>"; };
+		47434BAE12AE655800259061 /* TreeTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeTemp.m; path = Tree/TreeTemp.m; sourceTree = "<group>"; };
+		47434BB712AE663500259061 /* TreeExprStmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeExprStmt.h; path = Tree/TreeExprStmt.h; sourceTree = "<group>"; };
+		47434BB812AE663500259061 /* TreeExprStmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeExprStmt.m; path = Tree/TreeExprStmt.m; sourceTree = "<group>"; };
+		47434BBC12AE670A00259061 /* TreeBinop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeBinop.h; path = Tree/TreeBinop.h; sourceTree = "<group>"; };
+		47434BBD12AE670A00259061 /* TreeBinop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeBinop.m; path = Tree/TreeBinop.m; sourceTree = "<group>"; };
+		47434BC312AE68D500259061 /* TreeCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeCall.h; path = Tree/TreeCall.h; sourceTree = "<group>"; };
+		47434BC412AE68D500259061 /* TreeCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeCall.m; path = Tree/TreeCall.m; sourceTree = "<group>"; };
+		47434BC812AE69F100259061 /* TreeCJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeCJump.h; path = Tree/TreeCJump.h; sourceTree = "<group>"; };
+		47434BC912AE69F100259061 /* TreeCJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeCJump.m; path = Tree/TreeCJump.m; sourceTree = "<group>"; };
+		47434BF712AE6F0700259061 /* TreeConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeConst.h; path = Tree/TreeConst.h; sourceTree = "<group>"; };
+		47434BF812AE6F0700259061 /* TreeConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeConst.m; path = Tree/TreeConst.m; sourceTree = "<group>"; };
+		47434BFC12AE6FB900259061 /* TreeESeq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeESeq.h; path = Tree/TreeESeq.h; sourceTree = "<group>"; };
+		47434BFD12AE6FB900259061 /* TreeESeq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeESeq.m; path = Tree/TreeESeq.m; sourceTree = "<group>"; };
+		47434C0912AE712300259061 /* TreeStmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeStmt.h; path = Tree/TreeStmt.h; sourceTree = "<group>"; };
+		47434C0C12AE713D00259061 /* TreeJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeJump.h; path = Tree/TreeJump.h; sourceTree = "<group>"; };
+		47434C0D12AE713D00259061 /* TreeJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeJump.m; path = Tree/TreeJump.m; sourceTree = "<group>"; };
 		475B097912A62D7D004990DA /* stringtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = stringtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		475B097F12A62DBE004990DA /* stringtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stringtest.c; sourceTree = "<group>"; };
+		475FA8C212ADD077002F0399 /* Access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Access.h; path = Frame/Access.h; sourceTree = "<group>"; };
+		475FA8C312ADD077002F0399 /* Access.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Access.m; path = Frame/Access.m; sourceTree = "<group>"; };
+		475FA8CB12ADD0EB002F0399 /* MipsFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MipsFrame.h; path = Frame/MipsFrame.h; sourceTree = "<group>"; };
+		475FA8CC12ADD0EB002F0399 /* MipsFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MipsFrame.m; path = Frame/MipsFrame.m; sourceTree = "<group>"; };
+		475FA8CE12ADD173002F0399 /* MipsInFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MipsInFrame.h; path = Frame/MipsInFrame.h; sourceTree = "<group>"; };
+		475FA8CF12ADD173002F0399 /* MipsInFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MipsInFrame.m; path = Frame/MipsInFrame.m; sourceTree = "<group>"; };
+		475FA8D112ADD1FC002F0399 /* MipsInReg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MipsInReg.h; path = Frame/MipsInReg.h; sourceTree = "<group>"; };
+		475FA8D212ADD1FC002F0399 /* MipsInReg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MipsInReg.m; path = Frame/MipsInReg.m; sourceTree = "<group>"; };
+		475FA97712ADFC2B002F0399 /* TRAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRAccess.h; path = Translate/TRAccess.h; sourceTree = "<group>"; };
+		475FA97812ADFC2B002F0399 /* TRAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRAccess.m; path = Translate/TRAccess.m; sourceTree = "<group>"; };
+		475FA97A12ADFC41002F0399 /* TRLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRLevel.h; path = Translate/TRLevel.h; sourceTree = "<group>"; };
+		475FA97B12ADFC41002F0399 /* TRLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLevel.m; path = Translate/TRLevel.m; sourceTree = "<group>"; };
 		4763469612A0A15C0021736A /* lexical.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = lexical.l; sourceTree = "<group>"; };
 		4763469712A0A15C0021736A /* parse.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = parse.y; sourceTree = "<group>"; };
 		4765CEFE12A76EB500A20AD1 /* SemanticType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticType.h; path = Semantics/SemanticType.h; sourceTree = "<group>"; };
@@ -303,6 +405,10 @@
 				47D7D9BE12A243ED005DE04C /* AbstractSyntax */,
 				4765CF0112A76EBF00A20AD1 /* Semantics */,
 				477C17FF12A891800045F672 /* Intermediate */,
+				475FA97312ADFB8B002F0399 /* Translate */,
+				4721AE1E12AD0AD700D37514 /* Temp */,
+				4721AE1A12AD09C400D37514 /* Frames */,
+				47434B7512AE5CE500259061 /* Tree */,
 				4765CF3712A7819B00A20AD1 /* TypeChecker.h */,
 				4765CF3812A7819B00A20AD1 /* TypeChecker.m */,
 				477C185C12A8A9410045F672 /* ErrorMessage.h */,
@@ -313,6 +419,8 @@
 				4763469712A0A15C0021736A /* parse.y */,
 				47D69CCF12A3957E00E426E6 /* Symbol.h */,
 				47D69CD012A3957E00E426E6 /* Symbol.m */,
+				4721AE4912AD172E00D37514 /* BoolList.h */,
+				4721AE4A12AD172E00D37514 /* BoolList.m */,
 				32A70AAB03705E1F00C91783 /* Compiler_Prefix.pch */,
 				475B098112A62DC4004990DA /* Test */,
 			);
@@ -336,12 +444,106 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4721AE1A12AD09C400D37514 /* Frames */ = {
+			isa = PBXGroup;
+			children = (
+				4721AE1B12AD0A1F00D37514 /* Frame.h */,
+				4721AE1C12AD0A1F00D37514 /* Frame.m */,
+				475FA8C212ADD077002F0399 /* Access.h */,
+				475FA8C312ADD077002F0399 /* Access.m */,
+				475FA8CB12ADD0EB002F0399 /* MipsFrame.h */,
+				475FA8CC12ADD0EB002F0399 /* MipsFrame.m */,
+				475FA8CE12ADD173002F0399 /* MipsInFrame.h */,
+				475FA8CF12ADD173002F0399 /* MipsInFrame.m */,
+				475FA8D112ADD1FC002F0399 /* MipsInReg.h */,
+				475FA8D212ADD1FC002F0399 /* MipsInReg.m */,
+			);
+			name = Frames;
+			sourceTree = "<group>";
+		};
+		4721AE1E12AD0AD700D37514 /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				4721AE1F12AD0AF700D37514 /* TmpLabel.h */,
+				4721AE2012AD0AF700D37514 /* TmpLabel.m */,
+				4721AE2412AD0C4E00D37514 /* TmpTemp.h */,
+				4721AE2512AD0C4E00D37514 /* TmpTemp.m */,
+				4721AE2712AD0D3C00D37514 /* TmpTempList.h */,
+				4721AE2812AD0D3C00D37514 /* TmpTempList.m */,
+				4721AE2E12AD100500D37514 /* TmpLabelList.h */,
+				4721AE2F12AD100500D37514 /* TmpLabelList.m */,
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
+		47434B7512AE5CE500259061 /* Tree */ = {
+			isa = PBXGroup;
+			children = (
+				47434C0912AE712300259061 /* TreeStmt.h */,
+				47434B7C12AE5E6600259061 /* TreeStmt.m */,
+				4724B2F812AF244D00F2A09D /* TreeLabel.h */,
+				4724B2F912AF244D00F2A09D /* TreeLabel.m */,
+				47434BB712AE663500259061 /* TreeExprStmt.h */,
+				47434BB812AE663500259061 /* TreeExprStmt.m */,
+				47434C0C12AE713D00259061 /* TreeJump.h */,
+				47434C0D12AE713D00259061 /* TreeJump.m */,
+				47434BC812AE69F100259061 /* TreeCJump.h */,
+				47434BC912AE69F100259061 /* TreeCJump.m */,
+				47434BA112AE644200259061 /* TreeSeq.h */,
+				47434BA212AE644200259061 /* TreeSeq.m */,
+				4724B31A12AF266200F2A09D /* TreeMove.h */,
+				4724B31B12AF266200F2A09D /* TreeMove.m */,
+				47434B7212AE5CDC00259061 /* TreeExpr.h */,
+				47434B7312AE5CDC00259061 /* TreeExpr.m */,
+				47434BF712AE6F0700259061 /* TreeConst.h */,
+				47434BF812AE6F0700259061 /* TreeConst.m */,
+				47434B9C12AE634500259061 /* TreeName.h */,
+				47434B9D12AE634500259061 /* TreeName.m */,
+				47434BBC12AE670A00259061 /* TreeBinop.h */,
+				47434BBD12AE670A00259061 /* TreeBinop.m */,
+				47434BC312AE68D500259061 /* TreeCall.h */,
+				47434BC412AE68D500259061 /* TreeCall.m */,
+				4724B31112AF258B00F2A09D /* TreeMem.h */,
+				4724B31212AF258B00F2A09D /* TreeMem.m */,
+				47434BFC12AE6FB900259061 /* TreeESeq.h */,
+				47434BFD12AE6FB900259061 /* TreeESeq.m */,
+				47434BAD12AE655800259061 /* TreeTemp.h */,
+				47434BAE12AE655800259061 /* TreeTemp.m */,
+				47434B8112AE5E9400259061 /* TreeStmtList.h */,
+				47434B8212AE5E9400259061 /* TreeStmtList.m */,
+				47434B8612AE5F9100259061 /* TreeExprList.h */,
+				47434B8712AE5F9100259061 /* TreeExprList.m */,
+			);
+			name = Tree;
+			sourceTree = "<group>";
+		};
 		475B098112A62DC4004990DA /* Test */ = {
 			isa = PBXGroup;
 			children = (
 				475B097F12A62DBE004990DA /* stringtest.c */,
 			);
 			name = Test;
+			sourceTree = "<group>";
+		};
+		475FA97312ADFB8B002F0399 /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				4724B39B12AF6BD300F2A09D /* TR.h */,
+				4724B39C12AF6BD300F2A09D /* TR.m */,
+				475FA97A12ADFC41002F0399 /* TRLevel.h */,
+				475FA97B12ADFC41002F0399 /* TRLevel.m */,
+				475FA97712ADFC2B002F0399 /* TRAccess.h */,
+				475FA97812ADFC2B002F0399 /* TRAccess.m */,
+				4724B32512AF3FFC00F2A09D /* TRExpr.h */,
+				4724B32612AF3FFC00F2A09D /* TRExpr.m */,
+				4724B32A12AF418D00F2A09D /* TREx.h */,
+				4724B32B12AF418D00F2A09D /* TREx.m */,
+				4724B34E12AF489D00F2A09D /* TRNx.h */,
+				4724B34F12AF489D00F2A09D /* TRNx.m */,
+				4724B37212AF4D4000F2A09D /* TRCx.h */,
+				4724B37312AF4D4000F2A09D /* TRCx.m */,
+			);
+			name = Translate;
 			sourceTree = "<group>";
 		};
 		4763478B12A0F7580021736A /* Resource */ = {
@@ -715,6 +917,40 @@
 				4740122A12A79322005B761F /* SemanticNamedType.m in Sources */,
 				477C180F12A891D10045F672 /* IRExpression.m in Sources */,
 				477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */,
+				4721AE1D12AD0A1F00D37514 /* Frame.m in Sources */,
+				4721AE2112AD0AF700D37514 /* TmpLabel.m in Sources */,
+				4721AE2612AD0C4E00D37514 /* TmpTemp.m in Sources */,
+				4721AE2912AD0D3C00D37514 /* TmpTempList.m in Sources */,
+				4721AE3012AD100500D37514 /* TmpLabelList.m in Sources */,
+				4721AE4B12AD172E00D37514 /* BoolList.m in Sources */,
+				475FA8C412ADD077002F0399 /* Access.m in Sources */,
+				475FA8CD12ADD0EB002F0399 /* MipsFrame.m in Sources */,
+				475FA8D012ADD173002F0399 /* MipsInFrame.m in Sources */,
+				475FA8D312ADD1FC002F0399 /* MipsInReg.m in Sources */,
+				475FA97912ADFC2B002F0399 /* TRAccess.m in Sources */,
+				475FA97C12ADFC41002F0399 /* TRLevel.m in Sources */,
+				47434B7412AE5CDC00259061 /* TreeExpr.m in Sources */,
+				47434B7D12AE5E6600259061 /* TreeStmt.m in Sources */,
+				47434B8312AE5E9400259061 /* TreeStmtList.m in Sources */,
+				47434B8812AE5F9100259061 /* TreeExprList.m in Sources */,
+				47434B9E12AE634500259061 /* TreeName.m in Sources */,
+				47434BA312AE644200259061 /* TreeSeq.m in Sources */,
+				47434BAF12AE655800259061 /* TreeTemp.m in Sources */,
+				47434BB912AE663500259061 /* TreeExprStmt.m in Sources */,
+				47434BBE12AE670A00259061 /* TreeBinop.m in Sources */,
+				47434BC512AE68D500259061 /* TreeCall.m in Sources */,
+				47434BCA12AE69F100259061 /* TreeCJump.m in Sources */,
+				47434BF912AE6F0700259061 /* TreeConst.m in Sources */,
+				47434BFE12AE6FB900259061 /* TreeESeq.m in Sources */,
+				47434C0E12AE713D00259061 /* TreeJump.m in Sources */,
+				4724B2FA12AF244D00F2A09D /* TreeLabel.m in Sources */,
+				4724B31312AF258B00F2A09D /* TreeMem.m in Sources */,
+				4724B31C12AF266200F2A09D /* TreeMove.m in Sources */,
+				4724B32712AF3FFC00F2A09D /* TRExpr.m in Sources */,
+				4724B32C12AF418D00F2A09D /* TREx.m in Sources */,
+				4724B35012AF489D00F2A09D /* TRNx.m in Sources */,
+				4724B37412AF4D4000F2A09D /* TRCx.m in Sources */,
+				4724B39D12AF6BD300F2A09D /* TR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

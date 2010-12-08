@@ -43,6 +43,10 @@
 {
   return [fields objectAtIndex:index];
 }
+- (NSUInteger)indexOfField:(Symbol *)field
+{
+  return [fields indexOfObject:field];
+}
 - (BOOL)hasField:(Symbol *)field
 {
   if ([fields indexOfObject:field] == NSNotFound)

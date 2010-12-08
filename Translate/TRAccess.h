@@ -14,6 +14,8 @@
 	TRLevel *level;
   Access *acc;
 }
+@property (readonly) TRLevel *level;
+@property (readonly) Access *acc;
 - (id)initWithLevel:(TRLevel *)aLevel access:(Access *)anAccess;
 + (id)accessWithLevel:(TRLevel *)aLevel access:(Access *)anAccess;
 @end

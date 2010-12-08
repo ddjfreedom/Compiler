@@ -7,7 +7,9 @@
 //
 
 #import "MipsInFrame.h"
-
+#import "TreeConst.h"
+#import "TreeMem.h"
+#import "TreeBinop.h"
 
 @implementation MipsInFrame
 @synthesize offset;
@@ -20,6 +22,12 @@
 - (NSString *)description
 {
   return [NSString stringWithFormat:@"InFrame: %d", offset];
+}
+- (TreeExpr *)exprWithFramePointer:(TreeExpr *)framePtr
+{
+  return [TreeMem memWithExpr:[TreeBinop binopWithLeftExpr:framePtr
+                                                  binaryOp:TreePlus
+                                                 rightExpr:[TreeConst constWithInt:offset]]];
 }
 + (id)inFrameWithOffset:(int)anOffset
 {

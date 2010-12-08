@@ -14,5 +14,6 @@
 }
 @property (assign) int offset;
 - (id)initWithOffset:(int)anOffset;
+- (TreeExpr *)exprWithFramePointer:(TreeExpr *)framePtr;
 + (id)inFrameWithOffset:(int)anOffset;
 @end
