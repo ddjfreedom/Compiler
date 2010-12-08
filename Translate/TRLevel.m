@@ -10,6 +10,7 @@
 
 
 @implementation TRLevel
+@synthesize parent;
 - (NSArray *)formals
 {
   return formals;
@@ -20,6 +21,7 @@
                                        boolList:[BoolList boolListWithBool:YES
                                                                   boolList:aBoolList]];
   [self initWithFrame:tmpframe];
+  parent = [aLevel retain];
   [tmpframe release];
   return self;
 }
@@ -29,6 +31,7 @@
                                        boolList:[BoolList boolListWithBool:YES
                                                                   boolList:aBoolList]];
   [self initWithFrame:tmpframe];
+  parent = [aLevel retain];
   [tmpframe release];
   return self;
 }
@@ -36,6 +39,7 @@
 {
   if (self = [super init]) {
     frame = [aFrame retain];
+    parent = nil;
     if (frame.formals) {
     	formals = [[NSMutableArray alloc] init];
     	for (Access *obj in frame.formals)
@@ -54,6 +58,7 @@
 {
   [frame release];
   [formals release];
+  [parent release];
   [super dealloc];
 }
 + (id)levelWithLevel:(TRLevel *)aLevel name:(Symbol *)aName boolList:(BoolList *)aBoolList
