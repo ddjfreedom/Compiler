@@ -11,6 +11,7 @@
 #import "TmpLabel.h"
 
 typedef enum {
+  TreeInvalidOp = -1,
   TreeEQ = 0,
   TreeNE,
   TreeLT,

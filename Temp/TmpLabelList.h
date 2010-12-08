@@ -13,10 +13,13 @@
 {
 	NSMutableArray *list;
 }
+@property (readonly) TmpLabel *head;
 - (id)init;
 - (id)initWithLabel:(TmpLabel *)aLabel;
 - (void)addLabel:(TmpLabel *)aLabel;
 - (void)insertLabel:(TmpLabel *)aLabel atIndex:(NSUInteger)index;
 - (TmpLabel *)lastLabel;
 - (TmpLabel *)labelAtIndex:(NSUInteger)index;
++ (id)labelList;
++ (id)labelListWithLabel:(TmpLabel *)aLabel;
 @end

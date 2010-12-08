@@ -20,6 +20,6 @@
 @property (readonly) TmpLabelList *list;
 - (id)initWithExpr:(TreeExpr *)anExpr lableList:(TmpLabelList *)aLabelList;
 - (id)initWithLabel:(TmpLabel *)aLabel;
-- (id)jumpWithExpr:(TreeExpr *)anExpr lableList:(TmpLabelList *)aLabelList;
-- (id)jumpWithLabel:(TmpLabel *)aLabel;
++ (id)jumpWithExpr:(TreeExpr *)anExpr lableList:(TmpLabelList *)aLabelList;
++ (id)jumpWithLabel:(TmpLabel *)aLabel;
 @end

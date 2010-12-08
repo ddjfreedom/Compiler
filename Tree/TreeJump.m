@@ -30,11 +30,11 @@
   [list release];
   [super dealloc];
 }
-- (id)jumpWithExpr:(TreeExpr *)anExpr lableList:(TmpLabelList *)aLabelList
++ (id)jumpWithExpr:(TreeExpr *)anExpr lableList:(TmpLabelList *)aLabelList
 {
   return [[[TreeJump alloc] initWithExpr:anExpr lableList:aLabelList] autorelease];
 }
-- (id)jumpWithLabel:(TmpLabel *)aLabel
++ (id)jumpWithLabel:(TmpLabel *)aLabel
 {
   return [[[TreeJump alloc] initWithLabel:aLabel] autorelease];
 }

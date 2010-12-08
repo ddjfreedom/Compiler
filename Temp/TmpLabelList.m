@@ -10,6 +10,12 @@
 
 
 @implementation TmpLabelList
+- (TmpLabel *)head
+{
+  if (list.count > 0)
+    return [list objectAtIndex:0];
+  return nil;
+}
 - (id)init
 {
   if (self = [super init])
@@ -46,5 +52,13 @@
 {
   [list release];
   [super dealloc];
+}
++ (id)labelList
+{
+  return [[[TmpLabelList alloc] init] autorelease];
+}
++ (id)labelListWithLabel:(TmpLabel *)aLabel
+{
+  return [[[TmpLabelList alloc] initWithLabel:aLabel] autorelease];
 }
 @end

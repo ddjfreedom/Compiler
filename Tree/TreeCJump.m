@@ -61,9 +61,7 @@
     case TreeUGT: return TreeULE;
     case TreeULE: return TreeUGT;
     case TreeUGE: return TreeULT;
-    default:
-      [NSException raise:@"CJump undefined Relation" format:@""];
   }
-  return 0;
+  return TreeInvalidOp;
 }
 @end
