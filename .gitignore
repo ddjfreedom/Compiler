@@ -1,2 +1,7 @@
 build/
 parse.output
+Compiler.1
+lex.yy.m
+parse.tab.h
+parse.tab.m
+testcases/
