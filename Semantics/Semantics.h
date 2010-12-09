@@ -20,3 +20,4 @@
 #import "SemanticFuncEntry.h"
 
 #import "SemanticEnvironment.h"
+#import "SemanticExpr.h"

@@ -22,6 +22,7 @@ int main(int argc, const char * argv[])
   Frame *frame = [[MipsFrame alloc] init];
   NSLog(@"%@", [frame generateLocal:YES]);
   [TypeChecker typeCheckProgram:expr];
+  [frame release];
   putchar('\n');
   fclose(fin);
   [pool drain];

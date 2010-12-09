@@ -13,6 +13,7 @@
 @synthesize returnType;
 @synthesize formalParas;
 @synthesize label;
+@synthesize level;
 - (id)initWithFormalParameters:(SemanticRecordType *)aRecordType
                   	returnType:(SemanticType *)aReturnType 
                          level:(TRLevel *)aLevel 

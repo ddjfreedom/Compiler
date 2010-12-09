@@ -12,6 +12,8 @@
 #import "TmpTemp.h"
 #import "Access.h"
 #import "BoolList.h"
+#import "TreeExpr.h"
+#import "TreeExprList.h"
 
 @interface Frame : NSObject 
 {
@@ -26,4 +28,5 @@
 @property (readonly) TmpTemp *fp;
 - (Frame *)newFrameWith:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
 - (Access *)generateLocal:(BOOL)isEscaped;
+- (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args;
 @end

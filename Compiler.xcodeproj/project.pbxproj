@@ -56,8 +56,10 @@
 		4765CF3C12A782C200A20AD1 /* SemanticEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF3B12A782C200A20AD1 /* SemanticEnvironment.m */; };
 		4765CF5B12A78AD100A20AD1 /* SemanticEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */; };
 		4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */; };
-		477C180F12A891D10045F672 /* IRExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* IRExpression.m */; };
+		477C180F12A891D10045F672 /* SemanticExpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* SemanticExpr.m */; };
 		477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C185D12A8A9410045F672 /* ErrorMessage.m */; };
+		4780163212B0759700F6A8B3 /* TRRelCx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4780163112B0759700F6A8B3 /* TRRelCx.m */; };
+		4780167012B08CA400F6A8B3 /* TRIfThenElseExpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4780166F12B08CA400F6A8B3 /* TRIfThenElseExpr.m */; };
 		47D69C4412A345AB00E426E6 /* SingleTypeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C4312A345AB00E426E6 /* SingleTypeField.m */; };
 		47D69C5A12A34B0800E426E6 /* FieldExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C5912A34B0800E426E6 /* FieldExpression.m */; };
 		47D69C6D12A34D9800E426E6 /* SyntaxList.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D69C6C12A34D9800E426E6 /* SyntaxList.m */; };
@@ -237,11 +239,15 @@
 		4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticEntry.m; path = Semantics/SemanticEntry.m; sourceTree = "<group>"; };
 		4765CF5C12A78AFD00A20AD1 /* SemanticVarEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticVarEntry.h; path = Semantics/SemanticVarEntry.h; sourceTree = "<group>"; };
 		4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticVarEntry.m; path = Semantics/SemanticVarEntry.m; sourceTree = "<group>"; };
-		477C180D12A891D10045F672 /* IRExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRExpression.h; path = Intermediate/IRExpression.h; sourceTree = "<group>"; };
-		477C180E12A891D10045F672 /* IRExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRExpression.m; path = Intermediate/IRExpression.m; sourceTree = "<group>"; };
+		477C180D12A891D10045F672 /* SemanticExpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticExpr.h; path = Semantics/SemanticExpr.h; sourceTree = "<group>"; };
+		477C180E12A891D10045F672 /* SemanticExpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticExpr.m; path = Semantics/SemanticExpr.m; sourceTree = "<group>"; };
 		477C185C12A8A9410045F672 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
 		477C185D12A8A9410045F672 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
 		477C189712A8B16B0045F672 /* Semantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Semantics.h; path = Semantics/Semantics.h; sourceTree = "<group>"; };
+		4780163012B0759700F6A8B3 /* TRRelCx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRelCx.h; path = Translate/TRRelCx.h; sourceTree = "<group>"; };
+		4780163112B0759700F6A8B3 /* TRRelCx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRelCx.m; path = Translate/TRRelCx.m; sourceTree = "<group>"; };
+		4780166E12B08CA400F6A8B3 /* TRIfThenElseExpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRIfThenElseExpr.h; path = Translate/TRIfThenElseExpr.h; sourceTree = "<group>"; };
+		4780166F12B08CA400F6A8B3 /* TRIfThenElseExpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRIfThenElseExpr.m; path = Translate/TRIfThenElseExpr.m; sourceTree = "<group>"; };
 		47A30D2D12AB8D5500721FAD /* decl.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = decl.tig; sourceTree = "<group>"; };
 		47A30D2E12AB8D5500721FAD /* for.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = for.tig; sourceTree = "<group>"; };
 		47A30D2F12AB8D5500721FAD /* merge.tig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = merge.tig; sourceTree = "<group>"; };
@@ -540,8 +546,12 @@
 				4724B32B12AF418D00F2A09D /* TREx.m */,
 				4724B34E12AF489D00F2A09D /* TRNx.h */,
 				4724B34F12AF489D00F2A09D /* TRNx.m */,
+				4780166E12B08CA400F6A8B3 /* TRIfThenElseExpr.h */,
+				4780166F12B08CA400F6A8B3 /* TRIfThenElseExpr.m */,
 				4724B37212AF4D4000F2A09D /* TRCx.h */,
 				4724B37312AF4D4000F2A09D /* TRCx.m */,
+				4780163012B0759700F6A8B3 /* TRRelCx.h */,
+				4780163112B0759700F6A8B3 /* TRRelCx.m */,
 			);
 			name = Translate;
 			sourceTree = "<group>";
@@ -582,6 +592,8 @@
 				4740121012A78C4C005B761F /* SemanticFuncEntry.m */,
 				4765CF3A12A782C200A20AD1 /* SemanticEnvironment.h */,
 				4765CF3B12A782C200A20AD1 /* SemanticEnvironment.m */,
+				477C180D12A891D10045F672 /* SemanticExpr.h */,
+				477C180E12A891D10045F672 /* SemanticExpr.m */,
 			);
 			name = Semantics;
 			sourceTree = "<group>";
@@ -589,8 +601,6 @@
 		477C17FF12A891800045F672 /* Intermediate */ = {
 			isa = PBXGroup;
 			children = (
-				477C180D12A891D10045F672 /* IRExpression.h */,
-				477C180E12A891D10045F672 /* IRExpression.m */,
 			);
 			name = Intermediate;
 			sourceTree = "<group>";
@@ -915,7 +925,7 @@
 				4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */,
 				4740121112A78C4C005B761F /* SemanticFuncEntry.m in Sources */,
 				4740122A12A79322005B761F /* SemanticNamedType.m in Sources */,
-				477C180F12A891D10045F672 /* IRExpression.m in Sources */,
+				477C180F12A891D10045F672 /* SemanticExpr.m in Sources */,
 				477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */,
 				4721AE1D12AD0A1F00D37514 /* Frame.m in Sources */,
 				4721AE2112AD0AF700D37514 /* TmpLabel.m in Sources */,
@@ -951,6 +961,8 @@
 				4724B35012AF489D00F2A09D /* TRNx.m in Sources */,
 				4724B37412AF4D4000F2A09D /* TRCx.m in Sources */,
 				4724B39D12AF6BD300F2A09D /* TR.m in Sources */,
+				4780163212B0759700F6A8B3 /* TRRelCx.m in Sources */,
+				4780167012B08CA400F6A8B3 /* TRIfThenElseExpr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 #import "MipsFrame.h"
 #import "MipsInReg.h"
 #import "MipsInFrame.h"
+#import "TreeName.h"
+#import "TreeCall.h"
 
 #define WORDLENGTH 4
 #define CALC_OFFSET(X) (-(WORDLENGTH * (++X)))
@@ -54,6 +56,11 @@
 - (NSString *)description
 {
   return [NSString stringWithFormat:@"MipsFrame: %@\n %@\n %d\n", name, formals, frameCount];
+}
+- (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args
+{
+  return [TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:aName]]
+                       exprList:args];
 }
 - (void)dealloc
 {

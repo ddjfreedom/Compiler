@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Expression.h"
-#import "IRExpression.h"
+#import "SemanticExpr.h"
 
 @interface TypeChecker : NSObject
 {
@@ -17,8 +17,8 @@
   // the topmost (last in envs) is the current scope
   NSMutableArray *envs;
   NSMutableArray *loopVars;
-  int nestedLoopLevel;
+  NSMutableArray *doneLabels;
 }
-- (IRExpression *)typeCheckProgram:(Expression *)expr;
-+ (IRExpression *)typeCheckProgram:(Expression *)expr;
+- (SemanticExpr *)typeCheckProgram:(Expression *)expr;
++ (SemanticExpr *)typeCheckProgram:(Expression *)expr;
 @end

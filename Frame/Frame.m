@@ -8,7 +8,6 @@
 
 #import "Frame.h"
 
-
 @implementation Frame
 @synthesize name;
 @synthesize wordSize;
@@ -22,6 +21,10 @@
   return nil;
 }
 - (Access *)generateLocal:(BOOL)isEscaped
+{
+  return nil;
+}
+- (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args
 {
   return nil;
 }

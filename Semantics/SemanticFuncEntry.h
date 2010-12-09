@@ -22,6 +22,7 @@
 @property (readonly) SemanticType *returnType;
 @property (readonly) SemanticRecordType *formalParas;
 @property (readonly) TmpLabel *label;
+@property (readonly) TRLevel *level;
 - (id)initWithFormalParameters:(SemanticRecordType *)aRecordType
                   	returnType:(SemanticType *)aReturnType 
                          level:(TRLevel *)aLevel 

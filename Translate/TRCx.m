@@ -29,14 +29,14 @@
   seq = [TreeSeq seqWithFirstStmt:[self unCxWithTrueLabel:tLabel falseLabel:fLabel]
                        secondStmt:seq];
   seq = [TreeSeq seqWithFirstStmt:[TreeMove moveWithDestination:[TreeTemp treeTempWithTemp:r]
-                                                         source:[TreeConst constWithInt:0]]
+                                                         source:[TreeConst constWithInt:1]]
                        secondStmt:seq];
   return [TreeESeq eseqWithStmt:seq expr:[TreeTemp treeTempWithTemp:r]];
 }
 - (TreeStmt *)unNx
 {
-  TmpLabel *tLabel = [TmpLabel label];
-  TmpLabel *fLabel = [TmpLabel label];
-  return [self unCxWithTrueLabel:tLabel falseLabel:fLabel];
+  TmpLabel *label = [TmpLabel label];
+  return [TreeSeq seqWithFirstStmt:[self unCxWithTrueLabel:label falseLabel:label] 
+                        secondStmt:[TreeLabel treeLabelWithLabel:label]];
 }
 @end

@@ -6,26 +6,29 @@
 //  Copyright 2010 SJTU. All rights reserved.
 //
 
-#import "IRExpression.h"
+#import "SemanticExpr.h"
 
 
-@implementation IRExpression
+@implementation SemanticExpr
 @synthesize type;
-- (id)initWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType
+@synthesize expr;
+- (id)initWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
 {
   if (self = [super init]) {
     type = [aType retain];
+    expr = [anExpr retain];
   }
   return self;
 }
 - (void)dealloc
 {
   [type release];
+  [expr release];
   [super dealloc];
 }
-+ (id)exprWithTranslatedExpr:(id)anExpr andType:(SemanticType *)aType
++ (id)exprWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
 {
-  return [[[IRExpression alloc] initWithTranslatedExpr:anExpr
+  return [[[SemanticExpr alloc] initWithTranslatedExpr:anExpr
                                                andType:aType] autorelease];
 }
 @end
