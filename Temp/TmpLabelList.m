@@ -48,6 +48,10 @@
     return [list objectAtIndex:index];
   return nil;
 }
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
+{
+  return [list countByEnumeratingWithState:state objects:stackbuf count:len];
+}
 - (void)dealloc
 {
   [list release];

@@ -17,7 +17,14 @@
 
 @implementation MipsFrame
 @synthesize frameCount;
-
+- (TmpTemp *)fp
+{
+  return fp;
+}
+- (TmpTemp *)rv
+{
+  return rv;
+}
 - (id)init
 {
   return [self initWithLabel:nil boolList:nil];
@@ -28,7 +35,8 @@
     name = [aLabel retain];
     frameCount = 0;
     wordSize = WORDLENGTH;
-    fp = [TmpTemp temp];
+    fp = [[TmpTemp temp] retain];
+    rv = [[TmpTemp temp] retain];
     if (aBoolList) {
     	formals = [[NSMutableArray alloc] init];
     	for (; aBoolList; aBoolList = aBoolList.tail) {
@@ -62,10 +70,16 @@
   return [TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:aName]]
                        exprList:args];
 }
+- (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body
+{
+  return body;
+}
 - (void)dealloc
 {
   [formals release];
   [name release];
+  [fp release];
+  [rv release];
   [super dealloc];
 }
 @end

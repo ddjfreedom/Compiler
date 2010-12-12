@@ -12,7 +12,7 @@
 @implementation SemanticExpr
 @synthesize type;
 @synthesize expr;
-- (id)initWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
+- (id)initWithTRExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
 {
   if (self = [super init]) {
     type = [aType retain];
@@ -26,9 +26,8 @@
   [expr release];
   [super dealloc];
 }
-+ (id)exprWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
++ (id)exprWithTRExpr:(TRExpr *)anExpr andType:(SemanticType *)aType
 {
-  return [[[SemanticExpr alloc] initWithTranslatedExpr:anExpr
-                                               andType:aType] autorelease];
+  return [[[SemanticExpr alloc] initWithTRExpr:anExpr andType:aType] autorelease];
 }
 @end

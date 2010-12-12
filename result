@@ -1,0 +1,3211 @@
+testcases/decl.tig
+testcases/decl.tig
+Seq
+  |Seq
+  |  |Move
+  |  |   |Mem
+  |  |   |  |Binop
+  |  |   |       |+
+  |  |   |       |Temp: t0
+  |  |   |       |Const: -4
+  |  |   |ESeq
+  |  |       |Seq
+  |  |       |  |Move
+  |  |       |  |   |Temp: t2
+  |  |       |  |   |Call
+  |  |       |  |       |Name: malloc
+  |  |       |  |       |ExprList
+  |  |       |  |               |Binop
+  |  |       |  |                    |*
+  |  |       |  |                    |Const: 10
+  |  |       |  |                    |Const: 4
+  |  |       |  |ExprStmt
+  |  |       |          |Call
+  |  |       |              |Name: initArray
+  |  |       |              |ExprList
+  |  |       |                      |Temp: t2
+  |  |       |                      |Const: 10
+  |  |       |                      |Const: 5
+  |  |       |Temp: t2
+  |  |Move
+  |      |Mem
+  |      |  |Binop
+  |      |       |+
+  |      |       |Temp: t0
+  |      |       |Const: -8
+  |      |ESeq
+  |          |Seq
+  |          |  |Move
+  |          |  |   |Temp: t3
+  |          |  |   |Call
+  |          |  |       |Name: malloc
+  |          |  |       |ExprList
+  |          |  |               |Binop
+  |          |  |                    |*
+  |          |  |                    |Const: 10
+  |          |  |                    |Const: 4
+  |          |  |ExprStmt
+  |          |          |Call
+  |          |              |Name: initArray
+  |          |              |ExprList
+  |          |                      |Temp: t3
+  |          |                      |Const: 10
+  |          |                      |Const: 5
+  |          |Temp: t3
+  |Move
+      |Mem
+      |  |Binop
+      |       |+
+      |       |Temp: t0
+      |       |Const: -12
+      |ESeq
+          |Seq
+          |  |Move
+          |  |   |Temp: t5
+          |  |   |Call
+          |  |       |Name: malloc
+          |  |       |ExprList
+          |  |               |Binop
+          |  |                    |*
+          |  |                    |Const: 10
+          |  |                    |Const: 4
+          |  |ExprStmt
+          |          |Call
+          |              |Name: initArray
+          |              |ExprList
+          |                      |Temp: t5
+          |                      |Const: 10
+          |                      |ESeq
+          |                          |Seq
+          |                          |  |Move
+          |                          |  |   |Temp: t4
+          |                          |  |   |Call
+          |                          |  |       |Name: malloc
+          |                          |  |       |ExprList
+          |                          |  |               |Binop
+          |                          |  |                    |*
+          |                          |  |                    |Const: 20
+          |                          |  |                    |Const: 4
+          |                          |  |ExprStmt
+          |                          |          |Call
+          |                          |              |Name: initArray
+          |                          |              |ExprList
+          |                          |                      |Temp: t4
+          |                          |                      |Const: 20
+          |                          |                      |Const: 5
+          |                          |Temp: t4
+          |Temp: t5
+
+testcases/for.tig
+testcases/for.tig
+Line 6: Warning: Loop variable i being assigned to
+Line 18: Error: break not in a loop
+
+testcases/merge.tig
+testcases/merge.tig
+Seq
+  |Seq
+  |  |Move
+  |  |   |Mem
+  |  |   |  |Binop
+  |  |   |       |+
+  |  |   |       |Temp: t0
+  |  |   |       |Const: -4
+  |  |   |Call
+  |  |       |Name: getchar
+  |  |       |ExprList
+  |  |               |Temp: t0
+  |  |Seq
+  |     |Move
+  |     |   |Mem
+  |     |   |  |Binop
+  |     |   |       |+
+  |     |   |       |Temp: t0
+  |     |   |       |Const: -8
+  |     |   |Call
+  |     |       |Name: L28
+  |     |       |ExprList
+  |     |               |Temp: t0
+  |     |Move
+  |         |Mem
+  |         |  |Binop
+  |         |       |+
+  |         |       |Temp: t0
+  |         |       |Const: -12
+  |         |ESeq
+  |             |Move
+  |             |   |Mem
+  |             |   |  |Binop
+  |             |   |       |+
+  |             |   |       |Temp: t0
+  |             |   |       |Const: -4
+  |             |   |Call
+  |             |       |Name: getchar
+  |             |       |ExprList
+  |             |               |Temp: t0
+  |             |Call
+  |                 |Name: L28
+  |                 |ExprList
+  |                         |Temp: t0
+  |ExprStmt
+          |Call
+              |Name: L31
+              |ExprList
+                      |Temp: t0
+                      |Call
+                          |Name: L29
+                          |ExprList
+                                  |Temp: t0
+                                  |Mem
+                                  |  |Binop
+                                  |       |+
+                                  |       |Temp: t0
+                                  |       |Const: -8
+                                  |Mem
+                                     |Binop
+                                          |+
+                                          |Temp: t0
+                                          |Const: -12
+DataFrag: 0 Label: L3
+DataFrag: 9 Label: L4
+ProcFrag
+Move
+   |Temp: t3
+   |ESeq
+       |Seq
+       |  |CJump
+       |  |    |>=
+       |  |    |Call
+       |  |    |   |Name: ord
+       |  |    |   |ExprList
+       |  |    |           |Temp: t0
+       |  |    |           |Mem
+       |  |    |              |Binop
+       |  |    |                   |+
+       |  |    |                   |Mem
+       |  |    |                   |  |Binop
+       |  |    |                   |       |+
+       |  |    |                   |       |Mem
+       |  |    |                   |       |  |Binop
+       |  |    |                   |       |       |+
+       |  |    |                   |       |       |Temp: t4
+       |  |    |                   |       |       |Const: -4
+       |  |    |                   |       |Const: -4
+       |  |    |                   |Const: -4
+       |  |    |Call
+       |  |    |   |Name: ord
+       |  |    |   |ExprList
+       |  |    |           |Temp: t0
+       |  |    |           |Name: L3
+       |  |    |True Label: L5
+       |  |    |False Label: L6
+       |  |Seq
+       |     |Label: L5
+       |     |Seq
+       |        |Move
+       |        |   |Temp: t6
+       |        |   |ESeq
+       |        |       |Seq
+       |        |       |  |Move
+       |        |       |  |   |Temp: t7
+       |        |       |  |   |Const: 1
+       |        |       |  |Seq
+       |        |       |     |CJump
+       |        |       |     |    |<=
+       |        |       |     |    |Call
+       |        |       |     |    |   |Name: ord
+       |        |       |     |    |   |ExprList
+       |        |       |     |    |           |Temp: t0
+       |        |       |     |    |           |Mem
+       |        |       |     |    |              |Binop
+       |        |       |     |    |                   |+
+       |        |       |     |    |                   |Mem
+       |        |       |     |    |                   |  |Binop
+       |        |       |     |    |                   |       |+
+       |        |       |     |    |                   |       |Mem
+       |        |       |     |    |                   |       |  |Binop
+       |        |       |     |    |                   |       |       |+
+       |        |       |     |    |                   |       |       |Temp: t4
+       |        |       |     |    |                   |       |       |Const: -4
+       |        |       |     |    |                   |       |Const: -4
+       |        |       |     |    |                   |Const: -4
+       |        |       |     |    |Call
+       |        |       |     |    |   |Name: ord
+       |        |       |     |    |   |ExprList
+       |        |       |     |    |           |Temp: t0
+       |        |       |     |    |           |Name: L4
+       |        |       |     |    |True Label: L8
+       |        |       |     |    |False Label: L9
+       |        |       |     |Seq
+       |        |       |        |Label: L9
+       |        |       |        |Seq
+       |        |       |           |Move
+       |        |       |           |   |Temp: t7
+       |        |       |           |   |Const: 0
+       |        |       |           |Label: L8
+       |        |       |Temp: t7
+       |        |Seq
+       |           |Jump
+       |           |   |Name: L7
+       |           |   |L7
+       |           |Seq
+       |              |Label: L6
+       |              |Seq
+       |                 |Move
+       |                 |   |Temp: t6
+       |                 |   |Const: 0
+       |                 |Seq
+       |                    |Jump
+       |                    |   |Name: L7
+       |                    |   |L7
+       |                    |Label: L7
+       |Temp: t6
+DataFrag:   Label: L10
+DataFrag: 
+ Label: L11
+ProcFrag
+Seq
+  |Label: L16
+  |Seq
+     |Seq
+     |  |CJump
+     |  |    |=
+     |  |    |Binop
+     |  |    |    |^
+     |  |    |    |ESeq
+     |  |    |    |   |Seq
+     |  |    |    |   |  |CJump
+     |  |    |    |   |  |    |=
+     |  |    |    |   |  |    |Call
+     |  |    |    |   |  |    |   |Name: strcmp
+     |  |    |    |   |  |    |   |ExprList
+     |  |    |    |   |  |    |           |Mem
+     |  |    |    |   |  |    |           |  |Binop
+     |  |    |    |   |  |    |           |       |+
+     |  |    |    |   |  |    |           |       |Mem
+     |  |    |    |   |  |    |           |       |  |Binop
+     |  |    |    |   |  |    |           |       |       |+
+     |  |    |    |   |  |    |           |       |       |Mem
+     |  |    |    |   |  |    |           |       |       |  |Binop
+     |  |    |    |   |  |    |           |       |       |       |+
+     |  |    |    |   |  |    |           |       |       |       |Temp: t8
+     |  |    |    |   |  |    |           |       |       |       |Const: -4
+     |  |    |    |   |  |    |           |       |       |Const: -4
+     |  |    |    |   |  |    |           |       |Const: -4
+     |  |    |    |   |  |    |           |Name: L10
+     |  |    |    |   |  |    |Const: 0
+     |  |    |    |   |  |    |True Label: L12
+     |  |    |    |   |  |    |False Label: L13
+     |  |    |    |   |  |Seq
+     |  |    |    |   |     |Label: L12
+     |  |    |    |   |     |Seq
+     |  |    |    |   |        |Move
+     |  |    |    |   |        |   |Temp: t10
+     |  |    |    |   |        |   |Const: 1
+     |  |    |    |   |        |Seq
+     |  |    |    |   |           |Jump
+     |  |    |    |   |           |   |Name: L14
+     |  |    |    |   |           |   |L14
+     |  |    |    |   |           |Seq
+     |  |    |    |   |              |Label: L13
+     |  |    |    |   |              |Seq
+     |  |    |    |   |                 |Move
+     |  |    |    |   |                 |   |Temp: t10
+     |  |    |    |   |                 |   |ESeq
+     |  |    |    |   |                 |       |Seq
+     |  |    |    |   |                 |       |  |Move
+     |  |    |    |   |                 |       |  |   |Temp: t11
+     |  |    |    |   |                 |       |  |   |Const: 1
+     |  |    |    |   |                 |       |  |Seq
+     |  |    |    |   |                 |       |     |CJump
+     |  |    |    |   |                 |       |     |    |=
+     |  |    |    |   |                 |       |     |    |Call
+     |  |    |    |   |                 |       |     |    |   |Name: strcmp
+     |  |    |    |   |                 |       |     |    |   |ExprList
+     |  |    |    |   |                 |       |     |    |           |Mem
+     |  |    |    |   |                 |       |     |    |           |  |Binop
+     |  |    |    |   |                 |       |     |    |           |       |+
+     |  |    |    |   |                 |       |     |    |           |       |Mem
+     |  |    |    |   |                 |       |     |    |           |       |  |Binop
+     |  |    |    |   |                 |       |     |    |           |       |       |+
+     |  |    |    |   |                 |       |     |    |           |       |       |Mem
+     |  |    |    |   |                 |       |     |    |           |       |       |  |Binop
+     |  |    |    |   |                 |       |     |    |           |       |       |       |+
+     |  |    |    |   |                 |       |     |    |           |       |       |       |Temp: t8
+     |  |    |    |   |                 |       |     |    |           |       |       |       |Const: -4
+     |  |    |    |   |                 |       |     |    |           |       |       |Const: -4
+     |  |    |    |   |                 |       |     |    |           |       |Const: -4
+     |  |    |    |   |                 |       |     |    |           |Name: L11
+     |  |    |    |   |                 |       |     |    |Const: 0
+     |  |    |    |   |                 |       |     |    |True Label: L17
+     |  |    |    |   |                 |       |     |    |False Label: L18
+     |  |    |    |   |                 |       |     |Seq
+     |  |    |    |   |                 |       |        |Label: L18
+     |  |    |    |   |                 |       |        |Seq
+     |  |    |    |   |                 |       |           |Move
+     |  |    |    |   |                 |       |           |   |Temp: t11
+     |  |    |    |   |                 |       |           |   |Const: 0
+     |  |    |    |   |                 |       |           |Label: L17
+     |  |    |    |   |                 |       |Temp: t11
+     |  |    |    |   |                 |Seq
+     |  |    |    |   |                    |Jump
+     |  |    |    |   |                    |   |Name: L14
+     |  |    |    |   |                    |   |L14
+     |  |    |    |   |                    |Label: L14
+     |  |    |    |   |Temp: t10
+     |  |    |    |Const: -1
+     |  |    |Const: 0
+     |  |    |True Label: L20
+     |  |    |False Label: L19
+     |  |Seq
+     |     |Label: L19
+     |     |Seq
+     |        |Jump
+     |        |   |Name: L15
+     |        |   |L15
+     |        |Seq
+     |           |Jump
+     |           |   |Name: L21
+     |           |   |L21
+     |           |Seq
+     |              |Label: L20
+     |              |Seq
+     |                 |Jump
+     |                 |   |Name: L21
+     |                 |   |L21
+     |                 |Label: L21
+     |Seq
+        |Move
+        |   |Mem
+        |   |  |Binop
+        |   |       |+
+        |   |       |Mem
+        |   |       |  |Binop
+        |   |       |       |+
+        |   |       |       |Mem
+        |   |       |       |  |Binop
+        |   |       |       |       |+
+        |   |       |       |       |Temp: t8
+        |   |       |       |       |Const: -4
+        |   |       |       |Const: -4
+        |   |       |Const: -4
+        |   |Call
+        |       |Name: getchar
+        |       |ExprList
+        |               |Temp: t0
+        |Seq
+           |Jump
+           |   |Name: L16
+           |   |L16
+           |Label: L15
+DataFrag: 0 Label: L23
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |Seq
+       |  |Move
+       |  |   |Mem
+       |  |   |  |Binop
+       |  |   |       |+
+       |  |   |       |Temp: t2
+       |  |   |       |Const: -12
+       |  |   |Const: 0
+       |  |Seq
+       |     |ExprStmt
+       |     |       |Call
+       |     |           |Name: L2
+       |     |           |ExprList
+       |     |                   |Temp: t2
+       |     |Seq
+       |        |Move
+       |        |   |Mem
+       |        |   |  |Binop
+       |        |   |       |+
+       |        |   |       |Mem
+       |        |   |       |  |Binop
+       |        |   |       |       |+
+       |        |   |       |       |Temp: t2
+       |        |   |       |       |Const: -8
+       |        |   |       |Const: 0
+       |        |   |Call
+       |        |       |Name: L1
+       |        |       |ExprList
+       |        |               |Temp: t2
+       |        |               |Mem
+       |        |                  |Binop
+       |        |                       |+
+       |        |                       |Mem
+       |        |                       |  |Binop
+       |        |                       |       |+
+       |        |                       |       |Temp: t2
+       |        |                       |       |Const: -4
+       |        |                       |Const: -4
+       |        |Seq
+       |           |Label: L24
+       |           |Seq
+       |              |Seq
+       |              |  |CJump
+       |              |  |    |=
+       |              |  |    |Binop
+       |              |  |    |    |^
+       |              |  |    |    |Call
+       |              |  |    |    |   |Name: L1
+       |              |  |    |    |   |ExprList
+       |              |  |    |    |           |Temp: t2
+       |              |  |    |    |           |Mem
+       |              |  |    |    |              |Binop
+       |              |  |    |    |                   |+
+       |              |  |    |    |                   |Mem
+       |              |  |    |    |                   |  |Binop
+       |              |  |    |    |                   |       |+
+       |              |  |    |    |                   |       |Temp: t2
+       |              |  |    |    |                   |       |Const: -4
+       |              |  |    |    |                   |Const: -4
+       |              |  |    |    |Const: -1
+       |              |  |    |Const: 0
+       |              |  |    |True Label: L26
+       |              |  |    |False Label: L25
+       |              |  |Seq
+       |              |     |Label: L25
+       |              |     |Seq
+       |              |        |Jump
+       |              |        |   |Name: L22
+       |              |        |   |L22
+       |              |        |Seq
+       |              |           |Jump
+       |              |           |   |Name: L27
+       |              |           |   |L27
+       |              |           |Seq
+       |              |              |Label: L26
+       |              |              |Seq
+       |              |                 |Jump
+       |              |                 |   |Name: L27
+       |              |                 |   |L27
+       |              |                 |Label: L27
+       |              |Seq
+       |                 |Seq
+       |                 |  |Move
+       |                 |  |   |Mem
+       |                 |  |   |  |Binop
+       |                 |  |   |       |+
+       |                 |  |   |       |Temp: t2
+       |                 |  |   |       |Const: -12
+       |                 |  |   |Binop
+       |                 |  |        |-
+       |                 |  |        |Binop
+       |                 |  |        |    |+
+       |                 |  |        |    |Binop
+       |                 |  |        |    |    |*
+       |                 |  |        |    |    |Mem
+       |                 |  |        |    |    |  |Binop
+       |                 |  |        |    |    |       |+
+       |                 |  |        |    |    |       |Temp: t2
+       |                 |  |        |    |    |       |Const: -12
+       |                 |  |        |    |    |Const: 10
+       |                 |  |        |    |Call
+       |                 |  |        |        |Name: ord
+       |                 |  |        |        |ExprList
+       |                 |  |        |                |Temp: t0
+       |                 |  |        |                |Mem
+       |                 |  |        |                   |Binop
+       |                 |  |        |                        |+
+       |                 |  |        |                        |Mem
+       |                 |  |        |                        |  |Binop
+       |                 |  |        |                        |       |+
+       |                 |  |        |                        |       |Temp: t2
+       |                 |  |        |                        |       |Const: -4
+       |                 |  |        |                        |Const: -4
+       |                 |  |        |Call
+       |                 |  |            |Name: ord
+       |                 |  |            |ExprList
+       |                 |  |                    |Temp: t0
+       |                 |  |                    |Name: L23
+       |                 |  |Move
+       |                 |      |Mem
+       |                 |      |  |Binop
+       |                 |      |       |+
+       |                 |      |       |Mem
+       |                 |      |       |  |Binop
+       |                 |      |       |       |+
+       |                 |      |       |       |Temp: t2
+       |                 |      |       |       |Const: -4
+       |                 |      |       |Const: -4
+       |                 |      |Call
+       |                 |          |Name: getchar
+       |                 |          |ExprList
+       |                 |                  |Temp: t0
+       |                 |Seq
+       |                    |Jump
+       |                    |   |Name: L24
+       |                    |   |L24
+       |                    |Label: L22
+       |Mem
+          |Binop
+               |+
+               |Temp: t2
+               |Const: -12
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |Seq
+       |  |Move
+       |  |   |Mem
+       |  |   |  |Binop
+       |  |   |       |+
+       |  |   |       |Temp: t12
+       |  |   |       |Const: -8
+       |  |   |ESeq
+       |  |       |Seq
+       |  |       |  |Move
+       |  |       |  |   |Temp: t14
+       |  |       |  |   |Call
+       |  |       |  |       |Name: malloc
+       |  |       |  |       |Const: 4
+       |  |       |  |Move
+       |  |       |      |Mem
+       |  |       |      |  |Binop
+       |  |       |      |       |+
+       |  |       |      |       |Temp: t14
+       |  |       |      |       |Const: 0
+       |  |       |      |Const: 0
+       |  |       |Temp: t14
+       |  |Move
+       |      |Mem
+       |      |  |Binop
+       |      |       |+
+       |      |       |Temp: t12
+       |      |       |Const: -12
+       |      |Call
+       |          |Name: L0
+       |          |ExprList
+       |                  |Temp: t0
+       |                  |Mem
+       |                     |Binop
+       |                          |+
+       |                          |Temp: t12
+       |                          |Const: -8
+       |ESeq
+           |Seq
+           |  |CJump
+           |  |    |=
+           |  |    |Mem
+           |  |    |  |Binop
+           |  |    |       |+
+           |  |    |       |Mem
+           |  |    |       |  |Binop
+           |  |    |       |       |+
+           |  |    |       |       |Temp: t12
+           |  |    |       |       |Const: -8
+           |  |    |       |Const: 0
+           |  |    |Const: 0
+           |  |    |True Label: L33
+           |  |    |False Label: L32
+           |  |Seq
+           |     |Label: L32
+           |     |Seq
+           |        |Move
+           |        |   |Temp: t16
+           |        |   |ESeq
+           |        |       |Seq
+           |        |       |  |Move
+           |        |       |  |   |Temp: t15
+           |        |       |  |   |Call
+           |        |       |  |       |Name: malloc
+           |        |       |  |       |Const: 8
+           |        |       |  |Seq
+           |        |       |     |Move
+           |        |       |     |   |Mem
+           |        |       |     |   |  |Binop
+           |        |       |     |   |       |+
+           |        |       |     |   |       |Temp: t15
+           |        |       |     |   |       |Const: 0
+           |        |       |     |   |Mem
+           |        |       |     |      |Binop
+           |        |       |     |           |+
+           |        |       |     |           |Temp: t12
+           |        |       |     |           |Const: -12
+           |        |       |     |Move
+           |        |       |         |Mem
+           |        |       |         |  |Binop
+           |        |       |         |       |+
+           |        |       |         |       |Temp: t15
+           |        |       |         |       |Const: 4
+           |        |       |         |Call
+           |        |       |             |Name: L28
+           |        |       |             |ExprList
+           |        |       |                     |Temp: t0
+           |        |       |Temp: t15
+           |        |Seq
+           |           |Jump
+           |           |   |Name: L34
+           |           |   |L34
+           |           |Seq
+           |              |Label: L33
+           |              |Seq
+           |                 |Move
+           |                 |   |Temp: t16
+           |                 |   |Const: 0
+           |                 |Seq
+           |                    |Jump
+           |                    |   |Name: L34
+           |                    |   |L34
+           |                    |Label: L34
+           |Temp: t16
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |Seq
+       |  |CJump
+       |  |    |=
+       |  |    |Mem
+       |  |    |  |Binop
+       |  |    |       |+
+       |  |    |       |Temp: t17
+       |  |    |       |Const: -8
+       |  |    |Const: 0
+       |  |    |True Label: L41
+       |  |    |False Label: L42
+       |  |Seq
+       |     |Label: L41
+       |     |Seq
+       |        |Move
+       |        |   |Temp: t21
+       |        |   |Mem
+       |        |      |Binop
+       |        |           |+
+       |        |           |Temp: t17
+       |        |           |Const: -12
+       |        |Seq
+       |           |Jump
+       |           |   |Name: L43
+       |           |   |L43
+       |           |Seq
+       |              |Label: L42
+       |              |Seq
+       |                 |Move
+       |                 |   |Temp: t21
+       |                 |   |ESeq
+       |                 |       |Seq
+       |                 |       |  |CJump
+       |                 |       |  |    |=
+       |                 |       |  |    |Mem
+       |                 |       |  |    |  |Binop
+       |                 |       |  |    |       |+
+       |                 |       |  |    |       |Temp: t17
+       |                 |       |  |    |       |Const: -12
+       |                 |       |  |    |Const: 0
+       |                 |       |  |    |True Label: L38
+       |                 |       |  |    |False Label: L39
+       |                 |       |  |Seq
+       |                 |       |     |Label: L38
+       |                 |       |     |Seq
+       |                 |       |        |Move
+       |                 |       |        |   |Temp: t22
+       |                 |       |        |   |Mem
+       |                 |       |        |      |Binop
+       |                 |       |        |           |+
+       |                 |       |        |           |Temp: t17
+       |                 |       |        |           |Const: -8
+       |                 |       |        |Seq
+       |                 |       |           |Jump
+       |                 |       |           |   |Name: L40
+       |                 |       |           |   |L40
+       |                 |       |           |Seq
+       |                 |       |              |Label: L39
+       |                 |       |              |Seq
+       |                 |       |                 |Move
+       |                 |       |                 |   |Temp: t22
+       |                 |       |                 |   |ESeq
+       |                 |       |                 |       |Seq
+       |                 |       |                 |       |  |CJump
+       |                 |       |                 |       |  |    |<
+       |                 |       |                 |       |  |    |Mem
+       |                 |       |                 |       |  |    |  |Binop
+       |                 |       |                 |       |  |    |       |+
+       |                 |       |                 |       |  |    |       |Mem
+       |                 |       |                 |       |  |    |       |  |Binop
+       |                 |       |                 |       |  |    |       |       |+
+       |                 |       |                 |       |  |    |       |       |Temp: t17
+       |                 |       |                 |       |  |    |       |       |Const: -8
+       |                 |       |                 |       |  |    |       |Const: 0
+       |                 |       |                 |       |  |    |Mem
+       |                 |       |                 |       |  |    |  |Binop
+       |                 |       |                 |       |  |    |       |+
+       |                 |       |                 |       |  |    |       |Mem
+       |                 |       |                 |       |  |    |       |  |Binop
+       |                 |       |                 |       |  |    |       |       |+
+       |                 |       |                 |       |  |    |       |       |Temp: t17
+       |                 |       |                 |       |  |    |       |       |Const: -12
+       |                 |       |                 |       |  |    |       |Const: 0
+       |                 |       |                 |       |  |    |True Label: L35
+       |                 |       |                 |       |  |    |False Label: L36
+       |                 |       |                 |       |  |Seq
+       |                 |       |                 |       |     |Label: L35
+       |                 |       |                 |       |     |Seq
+       |                 |       |                 |       |        |Move
+       |                 |       |                 |       |        |   |Temp: t23
+       |                 |       |                 |       |        |   |ESeq
+       |                 |       |                 |       |        |       |Seq
+       |                 |       |                 |       |        |       |  |Move
+       |                 |       |                 |       |        |       |  |   |Temp: t19
+       |                 |       |                 |       |        |       |  |   |Call
+       |                 |       |                 |       |        |       |  |       |Name: malloc
+       |                 |       |                 |       |        |       |  |       |Const: 8
+       |                 |       |                 |       |        |       |  |Seq
+       |                 |       |                 |       |        |       |     |Move
+       |                 |       |                 |       |        |       |     |   |Mem
+       |                 |       |                 |       |        |       |     |   |  |Binop
+       |                 |       |                 |       |        |       |     |   |       |+
+       |                 |       |                 |       |        |       |     |   |       |Temp: t19
+       |                 |       |                 |       |        |       |     |   |       |Const: 0
+       |                 |       |                 |       |        |       |     |   |Mem
+       |                 |       |                 |       |        |       |     |      |Binop
+       |                 |       |                 |       |        |       |     |           |+
+       |                 |       |                 |       |        |       |     |           |Mem
+       |                 |       |                 |       |        |       |     |           |  |Binop
+       |                 |       |                 |       |        |       |     |           |       |+
+       |                 |       |                 |       |        |       |     |           |       |Temp: t17
+       |                 |       |                 |       |        |       |     |           |       |Const: -8
+       |                 |       |                 |       |        |       |     |           |Const: 0
+       |                 |       |                 |       |        |       |     |Move
+       |                 |       |                 |       |        |       |         |Mem
+       |                 |       |                 |       |        |       |         |  |Binop
+       |                 |       |                 |       |        |       |         |       |+
+       |                 |       |                 |       |        |       |         |       |Temp: t19
+       |                 |       |                 |       |        |       |         |       |Const: 4
+       |                 |       |                 |       |        |       |         |Call
+       |                 |       |                 |       |        |       |             |Name: L29
+       |                 |       |                 |       |        |       |             |ExprList
+       |                 |       |                 |       |        |       |                     |Temp: t0
+       |                 |       |                 |       |        |       |                     |Mem
+       |                 |       |                 |       |        |       |                     |  |Binop
+       |                 |       |                 |       |        |       |                     |       |+
+       |                 |       |                 |       |        |       |                     |       |Mem
+       |                 |       |                 |       |        |       |                     |       |  |Binop
+       |                 |       |                 |       |        |       |                     |       |       |+
+       |                 |       |                 |       |        |       |                     |       |       |Temp: t17
+       |                 |       |                 |       |        |       |                     |       |       |Const: -8
+       |                 |       |                 |       |        |       |                     |       |Const: 4
+       |                 |       |                 |       |        |       |                     |Mem
+       |                 |       |                 |       |        |       |                        |Binop
+       |                 |       |                 |       |        |       |                             |+
+       |                 |       |                 |       |        |       |                             |Temp: t17
+       |                 |       |                 |       |        |       |                             |Const: -12
+       |                 |       |                 |       |        |       |Temp: t19
+       |                 |       |                 |       |        |Seq
+       |                 |       |                 |       |           |Jump
+       |                 |       |                 |       |           |   |Name: L37
+       |                 |       |                 |       |           |   |L37
+       |                 |       |                 |       |           |Seq
+       |                 |       |                 |       |              |Label: L36
+       |                 |       |                 |       |              |Seq
+       |                 |       |                 |       |                 |Move
+       |                 |       |                 |       |                 |   |Temp: t23
+       |                 |       |                 |       |                 |   |ESeq
+       |                 |       |                 |       |                 |       |Seq
+       |                 |       |                 |       |                 |       |  |Move
+       |                 |       |                 |       |                 |       |  |   |Temp: t20
+       |                 |       |                 |       |                 |       |  |   |Call
+       |                 |       |                 |       |                 |       |  |       |Name: malloc
+       |                 |       |                 |       |                 |       |  |       |Const: 8
+       |                 |       |                 |       |                 |       |  |Seq
+       |                 |       |                 |       |                 |       |     |Move
+       |                 |       |                 |       |                 |       |     |   |Mem
+       |                 |       |                 |       |                 |       |     |   |  |Binop
+       |                 |       |                 |       |                 |       |     |   |       |+
+       |                 |       |                 |       |                 |       |     |   |       |Temp: t20
+       |                 |       |                 |       |                 |       |     |   |       |Const: 0
+       |                 |       |                 |       |                 |       |     |   |Mem
+       |                 |       |                 |       |                 |       |     |      |Binop
+       |                 |       |                 |       |                 |       |     |           |+
+       |                 |       |                 |       |                 |       |     |           |Mem
+       |                 |       |                 |       |                 |       |     |           |  |Binop
+       |                 |       |                 |       |                 |       |     |           |       |+
+       |                 |       |                 |       |                 |       |     |           |       |Temp: t17
+       |                 |       |                 |       |                 |       |     |           |       |Const: -12
+       |                 |       |                 |       |                 |       |     |           |Const: 0
+       |                 |       |                 |       |                 |       |     |Move
+       |                 |       |                 |       |                 |       |         |Mem
+       |                 |       |                 |       |                 |       |         |  |Binop
+       |                 |       |                 |       |                 |       |         |       |+
+       |                 |       |                 |       |                 |       |         |       |Temp: t20
+       |                 |       |                 |       |                 |       |         |       |Const: 4
+       |                 |       |                 |       |                 |       |         |Call
+       |                 |       |                 |       |                 |       |             |Name: L29
+       |                 |       |                 |       |                 |       |             |ExprList
+       |                 |       |                 |       |                 |       |                     |Temp: t0
+       |                 |       |                 |       |                 |       |                     |Mem
+       |                 |       |                 |       |                 |       |                     |  |Binop
+       |                 |       |                 |       |                 |       |                     |       |+
+       |                 |       |                 |       |                 |       |                     |       |Temp: t17
+       |                 |       |                 |       |                 |       |                     |       |Const: -8
+       |                 |       |                 |       |                 |       |                     |Mem
+       |                 |       |                 |       |                 |       |                        |Binop
+       |                 |       |                 |       |                 |       |                             |+
+       |                 |       |                 |       |                 |       |                             |Mem
+       |                 |       |                 |       |                 |       |                             |  |Binop
+       |                 |       |                 |       |                 |       |                             |       |+
+       |                 |       |                 |       |                 |       |                             |       |Temp: t17
+       |                 |       |                 |       |                 |       |                             |       |Const: -12
+       |                 |       |                 |       |                 |       |                             |Const: 4
+       |                 |       |                 |       |                 |       |Temp: t20
+       |                 |       |                 |       |                 |Seq
+       |                 |       |                 |       |                    |Jump
+       |                 |       |                 |       |                    |   |Name: L37
+       |                 |       |                 |       |                    |   |L37
+       |                 |       |                 |       |                    |Label: L37
+       |                 |       |                 |       |Temp: t23
+       |                 |       |                 |Seq
+       |                 |       |                    |Jump
+       |                 |       |                    |   |Name: L40
+       |                 |       |                    |   |L40
+       |                 |       |                    |Label: L40
+       |                 |       |Temp: t22
+       |                 |Seq
+       |                    |Jump
+       |                    |   |Name: L43
+       |                    |   |L43
+       |                    |Label: L43
+       |Temp: t21
+DataFrag: 0 Label: L45
+ProcFrag
+Seq
+  |CJump
+  |    |>
+  |    |Mem
+  |    |  |Binop
+  |    |       |+
+  |    |       |Temp: t26
+  |    |       |Const: -8
+  |    |Const: 0
+  |    |True Label: L46
+  |    |False Label: L47
+  |Seq
+     |Label: L46
+     |Seq
+        |Seq
+        |  |ExprStmt
+        |  |       |Call
+        |  |           |Name: L44
+        |  |           |ExprList
+        |  |                   |Temp: t24
+        |  |                   |Binop
+        |  |                        |/
+        |  |                        |Mem
+        |  |                        |  |Binop
+        |  |                        |       |+
+        |  |                        |       |Temp: t26
+        |  |                        |       |Const: -8
+        |  |                        |Const: 10
+        |  |ExprStmt
+        |          |Call
+        |              |Name: print
+        |              |ExprList
+        |                      |Temp: t0
+        |                      |Call
+        |                          |Name: chr
+        |                          |ExprList
+        |                                  |Temp: t0
+        |                                  |Binop
+        |                                       |+
+        |                                       |Binop
+        |                                       |    |-
+        |                                       |    |Mem
+        |                                       |    |  |Binop
+        |                                       |    |       |+
+        |                                       |    |       |Temp: t26
+        |                                       |    |       |Const: -8
+        |                                       |    |Binop
+        |                                       |         |*
+        |                                       |         |Binop
+        |                                       |         |    |/
+        |                                       |         |    |Mem
+        |                                       |         |    |  |Binop
+        |                                       |         |    |       |+
+        |                                       |         |    |       |Temp: t26
+        |                                       |         |    |       |Const: -8
+        |                                       |         |    |Const: 10
+        |                                       |         |Const: 10
+        |                                       |Call
+        |                                           |Name: ord
+        |                                           |ExprList
+        |                                                   |Temp: t0
+        |                                                   |Name: L45
+        |Seq
+           |Jump
+           |   |Name: L48
+           |   |L48
+           |Seq
+              |Label: L47
+              |Seq
+                 |Jump
+                 |   |Name: L48
+                 |   |L48
+                 |Label: L48
+DataFrag: - Label: L49
+DataFrag: 0 Label: L50
+ProcFrag
+Seq
+  |CJump
+  |    |<
+  |    |Mem
+  |    |  |Binop
+  |    |       |+
+  |    |       |Temp: t24
+  |    |       |Const: -8
+  |    |Const: 0
+  |    |True Label: L54
+  |    |False Label: L55
+  |Seq
+     |Label: L54
+     |Seq
+        |Seq
+        |  |ExprStmt
+        |  |       |Call
+        |  |           |Name: print
+        |  |           |ExprList
+        |  |                   |Temp: t0
+        |  |                   |Name: L49
+        |  |ExprStmt
+        |          |Call
+        |              |Name: L44
+        |              |ExprList
+        |                      |Temp: t24
+        |                      |Binop
+        |                           |-
+        |                           |Const: 0
+        |                           |Mem
+        |                              |Binop
+        |                                   |+
+        |                                   |Temp: t24
+        |                                   |Const: -8
+        |Seq
+           |Jump
+           |   |Name: L56
+           |   |L56
+           |Seq
+              |Label: L55
+              |Seq
+                 |Seq
+                 |  |CJump
+                 |  |    |>
+                 |  |    |Mem
+                 |  |    |  |Binop
+                 |  |    |       |+
+                 |  |    |       |Temp: t24
+                 |  |    |       |Const: -8
+                 |  |    |Const: 0
+                 |  |    |True Label: L51
+                 |  |    |False Label: L52
+                 |  |Seq
+                 |     |Label: L51
+                 |     |Seq
+                 |        |ExprStmt
+                 |        |       |Call
+                 |        |           |Name: L44
+                 |        |           |ExprList
+                 |        |                   |Temp: t24
+                 |        |                   |Mem
+                 |        |                      |Binop
+                 |        |                           |+
+                 |        |                           |Temp: t24
+                 |        |                           |Const: -8
+                 |        |Seq
+                 |           |Jump
+                 |           |   |Name: L53
+                 |           |   |L53
+                 |           |Seq
+                 |              |Label: L52
+                 |              |Seq
+                 |                 |ExprStmt
+                 |                 |       |Call
+                 |                 |           |Name: print
+                 |                 |           |ExprList
+                 |                 |                   |Temp: t0
+                 |                 |                   |Name: L50
+                 |                 |Seq
+                 |                    |Jump
+                 |                    |   |Name: L53
+                 |                    |   |L53
+                 |                    |Label: L53
+                 |Seq
+                    |Jump
+                    |   |Name: L56
+                    |   |L56
+                    |Label: L56
+DataFrag: 
+ Label: L57
+DataFrag:   Label: L58
+ProcFrag
+Seq
+  |CJump
+  |    |=
+  |    |Mem
+  |    |  |Binop
+  |    |       |+
+  |    |       |Temp: t28
+  |    |       |Const: -8
+  |    |Const: 0
+  |    |True Label: L59
+  |    |False Label: L60
+  |Seq
+     |Label: L59
+     |Seq
+        |ExprStmt
+        |       |Call
+        |           |Name: print
+        |           |ExprList
+        |                   |Temp: t0
+        |                   |Name: L57
+        |Seq
+           |Jump
+           |   |Name: L61
+           |   |L61
+           |Seq
+              |Label: L60
+              |Seq
+                 |Seq
+                 |  |Seq
+                 |  |  |ExprStmt
+                 |  |  |       |Call
+                 |  |  |           |Name: L30
+                 |  |  |           |ExprList
+                 |  |  |                   |Temp: t0
+                 |  |  |                   |Mem
+                 |  |  |                      |Binop
+                 |  |  |                           |+
+                 |  |  |                           |Mem
+                 |  |  |                           |  |Binop
+                 |  |  |                           |       |+
+                 |  |  |                           |       |Temp: t28
+                 |  |  |                           |       |Const: -8
+                 |  |  |                           |Const: 0
+                 |  |  |ExprStmt
+                 |  |          |Call
+                 |  |              |Name: print
+                 |  |              |ExprList
+                 |  |                      |Temp: t0
+                 |  |                      |Name: L58
+                 |  |ExprStmt
+                 |          |Call
+                 |              |Name: L31
+                 |              |ExprList
+                 |                      |Temp: t0
+                 |                      |Mem
+                 |                         |Binop
+                 |                              |+
+                 |                              |Mem
+                 |                              |  |Binop
+                 |                              |       |+
+                 |                              |       |Temp: t28
+                 |                              |       |Const: -8
+                 |                              |Const: 4
+                 |Seq
+                    |Jump
+                    |   |Name: L61
+                    |   |L61
+                    |Label: L61
+
+testcases/queens.tig
+testcases/queens.tig
+Seq
+  |Seq
+  |  |Move
+  |  |   |Mem
+  |  |   |  |Binop
+  |  |   |       |+
+  |  |   |       |Temp: t0
+  |  |   |       |Const: -4
+  |  |   |Const: 8
+  |  |Seq
+  |     |Move
+  |     |   |Mem
+  |     |   |  |Binop
+  |     |   |       |+
+  |     |   |       |Temp: t0
+  |     |   |       |Const: -8
+  |     |   |ESeq
+  |     |       |Seq
+  |     |       |  |Move
+  |     |       |  |   |Temp: t2
+  |     |       |  |   |Call
+  |     |       |  |       |Name: malloc
+  |     |       |  |       |ExprList
+  |     |       |  |               |Binop
+  |     |       |  |                    |*
+  |     |       |  |                    |Mem
+  |     |       |  |                    |  |Binop
+  |     |       |  |                    |       |+
+  |     |       |  |                    |       |Temp: t0
+  |     |       |  |                    |       |Const: -4
+  |     |       |  |                    |Const: 4
+  |     |       |  |ExprStmt
+  |     |       |          |Call
+  |     |       |              |Name: initArray
+  |     |       |              |ExprList
+  |     |       |                      |Temp: t2
+  |     |       |                      |Mem
+  |     |       |                      |  |Binop
+  |     |       |                      |       |+
+  |     |       |                      |       |Temp: t0
+  |     |       |                      |       |Const: -4
+  |     |       |                      |Const: 0
+  |     |       |Temp: t2
+  |     |Seq
+  |        |Move
+  |        |   |Mem
+  |        |   |  |Binop
+  |        |   |       |+
+  |        |   |       |Temp: t0
+  |        |   |       |Const: -12
+  |        |   |ESeq
+  |        |       |Seq
+  |        |       |  |Move
+  |        |       |  |   |Temp: t3
+  |        |       |  |   |Call
+  |        |       |  |       |Name: malloc
+  |        |       |  |       |ExprList
+  |        |       |  |               |Binop
+  |        |       |  |                    |*
+  |        |       |  |                    |Mem
+  |        |       |  |                    |  |Binop
+  |        |       |  |                    |       |+
+  |        |       |  |                    |       |Temp: t0
+  |        |       |  |                    |       |Const: -4
+  |        |       |  |                    |Const: 4
+  |        |       |  |ExprStmt
+  |        |       |          |Call
+  |        |       |              |Name: initArray
+  |        |       |              |ExprList
+  |        |       |                      |Temp: t3
+  |        |       |                      |Mem
+  |        |       |                      |  |Binop
+  |        |       |                      |       |+
+  |        |       |                      |       |Temp: t0
+  |        |       |                      |       |Const: -4
+  |        |       |                      |Const: 0
+  |        |       |Temp: t3
+  |        |Seq
+  |           |Move
+  |           |   |Mem
+  |           |   |  |Binop
+  |           |   |       |+
+  |           |   |       |Temp: t0
+  |           |   |       |Const: -16
+  |           |   |ESeq
+  |           |       |Seq
+  |           |       |  |Move
+  |           |       |  |   |Temp: t4
+  |           |       |  |   |Call
+  |           |       |  |       |Name: malloc
+  |           |       |  |       |ExprList
+  |           |       |  |               |Binop
+  |           |       |  |                    |*
+  |           |       |  |                    |Binop
+  |           |       |  |                    |    |-
+  |           |       |  |                    |    |Binop
+  |           |       |  |                    |    |    |+
+  |           |       |  |                    |    |    |Mem
+  |           |       |  |                    |    |    |  |Binop
+  |           |       |  |                    |    |    |       |+
+  |           |       |  |                    |    |    |       |Temp: t0
+  |           |       |  |                    |    |    |       |Const: -4
+  |           |       |  |                    |    |    |Mem
+  |           |       |  |                    |    |       |Binop
+  |           |       |  |                    |    |            |+
+  |           |       |  |                    |    |            |Temp: t0
+  |           |       |  |                    |    |            |Const: -4
+  |           |       |  |                    |    |Const: 1
+  |           |       |  |                    |Const: 4
+  |           |       |  |ExprStmt
+  |           |       |          |Call
+  |           |       |              |Name: initArray
+  |           |       |              |ExprList
+  |           |       |                      |Temp: t4
+  |           |       |                      |Binop
+  |           |       |                      |    |-
+  |           |       |                      |    |Binop
+  |           |       |                      |    |    |+
+  |           |       |                      |    |    |Mem
+  |           |       |                      |    |    |  |Binop
+  |           |       |                      |    |    |       |+
+  |           |       |                      |    |    |       |Temp: t0
+  |           |       |                      |    |    |       |Const: -4
+  |           |       |                      |    |    |Mem
+  |           |       |                      |    |       |Binop
+  |           |       |                      |    |            |+
+  |           |       |                      |    |            |Temp: t0
+  |           |       |                      |    |            |Const: -4
+  |           |       |                      |    |Const: 1
+  |           |       |                      |Const: 0
+  |           |       |Temp: t4
+  |           |Move
+  |               |Mem
+  |               |  |Binop
+  |               |       |+
+  |               |       |Temp: t0
+  |               |       |Const: -20
+  |               |ESeq
+  |                   |Seq
+  |                   |  |Move
+  |                   |  |   |Temp: t5
+  |                   |  |   |Call
+  |                   |  |       |Name: malloc
+  |                   |  |       |ExprList
+  |                   |  |               |Binop
+  |                   |  |                    |*
+  |                   |  |                    |Binop
+  |                   |  |                    |    |-
+  |                   |  |                    |    |Binop
+  |                   |  |                    |    |    |+
+  |                   |  |                    |    |    |Mem
+  |                   |  |                    |    |    |  |Binop
+  |                   |  |                    |    |    |       |+
+  |                   |  |                    |    |    |       |Temp: t0
+  |                   |  |                    |    |    |       |Const: -4
+  |                   |  |                    |    |    |Mem
+  |                   |  |                    |    |       |Binop
+  |                   |  |                    |    |            |+
+  |                   |  |                    |    |            |Temp: t0
+  |                   |  |                    |    |            |Const: -4
+  |                   |  |                    |    |Const: 1
+  |                   |  |                    |Const: 4
+  |                   |  |ExprStmt
+  |                   |          |Call
+  |                   |              |Name: initArray
+  |                   |              |ExprList
+  |                   |                      |Temp: t5
+  |                   |                      |Binop
+  |                   |                      |    |-
+  |                   |                      |    |Binop
+  |                   |                      |    |    |+
+  |                   |                      |    |    |Mem
+  |                   |                      |    |    |  |Binop
+  |                   |                      |    |    |       |+
+  |                   |                      |    |    |       |Temp: t0
+  |                   |                      |    |    |       |Const: -4
+  |                   |                      |    |    |Mem
+  |                   |                      |    |       |Binop
+  |                   |                      |    |            |+
+  |                   |                      |    |            |Temp: t0
+  |                   |                      |    |            |Const: -4
+  |                   |                      |    |Const: 1
+  |                   |                      |Const: 0
+  |                   |Temp: t5
+  |ExprStmt
+          |Call
+              |Name: L1
+              |ExprList
+                      |Temp: t0
+                      |Const: 0
+DataFrag:  O Label: L4
+DataFrag:  . Label: L5
+DataFrag: 
+ Label: L11
+DataFrag: 
+ Label: L14
+ProcFrag
+Seq
+  |Seq
+  |  |Move
+  |  |   |Mem
+  |  |   |  |Binop
+  |  |   |       |+
+  |  |   |       |Temp: t6
+  |  |   |       |Const: -8
+  |  |   |Const: 0
+  |  |Seq
+  |     |Move
+  |     |   |Mem
+  |     |   |  |Binop
+  |     |   |       |+
+  |     |   |       |Temp: t6
+  |     |   |       |Const: -20
+  |     |   |Binop
+  |     |        |-
+  |     |        |Mem
+  |     |        |  |Binop
+  |     |        |       |+
+  |     |        |       |Mem
+  |     |        |       |  |Binop
+  |     |        |       |       |+
+  |     |        |       |       |Temp: t6
+  |     |        |       |       |Const: -4
+  |     |        |       |Const: -4
+  |     |        |Const: 1
+  |     |Seq
+  |        |CJump
+  |        |    |<=
+  |        |    |Mem
+  |        |    |  |Binop
+  |        |    |       |+
+  |        |    |       |Temp: t6
+  |        |    |       |Const: -8
+  |        |    |Mem
+  |        |    |  |Binop
+  |        |    |       |+
+  |        |    |       |Temp: t6
+  |        |    |       |Const: -20
+  |        |    |True Label: L12
+  |        |    |False Label: L2
+  |        |Seq
+  |           |Label: L12
+  |           |Seq
+  |              |Seq
+  |              |  |Seq
+  |              |  |  |Move
+  |              |  |  |   |Mem
+  |              |  |  |   |  |Binop
+  |              |  |  |   |       |+
+  |              |  |  |   |       |Temp: t6
+  |              |  |  |   |       |Const: -12
+  |              |  |  |   |Const: 0
+  |              |  |  |Seq
+  |              |  |     |Move
+  |              |  |     |   |Mem
+  |              |  |     |   |  |Binop
+  |              |  |     |   |       |+
+  |              |  |     |   |       |Temp: t6
+  |              |  |     |   |       |Const: -16
+  |              |  |     |   |Binop
+  |              |  |     |        |-
+  |              |  |     |        |Mem
+  |              |  |     |        |  |Binop
+  |              |  |     |        |       |+
+  |              |  |     |        |       |Mem
+  |              |  |     |        |       |  |Binop
+  |              |  |     |        |       |       |+
+  |              |  |     |        |       |       |Temp: t6
+  |              |  |     |        |       |       |Const: -4
+  |              |  |     |        |       |Const: -4
+  |              |  |     |        |Const: 1
+  |              |  |     |Seq
+  |              |  |        |CJump
+  |              |  |        |    |<=
+  |              |  |        |    |Mem
+  |              |  |        |    |  |Binop
+  |              |  |        |    |       |+
+  |              |  |        |    |       |Temp: t6
+  |              |  |        |    |       |Const: -12
+  |              |  |        |    |Mem
+  |              |  |        |    |  |Binop
+  |              |  |        |    |       |+
+  |              |  |        |    |       |Temp: t6
+  |              |  |        |    |       |Const: -16
+  |              |  |        |    |True Label: L9
+  |              |  |        |    |False Label: L3
+  |              |  |        |Seq
+  |              |  |           |Label: L9
+  |              |  |           |Seq
+  |              |  |              |ExprStmt
+  |              |  |              |       |Call
+  |              |  |              |           |Name: print
+  |              |  |              |           |ExprList
+  |              |  |              |                   |Temp: t0
+  |              |  |              |                   |ESeq
+  |              |  |              |                       |Seq
+  |              |  |              |                       |  |CJump
+  |              |  |              |                       |  |    |=
+  |              |  |              |                       |  |    |Mem
+  |              |  |              |                       |  |    |  |Binop
+  |              |  |              |                       |  |    |       |+
+  |              |  |              |                       |  |    |       |Mem
+  |              |  |              |                       |  |    |       |  |Binop
+  |              |  |              |                       |  |    |       |       |+
+  |              |  |              |                       |  |    |       |       |Mem
+  |              |  |              |                       |  |    |       |       |  |Binop
+  |              |  |              |                       |  |    |       |       |       |+
+  |              |  |              |                       |  |    |       |       |       |Temp: t6
+  |              |  |              |                       |  |    |       |       |       |Const: -4
+  |              |  |              |                       |  |    |       |       |Const: -12
+  |              |  |              |                       |  |    |       |Binop
+  |              |  |              |                       |  |    |            |*
+  |              |  |              |                       |  |    |            |Mem
+  |              |  |              |                       |  |    |            |  |Binop
+  |              |  |              |                       |  |    |            |       |+
+  |              |  |              |                       |  |    |            |       |Temp: t6
+  |              |  |              |                       |  |    |            |       |Const: -8
+  |              |  |              |                       |  |    |            |Const: 4
+  |              |  |              |                       |  |    |Mem
+  |              |  |              |                       |  |    |  |Binop
+  |              |  |              |                       |  |    |       |+
+  |              |  |              |                       |  |    |       |Temp: t6
+  |              |  |              |                       |  |    |       |Const: -12
+  |              |  |              |                       |  |    |True Label: L6
+  |              |  |              |                       |  |    |False Label: L7
+  |              |  |              |                       |  |Seq
+  |              |  |              |                       |     |Label: L6
+  |              |  |              |                       |     |Seq
+  |              |  |              |                       |        |Move
+  |              |  |              |                       |        |   |Temp: t8
+  |              |  |              |                       |        |   |Name: L4
+  |              |  |              |                       |        |Seq
+  |              |  |              |                       |           |Jump
+  |              |  |              |                       |           |   |Name: L8
+  |              |  |              |                       |           |   |L8
+  |              |  |              |                       |           |Seq
+  |              |  |              |                       |              |Label: L7
+  |              |  |              |                       |              |Seq
+  |              |  |              |                       |                 |Move
+  |              |  |              |                       |                 |   |Temp: t8
+  |              |  |              |                       |                 |   |Name: L5
+  |              |  |              |                       |                 |Seq
+  |              |  |              |                       |                    |Jump
+  |              |  |              |                       |                    |   |Name: L8
+  |              |  |              |                       |                    |   |L8
+  |              |  |              |                       |                    |Label: L8
+  |              |  |              |                       |Temp: t8
+  |              |  |              |Seq
+  |              |  |                 |CJump
+  |              |  |                 |    |>=
+  |              |  |                 |    |Mem
+  |              |  |                 |    |  |Binop
+  |              |  |                 |    |       |+
+  |              |  |                 |    |       |Temp: t6
+  |              |  |                 |    |       |Const: -12
+  |              |  |                 |    |Mem
+  |              |  |                 |    |  |Binop
+  |              |  |                 |    |       |+
+  |              |  |                 |    |       |Temp: t6
+  |              |  |                 |    |       |Const: -16
+  |              |  |                 |    |True Label: L3
+  |              |  |                 |    |False Label: L10
+  |              |  |                 |Seq
+  |              |  |                    |Label: L10
+  |              |  |                    |Seq
+  |              |  |                       |Move
+  |              |  |                       |   |Mem
+  |              |  |                       |   |  |Binop
+  |              |  |                       |   |       |+
+  |              |  |                       |   |       |Temp: t6
+  |              |  |                       |   |       |Const: -12
+  |              |  |                       |   |Binop
+  |              |  |                       |        |+
+  |              |  |                       |        |Mem
+  |              |  |                       |        |  |Binop
+  |              |  |                       |        |       |+
+  |              |  |                       |        |       |Temp: t6
+  |              |  |                       |        |       |Const: -12
+  |              |  |                       |        |Const: 1
+  |              |  |                       |Seq
+  |              |  |                          |Jump
+  |              |  |                          |   |Name: L9
+  |              |  |                          |   |L9
+  |              |  |                          |Label: L3
+  |              |  |ExprStmt
+  |              |          |Call
+  |              |              |Name: print
+  |              |              |ExprList
+  |              |                      |Temp: t0
+  |              |                      |Name: L11
+  |              |Seq
+  |                 |CJump
+  |                 |    |>=
+  |                 |    |Mem
+  |                 |    |  |Binop
+  |                 |    |       |+
+  |                 |    |       |Temp: t6
+  |                 |    |       |Const: -8
+  |                 |    |Mem
+  |                 |    |  |Binop
+  |                 |    |       |+
+  |                 |    |       |Temp: t6
+  |                 |    |       |Const: -20
+  |                 |    |True Label: L2
+  |                 |    |False Label: L13
+  |                 |Seq
+  |                    |Label: L13
+  |                    |Seq
+  |                       |Move
+  |                       |   |Mem
+  |                       |   |  |Binop
+  |                       |   |       |+
+  |                       |   |       |Temp: t6
+  |                       |   |       |Const: -8
+  |                       |   |Binop
+  |                       |        |+
+  |                       |        |Mem
+  |                       |        |  |Binop
+  |                       |        |       |+
+  |                       |        |       |Temp: t6
+  |                       |        |       |Const: -8
+  |                       |        |Const: 1
+  |                       |Seq
+  |                          |Jump
+  |                          |   |Name: L12
+  |                          |   |L12
+  |                          |Label: L2
+  |ExprStmt
+          |Call
+              |Name: print
+              |ExprList
+                      |Temp: t0
+                      |Name: L14
+ProcFrag
+Seq
+  |CJump
+  |    |=
+  |    |Mem
+  |    |  |Binop
+  |    |       |+
+  |    |       |Temp: t9
+  |    |       |Const: -8
+  |    |Mem
+  |    |  |Binop
+  |    |       |+
+  |    |       |Mem
+  |    |       |  |Binop
+  |    |       |       |+
+  |    |       |       |Temp: t9
+  |    |       |       |Const: -4
+  |    |       |Const: -4
+  |    |True Label: L27
+  |    |False Label: L28
+  |Seq
+     |Label: L27
+     |Seq
+        |ExprStmt
+        |       |Call
+        |           |Name: L0
+        |           |ExprList
+        |                   |Temp: t0
+        |Seq
+           |Jump
+           |   |Name: L29
+           |   |L29
+           |Seq
+              |Label: L28
+              |Seq
+                 |Seq
+                 |  |Move
+                 |  |   |Mem
+                 |  |   |  |Binop
+                 |  |   |       |+
+                 |  |   |       |Temp: t9
+                 |  |   |       |Const: -12
+                 |  |   |Const: 0
+                 |  |Seq
+                 |     |Move
+                 |     |   |Mem
+                 |     |   |  |Binop
+                 |     |   |       |+
+                 |     |   |       |Temp: t9
+                 |     |   |       |Const: -16
+                 |     |   |Binop
+                 |     |        |-
+                 |     |        |Mem
+                 |     |        |  |Binop
+                 |     |        |       |+
+                 |     |        |       |Mem
+                 |     |        |       |  |Binop
+                 |     |        |       |       |+
+                 |     |        |       |       |Temp: t9
+                 |     |        |       |       |Const: -4
+                 |     |        |       |Const: -4
+                 |     |        |Const: 1
+                 |     |Seq
+                 |        |CJump
+                 |        |    |<=
+                 |        |    |Mem
+                 |        |    |  |Binop
+                 |        |    |       |+
+                 |        |    |       |Temp: t9
+                 |        |    |       |Const: -12
+                 |        |    |Mem
+                 |        |    |  |Binop
+                 |        |    |       |+
+                 |        |    |       |Temp: t9
+                 |        |    |       |Const: -16
+                 |        |    |True Label: L25
+                 |        |    |False Label: L15
+                 |        |Seq
+                 |           |Label: L25
+                 |           |Seq
+                 |              |Seq
+                 |              |  |Seq
+                 |              |  |  |Seq
+                 |              |  |  |  |CJump
+                 |              |  |  |  |    |=
+                 |              |  |  |  |    |Mem
+                 |              |  |  |  |    |  |Binop
+                 |              |  |  |  |    |       |+
+                 |              |  |  |  |    |       |Mem
+                 |              |  |  |  |    |       |  |Binop
+                 |              |  |  |  |    |       |       |+
+                 |              |  |  |  |    |       |       |Mem
+                 |              |  |  |  |    |       |       |  |Binop
+                 |              |  |  |  |    |       |       |       |+
+                 |              |  |  |  |    |       |       |       |Temp: t9
+                 |              |  |  |  |    |       |       |       |Const: -4
+                 |              |  |  |  |    |       |       |Const: -8
+                 |              |  |  |  |    |       |Binop
+                 |              |  |  |  |    |            |*
+                 |              |  |  |  |    |            |Mem
+                 |              |  |  |  |    |            |  |Binop
+                 |              |  |  |  |    |            |       |+
+                 |              |  |  |  |    |            |       |Temp: t9
+                 |              |  |  |  |    |            |       |Const: -12
+                 |              |  |  |  |    |            |Const: 4
+                 |              |  |  |  |    |Const: 0
+                 |              |  |  |  |    |True Label: L16
+                 |              |  |  |  |    |False Label: L17
+                 |              |  |  |  |Seq
+                 |              |  |  |     |Label: L16
+                 |              |  |  |     |Seq
+                 |              |  |  |        |CJump
+                 |              |  |  |        |    |=
+                 |              |  |  |        |    |Mem
+                 |              |  |  |        |    |  |Binop
+                 |              |  |  |        |    |       |+
+                 |              |  |  |        |    |       |Mem
+                 |              |  |  |        |    |       |  |Binop
+                 |              |  |  |        |    |       |       |+
+                 |              |  |  |        |    |       |       |Mem
+                 |              |  |  |        |    |       |       |  |Binop
+                 |              |  |  |        |    |       |       |       |+
+                 |              |  |  |        |    |       |       |       |Temp: t9
+                 |              |  |  |        |    |       |       |       |Const: -4
+                 |              |  |  |        |    |       |       |Const: -16
+                 |              |  |  |        |    |       |Binop
+                 |              |  |  |        |    |            |*
+                 |              |  |  |        |    |            |Binop
+                 |              |  |  |        |    |            |    |+
+                 |              |  |  |        |    |            |    |Mem
+                 |              |  |  |        |    |            |    |  |Binop
+                 |              |  |  |        |    |            |    |       |+
+                 |              |  |  |        |    |            |    |       |Temp: t9
+                 |              |  |  |        |    |            |    |       |Const: -12
+                 |              |  |  |        |    |            |    |Mem
+                 |              |  |  |        |    |            |       |Binop
+                 |              |  |  |        |    |            |            |+
+                 |              |  |  |        |    |            |            |Temp: t9
+                 |              |  |  |        |    |            |            |Const: -8
+                 |              |  |  |        |    |            |Const: 4
+                 |              |  |  |        |    |Const: 0
+                 |              |  |  |        |    |True Label: L19
+                 |              |  |  |        |    |False Label: L20
+                 |              |  |  |        |Seq
+                 |              |  |  |           |Jump
+                 |              |  |  |           |   |Name: L18
+                 |              |  |  |           |   |L18
+                 |              |  |  |           |Seq
+                 |              |  |  |              |Label: L17
+                 |              |  |  |              |Seq
+                 |              |  |  |                 |Jump
+                 |              |  |  |                 |   |Name: L20
+                 |              |  |  |                 |   |L20
+                 |              |  |  |                 |Seq
+                 |              |  |  |                    |Jump
+                 |              |  |  |                    |   |Name: L18
+                 |              |  |  |                    |   |L18
+                 |              |  |  |                    |Label: L18
+                 |              |  |  |Seq
+                 |              |  |     |Label: L19
+                 |              |  |     |Seq
+                 |              |  |        |CJump
+                 |              |  |        |    |=
+                 |              |  |        |    |Mem
+                 |              |  |        |    |  |Binop
+                 |              |  |        |    |       |+
+                 |              |  |        |    |       |Mem
+                 |              |  |        |    |       |  |Binop
+                 |              |  |        |    |       |       |+
+                 |              |  |        |    |       |       |Mem
+                 |              |  |        |    |       |       |  |Binop
+                 |              |  |        |    |       |       |       |+
+                 |              |  |        |    |       |       |       |Temp: t9
+                 |              |  |        |    |       |       |       |Const: -4
+                 |              |  |        |    |       |       |Const: -20
+                 |              |  |        |    |       |Binop
+                 |              |  |        |    |            |*
+                 |              |  |        |    |            |Binop
+                 |              |  |        |    |            |    |-
+                 |              |  |        |    |            |    |Binop
+                 |              |  |        |    |            |    |    |+
+                 |              |  |        |    |            |    |    |Mem
+                 |              |  |        |    |            |    |    |  |Binop
+                 |              |  |        |    |            |    |    |       |+
+                 |              |  |        |    |            |    |    |       |Temp: t9
+                 |              |  |        |    |            |    |    |       |Const: -12
+                 |              |  |        |    |            |    |    |Const: 7
+                 |              |  |        |    |            |    |Mem
+                 |              |  |        |    |            |       |Binop
+                 |              |  |        |    |            |            |+
+                 |              |  |        |    |            |            |Temp: t9
+                 |              |  |        |    |            |            |Const: -8
+                 |              |  |        |    |            |Const: 4
+                 |              |  |        |    |Const: 0
+                 |              |  |        |    |True Label: L22
+                 |              |  |        |    |False Label: L23
+                 |              |  |        |Seq
+                 |              |  |           |Jump
+                 |              |  |           |   |Name: L21
+                 |              |  |           |   |L21
+                 |              |  |           |Seq
+                 |              |  |              |Label: L20
+                 |              |  |              |Seq
+                 |              |  |                 |Jump
+                 |              |  |                 |   |Name: L23
+                 |              |  |                 |   |L23
+                 |              |  |                 |Seq
+                 |              |  |                    |Jump
+                 |              |  |                    |   |Name: L21
+                 |              |  |                    |   |L21
+                 |              |  |                    |Label: L21
+                 |              |  |Seq
+                 |              |     |Label: L22
+                 |              |     |Seq
+                 |              |        |Seq
+                 |              |        |  |Seq
+                 |              |        |  |  |Move
+                 |              |        |  |  |   |Mem
+                 |              |        |  |  |   |  |Binop
+                 |              |        |  |  |   |       |+
+                 |              |        |  |  |   |       |Mem
+                 |              |        |  |  |   |       |  |Binop
+                 |              |        |  |  |   |       |       |+
+                 |              |        |  |  |   |       |       |Mem
+                 |              |        |  |  |   |       |       |  |Binop
+                 |              |        |  |  |   |       |       |       |+
+                 |              |        |  |  |   |       |       |       |Temp: t9
+                 |              |        |  |  |   |       |       |       |Const: -4
+                 |              |        |  |  |   |       |       |Const: -8
+                 |              |        |  |  |   |       |Binop
+                 |              |        |  |  |   |            |*
+                 |              |        |  |  |   |            |Mem
+                 |              |        |  |  |   |            |  |Binop
+                 |              |        |  |  |   |            |       |+
+                 |              |        |  |  |   |            |       |Temp: t9
+                 |              |        |  |  |   |            |       |Const: -12
+                 |              |        |  |  |   |            |Const: 4
+                 |              |        |  |  |   |Const: 1
+                 |              |        |  |  |Seq
+                 |              |        |  |     |Move
+                 |              |        |  |     |   |Mem
+                 |              |        |  |     |   |  |Binop
+                 |              |        |  |     |   |       |+
+                 |              |        |  |     |   |       |Mem
+                 |              |        |  |     |   |       |  |Binop
+                 |              |        |  |     |   |       |       |+
+                 |              |        |  |     |   |       |       |Mem
+                 |              |        |  |     |   |       |       |  |Binop
+                 |              |        |  |     |   |       |       |       |+
+                 |              |        |  |     |   |       |       |       |Temp: t9
+                 |              |        |  |     |   |       |       |       |Const: -4
+                 |              |        |  |     |   |       |       |Const: -16
+                 |              |        |  |     |   |       |Binop
+                 |              |        |  |     |   |            |*
+                 |              |        |  |     |   |            |Binop
+                 |              |        |  |     |   |            |    |+
+                 |              |        |  |     |   |            |    |Mem
+                 |              |        |  |     |   |            |    |  |Binop
+                 |              |        |  |     |   |            |    |       |+
+                 |              |        |  |     |   |            |    |       |Temp: t9
+                 |              |        |  |     |   |            |    |       |Const: -12
+                 |              |        |  |     |   |            |    |Mem
+                 |              |        |  |     |   |            |       |Binop
+                 |              |        |  |     |   |            |            |+
+                 |              |        |  |     |   |            |            |Temp: t9
+                 |              |        |  |     |   |            |            |Const: -8
+                 |              |        |  |     |   |            |Const: 4
+                 |              |        |  |     |   |Const: 1
+                 |              |        |  |     |Seq
+                 |              |        |  |        |Move
+                 |              |        |  |        |   |Mem
+                 |              |        |  |        |   |  |Binop
+                 |              |        |  |        |   |       |+
+                 |              |        |  |        |   |       |Mem
+                 |              |        |  |        |   |       |  |Binop
+                 |              |        |  |        |   |       |       |+
+                 |              |        |  |        |   |       |       |Mem
+                 |              |        |  |        |   |       |       |  |Binop
+                 |              |        |  |        |   |       |       |       |+
+                 |              |        |  |        |   |       |       |       |Temp: t9
+                 |              |        |  |        |   |       |       |       |Const: -4
+                 |              |        |  |        |   |       |       |Const: -20
+                 |              |        |  |        |   |       |Binop
+                 |              |        |  |        |   |            |*
+                 |              |        |  |        |   |            |Binop
+                 |              |        |  |        |   |            |    |-
+                 |              |        |  |        |   |            |    |Binop
+                 |              |        |  |        |   |            |    |    |+
+                 |              |        |  |        |   |            |    |    |Mem
+                 |              |        |  |        |   |            |    |    |  |Binop
+                 |              |        |  |        |   |            |    |    |       |+
+                 |              |        |  |        |   |            |    |    |       |Temp: t9
+                 |              |        |  |        |   |            |    |    |       |Const: -12
+                 |              |        |  |        |   |            |    |    |Const: 7
+                 |              |        |  |        |   |            |    |Mem
+                 |              |        |  |        |   |            |       |Binop
+                 |              |        |  |        |   |            |            |+
+                 |              |        |  |        |   |            |            |Temp: t9
+                 |              |        |  |        |   |            |            |Const: -8
+                 |              |        |  |        |   |            |Const: 4
+                 |              |        |  |        |   |Const: 1
+                 |              |        |  |        |Seq
+                 |              |        |  |           |Move
+                 |              |        |  |           |   |Mem
+                 |              |        |  |           |   |  |Binop
+                 |              |        |  |           |   |       |+
+                 |              |        |  |           |   |       |Mem
+                 |              |        |  |           |   |       |  |Binop
+                 |              |        |  |           |   |       |       |+
+                 |              |        |  |           |   |       |       |Mem
+                 |              |        |  |           |   |       |       |  |Binop
+                 |              |        |  |           |   |       |       |       |+
+                 |              |        |  |           |   |       |       |       |Temp: t9
+                 |              |        |  |           |   |       |       |       |Const: -4
+                 |              |        |  |           |   |       |       |Const: -12
+                 |              |        |  |           |   |       |Binop
+                 |              |        |  |           |   |            |*
+                 |              |        |  |           |   |            |Mem
+                 |              |        |  |           |   |            |  |Binop
+                 |              |        |  |           |   |            |       |+
+                 |              |        |  |           |   |            |       |Temp: t9
+                 |              |        |  |           |   |            |       |Const: -8
+                 |              |        |  |           |   |            |Const: 4
+                 |              |        |  |           |   |Mem
+                 |              |        |  |           |      |Binop
+                 |              |        |  |           |           |+
+                 |              |        |  |           |           |Temp: t9
+                 |              |        |  |           |           |Const: -12
+                 |              |        |  |           |Seq
+                 |              |        |  |              |ExprStmt
+                 |              |        |  |              |       |Call
+                 |              |        |  |              |           |Name: L1
+                 |              |        |  |              |           |ExprList
+                 |              |        |  |              |                   |Temp: t0
+                 |              |        |  |              |                   |Binop
+                 |              |        |  |              |                        |+
+                 |              |        |  |              |                        |Mem
+                 |              |        |  |              |                        |  |Binop
+                 |              |        |  |              |                        |       |+
+                 |              |        |  |              |                        |       |Temp: t9
+                 |              |        |  |              |                        |       |Const: -8
+                 |              |        |  |              |                        |Const: 1
+                 |              |        |  |              |Seq
+                 |              |        |  |                 |Move
+                 |              |        |  |                 |   |Mem
+                 |              |        |  |                 |   |  |Binop
+                 |              |        |  |                 |   |       |+
+                 |              |        |  |                 |   |       |Mem
+                 |              |        |  |                 |   |       |  |Binop
+                 |              |        |  |                 |   |       |       |+
+                 |              |        |  |                 |   |       |       |Mem
+                 |              |        |  |                 |   |       |       |  |Binop
+                 |              |        |  |                 |   |       |       |       |+
+                 |              |        |  |                 |   |       |       |       |Temp: t9
+                 |              |        |  |                 |   |       |       |       |Const: -4
+                 |              |        |  |                 |   |       |       |Const: -8
+                 |              |        |  |                 |   |       |Binop
+                 |              |        |  |                 |   |            |*
+                 |              |        |  |                 |   |            |Mem
+                 |              |        |  |                 |   |            |  |Binop
+                 |              |        |  |                 |   |            |       |+
+                 |              |        |  |                 |   |            |       |Temp: t9
+                 |              |        |  |                 |   |            |       |Const: -12
+                 |              |        |  |                 |   |            |Const: 4
+                 |              |        |  |                 |   |Const: 0
+                 |              |        |  |                 |Move
+                 |              |        |  |                     |Mem
+                 |              |        |  |                     |  |Binop
+                 |              |        |  |                     |       |+
+                 |              |        |  |                     |       |Mem
+                 |              |        |  |                     |       |  |Binop
+                 |              |        |  |                     |       |       |+
+                 |              |        |  |                     |       |       |Mem
+                 |              |        |  |                     |       |       |  |Binop
+                 |              |        |  |                     |       |       |       |+
+                 |              |        |  |                     |       |       |       |Temp: t9
+                 |              |        |  |                     |       |       |       |Const: -4
+                 |              |        |  |                     |       |       |Const: -16
+                 |              |        |  |                     |       |Binop
+                 |              |        |  |                     |            |*
+                 |              |        |  |                     |            |Binop
+                 |              |        |  |                     |            |    |+
+                 |              |        |  |                     |            |    |Mem
+                 |              |        |  |                     |            |    |  |Binop
+                 |              |        |  |                     |            |    |       |+
+                 |              |        |  |                     |            |    |       |Temp: t9
+                 |              |        |  |                     |            |    |       |Const: -12
+                 |              |        |  |                     |            |    |Mem
+                 |              |        |  |                     |            |       |Binop
+                 |              |        |  |                     |            |            |+
+                 |              |        |  |                     |            |            |Temp: t9
+                 |              |        |  |                     |            |            |Const: -8
+                 |              |        |  |                     |            |Const: 4
+                 |              |        |  |                     |Const: 0
+                 |              |        |  |Move
+                 |              |        |      |Mem
+                 |              |        |      |  |Binop
+                 |              |        |      |       |+
+                 |              |        |      |       |Mem
+                 |              |        |      |       |  |Binop
+                 |              |        |      |       |       |+
+                 |              |        |      |       |       |Mem
+                 |              |        |      |       |       |  |Binop
+                 |              |        |      |       |       |       |+
+                 |              |        |      |       |       |       |Temp: t9
+                 |              |        |      |       |       |       |Const: -4
+                 |              |        |      |       |       |Const: -20
+                 |              |        |      |       |Binop
+                 |              |        |      |            |*
+                 |              |        |      |            |Binop
+                 |              |        |      |            |    |-
+                 |              |        |      |            |    |Binop
+                 |              |        |      |            |    |    |+
+                 |              |        |      |            |    |    |Mem
+                 |              |        |      |            |    |    |  |Binop
+                 |              |        |      |            |    |    |       |+
+                 |              |        |      |            |    |    |       |Temp: t9
+                 |              |        |      |            |    |    |       |Const: -12
+                 |              |        |      |            |    |    |Const: 7
+                 |              |        |      |            |    |Mem
+                 |              |        |      |            |       |Binop
+                 |              |        |      |            |            |+
+                 |              |        |      |            |            |Temp: t9
+                 |              |        |      |            |            |Const: -8
+                 |              |        |      |            |Const: 4
+                 |              |        |      |Const: 0
+                 |              |        |Seq
+                 |              |           |Jump
+                 |              |           |   |Name: L24
+                 |              |           |   |L24
+                 |              |           |Seq
+                 |              |              |Label: L23
+                 |              |              |Seq
+                 |              |                 |Jump
+                 |              |                 |   |Name: L24
+                 |              |                 |   |L24
+                 |              |                 |Label: L24
+                 |              |Seq
+                 |                 |CJump
+                 |                 |    |>=
+                 |                 |    |Mem
+                 |                 |    |  |Binop
+                 |                 |    |       |+
+                 |                 |    |       |Temp: t9
+                 |                 |    |       |Const: -12
+                 |                 |    |Mem
+                 |                 |    |  |Binop
+                 |                 |    |       |+
+                 |                 |    |       |Temp: t9
+                 |                 |    |       |Const: -16
+                 |                 |    |True Label: L15
+                 |                 |    |False Label: L26
+                 |                 |Seq
+                 |                    |Label: L26
+                 |                    |Seq
+                 |                       |Move
+                 |                       |   |Mem
+                 |                       |   |  |Binop
+                 |                       |   |       |+
+                 |                       |   |       |Temp: t9
+                 |                       |   |       |Const: -12
+                 |                       |   |Binop
+                 |                       |        |+
+                 |                       |        |Mem
+                 |                       |        |  |Binop
+                 |                       |        |       |+
+                 |                       |        |       |Temp: t9
+                 |                       |        |       |Const: -12
+                 |                       |        |Const: 1
+                 |                       |Seq
+                 |                          |Jump
+                 |                          |   |Name: L25
+                 |                          |   |L25
+                 |                          |Label: L15
+                 |Seq
+                    |Jump
+                    |   |Name: L29
+                    |   |L29
+                    |Label: L29
+
+testcases/stringtest.tig
+testcases/stringtest.tig
+Line 5: Warning: \r Unrecognized escape sequence
+Line 5: Warning: \f Unrecognized escape sequence
+Line 10: Warning: \565 Unrecognized escape sequence(565 larger than 0xff)
+Line 11: Warning: \65 Unrecognized escape sequence(should be exactly 3 digits)
+Line 16: Warning: Unclosed String
+ExprStmt
+       |ESeq
+           |Seq
+           |  |ExprStmt
+           |  |       |Name: L0
+           |  |Seq
+           |     |ExprStmt
+           |     |       |Name: L1
+           |     |Seq
+           |        |ExprStmt
+           |        |       |Name: L2
+           |        |Seq
+           |           |ExprStmt
+           |           |       |Name: L3
+           |           |Seq
+           |              |ExprStmt
+           |              |       |Name: L4
+           |              |Seq
+           |                 |ExprStmt
+           |                 |       |Name: L5
+           |                 |Seq
+           |                    |ExprStmt
+           |                    |       |Name: L6
+           |                    |Seq
+           |                       |ExprStmt
+           |                       |       |Name: L7
+           |                       |Seq
+           |                          |ExprStmt
+           |                          |       |Name: L8
+           |                          |Seq
+           |                             |ExprStmt
+           |                             |       |Name: L9
+           |                             |Seq
+           |                                |ExprStmt
+           |                                |       |Name: L10
+           |                                |ExprStmt
+           |                                        |Name: L11
+           |Name: L12
+DataFrag: Closed string Label: L0
+DataFrag:  Label: L1
+DataFrag: \r  \f  \n 
+ Label: L2
+DataFrag: String spanning   	multiple lines Label: L3
+DataFrag: string with \ddd A=A Label: L4
+DataFrag: string with \ddd too large  Label: L5
+DataFrag: string with \dd  Label: L6
+DataFrag: string with escaped quote " Label: L7
+DataFrag: string with ctrl seq: ^]  Label: L8
+DataFrag: string with ctrl seq: ^A  Label: L9
+DataFrag: (null) Label: L10
+DataFrag: string with new line 
+	and tab Label: L11
+DataFrag: Unclosed string Label: L12
+
+testcases/test1.tig
+testcases/test1.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |ESeq
+           |       |Seq
+           |       |  |Move
+           |       |  |   |Temp: t2
+           |       |  |   |Call
+           |       |  |       |Name: malloc
+           |       |  |       |ExprList
+           |       |  |               |Binop
+           |       |  |                    |*
+           |       |  |                    |Const: 10
+           |       |  |                    |Const: 4
+           |       |  |ExprStmt
+           |       |          |Call
+           |       |              |Name: initArray
+           |       |              |ExprList
+           |       |                      |Temp: t2
+           |       |                      |Const: 10
+           |       |                      |Const: 0
+           |       |Temp: t2
+           |Mem
+              |Binop
+                   |+
+                   |Temp: t0
+                   |Const: -4
+
+testcases/test10.tig
+testcases/test10.tig
+Line 2: Error: Body of while expression return a value
+
+testcases/test11.tig
+testcases/test11.tig
+Line 2: Error: Type mismatch. Expected int
+Line 2: Error: lower bound type and upper bound type mismatch
+
+testcases/test12.tig
+testcases/test12.tig
+Seq
+  |Move
+  |   |Mem
+  |   |  |Binop
+  |   |       |+
+  |   |       |Temp: t0
+  |   |       |Const: -4
+  |   |Const: 0
+  |Seq
+     |Move
+     |   |Mem
+     |   |  |Binop
+     |   |       |+
+     |   |       |Temp: t0
+     |   |       |Const: -8
+     |   |Const: 0
+     |Seq
+        |Move
+        |   |Mem
+        |   |  |Binop
+        |   |       |+
+        |   |       |Temp: t0
+        |   |       |Const: -12
+        |   |Const: 100
+        |Seq
+           |CJump
+           |    |<=
+           |    |Mem
+           |    |  |Binop
+           |    |       |+
+           |    |       |Temp: t0
+           |    |       |Const: -8
+           |    |Mem
+           |    |  |Binop
+           |    |       |+
+           |    |       |Temp: t0
+           |    |       |Const: -12
+           |    |True Label: L1
+           |    |False Label: L0
+           |Seq
+              |Label: L1
+              |Seq
+                 |Move
+                 |   |Mem
+                 |   |  |Binop
+                 |   |       |+
+                 |   |       |Temp: t0
+                 |   |       |Const: -4
+                 |   |Binop
+                 |        |+
+                 |        |Mem
+                 |        |  |Binop
+                 |        |       |+
+                 |        |       |Temp: t0
+                 |        |       |Const: -4
+                 |        |Const: 1
+                 |Seq
+                    |CJump
+                    |    |>=
+                    |    |Mem
+                    |    |  |Binop
+                    |    |       |+
+                    |    |       |Temp: t0
+                    |    |       |Const: -8
+                    |    |Mem
+                    |    |  |Binop
+                    |    |       |+
+                    |    |       |Temp: t0
+                    |    |       |Const: -12
+                    |    |True Label: L0
+                    |    |False Label: L2
+                    |Seq
+                       |Label: L2
+                       |Seq
+                          |Move
+                          |   |Mem
+                          |   |  |Binop
+                          |   |       |+
+                          |   |       |Temp: t0
+                          |   |       |Const: -8
+                          |   |Binop
+                          |        |+
+                          |        |Mem
+                          |        |  |Binop
+                          |        |       |+
+                          |        |       |Temp: t0
+                          |        |       |Const: -8
+                          |        |Const: 1
+                          |Seq
+                             |Jump
+                             |   |Name: L1
+                             |   |L1
+                             |Label: L0
+
+testcases/test13.tig
+testcases/test13.tig
+Line 3: Error: Comparison of incompatible types
+
+testcases/test14.tig
+testcases/test14.tig
+Line 12: Error: Type mismatch. Two operands type differ
+
+testcases/test15.tig
+testcases/test15.tig
+Line 3: Error: If-then return a value
+
+testcases/test16.tig
+testcases/test16.tig
+Line 4: Error: Type definition cycle detected
+Line 5: Error: Type definition cycle detected
+
+testcases/test17.tig
+testcases/test17.tig
+Line 4: Error: Undefined type treelist
+
+testcases/test18.tig
+testcases/test18.tig
+Line 5: Error: Undefined function do_nothing2
+
+testcases/test19.tig
+testcases/test19.tig
+Line 8: Error: Undefined variable: a
+Line 8: Error: Formal parameters and actual parameters type mismatch
+
+testcases/test2.tig
+testcases/test2.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |ESeq
+           |       |Seq
+           |       |  |Move
+           |       |  |   |Temp: t2
+           |       |  |   |Call
+           |       |  |       |Name: malloc
+           |       |  |       |ExprList
+           |       |  |               |Binop
+           |       |  |                    |*
+           |       |  |                    |Const: 10
+           |       |  |                    |Const: 4
+           |       |  |ExprStmt
+           |       |          |Call
+           |       |              |Name: initArray
+           |       |              |ExprList
+           |       |                      |Temp: t2
+           |       |                      |Const: 10
+           |       |                      |Const: 0
+           |       |Temp: t2
+           |Mem
+              |Binop
+                   |+
+                   |Temp: t0
+                   |Const: -4
+
+testcases/test20.tig
+testcases/test20.tig
+Line 3: Error: Undefined variable: i
+Line 3: Error: Type mismatch. Expected int
+
+testcases/test21.tig
+testcases/test21.tig
+Line 8: Error: Type mismatch. Expected int
+Line 5: Error: Procedure nfactor returns a value
+
+testcases/test22.tig
+testcases/test22.tig
+Line 7: Error: Variable doesn't have field nam
+Line 7: Error: Lvalue and rvalue type mismatch
+
+testcases/test23.tig
+testcases/test23.tig
+Line 7: Error: Lvalue and rvalue type mismatch
+Line 8: Error: Lvalue and rvalue type mismatch
+
+testcases/test24.tig
+testcases/test24.tig
+Line 5: Error: Variable is not an array.
+
+testcases/test25.tig
+testcases/test25.tig
+Line 5: Error: Variable is not a record
+
+testcases/test26.tig
+testcases/test26.tig
+Line 3: Error: Type mismatch. Expected int
+
+testcases/test27.tig
+testcases/test27.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |Const: 0
+           |Call
+               |Name: L0
+               |ExprList
+                       |Temp: t0
+                       |Const: 2
+ProcFrag
+Move
+   |Temp: t1
+   |Mem
+      |Binop
+           |+
+           |Temp: t2
+           |Const: -8
+
+testcases/test28.tig
+testcases/test28.tig
+Line 7: Error: Type constraint and initial value differ. Expected rectype1
+
+testcases/test29.tig
+testcases/test29.tig
+Line 7: Error: Type constraint and initial value differ. Expected arrtype1
+
+testcases/test3.tig
+testcases/test3.tig
+ExprStmt
+       |ESeq
+           |Seq
+           |  |Move
+           |  |   |Mem
+           |  |   |  |Binop
+           |  |   |       |+
+           |  |   |       |Temp: t0
+           |  |   |       |Const: -4
+           |  |   |ESeq
+           |  |       |Seq
+           |  |       |  |Move
+           |  |       |  |   |Temp: t2
+           |  |       |  |   |Call
+           |  |       |  |       |Name: malloc
+           |  |       |  |       |Const: 8
+           |  |       |  |Seq
+           |  |       |     |Move
+           |  |       |     |   |Mem
+           |  |       |     |   |  |Binop
+           |  |       |     |   |       |+
+           |  |       |     |   |       |Temp: t2
+           |  |       |     |   |       |Const: 0
+           |  |       |     |   |Name: L0
+           |  |       |     |Move
+           |  |       |         |Mem
+           |  |       |         |  |Binop
+           |  |       |         |       |+
+           |  |       |         |       |Temp: t2
+           |  |       |         |       |Const: 4
+           |  |       |         |Const: 1000
+           |  |       |Temp: t2
+           |  |Move
+           |      |Mem
+           |      |  |Binop
+           |      |       |+
+           |      |       |Mem
+           |      |       |  |Binop
+           |      |       |       |+
+           |      |       |       |Temp: t0
+           |      |       |       |Const: -4
+           |      |       |Const: 0
+           |      |Name: L1
+           |Mem
+              |Binop
+                   |+
+                   |Temp: t0
+                   |Const: -4
+DataFrag: Nobody Label: L0
+DataFrag: Somebody Label: L1
+
+testcases/test30.tig
+testcases/test30.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |ESeq
+           |       |Seq
+           |       |  |Move
+           |       |  |   |Temp: t2
+           |       |  |   |Call
+           |       |  |       |Name: malloc
+           |       |  |       |ExprList
+           |       |  |               |Binop
+           |       |  |                    |*
+           |       |  |                    |Const: 10
+           |       |  |                    |Const: 4
+           |       |  |ExprStmt
+           |       |          |Call
+           |       |              |Name: initArray
+           |       |              |ExprList
+           |       |                      |Temp: t2
+           |       |                      |Const: 10
+           |       |                      |Const: 0
+           |       |Temp: t2
+           |Mem
+              |Binop
+                   |+
+                   |Mem
+                   |  |Binop
+                   |       |+
+                   |       |Temp: t0
+                   |       |Const: -4
+                   |Binop
+                        |*
+                        |Const: 2
+                        |Const: 4
+
+testcases/test31.tig
+testcases/test31.tig
+Line 3: Error: Type constraint and initial value differ. Expected int
+
+testcases/test32.tig
+testcases/test32.tig
+Line 6: Error: Initial value type and array element type mismatch.
+
+testcases/test33.tig
+testcases/test33.tig
+Line 3: Error: Undefined record type rectype
+Line 3: Error: Attempt to declare a variable of no type
+
+testcases/test34.tig
+testcases/test34.tig
+Line 5: Error: Formal parameters and actual parameters type mismatch
+
+testcases/test35.tig
+testcases/test35.tig
+Line 5: Error: Number of parameters mismatch
+
+testcases/test36.tig
+testcases/test36.tig
+Line 5: Error: Number of parameters mismatch
+
+testcases/test37.tig
+testcases/test37.tig
+ExprStmt
+       |ESeq
+           |Seq
+           |  |Move
+           |  |   |Mem
+           |  |   |  |Binop
+           |  |   |       |+
+           |  |   |       |Temp: t0
+           |  |   |       |Const: -4
+           |  |   |Const: 0
+           |  |Move
+           |      |Mem
+           |      |  |Binop
+           |      |       |+
+           |      |       |Temp: t0
+           |      |       |Const: -8
+           |      |Name: L0
+           |Const: 0
+DataFrag:   Label: L0
+
+testcases/test38.tig
+testcases/test38.tig
+Line 6: Error: Type a has been defined in the batch of mutually recursive types
+
+testcases/test39.tig
+testcases/test39.tig
+Line 6: Error: Function g has been defined in the batch of mutually recursive functions
+
+testcases/test4.tig
+testcases/test4.tig
+ExprStmt
+       |Call
+           |Name: L0
+           |ExprList
+                   |Temp: t0
+                   |Const: 10
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |Seq
+       |  |CJump
+       |  |    |=
+       |  |    |Mem
+       |  |    |  |Binop
+       |  |    |       |+
+       |  |    |       |Temp: t2
+       |  |    |       |Const: -8
+       |  |    |Const: 0
+       |  |    |True Label: L1
+       |  |    |False Label: L2
+       |  |Seq
+       |     |Label: L1
+       |     |Seq
+       |        |Move
+       |        |   |Temp: t4
+       |        |   |Const: 1
+       |        |Seq
+       |           |Jump
+       |           |   |Name: L3
+       |           |   |L3
+       |           |Seq
+       |              |Label: L2
+       |              |Seq
+       |                 |Move
+       |                 |   |Temp: t4
+       |                 |   |Binop
+       |                 |        |*
+       |                 |        |Mem
+       |                 |        |  |Binop
+       |                 |        |       |+
+       |                 |        |       |Temp: t2
+       |                 |        |       |Const: -8
+       |                 |        |Call
+       |                 |            |Name: L0
+       |                 |            |ExprList
+       |                 |                    |Temp: t0
+       |                 |                    |Binop
+       |                 |                         |-
+       |                 |                         |Mem
+       |                 |                         |  |Binop
+       |                 |                         |       |+
+       |                 |                         |       |Temp: t2
+       |                 |                         |       |Const: -8
+       |                 |                         |Const: 1
+       |                 |Seq
+       |                    |Jump
+       |                    |   |Name: L3
+       |                    |   |L3
+       |                    |Label: L3
+       |Temp: t4
+
+testcases/test40.tig
+testcases/test40.tig
+Line 3: Error: Procedure g returns a value
+
+testcases/test41.tig
+testcases/test41.tig
+ExprStmt
+       |Const: 0
+
+testcases/test42.tig
+testcases/test42.tig
+Seq
+  |Seq
+  |  |Move
+  |  |   |Mem
+  |  |   |  |Binop
+  |  |   |       |+
+  |  |   |       |Temp: t0
+  |  |   |       |Const: -4
+  |  |   |ESeq
+  |  |       |Seq
+  |  |       |  |Move
+  |  |       |  |   |Temp: t2
+  |  |       |  |   |Call
+  |  |       |  |       |Name: malloc
+  |  |       |  |       |ExprList
+  |  |       |  |               |Binop
+  |  |       |  |                    |*
+  |  |       |  |                    |Const: 10
+  |  |       |  |                    |Const: 4
+  |  |       |  |ExprStmt
+  |  |       |          |Call
+  |  |       |              |Name: initArray
+  |  |       |              |ExprList
+  |  |       |                      |Temp: t2
+  |  |       |                      |Const: 10
+  |  |       |                      |Const: 0
+  |  |       |Temp: t2
+  |  |Seq
+  |     |Move
+  |     |   |Mem
+  |     |   |  |Binop
+  |     |   |       |+
+  |     |   |       |Temp: t0
+  |     |   |       |Const: -8
+  |     |   |ESeq
+  |     |       |Seq
+  |     |       |  |Move
+  |     |       |  |   |Temp: t4
+  |     |       |  |   |Call
+  |     |       |  |       |Name: malloc
+  |     |       |  |       |ExprList
+  |     |       |  |               |Binop
+  |     |       |  |                    |*
+  |     |       |  |                    |Const: 5
+  |     |       |  |                    |Const: 4
+  |     |       |  |ExprStmt
+  |     |       |          |Call
+  |     |       |              |Name: initArray
+  |     |       |              |ExprList
+  |     |       |                      |Temp: t4
+  |     |       |                      |Const: 5
+  |     |       |                      |ESeq
+  |     |       |                          |Seq
+  |     |       |                          |  |Move
+  |     |       |                          |  |   |Temp: t3
+  |     |       |                          |  |   |Call
+  |     |       |                          |  |       |Name: malloc
+  |     |       |                          |  |       |Const: 16
+  |     |       |                          |  |Seq
+  |     |       |                          |     |Move
+  |     |       |                          |     |   |Mem
+  |     |       |                          |     |   |  |Binop
+  |     |       |                          |     |   |       |+
+  |     |       |                          |     |   |       |Temp: t3
+  |     |       |                          |     |   |       |Const: 0
+  |     |       |                          |     |   |Name: L0
+  |     |       |                          |     |Seq
+  |     |       |                          |        |Move
+  |     |       |                          |        |   |Mem
+  |     |       |                          |        |   |  |Binop
+  |     |       |                          |        |   |       |+
+  |     |       |                          |        |   |       |Temp: t3
+  |     |       |                          |        |   |       |Const: 4
+  |     |       |                          |        |   |Name: L1
+  |     |       |                          |        |Seq
+  |     |       |                          |           |Move
+  |     |       |                          |           |   |Mem
+  |     |       |                          |           |   |  |Binop
+  |     |       |                          |           |   |       |+
+  |     |       |                          |           |   |       |Temp: t3
+  |     |       |                          |           |   |       |Const: 8
+  |     |       |                          |           |   |Const: 0
+  |     |       |                          |           |Move
+  |     |       |                          |               |Mem
+  |     |       |                          |               |  |Binop
+  |     |       |                          |               |       |+
+  |     |       |                          |               |       |Temp: t3
+  |     |       |                          |               |       |Const: 12
+  |     |       |                          |               |Const: 0
+  |     |       |                          |Temp: t3
+  |     |       |Temp: t4
+  |     |Seq
+  |        |Move
+  |        |   |Mem
+  |        |   |  |Binop
+  |        |   |       |+
+  |        |   |       |Temp: t0
+  |        |   |       |Const: -12
+  |        |   |ESeq
+  |        |       |Seq
+  |        |       |  |Move
+  |        |       |  |   |Temp: t5
+  |        |       |  |   |Call
+  |        |       |  |       |Name: malloc
+  |        |       |  |       |ExprList
+  |        |       |  |               |Binop
+  |        |       |  |                    |*
+  |        |       |  |                    |Const: 100
+  |        |       |  |                    |Const: 4
+  |        |       |  |ExprStmt
+  |        |       |          |Call
+  |        |       |              |Name: initArray
+  |        |       |              |ExprList
+  |        |       |                      |Temp: t5
+  |        |       |                      |Const: 100
+  |        |       |                      |Name: L2
+  |        |       |Temp: t5
+  |        |Seq
+  |           |Move
+  |           |   |Mem
+  |           |   |  |Binop
+  |           |   |       |+
+  |           |   |       |Temp: t0
+  |           |   |       |Const: -16
+  |           |   |ESeq
+  |           |       |Seq
+  |           |       |  |Move
+  |           |       |  |   |Temp: t6
+  |           |       |  |   |Call
+  |           |       |  |       |Name: malloc
+  |           |       |  |       |Const: 16
+  |           |       |  |Seq
+  |           |       |     |Move
+  |           |       |     |   |Mem
+  |           |       |     |   |  |Binop
+  |           |       |     |   |       |+
+  |           |       |     |   |       |Temp: t6
+  |           |       |     |   |       |Const: 0
+  |           |       |     |   |Name: L3
+  |           |       |     |Seq
+  |           |       |        |Move
+  |           |       |        |   |Mem
+  |           |       |        |   |  |Binop
+  |           |       |        |   |       |+
+  |           |       |        |   |       |Temp: t6
+  |           |       |        |   |       |Const: 4
+  |           |       |        |   |Name: L4
+  |           |       |        |Seq
+  |           |       |           |Move
+  |           |       |           |   |Mem
+  |           |       |           |   |  |Binop
+  |           |       |           |   |       |+
+  |           |       |           |   |       |Temp: t6
+  |           |       |           |   |       |Const: 8
+  |           |       |           |   |Const: 2432
+  |           |       |           |Move
+  |           |       |               |Mem
+  |           |       |               |  |Binop
+  |           |       |               |       |+
+  |           |       |               |       |Temp: t6
+  |           |       |               |       |Const: 12
+  |           |       |               |Const: 44
+  |           |       |Temp: t6
+  |           |Seq
+  |              |Move
+  |              |   |Mem
+  |              |   |  |Binop
+  |              |   |       |+
+  |              |   |       |Temp: t0
+  |              |   |       |Const: -20
+  |              |   |ESeq
+  |              |       |Seq
+  |              |       |  |Move
+  |              |       |  |   |Temp: t8
+  |              |       |  |   |Call
+  |              |       |  |       |Name: malloc
+  |              |       |  |       |Const: 8
+  |              |       |  |Seq
+  |              |       |     |Move
+  |              |       |     |   |Mem
+  |              |       |     |   |  |Binop
+  |              |       |     |   |       |+
+  |              |       |     |   |       |Temp: t8
+  |              |       |     |   |       |Const: 0
+  |              |       |     |   |Name: L5
+  |              |       |     |Move
+  |              |       |         |Mem
+  |              |       |         |  |Binop
+  |              |       |         |       |+
+  |              |       |         |       |Temp: t8
+  |              |       |         |       |Const: 4
+  |              |       |         |ESeq
+  |              |       |             |Seq
+  |              |       |             |  |Move
+  |              |       |             |  |   |Temp: t7
+  |              |       |             |  |   |Call
+  |              |       |             |  |       |Name: malloc
+  |              |       |             |  |       |ExprList
+  |              |       |             |  |               |Binop
+  |              |       |             |  |                    |*
+  |              |       |             |  |                    |Const: 3
+  |              |       |             |  |                    |Const: 4
+  |              |       |             |  |ExprStmt
+  |              |       |             |          |Call
+  |              |       |             |              |Name: initArray
+  |              |       |             |              |ExprList
+  |              |       |             |                      |Temp: t7
+  |              |       |             |                      |Const: 3
+  |              |       |             |                      |Const: 1900
+  |              |       |             |Temp: t7
+  |              |       |Temp: t8
+  |              |Seq
+  |                 |Move
+  |                 |   |Mem
+  |                 |   |  |Binop
+  |                 |   |       |+
+  |                 |   |       |Mem
+  |                 |   |       |  |Binop
+  |                 |   |       |       |+
+  |                 |   |       |       |Temp: t0
+  |                 |   |       |       |Const: -4
+  |                 |   |       |Binop
+  |                 |   |            |*
+  |                 |   |            |Const: 0
+  |                 |   |            |Const: 4
+  |                 |   |Const: 1
+  |                 |Seq
+  |                    |Move
+  |                    |   |Mem
+  |                    |   |  |Binop
+  |                    |   |       |+
+  |                    |   |       |Mem
+  |                    |   |       |  |Binop
+  |                    |   |       |       |+
+  |                    |   |       |       |Temp: t0
+  |                    |   |       |       |Const: -4
+  |                    |   |       |Binop
+  |                    |   |            |*
+  |                    |   |            |Const: 9
+  |                    |   |            |Const: 4
+  |                    |   |Const: 3
+  |                    |Seq
+  |                       |Move
+  |                       |   |Mem
+  |                       |   |  |Binop
+  |                       |   |       |+
+  |                       |   |       |Mem
+  |                       |   |       |  |Binop
+  |                       |   |       |       |+
+  |                       |   |       |       |Mem
+  |                       |   |       |       |  |Binop
+  |                       |   |       |       |       |+
+  |                       |   |       |       |       |Temp: t0
+  |                       |   |       |       |       |Const: -8
+  |                       |   |       |       |Binop
+  |                       |   |       |            |*
+  |                       |   |       |            |Const: 3
+  |                       |   |       |            |Const: 4
+  |                       |   |       |Const: 0
+  |                       |   |Name: L6
+  |                       |Seq
+  |                          |Move
+  |                          |   |Mem
+  |                          |   |  |Binop
+  |                          |   |       |+
+  |                          |   |       |Mem
+  |                          |   |       |  |Binop
+  |                          |   |       |       |+
+  |                          |   |       |       |Mem
+  |                          |   |       |       |  |Binop
+  |                          |   |       |       |       |+
+  |                          |   |       |       |       |Temp: t0
+  |                          |   |       |       |       |Const: -8
+  |                          |   |       |       |Binop
+  |                          |   |       |            |*
+  |                          |   |       |            |Const: 1
+  |                          |   |       |            |Const: 4
+  |                          |   |       |Const: 12
+  |                          |   |Const: 23
+  |                          |Seq
+  |                             |Move
+  |                             |   |Mem
+  |                             |   |  |Binop
+  |                             |   |       |+
+  |                             |   |       |Mem
+  |                             |   |       |  |Binop
+  |                             |   |       |       |+
+  |                             |   |       |       |Temp: t0
+  |                             |   |       |       |Const: -12
+  |                             |   |       |Binop
+  |                             |   |            |*
+  |                             |   |            |Const: 34
+  |                             |   |            |Const: 4
+  |                             |   |Name: L7
+  |                             |Seq
+  |                                |Move
+  |                                |   |Mem
+  |                                |   |  |Binop
+  |                                |   |       |+
+  |                                |   |       |Mem
+  |                                |   |       |  |Binop
+  |                                |   |       |       |+
+  |                                |   |       |       |Temp: t0
+  |                                |   |       |       |Const: -16
+  |                                |   |       |Const: 0
+  |                                |   |Name: L8
+  |                                |Move
+  |                                    |Mem
+  |                                    |  |Binop
+  |                                    |       |+
+  |                                    |       |Mem
+  |                                    |       |  |Binop
+  |                                    |       |       |+
+  |                                    |       |       |Mem
+  |                                    |       |       |  |Binop
+  |                                    |       |       |       |+
+  |                                    |       |       |       |Temp: t0
+  |                                    |       |       |       |Const: -20
+  |                                    |       |       |Const: 4
+  |                                    |       |Binop
+  |                                    |            |*
+  |                                    |            |Const: 0
+  |                                    |            |Const: 4
+  |                                    |Const: 2323
+  |Move
+      |Mem
+      |  |Binop
+      |       |+
+      |       |Mem
+      |       |  |Binop
+      |       |       |+
+      |       |       |Mem
+      |       |       |  |Binop
+      |       |       |       |+
+      |       |       |       |Temp: t0
+      |       |       |       |Const: -20
+      |       |       |Const: 4
+      |       |Binop
+      |            |*
+      |            |Const: 2
+      |            |Const: 4
+      |Const: 2323
+DataFrag: aname Label: L0
+DataFrag: somewhere Label: L1
+DataFrag:  Label: L2
+DataFrag: Kapoios Label: L3
+DataFrag: Kapou Label: L4
+DataFrag: Allos Label: L5
+DataFrag: kati Label: L6
+DataFrag: sfd Label: L7
+DataFrag: sdf Label: L8
+
+testcases/test43.tig
+testcases/test43.tig
+Line 4: Error: Attempt to declare a variable of no type
+Line 6: Error: Undefined variable: a
+Line 6: Error: Type mismatch. Expected int
+
+testcases/test44.tig
+testcases/test44.tig
+Line 9: Error: Attempt to assign nil to a non-record type.
+
+testcases/test45.tig
+testcases/test45.tig
+Line 5: Error: Need type constraint
+
+testcases/test46.tig
+testcases/test46.tig
+ExprStmt
+       |ESeq
+           |Seq
+           |  |Move
+           |  |   |Mem
+           |  |   |  |Binop
+           |  |   |       |+
+           |  |   |       |Temp: t0
+           |  |   |       |Const: -4
+           |  |   |Const: 0
+           |  |Seq
+           |     |CJump
+           |     |    |=
+           |     |    |Mem
+           |     |    |  |Binop
+           |     |    |       |+
+           |     |    |       |Temp: t0
+           |     |    |       |Const: -4
+           |     |    |Const: 0
+           |     |    |True Label: L0
+           |     |    |False Label: L0
+           |     |Label: L0
+           |ESeq
+               |Seq
+               |  |Move
+               |  |   |Temp: t2
+               |  |   |Const: 1
+               |  |Seq
+               |     |CJump
+               |     |    |<>
+               |     |    |Mem
+               |     |    |  |Binop
+               |     |    |       |+
+               |     |    |       |Temp: t0
+               |     |    |       |Const: -4
+               |     |    |Const: 0
+               |     |    |True Label: L1
+               |     |    |False Label: L2
+               |     |Seq
+               |        |Label: L2
+               |        |Seq
+               |           |Move
+               |           |   |Temp: t2
+               |           |   |Const: 0
+               |           |Label: L1
+               |Temp: t2
+
+testcases/test47.tig
+testcases/test47.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |Const: 4
+           |Const: 0
+
+testcases/test48.tig
+testcases/test48.tig
+ExprStmt
+       |Const: 0
+ProcFrag
+Move
+   |Temp: t1
+   |Mem
+      |Binop
+           |+
+           |Temp: t2
+           |Const: -8
+ProcFrag
+Move
+   |Temp: t1
+   |Mem
+      |Binop
+           |+
+           |Temp: t4
+           |Const: -8
+
+testcases/test49.tig
+testcases/test49.tig
+Line 5: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR
+
+testcases/test5.tig
+testcases/test5.tig
+ExprStmt
+       |ESeq
+           |Move
+           |   |Mem
+           |   |  |Binop
+           |   |       |+
+           |   |       |Temp: t0
+           |   |       |Const: -4
+           |   |ESeq
+           |       |Seq
+           |       |  |Move
+           |       |  |   |Temp: t2
+           |       |  |   |Call
+           |       |  |       |Name: malloc
+           |       |  |       |Const: 8
+           |       |  |Seq
+           |       |     |Move
+           |       |     |   |Mem
+           |       |     |   |  |Binop
+           |       |     |   |       |+
+           |       |     |   |       |Temp: t2
+           |       |     |   |       |Const: 0
+           |       |     |   |Const: 0
+           |       |     |Move
+           |       |         |Mem
+           |       |         |  |Binop
+           |       |         |       |+
+           |       |         |       |Temp: t2
+           |       |         |       |Const: 4
+           |       |         |Const: 0
+           |       |Temp: t2
+           |Mem
+              |Binop
+                   |+
+                   |Temp: t0
+                   |Const: -4
+
+testcases/test6.tig
+testcases/test6.tig
+ExprStmt
+       |Call
+           |Name: L0
+           |ExprList
+                   |Temp: t0
+                   |Const: 0
+                   |Name: L3
+ProcFrag
+ExprStmt
+       |Call
+           |Name: L1
+           |ExprList
+                   |Temp: t0
+                   |Binop
+                        |+
+                        |Mem
+                        |  |Binop
+                        |       |+
+                        |       |Temp: t2
+                        |       |Const: -8
+                        |Const: 1
+DataFrag: str Label: L2
+ProcFrag
+ExprStmt
+       |Call
+           |Name: L0
+           |ExprList
+                   |Temp: t0
+                   |Mem
+                   |  |Binop
+                   |       |+
+                   |       |Temp: t4
+                   |       |Const: -8
+                   |Name: L2
+DataFrag: str2 Label: L3
+
+testcases/test7.tig
+testcases/test7.tig
+ExprStmt
+       |Call
+           |Name: L0
+           |ExprList
+                   |Temp: t0
+                   |Const: 0
+                   |Name: L4
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |ExprStmt
+       |       |Call
+       |           |Name: L1
+       |           |ExprList
+       |                   |Temp: t0
+       |                   |Binop
+       |                        |+
+       |                        |Mem
+       |                        |  |Binop
+       |                        |       |+
+       |                        |       |Temp: t2
+       |                        |       |Const: -8
+       |                        |Const: 1
+       |Const: 0
+DataFrag: str Label: L2
+DataFrag:   Label: L3
+ProcFrag
+Move
+   |Temp: t1
+   |ESeq
+       |ExprStmt
+       |       |Call
+       |           |Name: L0
+       |           |ExprList
+       |                   |Temp: t0
+       |                   |Mem
+       |                   |  |Binop
+       |                   |       |+
+       |                   |       |Temp: t4
+       |                   |       |Const: -8
+       |                   |Name: L2
+       |Name: L3
+DataFrag: str2 Label: L4
+
+testcases/test8.tig
+testcases/test8.tig
+Seq
+  |CJump
+  |    |=
+  |    |ESeq
+  |    |   |Seq
+  |    |   |  |Move
+  |    |   |  |   |Temp: t2
+  |    |   |  |   |Const: 1
+  |    |   |  |Seq
+  |    |   |     |CJump
+  |    |   |     |    |>
+  |    |   |     |    |Const: 10
+  |    |   |     |    |Const: 20
+  |    |   |     |    |True Label: L0
+  |    |   |     |    |False Label: L1
+  |    |   |     |Seq
+  |    |   |        |Label: L1
+  |    |   |        |Seq
+  |    |   |           |Move
+  |    |   |           |   |Temp: t2
+  |    |   |           |   |Const: 0
+  |    |   |           |Label: L0
+  |    |   |Temp: t2
+  |    |Const: 0
+  |    |True Label: L3
+  |    |False Label: L2
+  |Seq
+     |Label: L2
+     |Seq
+        |ExprStmt
+        |       |Const: 30
+        |Seq
+           |Jump
+           |   |Name: L4
+           |   |L4
+           |Seq
+              |Label: L3
+              |Seq
+                 |ExprStmt
+                 |       |Const: 40
+                 |Seq
+                    |Jump
+                    |   |Name: L4
+                    |   |L4
+                    |Label: L4
+
+testcases/test9.tig
+testcases/test9.tig
+Line 3: Error: Type mismatch. Types of then-else differ
+

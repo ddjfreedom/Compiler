@@ -16,6 +16,10 @@
     stmt = [aStmt retain];
   return self;
 }
+- (BOOL)isVoidType
+{
+  return YES;
+}
 - (TreeStmt *)unNx
 {
   return stmt;

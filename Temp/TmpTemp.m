@@ -12,6 +12,10 @@ static int count = 0;
 
 @implementation TmpTemp
 @synthesize name;
+- (const char *)cString
+{
+  return [name cStringUsingEncoding:NSASCIIStringEncoding];
+}
 - (id)init
 {
   if (self = [super init])

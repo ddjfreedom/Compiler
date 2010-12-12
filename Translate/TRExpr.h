@@ -15,6 +15,7 @@
 {
 
 }
+- (BOOL)isVoidType;
 - (TreeExpr *)unEx;
 - (TreeStmt *)unNx;
 - (TreeStmt *)unCxWithTrueLabel:(TmpLabel *)tLabel falseLabel:(TmpLabel *)fLabel;

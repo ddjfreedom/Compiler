@@ -11,7 +11,14 @@
 @implementation Frame
 @synthesize name;
 @synthesize wordSize;
-@synthesize fp;
+- (TmpTemp *)fp
+{
+  return nil;
+}
+- (TmpTemp *)rv
+{
+  return nil;
+}
 - (NSArray *)formals
 {
   return formals;
@@ -25,6 +32,10 @@
   return nil;
 }
 - (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args
+{
+  return nil;
+}
+- (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body
 {
   return nil;
 }

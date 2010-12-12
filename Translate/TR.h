@@ -8,35 +8,51 @@
 
 #import <Foundation/Foundation.h>
 #import "Semantics.h"
+#import "OperationExpression.h"
 #import "Symbol.h"
+#import "TmpLabel.h"
 #import "TRExpr.h"
 #import "TRAccess.h"
 #import "TRLevel.h"
+#import "TRFragment.h"
 
 @interface TR : NSObject 
 {
-
+	NSMutableArray *frags;
+  int wordSize;
 }
-+ (void)setWordSize:(int)size;
-+ (TRExpr *)simpleVarWithAccess:(TRAccess *)anAcc level:(TRLevel *)aLevel;
-+ (TRExpr *)arrayVarWithBase:(TRExpr *)base subscript:(TRExpr *)sub level:(TRLevel *)aLevel;
-+ (TRExpr *)fieldVarWithVar:(TRExpr *)var 
+@property (readwrite, assign) int wordSize;
+@property (readonly) NSArray *frags;
+- (TmpLabel *)generateDoneLabel;
+// lValue translation
+- (TRExpr *)simpleVarWithAccess:(TRAccess *)anAcc level:(TRLevel *)aLevel;
+- (TRExpr *)arrayVarWithBase:(TRExpr *)base subscript:(TRExpr *)sub level:(TRLevel *)aLevel;
+- (TRExpr *)fieldVarWithVar:(TRExpr *)var 
                        type:(SemanticRecordType *)type 
                       field:(Symbol *)field 
                       level:(TRLevel *)aLevel;
-+ (TRExpr *)nilExpr;
-+ (TRExpr *)intConstWithInt:(int)value;
-+ (TRExpr *)breakExprWithDoneLabel:(NSArray *)labels;
-+ (TRExpr *)seqExprWithExprs:(NSArray *)exprs;
-+ (TRExpr *)arrayExprWithSize:(TRExpr *)size initialValue:(TRExpr *)inititalValue level:(TRLevel *)level;
-+ (TRExpr *)recordExprWithType:(SemanticRecordType *)type initialValues:(NSDictionary *)values level:(TRLevel *)level;
-+ (TRExpr *)assignExprWithLValue:(TRExpr *)left rValue:(TRExpr *)right;
-+ (TRExpr *)binopExprWithLeftOperand:(SemanticExpr *)left 
+// expression translation
+- (TRExpr *)nilExpr;
+- (TRExpr *)intConstWithInt:(int)value;
+- (TRExpr *)stringLitWithString:(NSString *)string;
+- (TRExpr *)breakExprWithDoneLabel:(TmpLabel *)label;
+- (TRExpr *)seqExprWithExprs:(NSArray *)exprs;
+- (TRExpr *)arrayExprWithSize:(TRExpr *)size initialValue:(TRExpr *)inititalValue level:(TRLevel *)level;
+- (TRExpr *)recordExprWithType:(SemanticRecordType *)type initialValues:(NSDictionary *)values level:(TRLevel *)level;
+- (TRExpr *)assignExprWithLValue:(TRExpr *)left rValue:(TRExpr *)right;
+- (TRExpr *)binopExprWithLeftOperand:(SemanticExpr *)left 
                                   op:(AbstractSyntaxOperation)op 
-                        rightOperand:(SemanticExpr *)right;
-+ (TRExpr *)ifExprWithTest:(TRExpr *)test thenClause:(TRExpr *)thenClause elseClause:(TRExpr *)elseClause;
-+ (TRExpr *)whileExprWithTest:(TRExpr *)test body:(TRExpr *)body doneLabels:(NSMutableArray *)labels;
-+ (TRExpr *)callExprWithFunc:(SemanticFuncEntry *)func Arguments:(NSArray *)args level:(TRLevel *)level;
-
-+ (TRExpr *)varDeclWithVar:(SemanticVarEntry *)var initialValue:(TRExpr *)initialValue;
+                        rightOperand:(SemanticExpr *)right
+                               level:(TRLevel *)level;
+- (TRExpr *)ifExprWithTest:(TRExpr *)test thenClause:(TRExpr *)thenClause elseClause:(TRExpr *)elseClause;
+- (TRExpr *)whileExprWithTest:(TRExpr *)test body:(TRExpr *)body doneLabel:(TmpLabel *)done;
+- (TRExpr *)forExprWithIndex:(SemanticVarEntry *)index
+                  lowerBound:(TRExpr *)lower
+                  upperBound:(TRExpr *)upper
+                        body:(TRExpr *)body
+                   doneLabel:(TmpLabel *)done;
+- (TRExpr *)callExprWithFunc:(SemanticFuncEntry *)func Arguments:(NSArray *)args level:(TRLevel *)level;
+// declaration translation
+- (TRExpr *)varDeclWithVar:(SemanticVarEntry *)var initialValue:(TRExpr *)initialValue;
+- (void)funcDeclWithBody:(TRExpr *)body level:(TRLevel *)level;
 @end

@@ -13,6 +13,7 @@
 	NSString *name;
 }
 @property (readonly) NSString *name;
+@property (readonly) const char *cString;
 - (id)init;
 + (id)temp;
 @end

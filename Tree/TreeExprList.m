@@ -40,7 +40,7 @@
     head = [firstExpr retain];
     tail = nil;
     while (arg = va_arg(args, TreeExpr*)) {
-      tail = [[TreeExprList exprListWithExpr:arg] retain];
+      last->tail = [[TreeExprList exprListWithExpr:arg] retain];
       last = last.tail;
     }
   }

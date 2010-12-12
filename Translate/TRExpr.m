@@ -10,19 +10,23 @@
 #import "ErrorMessage.h"
 
 @implementation TRExpr
+- (BOOL)isVoidType
+{
+  return NO;
+}
 - (TreeExpr *)unEx
 {
-  fprintf(stderr, "Should not call unEx");
+  NSAssert(NO, @"Should not call unEx");
   return nil;
 }
 - (TreeStmt *)unNx
 {
-  fprintf(stderr, "Should not call unNx");
+  NSAssert(NO, @"Should not call unNx");
   return nil;
 }
 - (TreeStmt *)unCxWithTrueLabel:(TmpLabel *)tLabel falseLabel:(TmpLabel *)fLabel
 {
-  fprintf(stderr, "Should not call unCx");
+  NSAssert(NO, @"Should not call unCx");
   return nil;
 }
 @end

@@ -16,6 +16,6 @@
 }
 @property (readonly) SemanticType *type;
 @property (readonly) TRExpr *expr;
-- (id)initWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType;
-+ (id)exprWithTranslatedExpr:(TRExpr *)anExpr andType:(SemanticType *)aType;
+- (id)initWithTRExpr:(TRExpr *)anExpr andType:(SemanticType *)aType;
++ (id)exprWithTRExpr:(TRExpr *)anExpr andType:(SemanticType *)aType;
 @end

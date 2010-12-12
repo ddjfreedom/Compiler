@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TR.h"
+#import "TRExpr.h"
 #import "Expression.h"
-#import "SemanticExpr.h"
 
 @interface TypeChecker : NSObject
 {
@@ -18,7 +19,9 @@
   NSMutableArray *envs;
   NSMutableArray *loopVars;
   NSMutableArray *doneLabels;
+  BOOL hasError;
+  TR *trans;
 }
-- (SemanticExpr *)typeCheckProgram:(Expression *)expr;
-+ (SemanticExpr *)typeCheckProgram:(Expression *)expr;
+- (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr;
++ (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr;
 @end

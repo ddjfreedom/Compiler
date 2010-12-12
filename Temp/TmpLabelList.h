@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TmpLabel.h"
 
-@interface TmpLabelList : NSObject 
+@interface TmpLabelList : NSObject <NSFastEnumeration>
 {
 	NSMutableArray *list;
 }

@@ -15,6 +15,7 @@
 #import "TRLevel.h"
 #import "BoolList.h"
 #import "MipsFrame.h"
+#import "TRExpr.h"
 
 @interface TypeChecker()
 - (void)symbolInitialization;
@@ -35,18 +36,18 @@
 - (SemanticExpr *)typeCheckLetExpression:(LetExpression *)expr;
 - (SemanticExpr *)typeCheckForExpression:(ForExpression *)expr;
 - (SemanticExpr *)typeCheckVar:(Var *)var;
-- (id)typeCheckVarDecl:(VarDecl *)varDecl;
+- (TRExpr *)typeCheckVarDecl:(VarDecl *)varDecl;
 - (void)typeCheckTypeDecl:(SyntaxList *)typesList;
-- (id)typeCheckFuncDecl:(SyntaxList *)funcsList;
+- (void)typeCheckFuncDecl:(SyntaxList *)funcsList;
 - (SemanticType *)typeCheckType:(Type *)type;
 - (SemanticRecordType *)typeCheckTypeFields:(SyntaxList *)typefields;
 @end
 
 @implementation TypeChecker
-+ (SemanticExpr *)typeCheckProgram:(Expression *)expr
++ (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr
 {
   TypeChecker *checker = [[[TypeChecker alloc] init] autorelease];
-  return [checker typeCheckProgram:expr];
+  return [checker typeCheckProgram:expr withTranslator:tr];
 }
 - (id)init
 {
@@ -54,16 +55,21 @@
     envs = [[NSMutableArray alloc] init];
     loopVars = [[NSMutableArray alloc] init];
     doneLabels = [[NSMutableArray alloc] init];
+    levels = [[NSMutableArray alloc] init];
+    trans = nil;
+    hasError = NO;
   }
   return self;
 }
-- (SemanticExpr *)typeCheckProgram:(Expression *)expr
+- (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr
 {
+  TRExpr *ans = nil;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  trans = [tr retain];
   [self symbolInitialization];
-  [self typeCheckExpression:expr];
+  ans = [[self typeCheckExpression:expr].expr retain];
   [pool drain];
-  return nil;
+  return hasError ? nil : [ans autorelease];
 }
 - (SemanticEntry *)entryForSymbol:(Symbol *)aSymbol
 {
@@ -101,6 +107,7 @@
     return YES;
   [ErrorMessage printLineNumber:lineno
                      withFormat:"Error: Type mismatch. Expected int"];
+  hasError = YES;
   return NO;
 }
 - (BOOL)isStringType:(SemanticExpr *)expr lineNumber:(int)lineno
@@ -109,6 +116,7 @@
     return YES;
   [ErrorMessage printLineNumber:lineno
                      withFormat:"Error: Type mismatch. Expected string"];
+  hasError = YES;
   return NO;
 }
 - (BOOL)isVoidType:(SemanticExpr *)expr lineNumber:(int)lineno expressionName:(const char *)name
@@ -117,19 +125,20 @@
     return YES;
   [ErrorMessage printLineNumber:lineno
                      withFormat:"Error: %s return a value", name];
+  hasError = YES;
   return NO;
 }
 - (SemanticExpr *)typeCheckExpression:(Expression *)expr
 {
   if ([expr isMemberOfClass:[IntExpression class]])
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[SemanticIntType sharedIntType]];
+    return [SemanticExpr exprWithTRExpr:[trans intConstWithInt:((IntExpression *)expr).value]
+                                andType:[SemanticIntType sharedIntType]];
   else if ([expr isMemberOfClass:[StringExpression class]])
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[SemanticStringType sharedStringType]];
+    return [SemanticExpr exprWithTRExpr:[trans stringLitWithString:((StringExpression *)expr).string]
+                                andType:[SemanticStringType sharedStringType]];
   else if ([expr isMemberOfClass:[NilExpression class]])
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[SemanticNilType sharedNilType]];
+    return [SemanticExpr exprWithTRExpr:[trans nilExpr]
+                                andType:[SemanticNilType sharedNilType]];
   else if ([expr isMemberOfClass:[OperationExpression class]])
   	return [self typeCheckOperationExpression:(OperationExpression *)expr];  
   else if ([expr isMemberOfClass:[VarExpression class]])
@@ -139,29 +148,45 @@
   else if ([expr isMemberOfClass:[IfExpression class]])
   	return [self typeCheckIfExpression:(IfExpression *)expr];
   else if ([expr isMemberOfClass:[WhileExpression class]]) {
-    [self isIntType:[self typeCheckExpression:[(WhileExpression *)expr test]]
-         lineNumber:[(WhileExpression *)expr test].lineNumber];
-  	[self isVoidType:[self typeCheckExpression:[(WhileExpression *)expr body]]
+    SemanticExpr *test = [self typeCheckExpression:[(WhileExpression *)expr test]];
+    SemanticExpr *body;
+    TmpLabel *done = [trans generateDoneLabel];
+    [self isIntType:test lineNumber:[(WhileExpression *)expr test].lineNumber];
+    [doneLabels addObject:done];
+    body = [self typeCheckExpression:[(WhileExpression *)expr body]];
+  	[self isVoidType:body
           lineNumber:[(WhileExpression *)expr body].lineNumber 
       expressionName:"Body of while expression"];
-    //[doneLabels removeLastObject];
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[SemanticVoidType sharedVoidType]];
+    [doneLabels removeLastObject];
+    return [SemanticExpr exprWithTRExpr:[trans whileExprWithTest:test.expr
+                                                            body:body.expr
+                                                       doneLabel:done]
+                                andType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[BreakExpression class]]) {
-    if (!doneLabels.count)
+    if (!doneLabels.count) {
       [ErrorMessage printLineNumber:expr.lineNumber
                          withFormat:"Error: break not in a loop"];
-  	return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[SemanticVoidType sharedVoidType]];
+      hasError = YES;
+      return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
+    } else
+      return [SemanticExpr exprWithTRExpr:[trans breakExprWithDoneLabel:[doneLabels lastObject]]
+      	                          andType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[CallExpression class]])
   	return [self typeCheckCallExpression:(CallExpression *)expr];
   else if ([expr isMemberOfClass:[RecordExpression class]])
     return [self typeCheckRecordExpression:(RecordExpression *)expr];
   else if ([expr isMemberOfClass:[SequenceExpression class]]) {
-  	int i, count = [(SequenceExpression *)expr expressions].count - 1;
-    for (i = 0; i < count; ++i)
-      [self typeCheckExpression:[[(SequenceExpression *)expr expressions] objectAtIndex:i]];
-    return [self typeCheckExpression:[[(SequenceExpression *)expr expressions] lastObject]];
+  	int i, count = [(SequenceExpression *)expr expressions].count;
+    NSMutableArray *seq = [NSMutableArray array];
+    SemanticExpr *last = nil;
+    for (i = 0; i < count; ++i) {
+      last = [self typeCheckExpression:[[(SequenceExpression *)expr expressions] objectAtIndex:i]];
+      if (last.expr) [seq addObject:last.expr];
+    }
+    if (last.expr) {
+    	return [SemanticExpr exprWithTRExpr:[trans seqExprWithExprs:seq] andType:last.type.actualType];
+    } else
+      return [SemanticExpr exprWithTRExpr:[trans seqExprWithExprs:seq] andType:[SemanticVoidType sharedVoidType]];
   } else if ([expr isMemberOfClass:[ForExpression class]])
     return [self typeCheckForExpression:(ForExpression *)expr];
   else if ([expr isMemberOfClass:[LetExpression class]])
@@ -170,190 +195,265 @@
     SemanticType *type = [self typeForSymbol:[(ArrayExpression *)expr typeIdentifier]];
     if ([type.actualType isMemberOfClass:[SemanticArrayType class]]) {
       // test whether size is an int
-      [self isIntType:[self typeCheckExpression:[(ArrayExpression *)expr size]] 
-           lineNumber:expr.lineNumber];
+      SemanticExpr *size = [self typeCheckExpression:[(ArrayExpression *)expr size]];
+      SemanticExpr *initialValue = [self typeCheckExpression:[(ArrayExpression *)expr initialValue]];
+      [self isIntType:size lineNumber:expr.lineNumber];
       // test whether the type of initial value and the type of array element are the same
-      if (![[self typeCheckExpression:[(ArrayExpression *)expr initialValue]].type.actualType 
-            isSameType:[(SemanticArrayType *)type.actualType type].actualType])
+      if (![initialValue.type.actualType isSameType:[(SemanticArrayType *)type.actualType type].actualType]) {
         [ErrorMessage printLineNumber:expr.lineNumber
                            withFormat:"Error: Initial value type and array element type mismatch."];
-      return [SemanticExpr exprWithTranslatedExpr:nil
-                                          andType:type];
+        hasError = YES;
+      }
+      return [SemanticExpr exprWithTRExpr:[trans arrayExprWithSize:size.expr
+                                                      initialValue:initialValue.expr
+                                                             level:[levels lastObject]]
+                                  andType:type.actualType];
     } else 
       [ErrorMessage printLineNumber:expr.lineNumber
                          withFormat:"Error: Undefined array type"];
   }
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticVoidType sharedVoidType]];
+  hasError = YES;
+  return [SemanticExpr exprWithTRExpr:nil
+                              andType:[SemanticVoidType sharedVoidType]];
 }
 - (SemanticExpr *)typeCheckOperationExpression:(OperationExpression *)expr
 {
   SemanticExpr *left = [self typeCheckExpression:[expr leftOperand]];
   SemanticExpr *right = [self typeCheckExpression:[expr rightOperand]];
+  BOOL error = NO;
   switch ([expr operation]) {
     case plus: case minus: case multiply: case divide:
-      [self isIntType:left lineNumber:expr.leftOperand.lineNumber];
-      [self isIntType:right lineNumber:expr.rightOperand.lineNumber];
+      error = ![self isIntType:left lineNumber:expr.leftOperand.lineNumber];
+      error |= ![self isIntType:right lineNumber:expr.rightOperand.lineNumber];
       break;
     case lt: case le: case gt: case ge:
       if (([left.type.actualType isSameType:[SemanticIntType sharedIntType]] &&
            ![right.type.actualType isSameType:[SemanticIntType sharedIntType]]) ||
           ([left.type.actualType isSameType:[SemanticStringType sharedStringType]] &&
-           ![right.type.actualType isSameType:[SemanticStringType sharedStringType]]))
-        [ErrorMessage printLineNumber:expr.lineNumber
-                           withFormat:"Error: Comparison of incompatible types"];
+           ![right.type.actualType isSameType:[SemanticStringType sharedStringType]])) {
+            [ErrorMessage printLineNumber:expr.lineNumber
+                               withFormat:"Error: Comparison of incompatible types"];
+            error = YES;
+          }
       break;
     case eq: case ne:
-      if (![left.type.actualType isSameType:right.type.actualType])
+      if (![left.type.actualType isSameType:right.type.actualType]) {
         [ErrorMessage printLineNumber:expr.lineNumber
                            withFormat:"Error: Type mismatch. Two operands type differ"];
+        error = YES;
+      }
       break;
     default:
       [ErrorMessage printLineNumber:expr.lineNumber
                          withFormat:"Error: Unknown operator"];
+      error = YES;
   }
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticIntType sharedIntType]];
+  hasError |= error;
+  if (error)
+    return [SemanticExpr exprWithTRExpr:nil andType:[SemanticIntType sharedIntType]];
+  return [SemanticExpr exprWithTRExpr:[trans binopExprWithLeftOperand:left
+                                                                   op:[expr operation]
+                                                         rightOperand:right
+                                                                level:[levels lastObject]]
+                              andType:[SemanticIntType sharedIntType]];
 }
 - (SemanticExpr *)typeCheckAssignExpression:(AssignExpression *)expr
 {
   SemanticExpr *left = [self typeCheckVar:[expr variable]];
   SemanticExpr *right = [self typeCheckExpression:[expr expression]];
+  BOOL error = NO;
   if ([expr.variable isMemberOfClass:[SimpleVar class]] &&
-      [loopVars indexOfObject:((SimpleVar *)expr.variable).name] != NSNotFound)
+      [loopVars indexOfObject:((SimpleVar *)expr.variable).name] != NSNotFound) {
     [ErrorMessage printLineNumber:expr.variable.lineNumber
                        withFormat:"Warning: Loop variable %s being assigned to",
      [((SimpleVar *)expr.variable).name cString]];
+    error = YES;
+  }
   if ([right.type.actualType isSameType:[SemanticNilType sharedNilType]] && 
-      ![left.type.actualType isMemberOfClass:[SemanticRecordType class]])
+      ![left.type.actualType isMemberOfClass:[SemanticRecordType class]]) {
     [ErrorMessage printLineNumber:expr.lineNumber
                        withFormat:"Error: Attempt to assign nil to a non-record type."];
-  else if (![left.type.actualType isSameType:right.type.actualType])
+    error = YES;
+  }
+  else if (![left.type.actualType isSameType:right.type.actualType]) {
     [ErrorMessage printLineNumber:expr.lineNumber
                        withFormat:"Error: Lvalue and rvalue type mismatch"];
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticVoidType sharedVoidType]];
+    error = YES;
+  }
+  hasError |= error;
+  if (error)
+    return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
+  return [SemanticExpr exprWithTRExpr:[trans assignExprWithLValue:left.expr rValue:right.expr]
+                              andType:[SemanticVoidType sharedVoidType]];
 }
 - (SemanticExpr *)typeCheckIfExpression:(IfExpression *)expr
 {
-  [self isIntType:[self typeCheckExpression:expr.test] 
-       lineNumber:expr.test.lineNumber];
+  SemanticExpr *test = [self typeCheckExpression:expr.test];
+  BOOL error = ![self isIntType:test lineNumber:expr.test.lineNumber];
   SemanticExpr *thenClause = [self typeCheckExpression:[expr thenClause]];
   if ([expr elseClause]) {
     SemanticExpr *elseClause = [self typeCheckExpression:expr.elseClause];
-    if (![thenClause.type.actualType isSameType:elseClause.type.actualType])
+    if (![thenClause.type.actualType isSameType:elseClause.type.actualType]) {
       [ErrorMessage printLineNumber:expr.lineNumber
                          withFormat:"Error: Type mismatch. Types of then-else differ"];
+      error = YES;
+    }
     else 
-      return [SemanticExpr exprWithTranslatedExpr:nil
-                                          andType:thenClause.type];
+      return [SemanticExpr exprWithTRExpr:[trans ifExprWithTest:test.expr
+                                                     thenClause:thenClause.expr
+                                                     elseClause:elseClause.expr]
+                                  andType:thenClause.type];
   } else
-    [self isVoidType:thenClause 
-          lineNumber:expr.thenClause.lineNumber 
-      expressionName:"If-then"];
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticVoidType sharedVoidType]];  
+    error |= ![self isVoidType:thenClause
+                    lineNumber:expr.thenClause.lineNumber
+                expressionName:"If-then"];
+  hasError |= error;
+  if (error) return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
+  return [SemanticExpr exprWithTRExpr:[trans ifExprWithTest:test.expr
+                                                 thenClause:thenClause.expr
+                                                 elseClause:nil]
+                              andType:[SemanticVoidType sharedVoidType]];  
 }
 - (SemanticExpr *)typeCheckCallExpression:(CallExpression *)expr
 {
   SemanticEntry *entry = [self entryForSymbol:expr.functionName];
+  NSMutableArray *args = [NSMutableArray array];
+  BOOL error = NO;
   if ([entry isMemberOfClass:[SemanticFuncEntry class]]) {
     int i, count = expr.actualParas.count;
     int formalcount = [(SemanticFuncEntry *)entry formalParas].count;
-    if (count != formalcount)
+    if (count != formalcount) {
       [ErrorMessage printLineNumber:expr.lineNumber
                          withFormat:"Error: Number of parameters mismatch"];
+      error = YES;
+    }
     else {
-    	SemanticType *type;
+      SemanticExpr *arg;
     	for (i = 0; i < count; ++i) {
-    	  type = [self typeCheckExpression:(Expression *)[expr.actualParas objectAtIndex:i]].type;
-    	  if (![type.actualType isSameType:[[(SemanticFuncEntry *)entry formalParas] semanticTypeAtIndex:i].actualType]) {
+    	  arg = [self typeCheckExpression:(Expression *)[expr.actualParas objectAtIndex:i]];
+    	  if (![arg.type.actualType
+              isSameType:[[(SemanticFuncEntry *)entry formalParas] semanticTypeAtIndex:i].actualType]) {
     	    [ErrorMessage printLineNumber:expr.lineNumber
                              withFormat:"Error: Formal parameters and actual parameters type mismatch"];
-    	    break;
+    	    error = YES;
+          break;
     	  }
+        if (arg.expr) [args addObject:arg.expr];
     	}
     }
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:[(SemanticFuncEntry *)entry returnType].actualType];
+    hasError |= error;
+    if (!error) return [SemanticExpr exprWithTRExpr:[trans callExprWithFunc:(SemanticFuncEntry *)entry
+                                                                  Arguments:args
+                                                                      level:[levels lastObject]]
+                                            andType:[(SemanticFuncEntry *)entry returnType].actualType];
   } else
     [ErrorMessage printLineNumber:expr.lineNumber
                        withFormat:"Error: Undefined function %s", [expr.functionName cString]];
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticVoidType sharedVoidType]];
+  hasError = YES;
+  return [SemanticExpr exprWithTRExpr:nil
+                              andType:[SemanticVoidType sharedVoidType]];
 }
 - (SemanticExpr *)typeCheckRecordExpression:(RecordExpression *)expr
 {
   SemanticType *type = [self typeForSymbol:expr.typeIdentifier];
+  NSMutableDictionary *values = [NSMutableDictionary dictionary];
+  BOOL error = NO;
   if ([type.actualType isMemberOfClass:[SemanticRecordType class]]) {
     int i, count = expr.fields.count;
     FieldExpression *tmp;
-    SemanticType *tmptype;
+    SemanticExpr *tmpexpr;
     for (i = 0; i < count; ++i) {
       tmp = [expr.fields objectAtIndex:i];
-      tmptype = [self typeCheckExpression:tmp.expr].type;
+      tmpexpr = [self typeCheckExpression:tmp.expr];
       if (tmp.identifier.string != [(SemanticRecordType *)(type.actualType) fieldAtIndex:i].string) {
         [ErrorMessage printLineNumber:expr.lineNumber
                            withFormat:"Error: Field name mismatch. Expected %s",
          [[(SemanticRecordType *)type.actualType fieldAtIndex:i] cString]];
+        error = YES;
         break;
-      } else if (![tmptype.actualType isSameType:[(SemanticRecordType *)type.actualType semanticTypeAtIndex:i].actualType]) {
+      } else if (![tmpexpr.type.actualType
+                   isSameType:[(SemanticRecordType *)type.actualType semanticTypeAtIndex:i].actualType]) {
         [ErrorMessage printLineNumber:expr.lineNumber
-                           withFormat:"Error: Field %s type mismatch",
-         [tmp.identifier cString]];
+                           withFormat:"Error: Field %s type mismatch", [tmp.identifier cString]];
+        error = YES;
         break;
       }
+      [values setObject:tmpexpr.expr forKey:tmp.identifier];
     }
-    return [SemanticExpr exprWithTranslatedExpr:nil
-                                        andType:type.actualType];
+    hasError |= error;
+    if (error) 
+      return [SemanticExpr exprWithTRExpr:nil andType:type.actualType];
+    return [SemanticExpr exprWithTRExpr:[trans recordExprWithType:(SemanticRecordType *)type.actualType
+                                                    initialValues:values
+                                                            level:[levels lastObject]]
+                                andType:type.actualType];
   } else
     [ErrorMessage printLineNumber:expr.lineNumber
                        withFormat:"Error: Undefined record type %s", [expr.typeIdentifier cString]];
-  return nil;
+  hasError = YES;
+  return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
 }
 - (SemanticExpr *)typeCheckForExpression:(ForExpression *)expr
 {
-  SemanticType *lowertype, *uppertype;
+  SemanticExpr *lower, *upper;
   VarDecl *vardecl = expr.varDecl;
   SemanticExpr *result;
-  lowertype = [self typeCheckExpression:vardecl.expr].type.actualType;
-  uppertype = [self typeCheckExpression:expr.end].type.actualType;
-  if ([lowertype isSameType:uppertype]) {
+  lower = [self typeCheckExpression:vardecl.expr];
+  upper = [self typeCheckExpression:expr.end];
+  if ([self isIntType:lower lineNumber:vardecl.expr.lineNumber] &&
+      [self isIntType:upper lineNumber:expr.end.lineNumber]) {
+    TmpLabel *done = [trans generateDoneLabel];
+    SemanticVarEntry *index = [SemanticVarEntry varEntryWithType:lower.type.actualType
+                                                          access:[(TRLevel *)[levels lastObject] generateLocal:YES]];
     [envs addObject:[SemanticEnvironment environment]];
-    [self setEntry:[SemanticVarEntry varEntryWithType:lowertype
-                                               access:[(TRLevel *)[levels lastObject] generateLocal:YES]]
-         forSymbol:vardecl.identifier];
+    [self setEntry:index forSymbol:vardecl.identifier];
     [loopVars addObject:expr.varDecl.identifier];
+    [doneLabels addObject:done];
     result = [self typeCheckExpression:expr.body];
     [loopVars removeLastObject];
-    //[doneLabels removeLastObject];
+    [doneLabels removeLastObject];
     [envs removeLastObject];
-    return result;
+    return [SemanticExpr exprWithTRExpr:[trans forExprWithIndex:index
+                                                     lowerBound:lower.expr
+                                                     upperBound:upper.expr
+                                                           body:result.expr
+                                                      doneLabel:done]
+                                andType:result.type.actualType];
   } else 
     [ErrorMessage printLineNumber:expr.lineNumber
                        withFormat:"Error: lower bound type and upper bound type mismatch"];
-  return [SemanticExpr exprWithTranslatedExpr:nil
-                                      andType:[SemanticVoidType sharedVoidType]];  
+  hasError = YES;
+  return [SemanticExpr exprWithTRExpr:nil
+                              andType:[SemanticVoidType sharedVoidType]];  
 }
 - (SemanticExpr *)typeCheckLetExpression:(LetExpression *)expr
 {
-  int i, count = expr.exprList.count - 1;
-  SemanticExpr *result;
+  int i, count = expr.exprList.count;
+  NSMutableArray *exprs = [NSMutableArray array];
+  SemanticExpr *result = nil;
+  TRExpr *tmp;
   [envs addObject:[SemanticEnvironment environment]];
   for (id obj in expr.declList)
-    if ([obj isMemberOfClass:[VarDecl class]])
-      [self typeCheckVarDecl:obj];
+    if ([obj isMemberOfClass:[VarDecl class]]) {
+      tmp = [self typeCheckVarDecl:obj];
+      if (tmp) [exprs addObject:tmp];
+    }
   	else {
       if ([[obj lastObject] isMemberOfClass:[TypeDecl class]])
         [self typeCheckTypeDecl:obj];
       else
         [self typeCheckFuncDecl:obj];
     }
-  for (i = 0; i < count; ++i)
-	  [self typeCheckExpression:[expr.exprList objectAtIndex:i]];
-  result = [self typeCheckExpression:[expr.exprList lastObject]];  
+  for (i = 0; i < count; ++i) {
+    result = [self typeCheckExpression:[expr.exprList objectAtIndex:i]];
+	  if (result.expr) [exprs addObject:result.expr];
+  }
   [envs removeLastObject];
-  return result;
+  if (exprs.count)
+    return [SemanticExpr exprWithTRExpr:[trans seqExprWithExprs:exprs]
+    	                          andType:result.type.actualType];
+  else
+    return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
 }
 - (SemanticExpr *)typeCheckVar:(Var *)var
 {
@@ -363,19 +463,22 @@
     symbol = [(SimpleVar *)var name];
     entry = [self entryForSymbol:symbol];
     if ([entry isMemberOfClass:[SemanticVarEntry class]])
-      return [SemanticExpr exprWithTranslatedExpr:nil
-                                          andType:[(SemanticVarEntry *)entry type].actualType];
+      return [SemanticExpr exprWithTRExpr:[trans simpleVarWithAccess:((SemanticVarEntry *)entry).access 
+                                                               level:[levels lastObject]]
+                                  andType:[(SemanticVarEntry *)entry type].actualType];
     else 
       [ErrorMessage printLineNumber:var.lineNumber
                          withFormat:"Error: Undefined variable: %s", [symbol cString]];
   } else if ([var isMemberOfClass:[FieldVar class]]) {
     symbol = [(FieldVar *)var field];
-  	SemanticType *type = [[self typeCheckVar:[(FieldVar *)var variable]] type];
-    if ([type.actualType isMemberOfClass:[SemanticRecordType class]]) {
-    	if ([(SemanticRecordType *)type hasField:symbol]) {
-      	symbol = [(FieldVar *)var field];
-      	return [SemanticExpr exprWithTranslatedExpr:nil
-                                            andType:[(SemanticRecordType *)type semanticTypeForField:symbol].actualType];
+  	SemanticExpr *expr = [self typeCheckVar:[(FieldVar *)var variable]];
+    if ([expr.type.actualType isMemberOfClass:[SemanticRecordType class]]) {
+    	if ([(SemanticRecordType *)expr.type.actualType hasField:symbol]) {
+      	return [SemanticExpr exprWithTRExpr:[trans fieldVarWithVar:expr.expr
+                                                              type:(SemanticRecordType *)expr.type.actualType
+                                                             field:symbol
+                                                             level:[levels lastObject]]
+                                    andType:[(SemanticRecordType *)expr.type.actualType semanticTypeForField:symbol].actualType];
       } else 
         [ErrorMessage printLineNumber:var.lineNumber
                            withFormat:"Error: Variable doesn't have field %s", [symbol cString]];
@@ -384,52 +487,69 @@
       [ErrorMessage printLineNumber:var.lineNumber
                          withFormat:"Error: Variable is not a record"];
   } else if ([var isMemberOfClass:[SubscriptVar class]]) {
-    SemanticType *type = [[self typeCheckVar:[(SubscriptVar *)var variable]] type].actualType;
-    if ([type isMemberOfClass:[SemanticArrayType class]]) {
-      if ([self isIntType:[self typeCheckExpression:[(SubscriptVar *)var subscript]] lineNumber:var.lineNumber])
-      	return [SemanticExpr exprWithTranslatedExpr:nil
-                                            andType:[(SemanticArrayType *)type type].actualType];
+    SemanticExpr *expr = [self typeCheckVar:[(SubscriptVar *)var variable]];
+    if ([expr.type.actualType isMemberOfClass:[SemanticArrayType class]]) {
+      SemanticExpr *subscript = [self typeCheckExpression:[(SubscriptVar *)var subscript]];
+      if ([self isIntType:subscript lineNumber:var.lineNumber])
+      	return [SemanticExpr exprWithTRExpr:[trans arrayVarWithBase:expr.expr
+                                                          subscript:subscript.expr
+                                                              level:[levels lastObject]]
+                                    andType:[(SemanticArrayType *)expr.type.actualType type].actualType];
     }else 
       [ErrorMessage printLineNumber:var.lineNumber
                          withFormat:"Error: Variable is not an array."];
   } else
     [ErrorMessage printLineNumber:var.lineNumber
                        withFormat:"Error: Unknown variable"];
-  return nil;
+  hasError = YES;
+  return [SemanticExpr exprWithTRExpr:nil andType:[SemanticVoidType sharedVoidType]];
 }
-- (id)typeCheckVarDecl:(VarDecl *)varDecl
+- (TRExpr *)typeCheckVarDecl:(VarDecl *)varDecl
 {
-  SemanticType *type = [self typeCheckExpression:varDecl.expr].type.actualType;
+  SemanticExpr *expr = [self typeCheckExpression:varDecl.expr];
   SemanticType *decltype = [self typeCheckType:varDecl.typeIdentifier].actualType;
-  if (!decltype) {
-    if (type == [SemanticNilType sharedNilType]) {
+  SemanticVarEntry *var;
+  if (expr.type.actualType == [SemanticVoidType sharedVoidType]) {
+    [ErrorMessage printLineNumber:varDecl.lineNumber
+                       withFormat:"Error: Attempt to declare a variable of no type"];
+    hasError = YES;
+    return nil;
+  } else if (!decltype) {
+    if (expr.type.actualType == [SemanticNilType sharedNilType]) {
       [ErrorMessage printLineNumber:varDecl.lineNumber
                          withFormat:"Error: Need type constraint"];
       [self setEntry:[SemanticVarEntry varEntry] forSymbol:varDecl.identifier];
-    } else
-      [self setEntry:[SemanticVarEntry varEntryWithType:type                                
-                                                 access:[(TRLevel *)[levels lastObject] generateLocal:YES]]
-                   forSymbol:varDecl.identifier];
+      hasError = YES;
+      return nil;
+    } else {
+      var = [SemanticVarEntry varEntryWithType:expr.type.actualType                               
+                                        access:[(TRLevel *)[levels lastObject] generateLocal:YES]];
+      [self setEntry:var forSymbol:varDecl.identifier];
+    }
   } else {
-    if (![type isSameType:decltype])
+    if (![expr.type.actualType isSameType:decltype.actualType]) {
       [ErrorMessage printLineNumber:varDecl.expr.lineNumber
                          withFormat:"Error: Type constraint and initial value differ. Expected %s",
        [varDecl.typeIdentifier.name cString]];
-    [self setEntry:[SemanticVarEntry varEntryWithType:decltype 
-                                               access:[(TRLevel *)[levels lastObject] generateLocal:YES]]
-                 forSymbol:varDecl.identifier];
+      hasError = YES;
+    }
+    var = [SemanticVarEntry varEntryWithType:expr.type.actualType
+                                      access:[(TRLevel *)[levels lastObject] generateLocal:YES]];
+    [self setEntry:var forSymbol:varDecl.identifier];
   }
-  return nil;
+  return [trans varDeclWithVar:var initialValue:expr.expr];
 }
 - (void)typeCheckTypeDecl:(SyntaxList *)typesList
 {
   SemanticEnvironment *tmpenv = [[SemanticEnvironment alloc] init];
   SemanticType *type;
   for (TypeDecl *typedecl in typesList)
-    if ([tmpenv typeForSymbol:typedecl.typeIdentifier])
+    if ([tmpenv typeForSymbol:typedecl.typeIdentifier]) {
       [ErrorMessage printLineNumber:typedecl.lineNumber
                          withFormat:"Error: Type %s has been defined in the batch of mutually recursive types",
        [typedecl.typeIdentifier cString]];
+      hasError = YES;
+    }
   	else 
     	[tmpenv setType:[SemanticNamedType namedTypeWithTypeName:typedecl.typeIdentifier]
       	            forSymbol:typedecl.typeIdentifier];
@@ -440,16 +560,18 @@
   }
   for (TypeDecl *typedecl in typesList) {
     type = [tmpenv typeForSymbol:typedecl.typeIdentifier];
-    if (!((SemanticNamedType *)type).inCycle && [(SemanticNamedType *)type isCycle])
+    if (!((SemanticNamedType *)type).inCycle && [(SemanticNamedType *)type isCycle]) {
       [ErrorMessage printLineNumber:typedecl.lineNumber
                          withFormat:"Error: Type definition cycle detected",
        [typedecl.typeIdentifier cString]];
+      hasError = YES;
+    }
   }
   [envs removeLastObject];
   [[envs lastObject] addElementsFromEnvironment:tmpenv];
   [tmpenv release];
 }
-- (id)typeCheckFuncDecl:(SyntaxList *)funcsList
+- (void)typeCheckFuncDecl:(SyntaxList *)funcsList
 {
   SemanticEnvironment *tmpenv = [[SemanticEnvironment alloc] init];
   SemanticEnvironment *funcenv;
@@ -464,10 +586,12 @@
     else
     	type = [SemanticVoidType sharedVoidType];
     [array addObject:type];
-    if ([tmpenv entryForSymbol:fundecl.name])
+    if ([tmpenv entryForSymbol:fundecl.name]) {
       [ErrorMessage printLineNumber:fundecl.lineNumber
                          withFormat:"Error: Function %s has been defined in the batch of mutually recursive functions",
        [fundecl.name cString]];
+      hasError = YES;
+    }
     else
     	[tmpenv setEntry:[SemanticFuncEntry funcEntryWithFormalParameters:pararecord
                                                              returnType:type 
@@ -477,15 +601,17 @@
   }
   [envs addObject:tmpenv];
   
-  int parameterCount, i = 0;
+  int parameterCount, i = 0, funcnum = 0;
   SemanticExpr *imexpr;
-  BoolList *boolList = [BoolList boolListWithBool:NO];
-  BoolList *last = boolList;
+  BoolList *boolList;
+  BoolList *last;
   SingleTypeField *para;
   TRLevel *tmplevel;
   for (FunctionDecl *fundecl in funcsList) {
     funcenv = [[SemanticEnvironment alloc] init];
     parameterCount = fundecl.parameters.count;
+    boolList = [BoolList boolListWithBool:NO];
+    last = boolList;
     // Create a new level
     for (i = 0; i < parameterCount; ++i) {
       // MARK: every parameter escaped
@@ -502,21 +628,25 @@
     	type = [self typeForSymbol:para.typeIdentifier].actualType;
     	if (!type) type = [SemanticType type];
     	[funcenv setEntry:[SemanticVarEntry varEntryWithType:type
-                                                    access:[tmplevel.formals objectAtIndex:i]]
+                                                    access:[tmplevel.formals objectAtIndex:i+1]]
               forSymbol:para.identifier];
     }
     [envs addObject:funcenv];
     // Type check function body
-    i = 0;
     imexpr = [self typeCheckExpression:fundecl.body];
+    [trans funcDeclWithBody:imexpr.expr level:[levels objectAtIndex:levels.count-2]];
     if (fundecl.returnType) {
-      if (![imexpr.type.actualType isSameType:[[array objectAtIndex:i++] actualType]])
+      if (![imexpr.type.actualType isSameType:[[array objectAtIndex:funcnum++] actualType]]) {
         [ErrorMessage printLineNumber:fundecl.lineNumber
                            withFormat:"Error: In function %s, actual return type is different from declared", 
          [fundecl.name cString]];
-    } else if (![imexpr.type.actualType isSameType:[SemanticVoidType sharedVoidType]])
+        hasError = YES;
+      }
+    } else if (![imexpr.type.actualType isSameType:[SemanticVoidType sharedVoidType]]) {
       [ErrorMessage printLineNumber:fundecl.lineNumber
                          withFormat:"Error: Procedure %s returns a value", [fundecl.name cString]];
+      hasError = YES;
+    }
     [envs removeLastObject];
     [levels removeLastObject];
     [funcenv release];
@@ -525,7 +655,6 @@
   [[envs	lastObject] addElementsFromEnvironment:tmpenv];
   [array release];
   [tmpenv release];
-  return nil;
 }
 - (SemanticType *)typeCheckType:(Type *)type
 {
@@ -533,9 +662,11 @@
   if ([type isMemberOfClass:[NameType class]]) {
     name = [(NameType *)type name];
   	SemanticType *result = [self typeForSymbol:name];
-    if (!result)
+    if (!result) {
       [ErrorMessage printLineNumber:type.lineNumber
                          withFormat:"Error: Undefined type %s", [name cString]];
+      hasError = YES;
+    }
   	return result;
   } else if ([type isMemberOfClass:[ArrayType class]]) {
     name = [(ArrayType *)type typeName];
@@ -544,6 +675,7 @@
       return [SemanticArrayType arrayTypeWithSemanticType:result];
     [ErrorMessage printLineNumber:type.lineNumber
                        withFormat:"Error: Undefined type %s", [name cString]];
+    hasError = YES;
   } else if ([type isMemberOfClass:[RecordType class]]) {
     SemanticRecordType *result = [self typeCheckTypeFields:[(RecordType *)type typefields]];
     return result;
@@ -561,6 +693,7 @@
       [ErrorMessage printLineNumber:obj.lineNumber
                          withFormat:"Error: Undefined type %s", [obj.typeIdentifier cString]];
       tmptype = [SemanticType type];
+    	hasError = YES;
     }
     [result addSemanticType:tmptype forField:obj.identifier];
   }
@@ -572,6 +705,7 @@
   SemanticEnvironment *env = [[SemanticEnvironment alloc] init];
   Frame *frame = [[MipsFrame alloc] init];
   TRLevel *tmplevel = [[TRLevel alloc] initWithFrame:frame];
+  trans.wordSize = frame.wordSize;
   [levels addObject:tmplevel];
   [env setType:[SemanticIntType sharedIntType]
      forSymbol:[Symbol symbolWithName:@"int"]];
@@ -657,9 +791,11 @@
 }
 - (void)dealloc
 {
+  [levels release];
   [envs release];
   [loopVars release];
   [doneLabels release];
+  [trans release];
   [super dealloc];
 }
 @end

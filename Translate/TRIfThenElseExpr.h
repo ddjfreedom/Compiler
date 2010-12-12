@@ -19,5 +19,6 @@
 - (TreeExpr *)unEx;
 - (TreeStmt *)unNx;
 - (TreeStmt *)unCxWithTrueLabel:(TmpLabel *)tLabel falseLabel:(TmpLabel *)fLabel;
+- (BOOL)isVoidType;
 + (id)exprWithTest:(TRExpr *)aTest thenClause:(TRExpr *)tClause elseClause:(TRExpr *)eClause;
 @end

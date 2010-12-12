@@ -56,6 +56,7 @@ while { return WHILE; }
 ":=" { return ASSIGN; }
 
   /* string constant */
+	/* MARK: can't handle non-ASCII characters */
 \" string = [NSMutableString string]; BEGIN(STR);
 <STR>{
 	[^\\\n\f\r\"]+ [string appendFormat:@"%s", yytext];

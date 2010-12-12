@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470C375812B339500041DB00 /* TRFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375712B339500041DB00 /* TRFragment.m */; };
+		470C375B12B339C10041DB00 /* TRProcFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375A12B339C10041DB00 /* TRProcFrag.m */; };
+		470C376B12B33ABD0041DB00 /* TRDataFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C376A12B33ABD0041DB00 /* TRDataFrag.m */; };
 		4721AE1D12AD0A1F00D37514 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE1C12AD0A1F00D37514 /* Frame.m */; };
 		4721AE2112AD0AF700D37514 /* TmpLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2012AD0AF700D37514 /* TmpLabel.m */; };
 		4721AE2612AD0C4E00D37514 /* TmpTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2512AD0C4E00D37514 /* TmpTemp.m */; };
@@ -56,6 +59,8 @@
 		4765CF3C12A782C200A20AD1 /* SemanticEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF3B12A782C200A20AD1 /* SemanticEnvironment.m */; };
 		4765CF5B12A78AD100A20AD1 /* SemanticEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */; };
 		4765CF5E12A78AFD00A20AD1 /* SemanticVarEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */; };
+		477317FA12B488CB0038D432 /* TreePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 477317F912B488CB0038D432 /* TreePrint.m */; };
+		477317FC12B48A290038D432 /* PrintIndent.m in Sources */ = {isa = PBXBuildFile; fileRef = 477317FB12B48A290038D432 /* PrintIndent.m */; };
 		477C180F12A891D10045F672 /* SemanticExpr.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C180E12A891D10045F672 /* SemanticExpr.m */; };
 		477C185E12A8A9410045F672 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 477C185D12A8A9410045F672 /* ErrorMessage.m */; };
 		4780163212B0759700F6A8B3 /* TRRelCx.m in Sources */ = {isa = PBXBuildFile; fileRef = 4780163112B0759700F6A8B3 /* TRRelCx.m */; };
@@ -139,6 +144,12 @@
 		08FB7796FE84155DC02AAC07 /* Compiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Compiler.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* Compiler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compiler_Prefix.pch; sourceTree = "<group>"; };
+		470C375612B339500041DB00 /* TRFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRFragment.h; path = Translate/TRFragment.h; sourceTree = "<group>"; };
+		470C375712B339500041DB00 /* TRFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRFragment.m; path = Translate/TRFragment.m; sourceTree = "<group>"; };
+		470C375912B339C10041DB00 /* TRProcFrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRProcFrag.h; path = Translate/TRProcFrag.h; sourceTree = "<group>"; };
+		470C375A12B339C10041DB00 /* TRProcFrag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRProcFrag.m; path = Translate/TRProcFrag.m; sourceTree = "<group>"; };
+		470C376912B33ABD0041DB00 /* TRDataFrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRDataFrag.h; path = Translate/TRDataFrag.h; sourceTree = "<group>"; };
+		470C376A12B33ABD0041DB00 /* TRDataFrag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRDataFrag.m; path = Translate/TRDataFrag.m; sourceTree = "<group>"; };
 		4721AE1B12AD0A1F00D37514 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = Frame/Frame.h; sourceTree = "<group>"; };
 		4721AE1C12AD0A1F00D37514 /* Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Frame.m; path = Frame/Frame.m; sourceTree = "<group>"; };
 		4721AE1F12AD0AF700D37514 /* TmpLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpLabel.h; path = Temp/TmpLabel.h; sourceTree = "<group>"; };
@@ -239,6 +250,9 @@
 		4765CF5A12A78AD100A20AD1 /* SemanticEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticEntry.m; path = Semantics/SemanticEntry.m; sourceTree = "<group>"; };
 		4765CF5C12A78AFD00A20AD1 /* SemanticVarEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticVarEntry.h; path = Semantics/SemanticVarEntry.h; sourceTree = "<group>"; };
 		4765CF5D12A78AFD00A20AD1 /* SemanticVarEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticVarEntry.m; path = Semantics/SemanticVarEntry.m; sourceTree = "<group>"; };
+		477317F512B487470038D432 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = Tree/Tree.h; sourceTree = "<group>"; };
+		477317F912B488CB0038D432 /* TreePrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreePrint.m; sourceTree = "<group>"; };
+		477317FB12B48A290038D432 /* PrintIndent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintIndent.m; sourceTree = "<group>"; };
 		477C180D12A891D10045F672 /* SemanticExpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemanticExpr.h; path = Semantics/SemanticExpr.h; sourceTree = "<group>"; };
 		477C180E12A891D10045F672 /* SemanticExpr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticExpr.m; path = Semantics/SemanticExpr.m; sourceTree = "<group>"; };
 		477C185C12A8A9410045F672 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
@@ -410,7 +424,6 @@
 				08FB7796FE84155DC02AAC07 /* Compiler.m */,
 				47D7D9BE12A243ED005DE04C /* AbstractSyntax */,
 				4765CF0112A76EBF00A20AD1 /* Semantics */,
-				477C17FF12A891800045F672 /* Intermediate */,
 				475FA97312ADFB8B002F0399 /* Translate */,
 				4721AE1E12AD0AD700D37514 /* Temp */,
 				4721AE1A12AD09C400D37514 /* Frames */,
@@ -420,6 +433,8 @@
 				477C185C12A8A9410045F672 /* ErrorMessage.h */,
 				477C185D12A8A9410045F672 /* ErrorMessage.m */,
 				472F29CE12A00AFF0068F180 /* prettyprint.m */,
+				477317FB12B48A290038D432 /* PrintIndent.m */,
+				477317F912B488CB0038D432 /* TreePrint.m */,
 				472F29D012A00B070068F180 /* helper.h */,
 				4763469612A0A15C0021736A /* lexical.l */,
 				4763469712A0A15C0021736A /* parse.y */,
@@ -485,6 +500,7 @@
 		47434B7512AE5CE500259061 /* Tree */ = {
 			isa = PBXGroup;
 			children = (
+				477317F512B487470038D432 /* Tree.h */,
 				47434C0912AE712300259061 /* TreeStmt.h */,
 				47434B7C12AE5E6600259061 /* TreeStmt.m */,
 				4724B2F812AF244D00F2A09D /* TreeLabel.h */,
@@ -552,6 +568,12 @@
 				4724B37312AF4D4000F2A09D /* TRCx.m */,
 				4780163012B0759700F6A8B3 /* TRRelCx.h */,
 				4780163112B0759700F6A8B3 /* TRRelCx.m */,
+				470C375612B339500041DB00 /* TRFragment.h */,
+				470C375712B339500041DB00 /* TRFragment.m */,
+				470C375912B339C10041DB00 /* TRProcFrag.h */,
+				470C375A12B339C10041DB00 /* TRProcFrag.m */,
+				470C376912B33ABD0041DB00 /* TRDataFrag.h */,
+				470C376A12B33ABD0041DB00 /* TRDataFrag.m */,
 			);
 			name = Translate;
 			sourceTree = "<group>";
@@ -596,13 +618,6 @@
 				477C180E12A891D10045F672 /* SemanticExpr.m */,
 			);
 			name = Semantics;
-			sourceTree = "<group>";
-		};
-		477C17FF12A891800045F672 /* Intermediate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Intermediate;
 			sourceTree = "<group>";
 		};
 		47A30D2C12AB8D5500721FAD /* testcases */ = {
@@ -963,6 +978,11 @@
 				4724B39D12AF6BD300F2A09D /* TR.m in Sources */,
 				4780163212B0759700F6A8B3 /* TRRelCx.m in Sources */,
 				4780167012B08CA400F6A8B3 /* TRIfThenElseExpr.m in Sources */,
+				470C375812B339500041DB00 /* TRFragment.m in Sources */,
+				470C375B12B339C10041DB00 /* TRProcFrag.m in Sources */,
+				470C376B12B33ABD0041DB00 /* TRDataFrag.m in Sources */,
+				477317FA12B488CB0038D432 /* TreePrint.m in Sources */,
+				477317FC12B48A290038D432 /* PrintIndent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

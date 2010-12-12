@@ -12,6 +12,10 @@ static int count = 0;
 
 @implementation TmpLabel
 @synthesize name;
+- (const char *)cString
+{
+  return [name cStringUsingEncoding:NSASCIIStringEncoding];
+}
 - (id)init
 {
   return [self initWithString:[NSString stringWithFormat:@"L%d", count++]];

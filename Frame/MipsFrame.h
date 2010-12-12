@@ -7,10 +7,13 @@
 //
 
 #import "Frame.h"
+#import "TmpTemp.h"
 
 @interface MipsFrame : Frame
 {
 	int frameCount;
+  TmpTemp *fp;
+  TmpTemp *rv;
 }
 @property (readonly) int frameCount;
 - (id)init;

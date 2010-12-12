@@ -7,6 +7,7 @@
 //
 
 #import "TRIfThenElseExpr.h"
+#import "TRNx.h"
 #import "TmpTemp.h"
 #import "TreeLabel.h"
 #import "TreeSeq.h"
@@ -58,7 +59,7 @@
   TreeLabel *join = [TreeLabel treeLabelWithLabel:joinL];
   
   TreeSeq *seq = [TreeSeq seqWithFirstStmt:[TreeJump jumpWithLabel:joinL] secondStmt:join];
-  seq = [TreeSeq seqWithFirstStmt:[elseClause unNx] secondStmt:seq];
+  if (elseClause) seq = [TreeSeq seqWithFirstStmt:[elseClause unNx] secondStmt:seq];
   seq = [TreeSeq seqWithFirstStmt:e secondStmt:seq];
   seq = [TreeSeq seqWithFirstStmt:[TreeJump jumpWithLabel:joinL] secondStmt:seq];
   seq = [TreeSeq seqWithFirstStmt:[thenClause unNx] secondStmt:seq];
@@ -84,6 +85,10 @@
   seq = [TreeSeq seqWithFirstStmt:[test unCxWithTrueLabel:tL falseLabel:eL]
                        secondStmt:seq];
   return seq;
+}
+- (BOOL)isVoidType
+{
+  return !elseClause || [thenClause isMemberOfClass:[TRNx class]];
 }
 - (void)dealloc
 {
