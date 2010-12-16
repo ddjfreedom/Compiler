@@ -24,6 +24,14 @@
   return [self initWithExpr:[TreeName nameWithLabel:aLabel]
                   lableList:[TmpLabelList labelListWithLabel:aLabel]];
 }
+- (TreeExprList *)kids
+{
+  return [TreeExprList exprListWithExpr:self.expr];
+}
+- (TreeStmt *)buildWithExprList:(TreeExprList *)kids
+{
+  return [TreeJump jumpWithExpr:kids.head lableList:self.list];
+}
 - (void)dealloc
 {
   [expr release];

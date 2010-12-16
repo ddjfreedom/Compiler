@@ -19,6 +19,14 @@
   }
   return self;
 }
+- (TreeExprList *)kids
+{
+  return [TreeExprList exprListWithExpr:func exprList:args];
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return [TreeCall callWithExpr:kids.head exprList:kids.tail];
+}
 - (void)dealloc
 {
   [func release];

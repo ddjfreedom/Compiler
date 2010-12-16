@@ -17,6 +17,14 @@
     value = anInt;
   return self;
 }
+- (TreeExprList *)kids
+{
+  return nil;
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return self;
+}
 + (id)constWithInt:(int)anInt
 {
   return [[[TreeConst alloc] initWithInt:anInt] autorelease];

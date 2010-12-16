@@ -24,6 +24,26 @@
   }
   return self;
 }
+- (id)initWithStmts:(TreeStmt *)firstStmt, ...
+{
+  va_list args;
+  va_start(args, firstStmt);
+  [self initWithStmts:firstStmt arguments:args];
+  va_end(args);
+  return self;
+}
+- (id)initWithStmts:(TreeStmt *)firstStmt arguments:(va_list)args
+{
+  if (self = [super init]) {
+    TreeStmtList *last = self;
+    TreeStmt *arg;
+    head = [firstStmt retain];
+    tail = nil;
+    while (arg = va_arg(args, TreeStmt*))
+      last = last->tail = [[TreeStmtList stmtListWithStmt:arg] retain];
+  }
+  return self;
+}
 - (void)dealloc
 {
   [head release];
@@ -37,5 +57,13 @@
 + (id)stmtListWithStmt:(TreeStmt *)aStmt stmtList:(TreeStmtList *)aStmtList
 {
   return [[[TreeStmtList alloc] initWithStmt:aStmt stmtList:aStmtList] autorelease];
+}
++ (id)stmtListWithStmts:(TreeStmt *)firstStmt, ...
+{
+  va_list args;
+  va_start(args, firstStmt);
+	TreeStmtList *result = [[[TreeStmtList alloc] initWithStmts:firstStmt arguments:args] autorelease];
+  va_end(args);
+  return result;
 }
 @end

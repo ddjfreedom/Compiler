@@ -28,6 +28,18 @@
   }
   return self;
 }
+- (TreeExprList *)kids
+{
+  return [TreeExprList exprListWithExprs:left, right, nil];
+}
+- (TreeStmt *)buildWithExprList:(TreeExprList *)kids
+{
+  return [TreeCJump cJumpWithLeftExpr:kids.head
+                          reloperator:self.relationOp
+                            rightExpr:kids.tail.head
+                            trueLabel:self.iftrue
+                           falseLabel:self.iffalse];
+}
 - (void)dealloc
 {
   [left release];

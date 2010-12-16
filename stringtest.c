@@ -18,12 +18,13 @@ int main(int argc, const char * argv[])
   fprintf(fout, "\"\\\\r \\r \\\\f \\f \\\\n \\n\";\n");
   fprintf(fout, "\"String spanning \\ \t\r\f\n \\  \tmultiple lines\";\n");
   fprintf(fout, "\"string with \\\\ddd \\065=A\";\n");
+  fprintf(fout, "\"string with \\\\ddd 128 \\128\";\n");
   fprintf(fout, "\"string with \\\\ddd too large \\565\";\n");
   fprintf(fout, "\"string with \\\\dd \\65\";\n");
   fprintf(fout, "\"string with escaped quote \\\"\";\n");
   fprintf(fout, "\"string with ctrl seq: ^] \\^]\";\n");
   fprintf(fout, "\"string with ctrl seq: ^A \\^A\";\n");
-  fprintf(fout, "\"中文测试\";");
+  fprintf(fout, "\"string with ctrl seq: ^J \\^J\";\n");
   fprintf(fout, "\"string with new line \\n\\tand tab\";\n");
   fprintf(fout, "\"Unclosed string\n");
   putc(')', fout); putc('\n', fout);

@@ -41,6 +41,9 @@
 		47434BF912AE6F0700259061 /* TreeConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BF812AE6F0700259061 /* TreeConst.m */; };
 		47434BFE12AE6FB900259061 /* TreeESeq.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434BFD12AE6FB900259061 /* TreeESeq.m */; };
 		47434C0E12AE713D00259061 /* TreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 47434C0D12AE713D00259061 /* TreeJump.m */; };
+		474A7C4D12B9F67700AF309B /* Canon.m in Sources */ = {isa = PBXBuildFile; fileRef = 474A7C4C12B9F67700AF309B /* Canon.m */; };
+		474A7CEF12BA1A5900AF309B /* BasicBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 474A7CEE12BA1A5900AF309B /* BasicBlocks.m */; };
+		474A7D1712BA2A6A00AF309B /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 474A7D1612BA2A6A00AF309B /* Trace.m */; };
 		475B098012A62DBE004990DA /* stringtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 475B097F12A62DBE004990DA /* stringtest.c */; };
 		475FA8C412ADD077002F0399 /* Access.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8C312ADD077002F0399 /* Access.m */; };
 		475FA8CD12ADD0EB002F0399 /* MipsFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FA8CC12ADD0EB002F0399 /* MipsFrame.m */; };
@@ -212,6 +215,12 @@
 		47434C0912AE712300259061 /* TreeStmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeStmt.h; path = Tree/TreeStmt.h; sourceTree = "<group>"; };
 		47434C0C12AE713D00259061 /* TreeJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeJump.h; path = Tree/TreeJump.h; sourceTree = "<group>"; };
 		47434C0D12AE713D00259061 /* TreeJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeJump.m; path = Tree/TreeJump.m; sourceTree = "<group>"; };
+		474A7C4B12B9F67700AF309B /* Canon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Canon.h; path = Canon/Canon.h; sourceTree = "<group>"; };
+		474A7C4C12B9F67700AF309B /* Canon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Canon.m; path = Canon/Canon.m; sourceTree = "<group>"; };
+		474A7CED12BA1A5900AF309B /* BasicBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicBlocks.h; path = Canon/BasicBlocks.h; sourceTree = "<group>"; };
+		474A7CEE12BA1A5900AF309B /* BasicBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicBlocks.m; path = Canon/BasicBlocks.m; sourceTree = "<group>"; };
+		474A7D1512BA2A6A00AF309B /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trace.h; path = Canon/Trace.h; sourceTree = "<group>"; };
+		474A7D1612BA2A6A00AF309B /* Trace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trace.m; path = Canon/Trace.m; sourceTree = "<group>"; };
 		475B097912A62D7D004990DA /* stringtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = stringtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		475B097F12A62DBE004990DA /* stringtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stringtest.c; sourceTree = "<group>"; };
 		475FA8C212ADD077002F0399 /* Access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Access.h; path = Frame/Access.h; sourceTree = "<group>"; };
@@ -428,6 +437,7 @@
 				4721AE1E12AD0AD700D37514 /* Temp */,
 				4721AE1A12AD09C400D37514 /* Frames */,
 				47434B7512AE5CE500259061 /* Tree */,
+				474A7C4E12B9F67E00AF309B /* Canonical */,
 				4765CF3712A7819B00A20AD1 /* TypeChecker.h */,
 				4765CF3812A7819B00A20AD1 /* TypeChecker.m */,
 				477C185C12A8A9410045F672 /* ErrorMessage.h */,
@@ -537,6 +547,19 @@
 				47434B8712AE5F9100259061 /* TreeExprList.m */,
 			);
 			name = Tree;
+			sourceTree = "<group>";
+		};
+		474A7C4E12B9F67E00AF309B /* Canonical */ = {
+			isa = PBXGroup;
+			children = (
+				474A7C4B12B9F67700AF309B /* Canon.h */,
+				474A7C4C12B9F67700AF309B /* Canon.m */,
+				474A7CED12BA1A5900AF309B /* BasicBlocks.h */,
+				474A7CEE12BA1A5900AF309B /* BasicBlocks.m */,
+				474A7D1512BA2A6A00AF309B /* Trace.h */,
+				474A7D1612BA2A6A00AF309B /* Trace.m */,
+			);
+			name = Canonical;
 			sourceTree = "<group>";
 		};
 		475B098112A62DC4004990DA /* Test */ = {
@@ -983,6 +1006,9 @@
 				470C376B12B33ABD0041DB00 /* TRDataFrag.m in Sources */,
 				477317FA12B488CB0038D432 /* TreePrint.m in Sources */,
 				477317FC12B48A290038D432 /* PrintIndent.m in Sources */,
+				474A7C4D12B9F67700AF309B /* Canon.m in Sources */,
+				474A7CEF12BA1A5900AF309B /* BasicBlocks.m in Sources */,
+				474A7D1712BA2A6A00AF309B /* Trace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

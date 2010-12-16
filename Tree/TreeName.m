@@ -17,6 +17,14 @@
     label = [aLabel retain];
   return self;
 }
+- (TreeExprList *)kids
+{
+  return nil;
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return self;
+}
 - (void)dealloc
 {
   [label release];

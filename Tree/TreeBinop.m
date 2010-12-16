@@ -21,6 +21,14 @@
   }
   return self;
 }
+- (TreeExprList *)kids
+{
+  return [TreeExprList exprListWithExprs:left, right, nil];
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return [TreeBinop binopWithLeftExpr:kids.head binaryOp:self.op rightExpr:kids.tail.head];
+}
 - (void)dealloc
 {
   [left release];

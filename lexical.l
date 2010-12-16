@@ -64,8 +64,8 @@ while { return WHILE; }
 	\" BEGIN(INITIAL); yylval = string; return STRING; /* closing quote */
 	\n|\f|\r BEGIN(INITIAL); yyerror(NULL, "Warning: Unclosed String"); yylval = string; return STRING;
 	\\[0-9]{3} { int ch = atoi(yytext+1);
-               if (ch > 0xff)
-                 yyerror(NULL, "Warning: %s Unrecognized escape sequence(%d larger than 0xff)", yytext, ch);
+               if (ch > 0x7f)
+                 yyerror(NULL, "Warning: %s Unrecognized escape sequence(%d larger than 0x7f)", yytext, ch);
                else
 							   [string appendFormat:@"%c", ch];
              }
@@ -76,14 +76,8 @@ while { return WHILE; }
 	\\\\ [string appendFormat:@"%c", '\\'];
 	
 	/* ctrl sequence */
-	\\^@ [string appendFormat:@"\000"];
-	\\^[A-Z] [string appendFormat:@"%c", yytext[2]-'A'+1];
-	\\^\[ [string appendFormat:@"\033"];
-	\\^\\ [string appendFormat:@"\034"];
-	\\^\] [string appendFormat:@"\035"];
-	\\^^ [string appendFormat:@"\036"];
-	\\^_ [string appendFormat:@"\037"];
-	
+	\\^[@A-Z\[\\\]^_] [string appendFormat:@"%c", yytext[2]-'@'];
+		
 	\\[[:print:]] yyerror(NULL, "Warning: %s Unrecognized escape sequence", yytext);
 	<<EOF>> yyerror(NULL, "Warning: Unclosed String"); yylval = string; BEGIN(INITIAL); return STRING;
 }

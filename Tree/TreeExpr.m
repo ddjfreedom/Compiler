@@ -10,5 +10,14 @@
 
 
 @implementation TreeExpr
-
+- (TreeExprList *)kids
+{
+  NSAssert(NO, @"Should not call this method directly");
+  return nil;
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  NSAssert(NO, @"Should not call this method directly");
+  return nil;
+}
 @end

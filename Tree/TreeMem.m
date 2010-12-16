@@ -17,6 +17,14 @@
     expr = [anExpr retain];
   return self;
 }
+- (TreeExprList *)kids
+{
+  return [TreeExprList exprListWithExpr:self.expr];
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return [TreeMem memWithExpr:kids.head];
+}
 - (void)dealloc
 {
   [expr release];

@@ -7,7 +7,7 @@
 //
 
 #import "TreeMove.h"
-
+#import "TreeMem.h"
 
 @implementation TreeMove
 @synthesize dst, src;
@@ -18,6 +18,20 @@
     src = [expr2 retain];
   }
   return self;
+}
+- (TreeExprList *)kids
+{
+  if ([dst isMemberOfClass:[TreeMem class]])
+    return [TreeExprList exprListWithExprs:((TreeMem *)dst).expr, self.src, nil];
+  else
+    return [TreeExprList exprListWithExpr:self.src];
+}
+- (TreeStmt *)buildWithExprList:(TreeExprList *)kids
+{
+  if ([dst isMemberOfClass:[TreeMem class]])
+    return [TreeMove moveWithDestination:[TreeMem memWithExpr:kids.head] source:kids.tail.head];
+  else
+    return [TreeMove moveWithDestination:self.dst source:kids.head];
 }
 - (void)dealloc
 {

@@ -6,12 +6,17 @@
 //  Copyright 2010 SJTU. All rights reserved.
 //
 
-@interface TreeStmt : NSObject
-{
-}
-
-@end
+#import "TreeStmt.h"
 
 @implementation TreeStmt
-
+- (TreeExprList *)kids
+{
+  NSAssert(NO, @"Should not call this method directly");
+  return nil;
+}
+- (TreeStmt *)buildWithExprList:(TreeExprList *)kids
+{
+  NSAssert(NO, @"Should not call this method directly");
+  return nil;
+}
 @end

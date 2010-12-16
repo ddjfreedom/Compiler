@@ -14,6 +14,7 @@
 	NSMutableArray *list;
 }
 @property (readonly) TmpLabel *head;
+@property (readonly) int count;
 - (id)init;
 - (id)initWithLabel:(TmpLabel *)aLabel;
 - (void)addLabel:(TmpLabel *)aLabel;

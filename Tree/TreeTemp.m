@@ -18,6 +18,14 @@
   }
   return self;
 }
+- (TreeExprList *)kids
+{
+  return nil;
+}
+- (TreeExpr *)buildWithExprList:(TreeExprList *)kids
+{
+  return self;
+}
 - (void)dealloc
 {
   [temp release];

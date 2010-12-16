@@ -16,6 +16,10 @@
     return [list objectAtIndex:0];
   return nil;
 }
+- (int)count
+{
+  return list.count;
+}
 - (id)init
 {
   if (self = [super init])
