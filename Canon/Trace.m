@@ -14,13 +14,15 @@
 @end
 
 @implementation Trace
-- (id)initWithBasicBlock:(BasicBlocks *)basicblocks
+@synthesize stmts;
+- (id)initWithBasicBlocks:(BasicBlocks *)basicblocks
 {
   if (self = [super init]) {
     blocks = [basicblocks retain];
     dict = [[NSMutableDictionary alloc] init];
     for (TreeStmtList *list in blocks.blocks)
       [dict setObject:list forKey:((TreeLabel *)list.head).label.name];
+    stmts = [[self getNext] retain];
   }
   return self;
 }
@@ -101,6 +103,11 @@
 {
   [blocks release];
   [dict release];
+  [stmts release];
   [super dealloc];
+}
++ (id)traceWithBasicBlocks:(BasicBlocks *)basicblocks
+{
+  return [[[Trace alloc] initWithBasicBlocks:basicblocks] autorelease];
 }
 @end

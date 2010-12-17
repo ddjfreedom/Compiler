@@ -82,7 +82,7 @@
 }
 + (id)moveCallWithTemp:(TreeTemp *)aTemp withCall:(TreeCall *)aCall
 {
-  return [[[TreeCallStmt alloc] initWithTemp:aTemp call:aCall] autorelease];
+  return [[[TreeMoveCall alloc] initWithTemp:aTemp call:aCall] autorelease];
 }
 @end
 
@@ -106,6 +106,12 @@
     exprlist = [aList retain];
   }
   return self;
+}
+- (void)dealloc
+{
+  [stmt release];
+  [exprlist release];
+  [super dealloc];
 }
 + (id)stmtExprListWithStmt:(TreeStmt *)aStmt exprList:(TreeExprList *)aList
 {
@@ -151,7 +157,7 @@ static TreeStmtExprList *nopnil = nil;
   va_start(args, stmt1);
   TreeStmt *s;
   TreeStmt *ans = stmt1;
-  for (s = stmt1; s != nil; s = va_arg(args, TreeStmt *))
+  for (;s = va_arg(args, TreeStmt *), s != nil;)
     ans = [Canon seqWithFirstStmt:ans secondStmt:s];
   return ans;
 }
@@ -246,6 +252,6 @@ static TreeStmtExprList *nopnil = nil;
 }
 + (TreeStmtList *)linearizeStmt:(TreeStmt *)aStmt
 {
-  return [Canon linearStmt:aStmt stmtList:nil];
+  return [Canon linearStmt:[self doStmtWithStmt:aStmt] stmtList:nil];
 }
 @end

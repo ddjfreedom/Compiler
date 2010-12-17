@@ -16,5 +16,7 @@
   TreeStmtList *stmts;
   NSMutableDictionary *dict;
 }
-- (id)initWithBasicBlock:(BasicBlocks *)basicblocks;
+@property (readonly) TreeStmtList *stmts;
+- (id)initWithBasicBlocks:(BasicBlocks *)basicblocks;
++ (id)traceWithBasicBlocks:(BasicBlocks *)basicblocks;
 @end

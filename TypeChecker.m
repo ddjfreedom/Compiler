@@ -533,7 +533,7 @@
        [varDecl.typeIdentifier.name cString]];
       hasError = YES;
     }
-    var = [SemanticVarEntry varEntryWithType:expr.type.actualType
+    var = [SemanticVarEntry varEntryWithType:decltype.actualType
                                       access:[(TRLevel *)[levels lastObject] generateLocal:YES]];
     [self setEntry:var forSymbol:varDecl.identifier];
   }

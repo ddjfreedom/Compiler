@@ -6,9 +6,13 @@
 #import "parse.tab.m"
 #import "ErrorMessage.h"
 #import "TypeChecker.h"
+#import "TreeStmtList.h"
 #import "TR.h"
 #import "TRFragment.h"
 #import "TRExpr.h"
+#import "Canon.h"
+#import "BasicBlocks.h"
+#import "Trace.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -25,9 +29,14 @@ int main(int argc, const char * argv[])
   	//print(expr);
   	trexpr = [TypeChecker typeCheckProgram:expr withTranslator:translator];
   	if (trexpr) {
-      treeprint(trexpr);
-    	for (TRFragment *frag in translator.frags)
-      	treeprint(frag);
+      //treeprint(trexpr);
+//    	for (TRFragment *frag in translator.frags)
+//      	treeprint(frag);
+      BasicBlocks *blocks = [BasicBlocks basicBlocksWithStmtList:[Canon linearizeStmt:[trexpr unNx]]];
+      Trace *trace = [Trace traceWithBasicBlocks:blocks];
+      TreeStmtList *list;
+      for (list = trace.stmts; list; list = list.tail)
+        treeprint(list.head);
     }
   }
   putchar('\n');

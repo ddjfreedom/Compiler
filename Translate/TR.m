@@ -164,7 +164,7 @@ static NSMutableDictionary *dict = nil;
                            moveWithDestination:r
                            source:[level.frame
                                    externalCallWithName:@"malloc"
-                                   arguments:[TreeConst constWithInt:(type.count*wordSize)]]]
+                                   arguments:[TreeExprList exprListWithExpr:[TreeConst constWithInt:(type.count*wordSize)]]]]
          secondStmt:seq];
   return [TREx exWithTreeExpr:[TreeESeq eseqWithStmt:seq expr:r]];
 }

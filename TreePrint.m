@@ -25,7 +25,9 @@ void treeprint(id expr)
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   indent = [NSMutableArray array];
-  if ([expr isKindOfClass:[TRExpr class]])
+  if ([expr isKindOfClass:[TreeStmt class]])
+    dispatch(expr);
+  else if ([expr isKindOfClass:[TRExpr class]])
     dispatch([expr unNx]);
   else if ([expr isMemberOfClass:[TRProcFrag class]]) {
     printf("ProcFrag\n");

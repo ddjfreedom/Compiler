@@ -25,6 +25,7 @@
   if (self = [super init]) {
     done = [[TmpLabel label] retain];
     blocks = [[NSMutableArray alloc] init];
+    [self makeBasicBlocksWithStmtList:list];
   }
   return self;
 }
@@ -34,7 +35,10 @@
   if ([list.head isMemberOfClass:[TreeLabel class]]) {
     last = [TreeStmtList stmtListWithStmt:list.head];
     [blocks addObject:last];
-  }
+    [self fillBlockFromStmtList:list.tail];
+  } else
+    [self makeBasicBlocksWithStmtList:[TreeStmtList stmtListWithStmt:[TreeLabel treeLabelWithLabel:[TmpLabel label]]
+                                                            stmtList:list]];
 }
 - (void)fillBlockFromStmtList:(TreeStmtList *)list
 {
