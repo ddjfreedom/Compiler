@@ -47,4 +47,23 @@
   [list release];
   [super dealloc];
 }
++ (id)tempList
+{
+  return [[[TmpTempList alloc] init] autorelease];
+}
++ (id)tempListWithTemp:(TmpTemp *)aTemp
+{
+  return [[[TmpTempList alloc] initWithTemp:aTemp] autorelease];
+}
++ (id)tempListWithTemps:(TmpTemp *)firstTemp, ...
+{
+  va_list args;
+  va_start(args, firstTemp);
+  TmpTemp *arg;
+  TmpTempList *ans = [TmpTempList tempList];
+  for (arg = firstTemp; arg; arg = va_arg(args, TmpTemp *))
+    [ans addTemp:arg];
+  va_end(args);
+  return ans;
+}
 @end

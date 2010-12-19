@@ -10,6 +10,7 @@
 #import "TR.h"
 #import "TRExpr.h"
 #import "Expression.h"
+#import "Frame.h"
 
 @interface TypeChecker : NSObject
 {
@@ -22,6 +23,6 @@
   BOOL hasError;
   TR *trans;
 }
-- (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr;
-+ (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr;
+- (NSArray *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr inFrame:(Frame *)frame;
++ (NSArray *)typeCheckProgram:(Expression *)expr withTranslator:(TR *)tr inFrame:(Frame *)frame;
 @end

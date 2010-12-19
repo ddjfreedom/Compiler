@@ -70,4 +70,8 @@
 {
   return [[[TRLevel alloc] initWithLevel:aLevel label:aLabel boolList:aBoolList] autorelease];
 }
++ (id)levelWithFrame:(Frame *)aFrame
+{
+  return [[[TRLevel alloc] initWithFrame:aFrame] autorelease];
+}
 @end

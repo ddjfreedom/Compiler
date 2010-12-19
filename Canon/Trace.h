@@ -15,6 +15,7 @@
 	BasicBlocks *blocks;
   TreeStmtList *stmts;
   NSMutableDictionary *dict;
+  int ctr;
 }
 @property (readonly) TreeStmtList *stmts;
 - (id)initWithBasicBlocks:(BasicBlocks *)basicblocks;

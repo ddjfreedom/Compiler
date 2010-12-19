@@ -69,4 +69,15 @@
 {
   return [[[TmpLabelList alloc] initWithLabel:aLabel] autorelease];
 }
++ (id)labelListWithLabels:(TmpLabel *)firstLabel, ...
+{
+  va_list args;
+  va_start(args, firstLabel);
+  TmpLabel *arg;
+  TmpLabelList *ans = [TmpLabelList labelList];
+  for (arg = firstLabel; arg; arg = va_arg(args, TmpLabel *))
+    [ans addLabel:arg];
+  va_end(args);
+  return ans;  
+}
 @end

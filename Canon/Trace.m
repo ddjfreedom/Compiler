@@ -20,6 +20,7 @@
   if (self = [super init]) {
     blocks = [basicblocks retain];
     dict = [[NSMutableDictionary alloc] init];
+    ctr = 0;
     for (TreeStmtList *list in blocks.blocks)
       [dict setObject:list forKey:((TreeLabel *)list.head).label.name];
     stmts = [[self getNext] retain];
@@ -28,18 +29,17 @@
 }
 - (TreeStmtList *)getNext
 {
-  static int i = 0;
   int total = blocks.blocks.count;
   TreeStmtList *s;
   TreeLabel *label;
-  while (i < total) {
-    s = [blocks.blocks objectAtIndex:i];
+  while (ctr < total) {
+    s = [blocks.blocks objectAtIndex:ctr];
     label = (TreeLabel *)s.head;
     if ([dict objectForKey:label.label.name]) {
       [self traceStmtList:s];
       return s;
     } else
-      i++;
+      ctr++;
   }
   return [TreeStmtList stmtListWithStmt:[TreeLabel treeLabelWithLabel:blocks.done]];
 }

@@ -44,10 +44,10 @@
 @end
 
 @implementation TypeChecker
-+ (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr
++ (NSArray *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr inFrame:(Frame *)frame
 {
   TypeChecker *checker = [[[TypeChecker alloc] init] autorelease];
-  return [checker typeCheckProgram:expr withTranslator:tr];
+  return [checker typeCheckProgram:expr withTranslator:tr inFrame:frame];
 }
 - (id)init
 {
@@ -61,15 +61,15 @@
   }
   return self;
 }
-- (TRExpr *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr
+- (NSArray *)typeCheckProgram:(Expression *)expr withTranslator:(TR* )tr inFrame:(Frame *)frame
 {
-  TRExpr *ans = nil;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   trans = [tr retain];
+  [levels addObject:[TRLevel levelWithFrame:frame]];
   [self symbolInitialization];
-  ans = [[self typeCheckExpression:expr].expr retain];
+  [trans addMainExpr:[self typeCheckExpression:expr].expr level:[levels objectAtIndex:0]];
   [pool drain];
-  return hasError ? nil : [ans autorelease];
+  return trans.frags;
 }
 - (SemanticEntry *)entryForSymbol:(Symbol *)aSymbol
 {
@@ -703,10 +703,8 @@
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   SemanticEnvironment *env = [[SemanticEnvironment alloc] init];
-  Frame *frame = [[MipsFrame alloc] init];
-  TRLevel *tmplevel = [[TRLevel alloc] initWithFrame:frame];
-  trans.wordSize = frame.wordSize;
-  [levels addObject:tmplevel];
+  TRLevel *tmplevel = [levels lastObject];
+  trans.wordSize = tmplevel.frame.wordSize;
   [env setType:[SemanticIntType sharedIntType]
      forSymbol:[Symbol symbolWithName:@"int"]];
   [env setType:[SemanticStringType sharedStringType]
@@ -783,8 +781,6 @@
       forSymbol:[Symbol symbolWithName:@"concat"]];
   [intRecord release];
   [stringRecord release];
-  [frame release];
-  [tmplevel release];
   [envs addObject:env];
   [env release];
   [pool drain];

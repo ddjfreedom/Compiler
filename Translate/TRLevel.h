@@ -28,4 +28,5 @@
 - (TRAccess *)generateLocal:(BOOL)isEscaped;
 + (id)levelWithLevel:(TRLevel *)aLevel name:(Symbol *)aName boolList:(BoolList *)aBoolList;
 + (id)levelWithLevel:(TRLevel *)aLevel label:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
++ (id)levelWithFrame:(Frame *)aFrame;
 @end

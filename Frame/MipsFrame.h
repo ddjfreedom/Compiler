@@ -14,8 +14,10 @@
 	int frameCount;
   TmpTemp *fp;
   TmpTemp *rv;
+  //TmpTemp *zero;
 }
 @property (readonly) int frameCount;
+//@property (readonly) TmpTemp *zero;
 - (id)init;
 - (id)initWithLabel:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
 @end

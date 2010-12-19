@@ -31,4 +31,5 @@
 - (Access *)generateLocal:(BOOL)isEscaped;
 - (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args;
 - (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body;
+- (NSArray *)codegenUsingStmt:(TreeStmt *)aStmt;
 @end

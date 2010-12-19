@@ -9,6 +9,7 @@
 #import "MipsFrame.h"
 #import "MipsInReg.h"
 #import "MipsInFrame.h"
+#import "MipsCodegen.h"
 #import "TreeName.h"
 #import "TreeCall.h"
 
@@ -17,6 +18,7 @@
 
 @implementation MipsFrame
 @synthesize frameCount;
+//@synthesize zero;
 - (TmpTemp *)fp
 {
   return fp;
@@ -37,6 +39,7 @@
     wordSize = WORDLENGTH;
     fp = [[TmpTemp temp] retain];
     rv = [[TmpTemp temp] retain];
+    //zero = [[TmpTemp alloc] init];
     if (aBoolList) {
     	formals = [[NSMutableArray alloc] init];
     	for (; aBoolList; aBoolList = aBoolList.tail) {
@@ -74,12 +77,17 @@
 {
   return body;
 }
+- (NSArray *)codegenUsingStmt:(TreeStmt *)aStmt
+{
+  return [[MipsCodegen codegenWithFrame:self] codegenUsingStmt:aStmt];
+}
 - (void)dealloc
 {
   [formals release];
   [name release];
   [fp release];
   [rv release];
+  //[zero release];
   [super dealloc];
 }
 @end

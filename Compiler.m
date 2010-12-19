@@ -9,10 +9,12 @@
 #import "TreeStmtList.h"
 #import "TR.h"
 #import "TRFragment.h"
+#import "TRProcFrag.h"
 #import "TRExpr.h"
 #import "Canon.h"
 #import "BasicBlocks.h"
 #import "Trace.h"
+#import "MipsFrame.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -22,24 +24,32 @@ int main(int argc, const char * argv[])
   id expr = nil;
   FILE *fin = fopen(argv[1], "r");
   TR *translator = [[TR alloc] init];
-  TRExpr *trexpr;
+  MipsFrame *frame = [[MipsFrame alloc] init];
   printf("%s\n", argv[1]);
   [ErrorMessage setOutputFile:stdout];
   if (!parse(fin, &expr)) {
   	//print(expr);
-  	trexpr = [TypeChecker typeCheckProgram:expr withTranslator:translator];
-  	if (trexpr) {
-      //treeprint(trexpr);
-//    	for (TRFragment *frag in translator.frags)
-//      	treeprint(frag);
-      BasicBlocks *blocks = [BasicBlocks basicBlocksWithStmtList:[Canon linearizeStmt:[trexpr unNx]]];
-      Trace *trace = [Trace traceWithBasicBlocks:blocks];
-      TreeStmtList *list;
-      for (list = trace.stmts; list; list = list.tail)
-        treeprint(list.head);
+  	NSArray *procs = [TypeChecker typeCheckProgram:expr withTranslator:translator inFrame:frame];
+  	if (procs) {
+    	for (TRFragment *frag in procs) {
+      	//treeprint(frag);
+        if ([frag isMemberOfClass:[TRProcFrag class]]) {
+      		BasicBlocks *blocks = [BasicBlocks basicBlocksWithStmtList:[Canon linearizeStmt:((TRProcFrag *)frag).stmt]];
+        	TreeStmtList *list;
+//          for (list in blocks.blocks)
+//            while (list) {
+//              treeprint(list.head);
+//              list = list.tail;
+//            }
+      		Trace *trace = [Trace traceWithBasicBlocks:blocks];
+      		for (list = trace.stmts; list; list = list.tail)
+        		treeprint(list.head);
+        }
+      }
     }
   }
   putchar('\n');
+  [translator release];
   fclose(fin);
   [pool drain];
   return 0;

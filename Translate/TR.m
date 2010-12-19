@@ -42,6 +42,10 @@ static NSMutableDictionary *dict = nil;
 {
   return [TmpLabel label];
 }
+- (void)addMainExpr:(TRExpr *)anExpr level:(TRLevel *)level
+{
+  [frags insertObject:[TRProcFrag procFragWithStme:[anExpr unNx] frame:level.frame] atIndex:0];
+}
 - (TRExpr *)simpleVarWithAccess:(TRAccess *)anAcc level:(TRLevel *)aLevel
 {
   TreeExpr *expr = [TreeTemp treeTempWithTemp:aLevel.frame.fp];
@@ -121,9 +125,13 @@ static NSMutableDictionary *dict = nil;
 - (TRExpr *)arrayExprWithSize:(TRExpr *)size initialValue:(TRExpr *)inititalValue level:(TRLevel *)level
 {
   TreeTemp *r = [TreeTemp treeTempWithTemp:[TmpTemp temp]];
-  TreeExpr *actualSize = [TreeBinop binopWithLeftExpr:[size unEx] 
-                                             binaryOp:TreeMultiply
-                                            rightExpr:[TreeConst constWithInt:wordSize]];
+  TreeExpr *actualSize;
+  if ([[size unEx] isMemberOfClass:[TreeConst class]])
+    actualSize = [TreeConst constWithInt:((TreeConst *)[size unEx]).value * wordSize];
+  else 
+    actualSize = [TreeBinop binopWithLeftExpr:[size unEx]
+    	                               binaryOp:TreeMultiply
+      	                            rightExpr:[TreeConst constWithInt:wordSize]];
   TreeSeq *seq;
   seq = [TreeSeq 
          seqWithFirstStmt:[TreeMove 
@@ -172,6 +180,17 @@ static NSMutableDictionary *dict = nil;
 {
   return [TRNx nxWithStmt:[TreeMove moveWithDestination:[left unEx] source:[right unEx]]];
 }
+- (int)calculateLeftOperand:(int)left op:(AbstractSyntaxOperation)op rightOperand:(int)right
+{
+  switch (op) {
+  	case plus: return left + right;
+    case minus: return left - right;
+    case multiply: return left * right;
+    case divide: return left / right;
+    default: NSAssert(NO, @"Invalid Binop");
+  }
+  return 0;
+}
 - (TRExpr *)binopExprWithLeftOperand:(SemanticExpr *)left 
                                   op:(AbstractSyntaxOperation)op 
                         rightOperand:(SemanticExpr *)right
@@ -180,6 +199,11 @@ static NSMutableDictionary *dict = nil;
   if (![left.type isMemberOfClass:[SemanticStringType class]]) {
   	switch (op) {
   		case plus: case minus: case multiply: case divide:
+        if ([left.expr isMemberOfClass:[TreeConst class]] &&
+            [right.expr isMemberOfClass:[TreeConst class]])
+          return [TREx exWithTreeExpr:[TreeConst constWithInt:[self calculateLeftOperand:((TreeConst *)left.expr).value
+                                                                                      op:op
+                                                                            rightOperand:((TreeConst *)right.expr).value]]];
     	  return [TREx exWithTreeExpr:[TreeBinop
                                      binopWithLeftExpr:[left.expr unEx]
                                      binaryOp:[[dict objectForKey:[NSNumber numberWithInt:op]] intValue]

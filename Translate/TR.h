@@ -24,6 +24,7 @@
 @property (readwrite, assign) int wordSize;
 @property (readonly) NSArray *frags;
 - (TmpLabel *)generateDoneLabel;
+- (void)addMainExpr:(TRExpr *)anExpr level:(TRLevel *)level;
 // lValue translation
 - (TRExpr *)simpleVarWithAccess:(TRAccess *)anAcc level:(TRLevel *)aLevel;
 - (TRExpr *)arrayVarWithBase:(TRExpr *)base subscript:(TRExpr *)sub level:(TRLevel *)aLevel;

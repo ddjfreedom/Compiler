@@ -23,4 +23,5 @@
 - (TmpLabel *)labelAtIndex:(NSUInteger)index;
 + (id)labelList;
 + (id)labelListWithLabel:(TmpLabel *)aLabel;
++ (id)labelListWithLabels:(TmpLabel *)firstLabel, ... NS_REQUIRES_NIL_TERMINATION;
 @end
