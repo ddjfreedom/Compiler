@@ -10,26 +10,48 @@
 #import "MipsInReg.h"
 #import "MipsInFrame.h"
 #import "MipsCodegen.h"
-#import "TreeName.h"
-#import "TreeCall.h"
+#import "Tree.h"
+#import "TmpTempList.h"
+#import "Assem.h"
 
 #define WORDLENGTH 4
 #define CALC_OFFSET(X) (-(WORDLENGTH * (++X)))
+static NSArray *argregs = nil;
+static NSArray *specialregs = nil;
+static NSArray *calleesave = nil;
+static NSArray *callersave = nil;
+static TmpTempList *returnsink = nil;
 
 @implementation MipsFrame
 @synthesize frameCount;
 //@synthesize zero;
+- (NSArray *)specialregs
+{
+  return specialregs;
+}
+- (NSArray *)argregs
+{
+  return argregs;
+}
+- (NSArray *)calleesave
+{
+  return calleesave;
+}
+- (NSArray *)callersave
+{
+  return callersave;
+}
 - (TmpTemp *)fp
 {
-  return fp;
+  return [specialregs objectAtIndex:0];
 }
 - (TmpTemp *)rv
 {
-  return rv;
+  return [specialregs objectAtIndex:2];
 }
 - (id)init
 {
-  return [self initWithLabel:nil boolList:nil];
+  return [self initWithLabel:[TmpLabel labelWithString:@"main"] boolList:nil];
 }
 - (id)initWithLabel:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList
 {
@@ -37,8 +59,6 @@
     name = [aLabel retain];
     frameCount = 0;
     wordSize = WORDLENGTH;
-    fp = [[TmpTemp temp] retain];
-    rv = [[TmpTemp temp] retain];
     //zero = [[TmpTemp alloc] init];
     if (aBoolList) {
     	formals = [[NSMutableArray alloc] init];
@@ -73,21 +93,85 @@
   return [TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:aName]]
                        exprList:args];
 }
+- (NSString *)tempMapWithTemp:(TmpTemp *)temp
+{
+  NSUInteger i = 0;
+  if ((i = [specialregs indexOfObject:temp]) != NSNotFound) {
+    switch (i) {
+    	case 0: return @"fp";
+      case 1: return @"sp";
+      case 2: return @"v0";
+      case 3: return @"v1";
+      case 4: return @"ra";
+    }
+  } else if ((i = [argregs indexOfObject:temp]) != NSNotFound) {
+  	return [NSString stringWithFormat:@"a%d", i];
+  }
+  return temp.name;
+}
 - (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body
 {
   return body;
 }
-- (NSArray *)codegenUsingStmt:(TreeStmt *)aStmt
+- (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body
 {
-  return [[MipsCodegen codegenWithFrame:self] codegenUsingStmt:aStmt];
+  [body addObject:[AssemOper operWithString:@""
+                        destinationTempList:nil
+                             sourceTempList:returnsink]];
+  return body;
+}
+- (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body
+{
+  [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@"%@:\n",
+                                                       name.name]
+                                             tmpLabel:name]
+             atIndex:0];
+  [body addObject:[AssemOper operWithString:@"jr $`s0\n"
+                        destinationTempList:nil
+                             sourceTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:4]]]];
+  return [Proc procWithArray:body];
+}
+- (NSArray *)codegenUsingStmts:(TreeStmtList *)aStmtList
+{
+  NSMutableArray *instrs = [NSMutableArray array];
+  MipsCodegen *codegen = [MipsCodegen codegenWithFrame:self];
+  for (; aStmtList; aStmtList = aStmtList.tail)
+    [instrs addObjectsFromArray:[codegen codegenUsingStmt:aStmtList.head]];
+  [self procEntryExit2WithInstructions:instrs];
+  [self procEntryExit3WithInstructions:instrs];
+  return instrs;
 }
 - (void)dealloc
 {
   [formals release];
   [name release];
-  [fp release];
-  [rv release];
   //[zero release];
   [super dealloc];
+}
++ (void)initialize
+{
+  if (self == [MipsFrame class]) {
+    printf("initialize\n");
+    // $fp, $sp, $v0, $v1, $ra
+    specialregs = [[NSArray alloc] initWithObjects:
+                   [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], nil];
+    // $a0~$a3
+    argregs = [[NSArray alloc] initWithObjects:
+               [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], nil];
+    // $s0~$s7
+    calleesave = [[NSArray alloc] initWithObjects:
+                  [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp],
+                  [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], nil];
+    // $t0~$t9
+    callersave = [[NSArray alloc] initWithObjects:
+                  [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp],
+                  [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp],
+                  [TmpTemp temp], [TmpTemp temp], nil];
+    returnsink = [[TmpTempList alloc] init];
+    for (TmpTemp *tmp in specialregs)
+      [returnsink addTemp:tmp];
+    for (TmpTemp *tmp in calleesave)
+      [returnsink addTemp:tmp];
+  }
 }
 @end

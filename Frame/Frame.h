@@ -10,13 +10,13 @@
 #import <Foundation/Foundation.h>
 #import "TmpLabel.h"
 #import "TmpTemp.h"
+#import "TmpTempMap.h"
 #import "Access.h"
 #import "BoolList.h"
-#import "TreeExpr.h"
-#import "TreeStmt.h"
-#import "TreeExprList.h"
+#import "Tree.h"
+#import "Proc.h"
 
-@interface Frame : NSObject 
+@interface Frame : NSObject <TmpTempMap>
 {
 	TmpLabel *name;
   NSMutableArray *formals;
@@ -31,5 +31,7 @@
 - (Access *)generateLocal:(BOOL)isEscaped;
 - (TreeExpr *)externalCallWithName:(NSString *)aName arguments:(TreeExprList *)args;
 - (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body;
-- (NSArray *)codegenUsingStmt:(TreeStmt *)aStmt;
+- (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body;
+- (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body;
+- (NSArray *)codegenUsingStmts:(TreeStmtList *)aStmtList;
 @end

@@ -15,14 +15,17 @@
 #import "TRAccess.h"
 #import "TRLevel.h"
 #import "TRFragment.h"
+#import "Frame.h"
 
 @interface TR : NSObject 
 {
 	NSMutableArray *frags;
+  Frame *frame;
   int wordSize;
 }
 @property (readwrite, assign) int wordSize;
 @property (readonly) NSArray *frags;
+- (id)initWithFrame:(Frame *)aFrame;
 - (TmpLabel *)generateDoneLabel;
 - (void)addMainExpr:(TRExpr *)anExpr level:(TRLevel *)level;
 // lValue translation

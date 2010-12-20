@@ -15,6 +15,7 @@
 #import "BasicBlocks.h"
 #import "Trace.h"
 #import "MipsFrame.h"
+#import "Assem.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -23,8 +24,8 @@ int main(int argc, const char * argv[])
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
   id expr = nil;
   FILE *fin = fopen(argv[1], "r");
-  TR *translator = [[TR alloc] init];
   MipsFrame *frame = [[MipsFrame alloc] init];
+  TR *translator = [[TR alloc] initWithFrame:frame];
   printf("%s\n", argv[1]);
   [ErrorMessage setOutputFile:stdout];
   if (!parse(fin, &expr)) {
@@ -34,16 +35,20 @@ int main(int argc, const char * argv[])
     	for (TRFragment *frag in procs) {
       	//treeprint(frag);
         if ([frag isMemberOfClass:[TRProcFrag class]]) {
-      		BasicBlocks *blocks = [BasicBlocks basicBlocksWithStmtList:[Canon linearizeStmt:((TRProcFrag *)frag).stmt]];
-        	TreeStmtList *list;
+      		BasicBlocks *blocks = [BasicBlocks 
+                                 basicBlocksWithStmtList:[Canon linearizeStmt:((TRProcFrag *)frag).stmt]];
 //          for (list in blocks.blocks)
 //            while (list) {
 //              treeprint(list.head);
 //              list = list.tail;
 //            }
       		Trace *trace = [Trace traceWithBasicBlocks:blocks];
-      		for (list = trace.stmts; list; list = list.tail)
-        		treeprint(list.head);
+//          TreeStmtList *list;
+//      		for (list = trace.stmts; list; list = list.tail)
+//        		treeprint(list.head);
+          for (AssemInstr *instr in [((TRProcFrag *)frag).frame codegenUsingStmts:trace.stmts])
+            //NSLog(@"%@", [instr formatWithObject:((TRProcFrag *)frag).frame]);
+            printf("%s", [[instr formatWithObject:((TRProcFrag *)frag).frame] cStringUsingEncoding:NSASCIIStringEncoding]);
         }
       }
     }

@@ -7,7 +7,6 @@
 //
 
 #import "Frame.h"
-#import "Codegen.h"
 
 @implementation Frame
 @synthesize name;
@@ -40,7 +39,19 @@
 {
   return nil;
 }
-- (NSArray *)codegenUsingStmt:(TreeStmt *)aStmt
+- (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body
+{
+  return nil;
+}
+- (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body
+{
+  return nil;
+}
+- (NSString *)tempMapWithTemp:(TmpTemp *)temp
+{
+  return nil;
+}
+- (NSArray *)codegenUsingStmts:(TreeStmtList *)aStmtList
 {
   return nil;
 }

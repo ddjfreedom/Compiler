@@ -16,6 +16,7 @@
            labelList:(TmpLabelList *)j
 {
   if (self = [super init]) {
+    assem = [aString retain];
     dst = [d retain];
     src = [s retain];
     targets = [j retain];
@@ -43,8 +44,13 @@
 {
   return targets;
 }
+- (NSString *)description
+{
+  return assem;
+}
 - (void)dealloc
 {
+  [assem release];
   [dst release];
   [src release];
   [targets release];

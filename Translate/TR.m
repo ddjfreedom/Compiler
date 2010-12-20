@@ -30,10 +30,11 @@ static NSMutableDictionary *dict = nil;
 {
   return frags;
 }
-- (id)init
+- (id)initWithFrame:(Frame *)aFrame
 {
   if (self = [super init]) {
     frags = [[NSMutableArray alloc] init];
+    frame = [aFrame retain];
     wordSize = 0;
   }
   return self;
@@ -334,13 +335,15 @@ static NSMutableDictionary *dict = nil;
 }
 - (TRExpr *)complementExpr:(TRExpr *)expr
 {
-  return [TREx exWithTreeExpr:[TreeBinop binopWithLeftExpr:[expr unEx]
-                                                  binaryOp:TreeXor
-                                                 rightExpr:[TreeConst constWithInt:~0]]];
+  return [TREx exWithTreeExpr:[TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:@"not"]]
+                                            exprList:[TreeExprList exprListWithExprs:
+                                                      [TreeTemp treeTempWithTemp:frame.fp],
+                                                      [expr unEx], nil]]];
 }
 - (void)dealloc
 {
   [frags release];
+  [frame release];
   [super dealloc];
 }
 + (void)initialize

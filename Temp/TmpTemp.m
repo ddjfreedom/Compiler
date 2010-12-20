@@ -26,6 +26,10 @@ static int count = 0;
 {
   return [NSString stringWithFormat:@"temp: %@", name];
 }
+- (BOOL)isEqual:(id)object
+{
+  return self == object;
+}
 - (void)dealloc
 {
   [name release];

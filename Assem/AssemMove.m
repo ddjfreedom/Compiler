@@ -16,6 +16,7 @@
           sourceTemp:(TmpTemp *)s
 {
   if (self = [super init]) {
+    assem = [aString retain];
     dst = [d retain];
     src = [s retain];
   }
@@ -31,6 +32,7 @@
 }
 - (void)dealloc
 {
+  [assem release];
   [dst release];
   [src release];
   [super dealloc];

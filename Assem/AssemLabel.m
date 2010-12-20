@@ -19,6 +19,10 @@
   }
   return self;
 }
+- (NSString *)description
+{
+  return assem;
+}
 - (void)dealloc
 {
   [assem release];

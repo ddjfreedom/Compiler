@@ -9,10 +9,12 @@
 #import "MipsCodegen.h"
 #import "Assem.h"
 @interface MipsCodegen()
+@property (readonly) TmpTempList *calldefs;
 - (TmpTemp *)munchBinop:(TreeBinop *)aBinop;
 - (TmpTemp *)munchConst:(TreeConst *)aConst;
 - (TmpTemp *)munchMem:(TreeMem *)aMem;
 - (TmpTemp *)munchCall:(TreeCall *)aCall;
+- (TmpTemp *)munchName:(TreeName *)aName;
 - (TmpTempList *)munchArgs:(TreeExprList *)args;
 - (void)munchMove:(TreeMove *)aMove;
 - (void)munchJump:(TreeJump *)aJump;
@@ -39,7 +41,9 @@
   else if ([anExpr isMemberOfClass:[TreeTemp class]])
     return ((TreeTemp *)anExpr).temp;
   else if ([anExpr isMemberOfClass:[TreeCall class]])
-    [self munchCall:(TreeCall *)anExpr];
+    return [self munchCall:(TreeCall *)anExpr];
+  else if ([anExpr isMemberOfClass:[TreeName class]])
+    return [self munchName:(TreeName *)anExpr];
   NSAssert(NO, @"Unknown Expr in munchExpr:");
   return nil;
 }
@@ -103,13 +107,13 @@
         break;
       }
     case TreeMinus:
-      if ([aBinop.right isMemberOfClass:[TreeConst class]])
+      if ([aBinop.right isMemberOfClass:[TreeConst class]]) {
         [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addiu $`d0, $`s0, %d\n",
                                                            ((TreeConst *)aBinop.right).value]
                                       destinationTempList:[TmpTempList tempListWithTemp:r]
                                            sourceTempList:[TmpTempList 
                                                            tempListWithTemp:[self munchExpr:aBinop.left]]]];
-      else
+      } else
         [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"%s $`d0, $`s0, $`s1\n",
                                                            aBinop.op == TreePlus ? "addu" : "subu"]
                                       destinationTempList:[TmpTempList tempListWithTemp:r]
@@ -141,23 +145,48 @@
   TmpTempList *args = [self munchArgs:aCall.args];
   [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"jal %@\n",
                                                      ((TreeName *)aCall.func).label.name]
-                                destinationTempList:nil
+                                destinationTempList:self.calldefs
                                      sourceTempList:args]];
 	return frame.rv;
 }
 - (TmpTempList *)munchArgs:(TreeExprList *)args
 {
-  TmpTemp *tmp;
+  // MARK: Assume less than or equal to 4 arguments
+  int i = 0;
   TmpTempList *list = [TmpTempList tempList];
 	while (args) {
-    tmp = [TmpTemp temp];
-  	[instructions addObject:[AssemOper operWithString:@"move $`d0, $`s0\n"
-                                  destinationTempList:[TmpTempList tempListWithTemp:tmp]
-                                       sourceTempList:[TmpTempList tempListWithTemp:[self munchExpr:args.head]]]];
-    [list addTemp:tmp];
+    if (![args.head isMemberOfClass:[TreeConst class]])
+  		[instructions addObject:[AssemOper operWithString:@"move $`d0, $`s0\n"
+      	                            destinationTempList:[TmpTempList tempListWithTemp:[frame.argregs objectAtIndex:i]]
+        	                               sourceTempList:[TmpTempList tempListWithTemp:[self munchExpr:args.head]]]];
+    else
+      [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addi $`d0, $zero, %d\n",
+                                                         ((TreeConst *)args.head).value]
+                                    destinationTempList:[TmpTempList tempListWithTemp:[frame.argregs objectAtIndex:i]]
+                                         sourceTempList:nil]];
+    [list addTemp:[frame.argregs objectAtIndex:i++]];
     args = args.tail;
   }
   return list;
+}
+- (TmpTempList *)calldefs
+{
+  int i, c = frame.specialregs.count;
+  TmpTempList *list = [TmpTempList tempList];
+	for (i = 2; i < c; ++i)
+  	[list addTemp:[frame.specialregs objectAtIndex:i]];
+  for (TmpTemp *tmp in frame.callersave)
+    [list addTemp:tmp];
+  return list;
+}
+- (TmpTemp *)munchName:(TreeName *)aName
+{
+  TmpTemp *r = [TmpTemp temp];
+  [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"la $`d0, %@\n",
+                                                     aName.label.name]
+                                destinationTempList:[TmpTempList tempListWithTemp:r]
+                                     sourceTempList:nil]];
+  return r;
 }
 - (void)munchStmt:(TreeStmt *)aStmt
 {
@@ -181,7 +210,7 @@
 {
   TmpTemp *tmp = [self munchExpr:aMove.src];
   if ([aMove.dst isMemberOfClass:[TreeTemp class]])
-    [instructions addObject:[AssemOper operWithString:@"addu $`d0, $`s0, $zero\n"
+    [instructions addObject:[AssemOper operWithString:@"move $`d0, $`s0\n"
                                   destinationTempList:[TmpTempList tempListWithTemp:((TreeTemp *)aMove.dst).temp]
                                        sourceTempList:[TmpTempList tempListWithTemp:tmp]]];
   else if ([aMove.dst isMemberOfClass:[TreeMem class]]) {
@@ -215,7 +244,7 @@
                                            sourceTempList:[TmpTempList tempListWithTemps:
                                                            tmp, [self munchExpr:reg], nil]]];
       else
-        [instructions addObject:[AssemOper operWithString:@"sw $`s0, 0($`s`)\n"
+        [instructions addObject:[AssemOper operWithString:@"sw $`s0, 0($`s1)\n"
                                       destinationTempList:nil
                                            sourceTempList:[TmpTempList tempListWithTemps:
                                                            tmp, [self munchExpr:binop], nil]]];

@@ -12,7 +12,6 @@
 		4706F28712BDD27E00A36C7E /* AssemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 4706F28612BDD27E00A36C7E /* AssemMove.m */; };
 		4706F29812BDD45900A36C7E /* AssemOper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4706F29712BDD45900A36C7E /* AssemOper.m */; };
 		4706F2D812BDE07A00A36C7E /* MipsCodegen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4706F2D712BDE07A00A36C7E /* MipsCodegen.m */; };
-		4706F47D12BE48B400A36C7E /* Codegen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4706F47C12BE48B400A36C7E /* Codegen.m */; };
 		470C375812B339500041DB00 /* TRFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375712B339500041DB00 /* TRFragment.m */; };
 		470C375B12B339C10041DB00 /* TRProcFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375A12B339C10041DB00 /* TRProcFrag.m */; };
 		470C376B12B33ABD0041DB00 /* TRDataFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C376A12B33ABD0041DB00 /* TRDataFrag.m */; };
@@ -107,6 +106,7 @@
 		47D7DAE012A26D56005DE04C /* NameType.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7DADF12A26D56005DE04C /* NameType.m */; };
 		47D7DAE712A26E37005DE04C /* RecordType.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7DAE612A26E37005DE04C /* RecordType.m */; };
 		47D7DB9E12A28B2F005DE04C /* ArrayType.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7DB9D12A28B2F005DE04C /* ArrayType.m */; };
+		47E19BF112BF180A006ED441 /* Proc.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E19BF012BF180A006ED441 /* Proc.m */; };
 		8DD76F9A0486AA7600D96B5E /* Compiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* Compiler.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		8DD76F9F0486AA7600D96B5E /* Compiler.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* Compiler.1 */; };
@@ -165,8 +165,6 @@
 		4706F29712BDD45900A36C7E /* AssemOper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssemOper.m; path = Assem/AssemOper.m; sourceTree = "<group>"; };
 		4706F2D612BDE07A00A36C7E /* MipsCodegen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MipsCodegen.h; path = Frame/MipsCodegen.h; sourceTree = "<group>"; };
 		4706F2D712BDE07A00A36C7E /* MipsCodegen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MipsCodegen.m; path = Frame/MipsCodegen.m; sourceTree = "<group>"; };
-		4706F47B12BE48B400A36C7E /* Codegen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Codegen.h; path = Frame/Codegen.h; sourceTree = "<group>"; };
-		4706F47C12BE48B400A36C7E /* Codegen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Codegen.m; path = Frame/Codegen.m; sourceTree = "<group>"; };
 		470C375612B339500041DB00 /* TRFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRFragment.h; path = Translate/TRFragment.h; sourceTree = "<group>"; };
 		470C375712B339500041DB00 /* TRFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRFragment.m; path = Translate/TRFragment.m; sourceTree = "<group>"; };
 		470C375912B339C10041DB00 /* TRProcFrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRProcFrag.h; path = Translate/TRProcFrag.h; sourceTree = "<group>"; };
@@ -412,6 +410,8 @@
 		47D7DAE612A26E37005DE04C /* RecordType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordType.m; path = AbstractSyntax/RecordType.m; sourceTree = "<group>"; };
 		47D7DB9C12A28B2F005DE04C /* ArrayType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayType.h; path = AbstractSyntax/ArrayType.h; sourceTree = "<group>"; };
 		47D7DB9D12A28B2F005DE04C /* ArrayType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayType.m; path = AbstractSyntax/ArrayType.m; sourceTree = "<group>"; };
+		47E19BEF12BF180A006ED441 /* Proc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Proc.h; path = Frame/Proc.h; sourceTree = "<group>"; };
+		47E19BF012BF180A006ED441 /* Proc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Proc.m; path = Frame/Proc.m; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859EA3029092ED04C91782 /* Compiler.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Compiler.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -517,8 +517,8 @@
 			children = (
 				4721AE1B12AD0A1F00D37514 /* Frame.h */,
 				4721AE1C12AD0A1F00D37514 /* Frame.m */,
-				4706F47B12BE48B400A36C7E /* Codegen.h */,
-				4706F47C12BE48B400A36C7E /* Codegen.m */,
+				47E19BEF12BF180A006ED441 /* Proc.h */,
+				47E19BF012BF180A006ED441 /* Proc.m */,
 				475FA8C212ADD077002F0399 /* Access.h */,
 				475FA8C312ADD077002F0399 /* Access.m */,
 				475FA8CB12ADD0EB002F0399 /* MipsFrame.h */,
@@ -1056,7 +1056,7 @@
 				4706F28712BDD27E00A36C7E /* AssemMove.m in Sources */,
 				4706F29812BDD45900A36C7E /* AssemOper.m in Sources */,
 				4706F2D812BDE07A00A36C7E /* MipsCodegen.m in Sources */,
-				4706F47D12BE48B400A36C7E /* Codegen.m in Sources */,
+				47E19BF112BF180A006ED441 /* Proc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
