@@ -69,7 +69,7 @@
   [self symbolInitialization];
   [trans addMainExpr:[self typeCheckExpression:expr].expr level:[levels objectAtIndex:0]];
   [pool drain];
-  return trans.frags;
+  return hasError ? nil : trans.frags;
 }
 - (SemanticEntry *)entryForSymbol:(Symbol *)aSymbol
 {
@@ -578,6 +578,10 @@
   SemanticType *type = nil;
   SemanticRecordType *pararecord;
   NSMutableArray *array = [[NSMutableArray alloc] init]; // Function return types
+	int i, parameterCount;
+  BoolList *boolList;
+  BoolList *last;
+  TRLevel *tmplevel;
 
   for (FunctionDecl *fundecl in funcsList) {
     pararecord = [self typeCheckTypeFields:fundecl.parameters];
@@ -592,35 +596,35 @@
        [fundecl.name cString]];
       hasError = YES;
     }
-    else
+    else {
+      parameterCount = fundecl.parameters.count;
+      boolList = [BoolList boolListWithBool:NO];
+      last = boolList;
+      // Create a new level
+      for (i = 0; i < parameterCount; ++i) {
+        // MARK: every parameter escaped
+        last.tail = [BoolList boolListWithBool:YES];
+        last = last.tail;
+      }
+      tmplevel = [TRLevel levelWithLevel:[levels lastObject]
+                                   label:[TmpLabel label]
+                                boolList:boolList.tail];
     	[tmpenv setEntry:[SemanticFuncEntry funcEntryWithFormalParameters:pararecord
                                                              returnType:type 
-                                                                  level:[levels lastObject]
-                                                                  label:[TmpLabel label]]
+                                                                  level:tmplevel
+                                                                  label:tmplevel.frame.name]
              forSymbol:fundecl.name];
+    }
   }
   [envs addObject:tmpenv];
   
-  int parameterCount, i = 0, funcnum = 0;
+  int funcnum = 0;
   SemanticExpr *imexpr;
-  BoolList *boolList;
-  BoolList *last;
   SingleTypeField *para;
-  TRLevel *tmplevel;
   for (FunctionDecl *fundecl in funcsList) {
     funcenv = [[SemanticEnvironment alloc] init];
     parameterCount = fundecl.parameters.count;
-    boolList = [BoolList boolListWithBool:NO];
-    last = boolList;
-    // Create a new level
-    for (i = 0; i < parameterCount; ++i) {
-      // MARK: every parameter escaped
-      last.tail = [BoolList boolListWithBool:YES];
-      last = last.tail;
-    }
-    tmplevel = [TRLevel levelWithLevel:[levels lastObject]
-                                 label:[(SemanticFuncEntry *)[tmpenv entryForSymbol:fundecl.name] label]
-                              boolList:boolList.tail];
+    tmplevel = ((SemanticFuncEntry *)[tmpenv entryForSymbol:fundecl.name]).level;
     [levels addObject:tmplevel];
     // Add parameters into environment
     for (i = 0; i < parameterCount; ++i) {
@@ -634,7 +638,7 @@
     [envs addObject:funcenv];
     // Type check function body
     imexpr = [self typeCheckExpression:fundecl.body];
-    [trans funcDeclWithBody:imexpr.expr level:[levels objectAtIndex:levels.count-2]];
+    [trans funcDeclWithBody:imexpr.expr level:[levels lastObject]];
     if (fundecl.returnType) {
       if (![imexpr.type.actualType isSameType:[[array objectAtIndex:funcnum++] actualType]]) {
         [ErrorMessage printLineNumber:fundecl.lineNumber
