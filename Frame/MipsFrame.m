@@ -125,10 +125,19 @@ static TmpTempList *returnsink = nil;
   [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@"%@:\n",
                                                        name.name]
                                              tmpLabel:name]
-             atIndex:0];
-  [body addObject:[AssemOper operWithString:@"jr $`s0\n"
-                        destinationTempList:nil
-                             sourceTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:4]]]];
+             atIndex:0];  
+  if ([name.name isEqualToString:@"main"]) {
+    [body addObject:[AssemOper operWithString:@"li $`d0, 10\n"
+                          destinationTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:2]]
+                               sourceTempList:nil]];
+    [body addObject:[AssemOper operWithString:@"syscall\n"
+                          destinationTempList:nil
+                               sourceTempList:nil]];
+  } else {
+    [body addObject:[AssemOper operWithString:@"jr $`s0\n"
+    	                    destinationTempList:nil
+      	                       sourceTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:4]]]];
+  }
   return [Proc procWithArray:body];
 }
 - (NSArray *)codegenUsingStmts:(TreeStmtList *)aStmtList

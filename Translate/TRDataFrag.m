@@ -8,7 +8,7 @@
 
 #import "TRDataFrag.h"
 
-
+static NSMutableDictionary *dict = nil;
 @implementation TRDataFrag
 @synthesize string, label;
 - (id)initWithString:(NSString *)aString label:(TmpLabel *)aLabel
@@ -26,6 +26,12 @@
 }
 + (id)dataFragWithString:(NSString *)aString label:(TmpLabel *)aLabel
 {
-  return [[[TRDataFrag alloc] initWithString:aString label:aLabel] autorelease];
+  if (!dict)
+    dict = [[NSMutableDictionary alloc] init];
+  TRDataFrag *frag = [dict objectForKey:aString];
+  if (frag) return frag;
+  frag = [[[TRDataFrag alloc] initWithString:aString label:aLabel] autorelease];
+  [dict setObject:frag forKey:aString];
+  return frag;
 }
 @end
