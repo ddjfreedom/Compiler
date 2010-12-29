@@ -87,7 +87,7 @@
 - (TmpTemp *)munchConst:(TreeConst *)aConst
 {
   TmpTemp *r = [TmpTemp temp];
-  [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addi $`d0, $zero, %d\n",
+  [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"li $`d0, %d\n",
                                                      aConst.value]
                                 destinationTempList:[TmpTempList tempListWithTemp:r]
                                      sourceTempList:nil]];
@@ -108,7 +108,8 @@
       }
     case TreeMinus:
       if ([aBinop.right isMemberOfClass:[TreeConst class]]) {
-        [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addiu $`d0, $`s0, %d\n",
+        [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addiu $`d0, $`s0, %s%d\n",
+                                                           aBinop.op == TreePlus ? "" : "-",
                                                            ((TreeConst *)aBinop.right).value]
                                       destinationTempList:[TmpTempList tempListWithTemp:r]
                                            sourceTempList:[TmpTempList 
@@ -160,7 +161,7 @@
       	                            destinationTempList:[TmpTempList tempListWithTemp:[frame.argregs objectAtIndex:i]]
         	                               sourceTempList:[TmpTempList tempListWithTemp:[self munchExpr:args.head]]]];
     else
-      [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"addi $`d0, $zero, %d\n",
+      [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"li $`d0, %d\n",
                                                          ((TreeConst *)args.head).value]
                                     destinationTempList:[TmpTempList tempListWithTemp:[frame.argregs objectAtIndex:i]]
                                          sourceTempList:nil]];
