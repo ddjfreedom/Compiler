@@ -10,6 +10,7 @@
 #import "Graph.h"
 
 @implementation Node
+@synthesize key;
 @synthesize graph;
 @synthesize succs, preds;
 - (NSArray *)adj

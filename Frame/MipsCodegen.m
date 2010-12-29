@@ -211,7 +211,7 @@
 {
   TmpTemp *tmp = [self munchExpr:aMove.src];
   if ([aMove.dst isMemberOfClass:[TreeTemp class]])
-    [instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0"
+    [instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
                                            destinationTemp:((TreeTemp *)aMove.dst).temp
                                                 sourceTemp:tmp]];
   else if ([aMove.dst isMemberOfClass:[TreeMem class]]) {

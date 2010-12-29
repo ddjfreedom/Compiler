@@ -21,6 +21,7 @@
 - (void)insertLabel:(TmpLabel *)aLabel atIndex:(NSUInteger)index;
 - (TmpLabel *)lastLabel;
 - (TmpLabel *)labelAtIndex:(NSUInteger)index;
+- (NSArray *)labels;
 + (id)labelList;
 + (id)labelListWithLabel:(TmpLabel *)aLabel;
 + (id)labelListWithLabels:(TmpLabel *)firstLabel, ... NS_REQUIRES_NIL_TERMINATION;

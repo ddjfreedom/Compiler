@@ -19,6 +19,7 @@
 - (void)insertTemp:(TmpTemp *)aTemp atIndex:(NSUInteger)index;
 - (TmpTemp *)lastTemp;
 - (TmpTemp *)tempAtIndex:(NSUInteger)index;
+- (NSArray *)temps;
 + (id)tempList;
 + (id)tempListWithTemp:(TmpTemp *)aTemp;
 + (id)tempListWithTemps:(TmpTemp *)firstTemp, ... NS_REQUIRES_NIL_TERMINATION;

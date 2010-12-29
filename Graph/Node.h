@@ -19,7 +19,7 @@
 @property (readonly) Graph* graph;
 @property (readonly) NSMutableArray *succs, *preds;
 @property (readonly) NSArray *adj;
-@property (readonly) int inDegree, outDegree, degree;
+@property (readonly) int key, inDegree, outDegree, degree;
 - (id)initWithGraph:(Graph *)aGraph;
 - (BOOL)canGoToNode:(Node *)aNode;
 - (BOOL)isComingFromNode:(Node *)aNode;

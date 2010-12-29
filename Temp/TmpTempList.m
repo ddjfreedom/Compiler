@@ -42,6 +42,10 @@
     return [list objectAtIndex:index];
   return nil;
 }
+- (NSArray *)temps
+{
+  return list;
+}
 - (void)dealloc
 {
   [list release];

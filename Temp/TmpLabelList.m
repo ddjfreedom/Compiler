@@ -52,6 +52,10 @@
     return [list objectAtIndex:index];
   return nil;
 }
+- (NSArray *)labels
+{
+  return list;
+}
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
 {
   return [list countByEnumeratingWithState:state objects:stackbuf count:len];
