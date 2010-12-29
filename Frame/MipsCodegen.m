@@ -157,9 +157,9 @@
   TmpTempList *list = [TmpTempList tempList];
 	while (args) {
     if (![args.head isMemberOfClass:[TreeConst class]])
-  		[instructions addObject:[AssemOper operWithString:@"move $`d0, $`s0\n"
-      	                            destinationTempList:[TmpTempList tempListWithTemp:[frame.argregs objectAtIndex:i]]
-        	                               sourceTempList:[TmpTempList tempListWithTemp:[self munchExpr:args.head]]]];
+  		[instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
+                                             destinationTemp:[frame.argregs objectAtIndex:i]
+                                                  sourceTemp:[self munchExpr:args.head]]];
     else
       [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"li $`d0, %d\n",
                                                          ((TreeConst *)args.head).value]
@@ -211,9 +211,9 @@
 {
   TmpTemp *tmp = [self munchExpr:aMove.src];
   if ([aMove.dst isMemberOfClass:[TreeTemp class]])
-    [instructions addObject:[AssemOper operWithString:@"move $`d0, $`s0\n"
-                                  destinationTempList:[TmpTempList tempListWithTemp:((TreeTemp *)aMove.dst).temp]
-                                       sourceTempList:[TmpTempList tempListWithTemp:tmp]]];
+    [instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0"
+                                           destinationTemp:((TreeTemp *)aMove.dst).temp
+                                                sourceTemp:tmp]];
   else if ([aMove.dst isMemberOfClass:[TreeMem class]]) {
     TreeMem *dst = (TreeMem *)aMove.dst;
     if ([dst.expr isMemberOfClass:[TreeConst class]])
