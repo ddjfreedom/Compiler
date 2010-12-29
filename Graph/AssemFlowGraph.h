@@ -11,6 +11,8 @@
 
 @interface AssemFlowGraph : FlowGraph
 {
+  NSMutableArray *uses;
+  NSMutableArray *defs;
 	NSMutableDictionary *map;
 }
 - (id)initWithInstructions:(NSArray *)instrs;

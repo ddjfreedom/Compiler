@@ -31,7 +31,7 @@
     if (instr.targets) {
       for (TmpLabel *label in instr.targets)
         [self addEdgeFromNode:node toNode:[nodes objectAtIndex:[[labels objectForKey:label.name] intValue]]];
-    } else
+    } else if (i < size - 1)
       [self addEdgeFromNode:node toNode:[nodes objectAtIndex:i+1]];
   }
   [pool drain];
@@ -40,17 +40,23 @@
 {
   if (self = [super init]) {
     map = [[NSMutableDictionary alloc] init];
+    uses = [[NSMutableArray alloc] init];
+    defs = [[NSMutableArray alloc] init];
     [self constructGraphFromInstructions:instrs];
+    for (Node *node in nodes) {
+    	[uses addObject:[NSSet setWithArray:[((AssemInstr *)[map objectForKey:node]).use temps]]];
+      [defs addObject:[NSSet setWithArray:[((AssemInstr *)[map objectForKey:node]).def temps]]];
+    }
   }
   return self;
 }
-- (TmpTempList *)defOfNode:(Node *)aNode
+- (NSSet *)defOfNode:(Node *)aNode
 {
-  return ((AssemInstr *)[map objectForKey:aNode]).def;
+  return [defs objectAtIndex:aNode.key];
 }
-- (TmpTempList *)useOfNode:(Node *)aNode
+- (NSSet *)useOfNode:(Node *)aNode
 {
-  return ((AssemInstr *)[map objectForKey:aNode]).use;
+  return [uses objectAtIndex:aNode.key];
 }
 - (BOOL)iSMove:(Node *)aNode
 {

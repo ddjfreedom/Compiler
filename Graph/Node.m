@@ -47,6 +47,14 @@
 {
   return [preds indexOfObject:aNode] != NSNotFound;
 }
+- (BOOL)isEqual:(id)object
+{
+  if ([object isMemberOfClass:[Node class]]) {
+  	if (graph == ((Node *)object).graph && key == ((Node *)object).key)
+      return YES;
+  }
+  return NO;
+}
 - (id)copyWithZone:(NSZone *)zone
 {
   Node *newNode = [[Node allocWithZone:zone] init];

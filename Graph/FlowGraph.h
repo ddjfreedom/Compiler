@@ -14,7 +14,8 @@
 {
 
 }
-- (TmpTempList *)defOfNode:(Node *)aNode;
-- (TmpTempList *)useOfNode:(Node *)aNode;
-- (BOOL)iSMove:(Node *)aNode;
+- (NSSet *)defOfNode:(Node *)aNode;
+- (NSSet *)useOfNode:(Node *)aNode;
+- (BOOL)isMove:(Node *)aNode;
+- (void)print;
 @end

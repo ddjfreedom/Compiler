@@ -10,19 +10,28 @@
 
 
 @implementation FlowGraph
-- (TmpTempList *)defOfNode:(Node *)aNode
+- (NSSet *)defOfNode:(Node *)aNode
 {
   NSAssert(NO, @"defOfNode:, should not call this directly");
   return nil;
 }
-- (TmpTempList *)useOfNode:(Node *)aNode
+- (NSSet *)useOfNode:(Node *)aNode
 {
   NSAssert(NO, @"useOfNode:, should not call this directly");
   return nil;
 }
-- (BOOL)iSMove:(Node *)aNode
+- (BOOL)isMove:(Node *)aNode
 {
   NSAssert(NO, @"isMove:, should not call this directly");
   return NO;
+}
+- (void)print
+{
+  for (Node *node in nodes) {
+  	printf("%d ->", node.key);
+    for (Node *succ in node.succs)
+      printf(" %d", succ.key);
+    putchar('\n');
+  }
 }
 @end
