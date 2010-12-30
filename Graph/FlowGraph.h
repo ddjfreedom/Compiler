@@ -17,5 +17,4 @@
 - (NSSet *)defOfNode:(Node *)aNode;
 - (NSSet *)useOfNode:(Node *)aNode;
 - (BOOL)isMove:(Node *)aNode;
-- (void)print;
 @end

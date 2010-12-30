@@ -29,6 +29,10 @@
 {
   return preds.count + succs.count;
 }
+- (NSString *)description
+{
+  return [NSString stringWithFormat:@"%d <%x>", key, graph];
+}
 - (id)initWithGraph:(Graph *)aGraph
 {
   if (self = [super init]) {
@@ -47,22 +51,9 @@
 {
   return [preds indexOfObject:aNode] != NSNotFound;
 }
-- (BOOL)isEqual:(id)object
-{
-  if ([object isMemberOfClass:[Node class]]) {
-  	if (graph == ((Node *)object).graph && key == ((Node *)object).key)
-      return YES;
-  }
-  return NO;
-}
 - (id)copyWithZone:(NSZone *)zone
 {
-  Node *newNode = [[Node allocWithZone:zone] init];
-  newNode->graph = graph;
-  newNode->succs = [succs retain];
-  newNode->preds = [preds retain];
-  newNode->key = key;
-  return newNode;
+  return [self retain];
 }
 - (void)dealloc
 {

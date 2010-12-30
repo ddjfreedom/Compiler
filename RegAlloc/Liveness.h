@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TmpTempMap.h"
 #import "InterferenceGraph.h"
 #import "FlowGraph.h"
 
@@ -18,5 +19,6 @@
   NSMutableDictionary *tempnodeMap;
 }
 - (id)initWithFlowGraph:(FlowGraph *)aFlowGraph;
+- (void)printUsingTempMap:(id <TmpTempMap>)anObject;
 + (id)livenessWithFlowGraph:(FlowGraph *)aFlowGraph;
 @end

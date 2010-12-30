@@ -68,8 +68,10 @@ static BOOL *marked = NULL;
   [self dfsWithNode:[flowGraph.nodes lastObject]];
   free(marked);
   [self livenessAnalysisOnFlowGraph:flowGraph];
+  // add nodes
   for (Node *node in flowGraph.nodes) {
-    for (TmpTemp *temp in [flowGraph defOfNode:node]) {
+    for (TmpTemp *temp in [[flowGraph defOfNode:node] 
+                           setByAddingObjectsFromSet:[flowGraph useOfNode:node]]) {
       if (![tempnodeMap objectForKey:temp.name]) {
         newnode = [self addNode];
         [tempnodeMap setObject:newnode forKey:temp.name];
@@ -81,8 +83,9 @@ static BOOL *marked = NULL;
 	for (Node *node in flowGraph.nodes) {
   	for (TmpTemp *src in [flowGraph defOfNode:node]) {
     	for (TmpTemp *dst in [livemap objectForKey:node]) {
-      	[self addEdgeFromNode:[tempnodeMap objectForKey:src.name]
-                       toNode:[tempnodeMap objectForKey:dst.name]];
+        if (![src isEqual:dst])
+      		[self addEdgeFromNode:[tempnodeMap objectForKey:src.name]
+        	               toNode:[tempnodeMap objectForKey:dst.name]];
       }
     }
   }
@@ -107,9 +110,20 @@ static BOOL *marked = NULL;
 {
   return [tempnodeMap objectForKey:aTemp.name];
 }
+- (void)printUsingTempMap:(id <TmpTempMap>)anObject;
+{
+  for (Node *src in nodes)
+  	if ([[anObject tempMapWithTemp:[nodetempMap objectForKey:src]] rangeOfString:@"reg"].location != NSNotFound) {
+    	printf("%s:", [[anObject tempMapWithTemp:[nodetempMap objectForKey:src]] cStringUsingEncoding:NSASCIIStringEncoding]);
+  		for (Node *dst in src.adj) {
+      	printf(" %s", [[anObject tempMapWithTemp:[nodetempMap objectForKey:dst]] cStringUsingEncoding:NSASCIIStringEncoding]);
+    	}
+    	putchar('\n');
+  	}
+  putchar('\n');
+}
 - (void)dealloc
 {
-  [nodes release];
   [sortedNodes release];
   [livemap release];
   [nodetempMap release];

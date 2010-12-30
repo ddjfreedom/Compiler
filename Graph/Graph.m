@@ -45,6 +45,9 @@
   [src.succs removeObjectAtIndex:index];
   [dst.preds removeObject:src];
 }
+- (void)print
+{
+}
 - (void)dealloc
 {
   [nodes release];

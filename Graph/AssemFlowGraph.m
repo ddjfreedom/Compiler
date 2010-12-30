@@ -42,10 +42,12 @@
     map = [[NSMutableDictionary alloc] init];
     uses = [[NSMutableArray alloc] init];
     defs = [[NSMutableArray alloc] init];
+    AssemInstr *instr;
     [self constructGraphFromInstructions:instrs];
     for (Node *node in nodes) {
-    	[uses addObject:[NSSet setWithArray:[((AssemInstr *)[map objectForKey:node]).use temps]]];
-      [defs addObject:[NSSet setWithArray:[((AssemInstr *)[map objectForKey:node]).def temps]]];
+      instr = [map objectForKey:node];
+      [uses addObject:[NSSet setWithArray:[instr.use temps]]];
+      [defs addObject:[NSSet setWithArray:[instr.def temps]]];
     }
   }
   return self;
@@ -58,7 +60,7 @@
 {
   return [uses objectAtIndex:aNode.key];
 }
-- (BOOL)iSMove:(Node *)aNode
+- (BOOL)isMove:(Node *)aNode
 {
 	return [[map objectForKey:aNode] isMemberOfClass:[AssemMove class]];
 }

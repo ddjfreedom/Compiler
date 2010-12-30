@@ -19,4 +19,5 @@
 - (id)addNode;
 - (void)addEdgeFromNode:(Node *)src toNode:(Node *)dst;
 - (void)removeEdgeFromNode:(Node *)src toNode:(Node *)dst;
+- (void)print;
 @end
