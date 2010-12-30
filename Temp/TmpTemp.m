@@ -19,7 +19,7 @@ static int count = 0;
 - (id)init
 {
   if (self = [super init])
-    name = [[NSString alloc] initWithFormat:@"t%d", count++];
+    name = [[NSString alloc] initWithFormat:@"reg%d", count++];
   return self;
 }
 - (NSString *)description

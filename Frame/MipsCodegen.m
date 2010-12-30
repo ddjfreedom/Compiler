@@ -174,9 +174,11 @@
 {
   int i, c = frame.specialregs.count;
   TmpTempList *list = [TmpTempList tempList];
-	for (i = 2; i < c; ++i)
+	for (i = 2; i < c; ++i) // $v0, $v1, $ra
   	[list addTemp:[frame.specialregs objectAtIndex:i]];
-  for (TmpTemp *tmp in frame.callersave)
+  for (TmpTemp *tmp in frame.callersave) // $t0~$t9
+    [list addTemp:tmp];
+  for (TmpTemp *tmp in frame.argregs) // $a0~$a3
     [list addTemp:tmp];
   return list;
 }

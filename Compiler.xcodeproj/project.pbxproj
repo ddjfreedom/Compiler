@@ -15,6 +15,12 @@
 		470C375812B339500041DB00 /* TRFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375712B339500041DB00 /* TRFragment.m */; };
 		470C375B12B339C10041DB00 /* TRProcFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C375A12B339C10041DB00 /* TRProcFrag.m */; };
 		470C376B12B33ABD0041DB00 /* TRDataFrag.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C376A12B33ABD0041DB00 /* TRDataFrag.m */; };
+		471DFA0F12CC7BDF0069E8D0 /* AssemFlowGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA0A12CC7BDF0069E8D0 /* AssemFlowGraph.m */; };
+		471DFA1012CC7BDF0069E8D0 /* FlowGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA0B12CC7BDF0069E8D0 /* FlowGraph.m */; };
+		471DFA1112CC7BDF0069E8D0 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA0C12CC7BDF0069E8D0 /* Graph.m */; };
+		471DFA1212CC7BDF0069E8D0 /* InterferenceGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA0D12CC7BDF0069E8D0 /* InterferenceGraph.m */; };
+		471DFA1312CC7BDF0069E8D0 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA0E12CC7BDF0069E8D0 /* Node.m */; };
+		471DFA1A12CC7C090069E8D0 /* Liveness.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DFA1912CC7C090069E8D0 /* Liveness.m */; };
 		4721AE1D12AD0A1F00D37514 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE1C12AD0A1F00D37514 /* Frame.m */; };
 		4721AE2112AD0AF700D37514 /* TmpLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2012AD0AF700D37514 /* TmpLabel.m */; };
 		4721AE2612AD0C4E00D37514 /* TmpTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4721AE2512AD0C4E00D37514 /* TmpTemp.m */; };
@@ -171,6 +177,18 @@
 		470C375A12B339C10041DB00 /* TRProcFrag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRProcFrag.m; path = Translate/TRProcFrag.m; sourceTree = "<group>"; };
 		470C376912B33ABD0041DB00 /* TRDataFrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRDataFrag.h; path = Translate/TRDataFrag.h; sourceTree = "<group>"; };
 		470C376A12B33ABD0041DB00 /* TRDataFrag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRDataFrag.m; path = Translate/TRDataFrag.m; sourceTree = "<group>"; };
+		471DFA0512CC7BDF0069E8D0 /* AssemFlowGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssemFlowGraph.h; path = Graph/AssemFlowGraph.h; sourceTree = "<group>"; };
+		471DFA0612CC7BDF0069E8D0 /* FlowGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowGraph.h; path = Graph/FlowGraph.h; sourceTree = "<group>"; };
+		471DFA0712CC7BDF0069E8D0 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Graph.h; path = Graph/Graph.h; sourceTree = "<group>"; };
+		471DFA0812CC7BDF0069E8D0 /* InterferenceGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterferenceGraph.h; path = Graph/InterferenceGraph.h; sourceTree = "<group>"; };
+		471DFA0912CC7BDF0069E8D0 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Node.h; path = Graph/Node.h; sourceTree = "<group>"; };
+		471DFA0A12CC7BDF0069E8D0 /* AssemFlowGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssemFlowGraph.m; path = Graph/AssemFlowGraph.m; sourceTree = "<group>"; };
+		471DFA0B12CC7BDF0069E8D0 /* FlowGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowGraph.m; path = Graph/FlowGraph.m; sourceTree = "<group>"; };
+		471DFA0C12CC7BDF0069E8D0 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Graph.m; path = Graph/Graph.m; sourceTree = "<group>"; };
+		471DFA0D12CC7BDF0069E8D0 /* InterferenceGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterferenceGraph.m; path = Graph/InterferenceGraph.m; sourceTree = "<group>"; };
+		471DFA0E12CC7BDF0069E8D0 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Node.m; path = Graph/Node.m; sourceTree = "<group>"; };
+		471DFA1812CC7C090069E8D0 /* Liveness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Liveness.h; path = RegAlloc/Liveness.h; sourceTree = "<group>"; };
+		471DFA1912CC7C090069E8D0 /* Liveness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Liveness.m; path = RegAlloc/Liveness.m; sourceTree = "<group>"; };
 		4721AE1B12AD0A1F00D37514 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = Frame/Frame.h; sourceTree = "<group>"; };
 		4721AE1C12AD0A1F00D37514 /* Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Frame.m; path = Frame/Frame.m; sourceTree = "<group>"; };
 		4721AE1F12AD0AF700D37514 /* TmpLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TmpLabel.h; path = Temp/TmpLabel.h; sourceTree = "<group>"; };
@@ -459,6 +477,7 @@
 				47434B7512AE5CE500259061 /* Tree */,
 				474A7C4E12B9F67E00AF309B /* Canonical */,
 				4706F25C12BDC84700A36C7E /* Assem */,
+				471DFA0112CC7BC30069E8D0 /* Graph */,
 				4765CF3712A7819B00A20AD1 /* TypeChecker.h */,
 				4765CF3812A7819B00A20AD1 /* TypeChecker.m */,
 				477C185C12A8A9410045F672 /* ErrorMessage.h */,
@@ -510,6 +529,25 @@
 				4706F29712BDD45900A36C7E /* AssemOper.m */,
 			);
 			name = Assem;
+			sourceTree = "<group>";
+		};
+		471DFA0112CC7BC30069E8D0 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				471DFA0512CC7BDF0069E8D0 /* AssemFlowGraph.h */,
+				471DFA0612CC7BDF0069E8D0 /* FlowGraph.h */,
+				471DFA0712CC7BDF0069E8D0 /* Graph.h */,
+				471DFA0812CC7BDF0069E8D0 /* InterferenceGraph.h */,
+				471DFA0912CC7BDF0069E8D0 /* Node.h */,
+				471DFA0A12CC7BDF0069E8D0 /* AssemFlowGraph.m */,
+				471DFA0B12CC7BDF0069E8D0 /* FlowGraph.m */,
+				471DFA0C12CC7BDF0069E8D0 /* Graph.m */,
+				471DFA0D12CC7BDF0069E8D0 /* InterferenceGraph.m */,
+				471DFA0E12CC7BDF0069E8D0 /* Node.m */,
+				471DFA1812CC7C090069E8D0 /* Liveness.h */,
+				471DFA1912CC7C090069E8D0 /* Liveness.m */,
+			);
+			name = Graph;
 			sourceTree = "<group>";
 		};
 		4721AE1A12AD09C400D37514 /* Frames */ = {
@@ -1057,6 +1095,12 @@
 				4706F29812BDD45900A36C7E /* AssemOper.m in Sources */,
 				4706F2D812BDE07A00A36C7E /* MipsCodegen.m in Sources */,
 				47E19BF112BF180A006ED441 /* Proc.m in Sources */,
+				471DFA0F12CC7BDF0069E8D0 /* AssemFlowGraph.m in Sources */,
+				471DFA1012CC7BDF0069E8D0 /* FlowGraph.m in Sources */,
+				471DFA1112CC7BDF0069E8D0 /* Graph.m in Sources */,
+				471DFA1212CC7BDF0069E8D0 /* InterferenceGraph.m in Sources */,
+				471DFA1312CC7BDF0069E8D0 /* Node.m in Sources */,
+				471DFA1A12CC7C090069E8D0 /* Liveness.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

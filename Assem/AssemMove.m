@@ -30,6 +30,10 @@
 {
   return [TmpTempList tempListWithTemp:dst];
 }
+- (NSString *)description
+{
+  return assem;
+}
 - (void)dealloc
 {
   [assem release];

@@ -6,6 +6,7 @@ if [[ $# -eq 0 ]]; then
   do
     echo "$file"
 	  "$BUILD_DIR"/Compiler "$file"
+    echo
   done
 else
   "$BUILD_DIR"/Compiler $1

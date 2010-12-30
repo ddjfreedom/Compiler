@@ -104,9 +104,12 @@ static TmpTempList *returnsink = nil;
       case 3: return @"v1";
       case 4: return @"ra";
     }
-  } else if ((i = [argregs indexOfObject:temp]) != NSNotFound) {
+  } else if ((i = [argregs indexOfObject:temp]) != NSNotFound)
   	return [NSString stringWithFormat:@"a%d", i];
-  }
+  else if ((i = [callersave indexOfObject:temp]) != NSNotFound)
+    return [NSString stringWithFormat:@"t%d", i];
+  else if ((i = [calleesave indexOfObject:temp]) != NSNotFound)
+    return [NSString stringWithFormat:@"s%d", i];
   return temp.name;
 }
 - (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body
@@ -115,9 +118,10 @@ static TmpTempList *returnsink = nil;
 }
 - (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body
 {
-  [body addObject:[AssemOper operWithString:@""
-                        destinationTempList:nil
-                             sourceTempList:returnsink]];
+  if (![name.name isEqualToString:@"main"])
+  	[body addObject:[AssemOper operWithString:@""
+    	                    destinationTempList:nil
+      	                       sourceTempList:returnsink]];
   return body;
 }
 - (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body
@@ -160,7 +164,6 @@ static TmpTempList *returnsink = nil;
 + (void)initialize
 {
   if (self == [MipsFrame class]) {
-    printf("initialize\n");
     // $fp, $sp, $v0, $v1, $ra
     specialregs = [[NSArray alloc] initWithObjects:
                    [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], [TmpTemp temp], nil];

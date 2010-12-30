@@ -1,0 +1,2074 @@
+testcases/decl.tig
+testcases/decl.tig
+main:
+L1:
+addiu $reg35, $fp, -4
+move $reg34, $reg35
+li $a0, 40
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+li $a1, 10
+li $a2, 5
+jal initArray
+sw $reg27, 0($reg34)
+addiu $reg36, $fp, -8
+move $reg33, $reg36
+li $a0, 40
+jal malloc
+move $reg28, $v0
+move $a0, $reg28
+li $a1, 10
+li $a2, 5
+jal initArray
+sw $reg28, 0($reg33)
+addiu $reg37, $fp, -12
+move $reg32, $reg37
+li $a0, 40
+jal malloc
+move $reg30, $v0
+move $reg31, $reg30
+li $a0, 80
+jal malloc
+move $reg29, $v0
+move $a0, $reg29
+li $a1, 20
+li $a2, 5
+jal initArray
+move $a0, $reg31
+li $a1, 10
+move $a2, $reg29
+jal initArray
+sw $reg30, 0($reg32)
+j L0
+L0:
+li $v0, 10
+syscall
+reg35: fp
+reg34: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27
+reg27: reg34 fp a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg36: fp
+reg33: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg28
+reg28: fp reg33 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg37:
+reg32: a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg30 reg31 reg29
+reg30: reg32 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg29
+reg31: reg32 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg29
+reg29: reg32 reg30 reg31 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+
+
+testcases/for.tig
+testcases/for.tig
+Line 6: Warning: Loop variable i being assigned to
+Line 18: Error: break not in a loop
+
+testcases/merge.tig
+testcases/merge.tig
+main:
+L63:
+addiu $reg48, $fp, -4
+move $reg47, $reg48
+move $a0, $fp
+jal getchar
+move $reg46, $v0
+sw $reg46, 0($reg47)
+addiu $reg49, $fp, -8
+move $reg45, $reg49
+move $a0, $fp
+jal L28
+move $reg44, $v0
+sw $reg44, 0($reg45)
+addiu $reg50, $fp, -12
+move $reg43, $reg50
+addiu $reg51, $fp, -4
+move $reg42, $reg51
+move $a0, $fp
+jal getchar
+move $reg41, $v0
+sw $reg41, 0($reg42)
+move $a0, $fp
+jal L28
+sw $v0, 0($reg43)
+move $reg40, $fp
+move $a0, $fp
+lw $reg52, -8($fp)
+move $a1, $reg52
+lw $reg53, -12($fp)
+move $a2, $reg53
+jal L29
+move $reg39, $v0
+move $a0, $reg40
+move $a1, $reg39
+jal L31
+j L62
+L62:
+li $v0, 10
+syscall
+reg48: fp
+reg47: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg46
+reg46: reg47 fp
+reg49: fp
+reg45: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg44
+reg44: reg45 fp
+reg50: fp
+reg43: fp reg51 reg42 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg41
+reg51: reg43 fp
+reg42: reg43 fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg41
+reg41: reg43 fp reg42
+reg40: a0 reg52 a1 reg53 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg39
+reg52: a0 reg40 fp
+reg53: a0 reg40 a1
+reg39: reg40 a0
+
+L1:
+L65:
+move $a0, $fp
+lw $reg62, -4($fp)
+lw $reg61, -4($reg62)
+lw $reg60, -4($reg61)
+move $a1, $reg60
+jal ord
+move $reg57, $v0
+move $reg59, $reg57
+move $a0, $fp
+la $reg63, L3
+move $a1, $reg63
+jal ord
+move $reg58, $v0
+bge $reg59, $reg58, L5
+L6:
+li $reg64, 0
+move $reg27, $reg64
+L7:
+move $v0, $reg27
+j L64
+L5:
+li $reg65, 1
+move $reg28, $reg65
+move $a0, $fp
+lw $reg68, -4($fp)
+lw $reg67, -4($reg68)
+lw $reg66, -4($reg67)
+move $a1, $reg66
+jal ord
+move $reg54, $v0
+move $reg56, $reg54
+move $a0, $fp
+la $reg69, L4
+move $a1, $reg69
+jal ord
+move $reg55, $v0
+ble $reg56, $reg55, L8
+L9:
+li $reg70, 0
+move $reg28, $reg70
+L8:
+move $reg27, $reg28
+j L7
+L64:
+jr $ra
+reg62: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg61: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg60: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg57: s6 s0 s5 s7 sp s1 s3 s2 fp s4
+reg59: s6 sp s5 s0 s7 s1 s3 s2 fp s4 a0 reg63 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg58
+reg63: s7 s6 sp a0 fp s2 s1 s5 s0 s4 reg59 s3
+reg58: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg59 s3
+reg64: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg27: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg65: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg28: s6 sp s5 s0 s7 s1 s3 s2 fp s4 ra v1 a0 reg68 reg67 reg66 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg54 reg56 reg69 reg55
+reg68: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg28
+reg67: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg28
+reg66: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg28
+reg54: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg28
+reg56: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg28 a0 reg69 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg55
+reg69: s7 reg56 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg28
+reg55: s7 reg56 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg28
+reg70: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+L2:
+L16:
+move $reg76, $fp
+lw $reg79, -4($fp)
+lw $reg78, -4($reg79)
+lw $reg77, -4($reg78)
+move $a0, $reg77
+la $reg80, L10
+move $a1, $reg80
+jal strcmp
+move $reg75, $v0
+beq $reg75, $zero, L12
+L13:
+li $reg81, 1
+move $reg30, $reg81
+lw $reg84, -4($fp)
+lw $reg83, -4($reg84)
+lw $reg82, -4($reg83)
+move $a0, $reg82
+la $reg85, L11
+move $a1, $reg85
+jal strcmp
+move $reg74, $v0
+beq $reg74, $zero, L17
+L18:
+li $reg86, 0
+move $reg30, $reg86
+L17:
+move $reg29, $reg30
+L14:
+move $a0, $reg76
+move $a1, $reg29
+jal not
+move $reg73, $v0
+beq $reg73, $zero, L20
+L19:
+L15:
+j L66
+L12:
+li $reg87, 1
+move $reg29, $reg87
+j L14
+L67:
+L21:
+lw $reg90, -4($fp)
+lw $reg89, -4($reg90)
+addiu $reg88, $reg89, -4
+move $reg72, $reg88
+move $a0, $fp
+jal getchar
+move $reg71, $v0
+sw $reg71, 0($reg72)
+j L16
+L20:
+j L21
+L66:
+jr $ra
+reg76: s6 sp s5 s0 s7 s1 s3 s2 s4 reg79 reg78 reg77 a0 reg80 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg75 reg81 reg30 reg84 reg83 reg82 reg85 reg74 reg86 reg29 reg87
+reg79: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg78: s7 s6 sp fp s2 s1 s5 s0 s4 reg76 s3
+reg77: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg80: s7 s6 sp a0 fp s2 s1 s5 s0 reg76 s4 s3
+reg75: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg81: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg30: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 reg84 reg83 reg82 a0 reg85 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg74
+reg84: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 reg30
+reg83: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 reg30
+reg82: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 reg30
+reg85: s7 s6 sp a0 fp s2 s1 s5 s0 reg76 s4 s3 reg30
+reg74: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 reg30
+reg86: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg29: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3 a0
+reg73: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg87: s7 s6 sp fp s2 s1 s5 s0 reg76 s4 s3
+reg90: s6 sp s0 s5 s7 s2 s1 s3 fp s4
+reg89: s6 sp s0 s5 s7 s1 s3 fp s4 s2
+reg88: s6 sp s0 s5 s7 s1 s3 fp s4 s2
+reg72: s6 sp s5 s0 s7 s4 s1 s3 s2 fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg71
+reg71: s7 s6 sp fp reg72 s2 s1 s5 s0 s4 s3
+
+L0:
+L69:
+li $reg103, 0
+sw $reg103, -12($fp)
+move $a0, $fp
+jal L2
+lw $reg105, -8($fp)
+addiu $reg104, $reg105, 0
+move $reg102, $reg104
+move $a0, $fp
+lw $reg107, -4($fp)
+lw $reg106, -4($reg107)
+move $a1, $reg106
+jal L1
+move $reg101, $v0
+sw $reg101, 0($reg102)
+L24:
+move $reg100, $fp
+move $a0, $fp
+lw $reg109, -4($fp)
+lw $reg108, -4($reg109)
+move $a1, $reg108
+jal L1
+move $reg99, $v0
+move $a0, $reg100
+move $a1, $reg99
+jal not
+move $reg98, $v0
+beq $reg98, $zero, L26
+L25:
+L22:
+lw $reg110, -12($fp)
+move $v0, $reg110
+j L68
+L70:
+L27:
+addiu $reg111, $fp, -12
+move $reg97, $reg111
+li $reg113, 10
+lw $reg114, -12($fp)
+mult $reg114, $reg113
+mflo $reg112
+move $reg94, $reg112
+move $a0, $fp
+lw $reg116, -4($fp)
+lw $reg115, -4($reg116)
+move $a1, $reg115
+jal ord
+move $reg93, $v0
+addu $reg117, $reg94, $reg93
+move $reg96, $reg117
+move $a0, $fp
+la $reg118, L23
+move $a1, $reg118
+jal ord
+move $reg95, $v0
+subu $reg119, $reg96, $reg95
+sw $reg119, 0($reg97)
+lw $reg121, -4($fp)
+addiu $reg120, $reg121, -4
+move $reg92, $reg120
+move $a0, $fp
+jal getchar
+move $reg91, $v0
+sw $reg91, 0($reg92)
+j L24
+L26:
+j L27
+L68:
+jr $ra
+reg103: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg105: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg104: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg102: s6 sp s5 s7 s0 s1 s3 s2 fp s4 a0 reg107 reg106 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg101
+reg107: s7 s6 sp a0 reg102 fp s2 s1 s5 s0 s4 s3
+reg106: s7 s6 sp a0 reg102 fp s2 s1 s5 s0 s4 s3
+reg101: s7 s6 sp fp reg102 s2 s1 s5 s0 s4 s3
+reg100: s6 sp s5 s7 s0 s1 s3 s2 s4 a0 reg109 reg108 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg99
+reg109: s7 reg100 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg108: s7 reg100 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg99: s7 reg100 s6 sp fp s2 s1 s5 s0 s4 s3 a0
+reg98: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg110: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg111: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg97: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg113 reg114 reg112 reg94 a0 reg116 reg115 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg93 reg117 reg96 reg118 reg95 reg119
+reg113: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97 reg114
+reg114: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg113 reg97
+reg112: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97
+reg94: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97 a0 reg116 reg115 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg93
+reg116: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg94 reg97
+reg115: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg94 reg97
+reg93: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg94 reg97
+reg117: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97
+reg96: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97 a0 reg118 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg95
+reg118: s7 s6 sp a0 reg96 fp s2 s1 s5 s0 s4 s3 reg97
+reg95: s7 s6 sp reg96 fp s2 s1 s5 s0 s4 s3 reg97
+reg119: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg97
+reg121: s6 sp s0 s5 s7 s4 s1 s3 s2 fp
+reg120: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg92: s6 sp s5 s0 s7 s1 s3 s2 fp s4 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg91
+reg91: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg92
+
+L28:
+L72:
+addiu $reg127, $fp, -8
+move $reg124, $reg127
+li $a0, 4
+jal malloc
+move $reg31, $v0
+li $reg128, 0
+sw $reg128, 0($reg31)
+sw $reg31, 0($reg124)
+addiu $reg129, $fp, -12
+move $reg123, $reg129
+move $a0, $fp
+lw $reg130, -8($fp)
+move $a1, $reg130
+jal L0
+move $reg122, $v0
+sw $reg122, 0($reg123)
+lw $reg132, -8($fp)
+lw $reg131, 0($reg132)
+beq $reg131, $zero, L33
+L32:
+li $a0, 8
+jal malloc
+move $reg32, $v0
+lw $reg133, -12($fp)
+sw $reg133, 0($reg32)
+addiu $reg134, $reg32, 4
+move $reg126, $reg134
+move $a0, $fp
+jal L28
+move $reg125, $v0
+sw $reg125, 0($reg126)
+move $reg33, $reg32
+L34:
+move $v0, $reg33
+j L71
+L33:
+li $reg135, 0
+move $reg33, $reg135
+j L34
+L71:
+jr $ra
+reg127: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg124: s6 sp s5 s0 s7 s1 s3 s2 fp s4 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg31 reg128
+reg31: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg124 reg128
+reg128: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg31 reg124
+reg129: s6 sp s0 s5 s7 s4 s1 s3 s2 fp
+reg123: s6 sp s5 s0 s7 s1 s3 s2 fp s4 a0 reg130 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg122
+reg130: s7 s6 sp a0 fp s2 s1 s5 s0 s4 reg123 s3
+reg122: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg123 s3
+reg132: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg131: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg32: s6 sp s5 s7 s0 s1 s3 s2 fp s4 reg133 reg134 reg126 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg125
+reg133: s7 s6 sp fp reg32 s2 s1 s5 s0 s4 s3
+reg134: s7 s6 sp fp reg32 s2 s1 s5 s0 s4 s3
+reg126: s7 s6 sp fp reg32 s2 s1 s5 s0 s4 s3 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg125
+reg125: s7 s6 sp ra v1 reg126 fp reg32 s2 s1 s5 s0 s4 s3
+reg33: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg135: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+L29:
+L74:
+lw $reg140, -8($fp)
+beq $reg140, $zero, L41
+L42:
+lw $reg141, -12($fp)
+beq $reg141, $zero, L38
+L39:
+lw $reg143, -12($fp)
+lw $reg142, 0($reg143)
+lw $reg145, -8($fp)
+lw $reg144, 0($reg145)
+blt $reg144, $reg142, L35
+L36:
+li $a0, 8
+jal malloc
+move $reg35, $v0
+lw $reg147, -12($fp)
+lw $reg146, 0($reg147)
+sw $reg146, 0($reg35)
+addiu $reg148, $reg35, 4
+move $reg137, $reg148
+move $a0, $fp
+lw $reg149, -8($fp)
+move $a1, $reg149
+lw $reg151, -12($fp)
+lw $reg150, 4($reg151)
+move $a2, $reg150
+jal L29
+move $reg136, $v0
+sw $reg136, 0($reg137)
+move $reg38, $reg35
+L37:
+move $reg37, $reg38
+L40:
+move $reg36, $reg37
+L43:
+move $v0, $reg36
+j L73
+L41:
+lw $reg152, -12($fp)
+move $reg36, $reg152
+j L43
+L38:
+lw $reg153, -8($fp)
+move $reg37, $reg153
+j L40
+L35:
+li $a0, 8
+jal malloc
+move $reg34, $v0
+lw $reg155, -8($fp)
+lw $reg154, 0($reg155)
+sw $reg154, 0($reg34)
+addiu $reg156, $reg34, 4
+move $reg139, $reg156
+move $a0, $fp
+lw $reg158, -8($fp)
+lw $reg157, 4($reg158)
+move $a1, $reg157
+lw $reg159, -12($fp)
+move $a2, $reg159
+jal L29
+move $reg138, $v0
+sw $reg138, 0($reg139)
+move $reg38, $reg34
+j L37
+L73:
+jr $ra
+reg140: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg141: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg143: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg142: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg145 reg144
+reg145: s7 s6 sp fp s2 s1 s5 s0 reg142 s4 s3
+reg144: s7 s6 sp fp s2 s1 s5 s0 reg142 s4 s3
+reg35: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg147 reg146 reg148 reg137 a0 reg149 a1 reg151 reg150 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg136
+reg147: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg35
+reg146: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg35
+reg148: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg35
+reg137: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg35 a0 reg149 a1 reg151 reg150 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg136
+reg149: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg137 reg35
+reg151: s7 reg35 s6 sp a0 fp a1 s2 s1 s5 s0 s4 s3 reg137
+reg150: s7 s6 sp a0 fp a1 s2 s1 s5 s0 s4 s3 reg137 reg35
+reg136: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg137 reg35
+reg38: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg37: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg36: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg152: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg153: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg34: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg155 reg154 reg156 reg139 a0 reg158 reg157 a1 reg159 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg138
+reg155: s7 s6 sp fp reg34 s2 s1 s5 s0 s4 s3
+reg154: s7 s6 sp fp reg34 s2 s1 s5 s0 s4 s3
+reg156: s7 s6 sp fp reg34 s2 s1 s5 s0 s4 s3
+reg139: s7 s6 sp fp reg34 s2 s1 s5 s0 s4 s3 a0 reg158 reg157 a1 reg159 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg138
+reg158: s7 s6 sp a0 reg34 fp s2 reg139 s1 s5 s0 s4 s3
+reg157: s7 s6 sp a0 reg34 fp s2 reg139 s1 s5 s0 s4 s3
+reg159: s7 s6 sp a0 reg34 fp a1 s2 reg139 s1 s5 s0 s4 s3
+reg138: s7 s6 sp ra v1 reg34 fp s2 reg139 s1 s5 s0 s4 s3
+
+L44:
+L76:
+lw $reg165, -8($fp)
+bgtz $reg165, L46
+L47:
+L48:
+j L75
+L46:
+move $a0, $fp
+li $reg167, 10
+lw $reg168, -8($fp)
+div $reg168, $reg167
+mflo $reg166
+move $a1, $reg166
+jal L44
+move $reg164, $fp
+move $reg163, $fp
+li $reg171, 10
+li $reg173, 10
+lw $reg174, -8($fp)
+div $reg174, $reg173
+mflo $reg172
+mult $reg172, $reg171
+mflo $reg170
+lw $reg175, -8($fp)
+subu $reg169, $reg175, $reg170
+move $reg162, $reg169
+move $a0, $fp
+la $reg176, L45
+move $a1, $reg176
+jal ord
+move $reg161, $v0
+move $a0, $reg163
+addu $reg177, $reg162, $reg161
+move $a1, $reg177
+jal chr
+move $reg160, $v0
+move $a0, $reg164
+move $a1, $reg160
+jal print
+j L48
+L75:
+jr $ra
+reg165: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg167: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg168
+reg168: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg167
+reg166: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg164: s6 sp s5 s0 s7 s1 s3 s2 s4 reg163 reg171 reg173 reg174 reg172 reg170 reg175 reg169 reg162 a0 reg176 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg161 reg177 reg160
+reg163: s7 s6 sp s2 s1 s5 s0 s4 reg164 s3 reg171 reg173 reg174 reg172 reg170 reg175 reg169 reg162 a0 reg176 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg161
+reg171: s7 s6 sp fp s2 s1 s5 s0 reg164 s4 s3 reg163 reg173 reg174 reg172
+reg173: s7 s6 sp fp reg171 s2 s1 s5 s0 reg164 s4 s3 reg163 reg174
+reg174: s7 reg173 s6 sp fp reg171 s2 s1 s5 s0 reg164 s4 s3 reg163
+reg172: s7 s6 sp fp reg171 s2 s1 s5 s0 reg164 s4 s3 reg163
+reg170: s7 s6 sp fp s2 s1 s5 s0 s4 reg164 s3 reg163 reg175
+reg175: s7 s6 sp reg170 fp s2 s1 s5 s0 reg164 s4 s3 reg163
+reg169: s7 s6 sp fp s2 s1 s5 s0 s4 reg164 s3 reg163
+reg162: s7 s6 sp fp s2 s1 s5 s0 s4 reg164 s3 reg163 a0 reg176 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg161
+reg176: s7 s6 sp a0 fp s2 s1 s5 s0 s4 reg164 s3 reg162 reg163
+reg161: s7 s6 sp fp s2 s1 s5 s0 reg164 s4 s3 reg162 reg163 a0
+reg177: s7 s6 sp a0 fp s2 s1 s5 s0 reg164 s4 s3
+reg160: s7 s6 sp fp s2 s1 s5 s0 reg164 s4 s3 a0
+
+L30:
+L78:
+lw $reg178, -8($fp)
+bltz $reg178, L54
+L55:
+lw $reg179, -8($fp)
+bgtz $reg179, L51
+L52:
+move $a0, $fp
+la $reg180, L50
+move $a1, $reg180
+jal print
+L53:
+L56:
+j L77
+L54:
+move $a0, $fp
+la $reg181, L49
+move $a1, $reg181
+jal print
+move $a0, $fp
+lw $reg183, -8($fp)
+li $reg184, 0
+subu $reg182, $reg184, $reg183
+move $a1, $reg182
+jal L44
+j L56
+L51:
+move $a0, $fp
+lw $reg185, -8($fp)
+move $a1, $reg185
+jal L44
+j L53
+L77:
+jr $ra
+reg178: s6 sp s0 s5 s7 s4 s1 s3 fp s2
+reg179: s6 sp s0 s5 s7 s1 s3 fp s2 s4
+reg180: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg181: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg183: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg184
+reg184: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3 reg183
+reg182: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg185: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+
+L31:
+L80:
+lw $reg186, -8($fp)
+beq $reg186, $zero, L59
+L60:
+move $a0, $fp
+lw $reg188, -8($fp)
+lw $reg187, 0($reg188)
+move $a1, $reg187
+jal L30
+move $a0, $fp
+la $reg189, L58
+move $a1, $reg189
+jal print
+move $a0, $fp
+lw $reg191, -8($fp)
+lw $reg190, 4($reg191)
+move $a1, $reg190
+jal L31
+L61:
+j L79
+L59:
+move $a0, $fp
+la $reg192, L57
+move $a1, $reg192
+jal print
+j L61
+L79:
+jr $ra
+reg186: s6 sp s0 s5 s7 s4 s1 s3 s2 fp
+reg188: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg187: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg189: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg191: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg190: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg192: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+
+
+testcases/queens.tig
+testcases/queens.tig
+main:
+L31:
+li $reg36, 8
+sw $reg36, -4($fp)
+addiu $reg37, $fp, -8
+move $reg35, $reg37
+li $reg39, 4
+lw $reg40, -4($fp)
+mult $reg40, $reg39
+mflo $reg38
+move $a0, $reg38
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+lw $reg41, -4($fp)
+move $a1, $reg41
+li $a2, 0
+jal initArray
+sw $reg27, 0($reg35)
+addiu $reg42, $fp, -12
+move $reg34, $reg42
+li $reg44, 4
+lw $reg45, -4($fp)
+mult $reg45, $reg44
+mflo $reg43
+move $a0, $reg43
+jal malloc
+move $reg28, $v0
+move $a0, $reg28
+lw $reg46, -4($fp)
+move $a1, $reg46
+li $a2, 0
+jal initArray
+sw $reg28, 0($reg34)
+addiu $reg47, $fp, -16
+move $reg33, $reg47
+li $reg49, 4
+lw $reg52, -4($fp)
+lw $reg53, -4($fp)
+addu $reg51, $reg53, $reg52
+addiu $reg50, $reg51, -1
+mult $reg50, $reg49
+mflo $reg48
+move $a0, $reg48
+jal malloc
+move $reg29, $v0
+move $a0, $reg29
+lw $reg56, -4($fp)
+lw $reg57, -4($fp)
+addu $reg55, $reg57, $reg56
+addiu $reg54, $reg55, -1
+move $a1, $reg54
+li $a2, 0
+jal initArray
+sw $reg29, 0($reg33)
+addiu $reg58, $fp, -20
+move $reg32, $reg58
+li $reg60, 4
+lw $reg63, -4($fp)
+lw $reg64, -4($fp)
+addu $reg62, $reg64, $reg63
+addiu $reg61, $reg62, -1
+mult $reg61, $reg60
+mflo $reg59
+move $a0, $reg59
+jal malloc
+move $reg30, $v0
+move $a0, $reg30
+lw $reg67, -4($fp)
+lw $reg68, -4($fp)
+addu $reg66, $reg68, $reg67
+addiu $reg65, $reg66, -1
+move $a1, $reg65
+li $a2, 0
+jal initArray
+sw $reg30, 0($reg32)
+move $a0, $fp
+li $a1, 0
+jal L1
+j L30
+L30:
+li $v0, 10
+syscall
+reg36: fp
+reg37: fp
+reg35: fp reg39 reg40 reg38 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27 reg41
+reg39: reg35 fp reg40
+reg40: reg35 fp reg39
+reg38: reg35 fp
+reg27: reg35 fp reg41 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg41: reg35 a0 reg27 fp
+reg42: fp
+reg34: fp reg44 reg45 reg43 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg28 reg46
+reg44: reg34 fp reg45
+reg45: reg44 reg34 fp
+reg43: reg34 fp
+reg28: reg34 fp reg46 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg46: reg34 a0 fp reg28
+reg47: fp
+reg33: fp reg49 reg52 reg53 reg51 reg50 reg48 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg29 reg56 reg57 reg55 reg54
+reg49: reg33 fp reg52 reg53 reg51 reg50
+reg52: reg33 reg49 fp reg53
+reg53: reg52 reg33 reg49 fp
+reg51: reg33 reg49 fp
+reg50: reg33 reg49 fp
+reg48: fp reg33
+reg29: reg33 fp reg56 reg57 reg55 reg54 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg56: reg33 a0 reg29 fp reg57
+reg57: reg33 a0 reg29 fp reg56
+reg55: reg33 a0 reg29 fp
+reg54: reg33 a0 reg29 fp
+reg58: fp
+reg32: fp reg60 reg63 reg64 reg62 reg61 reg59 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg30 reg67 reg68 reg66 reg65
+reg60: reg32 fp reg63 reg64 reg62 reg61
+reg63: reg32 fp reg60 reg64
+reg64: reg32 fp reg60 reg63
+reg62: reg60 fp reg32
+reg61: reg32 reg60 fp
+reg59: reg32 fp
+reg30: reg32 fp reg67 reg68 reg66 reg65 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg67: a0 reg30 fp reg32 reg68
+reg68: reg32 a0 reg67 fp reg30
+reg66: a0 fp reg30 reg32
+reg65: reg32 a0 reg30 fp
+
+L0:
+L33:
+li $reg70, 0
+sw $reg70, -8($fp)
+lw $reg73, -4($fp)
+lw $reg72, -4($reg73)
+addiu $reg71, $reg72, -1
+sw $reg71, -20($fp)
+lw $reg74, -20($fp)
+lw $reg75, -8($fp)
+ble $reg75, $reg74, L12
+L2:
+move $a0, $fp
+la $reg76, L14
+move $a1, $reg76
+jal print
+j L32
+L12:
+li $reg77, 0
+sw $reg77, -12($fp)
+lw $reg80, -4($fp)
+lw $reg79, -4($reg80)
+addiu $reg78, $reg79, -1
+sw $reg78, -16($fp)
+lw $reg81, -16($fp)
+lw $reg82, -12($fp)
+ble $reg82, $reg81, L9
+L3:
+move $a0, $fp
+la $reg83, L11
+move $a1, $reg83
+jal print
+lw $reg84, -20($fp)
+lw $reg85, -8($fp)
+bge $reg85, $reg84, L2
+L13:
+lw $reg87, -8($fp)
+addiu $reg86, $reg87, 1
+sw $reg86, -8($fp)
+j L12
+L9:
+move $reg69, $fp
+lw $reg88, -12($fp)
+li $reg92, 4
+lw $reg93, -8($fp)
+mult $reg93, $reg92
+mflo $reg91
+lw $reg95, -4($fp)
+lw $reg94, -12($reg95)
+addu $reg90, $reg94, $reg91
+lw $reg89, 0($reg90)
+beq $reg89, $reg88, L6
+L7:
+la $reg96, L5
+move $reg31, $reg96
+L8:
+move $a0, $reg69
+move $a1, $reg31
+jal print
+lw $reg97, -16($fp)
+lw $reg98, -12($fp)
+bge $reg98, $reg97, L3
+L10:
+lw $reg100, -12($fp)
+addiu $reg99, $reg100, 1
+sw $reg99, -12($fp)
+j L9
+L6:
+la $reg101, L4
+move $reg31, $reg101
+j L8
+L32:
+jr $ra
+reg70: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg73: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg72: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg71: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg74: s6 sp s5 s0 s7 s4 s1 s3 s2 fp reg75
+reg75: s7 s6 sp fp s2 reg74 s1 s5 s0 s4 s3
+reg76: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg77: s6 sp s0 s5 s7 s1 s3 fp s2 s4
+reg80: s6 s0 s5 s7 sp s1 s3 fp s2 s4
+reg79: s6 sp s0 s5 s7 s1 s3 fp s2 s4
+reg78: s6 sp s0 s5 s7 s4 s1 s3 s2 fp
+reg81: s6 sp s5 s7 s0 s1 s3 s2 fp s4 reg82
+reg82: s7 s6 sp fp reg81 s2 s1 s5 s0 s4 s3
+reg83: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg84: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg85
+reg85: s7 s6 reg84 sp fp s2 s1 s5 s0 s4 s3
+reg87: s6 sp s0 s5 s7 s4 s1 s3 fp s2
+reg86: s6 sp s0 s5 s7 s1 s3 fp s2 s4
+reg69: s6 sp s5 s0 s7 s1 s3 s2 s4 reg88 reg92 reg93 reg91 reg95 reg94 reg90 reg89 reg96 reg31 reg101
+reg88: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg69 reg92 reg93 reg91 reg95 reg94 reg90 reg89
+reg92: s7 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69 reg93
+reg93: s7 s6 reg92 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69
+reg91: s7 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69 reg95 reg94
+reg95: s7 reg91 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69
+reg94: s7 reg91 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69
+reg90: s7 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69
+reg89: s7 s6 sp reg88 fp s2 s1 s5 s0 s4 s3 reg69
+reg96: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg69
+reg31: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg69 a0
+reg97: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg98
+reg98: s7 s6 sp fp s2 s1 s5 s0 reg97 s4 s3
+reg100: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg99: s6 sp s0 s5 s7 s1 s3 s2 fp s4
+reg101: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg69
+
+L1:
+L35:
+lw $reg103, -4($fp)
+lw $reg102, -4($reg103)
+lw $reg104, -8($fp)
+beq $reg104, $reg102, L27
+L28:
+li $reg105, 0
+sw $reg105, -12($fp)
+lw $reg108, -4($fp)
+lw $reg107, -4($reg108)
+addiu $reg106, $reg107, -1
+sw $reg106, -16($fp)
+lw $reg109, -16($fp)
+lw $reg110, -12($fp)
+ble $reg110, $reg109, L25
+L15:
+L29:
+j L34
+L27:
+move $a0, $fp
+jal L0
+j L29
+L25:
+li $reg114, 4
+lw $reg115, -12($fp)
+mult $reg115, $reg114
+mflo $reg113
+lw $reg117, -4($fp)
+lw $reg116, -8($reg117)
+addu $reg112, $reg116, $reg113
+lw $reg111, 0($reg112)
+beq $reg111, $zero, L16
+L17:
+L20:
+L23:
+L24:
+lw $reg118, -16($fp)
+lw $reg119, -12($fp)
+bge $reg119, $reg118, L15
+L26:
+lw $reg121, -12($fp)
+addiu $reg120, $reg121, 1
+sw $reg120, -12($fp)
+j L25
+L16:
+li $reg125, 4
+lw $reg127, -8($fp)
+lw $reg128, -12($fp)
+addu $reg126, $reg128, $reg127
+mult $reg126, $reg125
+mflo $reg124
+lw $reg130, -4($fp)
+lw $reg129, -16($reg130)
+addu $reg123, $reg129, $reg124
+lw $reg122, 0($reg123)
+bne $reg122, $zero, L20
+L19:
+li $reg134, 4
+lw $reg136, -8($fp)
+lw $reg138, -12($fp)
+addiu $reg137, $reg138, 7
+subu $reg135, $reg137, $reg136
+mult $reg135, $reg134
+mflo $reg133
+lw $reg140, -4($fp)
+lw $reg139, -20($reg140)
+addu $reg132, $reg139, $reg133
+lw $reg131, 0($reg132)
+bne $reg131, $zero, L23
+L22:
+li $reg141, 1
+li $reg144, 4
+lw $reg145, -12($fp)
+mult $reg145, $reg144
+mflo $reg143
+lw $reg147, -4($fp)
+lw $reg146, -8($reg147)
+addu $reg142, $reg146, $reg143
+sw $reg141, 0($reg142)
+li $reg148, 1
+li $reg151, 4
+lw $reg153, -8($fp)
+lw $reg154, -12($fp)
+addu $reg152, $reg154, $reg153
+mult $reg152, $reg151
+mflo $reg150
+lw $reg156, -4($fp)
+lw $reg155, -16($reg156)
+addu $reg149, $reg155, $reg150
+sw $reg148, 0($reg149)
+li $reg157, 1
+li $reg160, 4
+lw $reg162, -8($fp)
+lw $reg164, -12($fp)
+addiu $reg163, $reg164, 7
+subu $reg161, $reg163, $reg162
+mult $reg161, $reg160
+mflo $reg159
+lw $reg166, -4($fp)
+lw $reg165, -20($reg166)
+addu $reg158, $reg165, $reg159
+sw $reg157, 0($reg158)
+lw $reg167, -12($fp)
+li $reg170, 4
+lw $reg171, -8($fp)
+mult $reg171, $reg170
+mflo $reg169
+lw $reg173, -4($fp)
+lw $reg172, -12($reg173)
+addu $reg168, $reg172, $reg169
+sw $reg167, 0($reg168)
+move $a0, $fp
+lw $reg175, -8($fp)
+addiu $reg174, $reg175, 1
+move $a1, $reg174
+jal L1
+li $reg176, 0
+li $reg179, 4
+lw $reg180, -12($fp)
+mult $reg180, $reg179
+mflo $reg178
+lw $reg182, -4($fp)
+lw $reg181, -8($reg182)
+addu $reg177, $reg181, $reg178
+sw $reg176, 0($reg177)
+li $reg183, 0
+li $reg186, 4
+lw $reg188, -8($fp)
+lw $reg189, -12($fp)
+addu $reg187, $reg189, $reg188
+mult $reg187, $reg186
+mflo $reg185
+lw $reg191, -4($fp)
+lw $reg190, -16($reg191)
+addu $reg184, $reg190, $reg185
+sw $reg183, 0($reg184)
+li $reg192, 0
+li $reg195, 4
+lw $reg197, -8($fp)
+lw $reg199, -12($fp)
+addiu $reg198, $reg199, 7
+subu $reg196, $reg198, $reg197
+mult $reg196, $reg195
+mflo $reg194
+lw $reg201, -4($fp)
+lw $reg200, -20($reg201)
+addu $reg193, $reg200, $reg194
+sw $reg192, 0($reg193)
+j L24
+L36:
+L18:
+j L19
+L37:
+j L18
+L38:
+L21:
+j L22
+L39:
+j L21
+L34:
+jr $ra
+reg103: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg102: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg104
+reg104: s7 s6 sp ra v1 fp s2 reg102 s1 s5 s0 s4 s3 v0
+reg105: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg108: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg107: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg106: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg109: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg110
+reg110: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg109 s3 v0
+reg114: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg115
+reg115: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg114 s3 v0
+reg113: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg117 reg116
+reg117: s7 s6 sp ra v1 fp reg113 s2 s1 s5 s0 s4 s3 v0
+reg116: s7 s6 sp ra v1 fp reg113 s2 s1 s5 s0 s4 s3 v0
+reg112: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg111: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg118: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg119
+reg119: s7 s6 sp ra reg118 v1 fp s2 s1 s5 s0 s4 s3 v0
+reg121: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg120: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg125: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg127 reg128 reg126
+reg127: s7 s6 reg125 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg128
+reg128: s7 s6 reg125 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg127 v0
+reg126: s7 s6 reg125 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg124: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg130 reg129
+reg130: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg124 v0
+reg129: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg124 v0
+reg123: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg122: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg134: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg136 reg138 reg137 reg135
+reg136: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg134 s3 v0 reg138 reg137
+reg138: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg134 s3 reg136 v0
+reg137: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg134 s3 reg136 v0
+reg135: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg134 s3 v0
+reg133: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg140 reg139
+reg140: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg133 v0
+reg139: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg133 v0
+reg132: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg131: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0
+reg141: s6 sp s5 s7 s0 s1 s3 s2 fp s4 reg144 reg145 reg143 reg147 reg146 reg142
+reg144: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3 reg145
+reg145: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3 reg144
+reg143: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3 reg147 reg146
+reg147: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3 reg143
+reg146: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3 reg143
+reg142: s7 s6 sp fp reg141 s2 s1 s5 s0 s4 s3
+reg148: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg151 reg153 reg154 reg152 reg150 reg156 reg155 reg149
+reg151: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg148 reg153 reg154 reg152
+reg153: s7 s6 sp fp s2 s1 s5 s0 s4 reg151 s3 reg148 reg154
+reg154: s7 s6 sp fp s2 s1 s5 s0 reg151 s4 s3 reg148 reg153
+reg152: s7 s6 sp fp s2 s1 s5 s0 s4 reg151 s3 reg148
+reg150: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg148 reg156 reg155
+reg156: s7 s6 sp fp s2 reg150 s1 s5 s0 s4 s3 reg148
+reg155: s7 s6 sp fp s2 reg150 s1 s5 s0 s4 s3 reg148
+reg149: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg148
+reg157: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg160 reg162 reg164 reg163 reg161 reg159 reg166 reg165 reg158
+reg160: s7 s6 sp fp s2 s1 s5 s0 reg157 s4 s3 reg162 reg164 reg163 reg161
+reg162: s7 s6 sp fp reg160 s2 s1 s5 s0 reg157 s4 s3 reg164 reg163
+reg164: s7 s6 sp fp reg160 s2 s1 s5 s0 reg157 s4 s3 reg162
+reg163: s7 s6 sp fp reg160 s2 s1 s5 s0 reg157 s4 s3 reg162
+reg161: s7 s6 sp fp reg160 s2 s1 s5 s0 reg157 s4 s3
+reg159: s7 s6 sp fp s2 s1 s5 s0 reg157 s4 s3 reg166 reg165
+reg166: s7 s6 sp fp reg159 s2 s1 s5 s0 reg157 s4 s3
+reg165: s7 s6 sp fp reg159 s2 s1 s5 s0 reg157 s4 s3
+reg158: s7 s6 sp fp s2 s1 s5 s0 reg157 s4 s3
+reg167: s6 sp s5 s0 s7 s1 s3 s2 fp s4 reg170 reg171 reg169 reg173 reg172 reg168
+reg170: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg167 reg171
+reg171: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg167 reg170
+reg169: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg167 reg173 reg172
+reg173: s7 s6 reg169 sp fp s2 s1 s5 s0 s4 s3 reg167
+reg172: s7 s6 reg169 sp fp s2 s1 s5 s0 s4 s3 reg167
+reg168: s7 s6 sp fp s2 s1 s5 s0 s4 s3 reg167
+reg175: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg174: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg176: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg179 reg180 reg178 reg182 reg181 reg177
+reg179: s7 s6 sp ra v1 fp reg176 s2 s1 s5 s0 s4 s3 v0 reg180
+reg180: s7 s6 sp ra v1 fp reg176 s2 reg179 s1 s5 s0 s4 s3 v0
+reg178: s7 s6 sp ra v1 fp reg176 s2 s1 s5 s0 s4 s3 v0 reg182 reg181
+reg182: s7 s6 sp ra v1 reg176 fp s2 s1 s5 s0 s4 s3 reg178 v0
+reg181: s7 s6 sp ra v1 fp reg176 s2 s1 s5 s0 s4 s3 reg178 v0
+reg177: s7 s6 sp ra v1 reg176 fp s2 s1 s5 s0 s4 s3 v0
+reg183: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg186 reg188 reg189 reg187 reg185 reg191 reg190 reg184
+reg186: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg188 reg189 reg187
+reg188: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg186 reg189
+reg189: s7 reg188 s6 sp ra v1 fp reg183 s2 s1 s5 s0 s4 s3 v0 reg186
+reg187: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg186
+reg185: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg191 reg190
+reg191: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg185 v0
+reg190: s7 s6 reg183 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg185 v0
+reg184: s7 s6 sp ra v1 fp reg183 s2 s1 s5 s0 s4 s3 v0
+reg192: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg195 reg197 reg199 reg198 reg196 reg194 reg201 reg200 reg193
+reg195: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg192 reg197 reg199 reg198 reg196
+reg197: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg195 v0 reg192 reg199 reg198
+reg199: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg195 reg197 v0 reg192
+reg198: s7 reg197 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg195 v0 reg192
+reg196: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg195 v0 reg192
+reg194: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg192 reg201 reg200
+reg201: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg194 s3 v0 reg192
+reg200: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 reg194 s3 v0 reg192
+reg193: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 v0 reg192
+
+
+testcases/stringtest.tig
+testcases/stringtest.tig
+Line 5: Warning: \r Unrecognized escape sequence
+Line 5: Warning: \f Unrecognized escape sequence
+Line 10: Warning: \128 Unrecognized escape sequence(128 larger than 0x7f)
+Line 11: Warning: \565 Unrecognized escape sequence(565 larger than 0x7f)
+Line 12: Warning: \65 Unrecognized escape sequence(should be exactly 3 digits)
+Line 18: Warning: Unclosed String
+main:
+L15:
+la $reg27, L0
+la $reg28, L1
+la $reg29, L2
+la $reg30, L3
+la $reg31, L4
+la $reg32, L5
+la $reg33, L6
+la $reg34, L7
+la $reg35, L8
+la $reg36, L9
+la $reg37, L10
+la $reg38, L11
+la $reg39, L12
+la $reg40, L13
+j L14
+L14:
+li $v0, 10
+syscall
+reg27:
+reg28:
+reg29:
+reg30:
+reg31:
+reg32:
+reg33:
+reg34:
+reg35:
+reg36:
+reg37:
+reg38:
+reg39:
+reg40:
+
+
+testcases/test1.tig
+testcases/test1.tig
+main:
+L1:
+addiu $reg29, $fp, -4
+move $reg28, $reg29
+li $a0, 40
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+li $a1, 10
+li $a2, 0
+jal initArray
+sw $reg27, 0($reg28)
+j L0
+L0:
+li $v0, 10
+syscall
+reg29:
+reg28: a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27
+reg27: reg28 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+
+
+testcases/test10.tig
+testcases/test10.tig
+Line 2: Error: Body of while expression return a value
+
+testcases/test11.tig
+testcases/test11.tig
+Line 2: Error: Type mismatch. Expected int
+Line 2: Error: lower bound type and upper bound type mismatch
+
+testcases/test12.tig
+testcases/test12.tig
+main:
+L4:
+li $reg27, 0
+sw $reg27, -4($fp)
+li $reg28, 0
+sw $reg28, -8($fp)
+li $reg29, 100
+sw $reg29, -12($fp)
+lw $reg30, -12($fp)
+lw $reg31, -8($fp)
+ble $reg31, $reg30, L1
+L0:
+j L3
+L1:
+lw $reg33, -4($fp)
+addiu $reg32, $reg33, 1
+sw $reg32, -4($fp)
+lw $reg34, -12($fp)
+lw $reg35, -8($fp)
+bge $reg35, $reg34, L0
+L2:
+lw $reg37, -8($fp)
+addiu $reg36, $reg37, 1
+sw $reg36, -8($fp)
+j L1
+L3:
+li $v0, 10
+syscall
+reg27: fp
+reg28: fp
+reg29: fp
+reg30: fp reg31
+reg31: fp reg30
+reg33: fp
+reg32: fp
+reg34: fp reg35
+reg35: fp reg34
+reg37: fp
+reg36: fp
+
+
+testcases/test13.tig
+testcases/test13.tig
+Line 3: Error: Comparison of incompatible types
+
+testcases/test14.tig
+testcases/test14.tig
+Line 12: Error: Type mismatch. Two operands type differ
+
+testcases/test15.tig
+testcases/test15.tig
+Line 3: Error: If-then return a value
+
+testcases/test16.tig
+testcases/test16.tig
+Line 4: Error: Type definition cycle detected
+Line 5: Error: Type definition cycle detected
+
+testcases/test17.tig
+testcases/test17.tig
+Line 4: Error: Undefined type treelist
+
+testcases/test18.tig
+testcases/test18.tig
+Line 5: Error: Undefined function do_nothing2
+
+testcases/test19.tig
+testcases/test19.tig
+Line 8: Error: Undefined variable: a
+Line 8: Error: Formal parameters and actual parameters type mismatch
+
+testcases/test2.tig
+testcases/test2.tig
+main:
+L1:
+addiu $reg29, $fp, -4
+move $reg28, $reg29
+li $a0, 40
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+li $a1, 10
+li $a2, 0
+jal initArray
+sw $reg27, 0($reg28)
+lw $reg30, -4($fp)
+j L0
+L0:
+li $v0, 10
+syscall
+reg29: fp
+reg28: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27
+reg27: fp reg28 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg30:
+
+
+testcases/test20.tig
+testcases/test20.tig
+Line 3: Error: Undefined variable: i
+Line 3: Error: Type mismatch. Expected int
+
+testcases/test21.tig
+testcases/test21.tig
+Line 8: Error: Type mismatch. Expected int
+Line 5: Error: Procedure nfactor returns a value
+
+testcases/test22.tig
+testcases/test22.tig
+Line 7: Error: Variable doesn't have field nam
+Line 7: Error: Lvalue and rvalue type mismatch
+
+testcases/test23.tig
+testcases/test23.tig
+Line 7: Error: Lvalue and rvalue type mismatch
+Line 8: Error: Lvalue and rvalue type mismatch
+
+testcases/test24.tig
+testcases/test24.tig
+Line 5: Error: Variable is not an array.
+
+testcases/test25.tig
+testcases/test25.tig
+Line 5: Error: Variable is not a record
+
+testcases/test26.tig
+testcases/test26.tig
+Line 3: Error: Type mismatch. Expected int
+
+testcases/test27.tig
+testcases/test27.tig
+main:
+L2:
+li $reg27, 0
+sw $reg27, -4($fp)
+move $a0, $fp
+li $a1, 2
+jal L0
+j L1
+L1:
+li $v0, 10
+syscall
+reg27: fp
+
+L0:
+L4:
+lw $reg28, -8($fp)
+move $v0, $reg28
+j L3
+L3:
+jr $ra
+reg28: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+
+testcases/test28.tig
+testcases/test28.tig
+Line 7: Error: Type constraint and initial value differ. Expected rectype1
+
+testcases/test29.tig
+testcases/test29.tig
+Line 7: Error: Type constraint and initial value differ. Expected arrtype1
+
+testcases/test3.tig
+testcases/test3.tig
+main:
+L3:
+addiu $reg29, $fp, -4
+move $reg28, $reg29
+li $a0, 8
+jal malloc
+move $reg27, $v0
+la $reg30, L0
+sw $reg30, 0($reg27)
+li $reg31, 1000
+sw $reg31, 4($reg27)
+sw $reg27, 0($reg28)
+la $reg32, L1
+lw $reg33, -4($fp)
+sw $reg32, 0($reg33)
+lw $reg34, -4($fp)
+j L2
+L2:
+li $v0, 10
+syscall
+reg29: fp
+reg28: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27 reg30 reg31
+reg27: reg28 fp reg30 reg31
+reg30: reg27 reg28 fp
+reg31: reg27 reg28 fp
+reg32: fp reg33
+reg33: reg32 fp
+reg34:
+
+
+testcases/test30.tig
+testcases/test30.tig
+main:
+L1:
+addiu $reg29, $fp, -4
+move $reg28, $reg29
+li $a0, 40
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+li $a1, 10
+li $a2, 0
+jal initArray
+sw $reg27, 0($reg28)
+li $reg33, 4
+li $reg34, 2
+mult $reg34, $reg33
+mflo $reg32
+lw $reg35, -4($fp)
+addu $reg31, $reg35, $reg32
+lw $reg30, 0($reg31)
+j L0
+L0:
+li $v0, 10
+syscall
+reg29: fp
+reg28: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27
+reg27: reg28 fp a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg33: fp reg34
+reg34: reg33 fp
+reg32: fp reg35
+reg35: reg32
+reg31:
+reg30:
+
+
+testcases/test31.tig
+testcases/test31.tig
+Line 3: Error: Type constraint and initial value differ. Expected int
+
+testcases/test32.tig
+testcases/test32.tig
+Line 6: Error: Initial value type and array element type mismatch.
+
+testcases/test33.tig
+testcases/test33.tig
+Line 3: Error: Undefined record type rectype
+Line 3: Error: Attempt to declare a variable of no type
+
+testcases/test34.tig
+testcases/test34.tig
+Line 5: Error: Formal parameters and actual parameters type mismatch
+
+testcases/test35.tig
+testcases/test35.tig
+Line 5: Error: Number of parameters mismatch
+
+testcases/test36.tig
+testcases/test36.tig
+Line 5: Error: Number of parameters mismatch
+
+testcases/test37.tig
+testcases/test37.tig
+main:
+L2:
+li $reg27, 0
+sw $reg27, -4($fp)
+la $reg28, L0
+sw $reg28, -8($fp)
+j L1
+L1:
+li $v0, 10
+syscall
+reg27: fp
+reg28: fp
+
+
+testcases/test38.tig
+testcases/test38.tig
+Line 6: Error: Type a has been defined in the batch of mutually recursive types
+
+testcases/test39.tig
+testcases/test39.tig
+Line 6: Error: Function g has been defined in the batch of mutually recursive functions
+
+testcases/test4.tig
+testcases/test4.tig
+main:
+L5:
+move $a0, $fp
+li $a1, 10
+jal L0
+j L4
+L4:
+li $v0, 10
+syscall
+
+L0:
+L7:
+lw $reg30, -8($fp)
+beq $reg30, $zero, L1
+L2:
+lw $reg31, -8($fp)
+move $reg29, $reg31
+move $a0, $fp
+lw $reg33, -8($fp)
+addiu $reg32, $reg33, -1
+move $a1, $reg32
+jal L0
+move $reg28, $v0
+mult $reg29, $reg28
+mflo $reg34
+move $reg27, $reg34
+L3:
+move $v0, $reg27
+j L6
+L1:
+li $reg35, 1
+move $reg27, $reg35
+j L3
+L6:
+jr $ra
+reg30: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg31: s6 sp s0 s5 s7 s1 s3 s2 s4 fp
+reg29: s6 sp s5 s0 s7 s1 s3 s2 fp s4 a0 reg33 reg32 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a3 t9 v0 t5 reg28
+reg33: s7 s6 sp a0 fp s2 s1 s5 s0 reg29 s4 s3
+reg32: s7 s6 sp a0 fp s2 s1 s5 s0 s4 reg29 s3
+reg28: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3 reg29
+reg34: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg27: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+reg35: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+
+testcases/test40.tig
+testcases/test40.tig
+Line 3: Error: Procedure g returns a value
+
+testcases/test41.tig
+testcases/test41.tig
+main:
+L1:
+li $reg27, 0
+j L0
+L0:
+li $v0, 10
+syscall
+reg27:
+
+
+testcases/test42.tig
+testcases/test42.tig
+main:
+L10:
+addiu $reg41, $fp, -4
+move $reg40, $reg41
+li $a0, 40
+jal malloc
+move $reg27, $v0
+move $a0, $reg27
+li $a1, 10
+li $a2, 0
+jal initArray
+sw $reg27, 0($reg40)
+addiu $reg42, $fp, -8
+move $reg39, $reg42
+li $a0, 20
+jal malloc
+move $reg29, $v0
+move $reg38, $reg29
+li $a0, 16
+jal malloc
+move $reg28, $v0
+la $reg43, L0
+sw $reg43, 0($reg28)
+la $reg44, L1
+sw $reg44, 4($reg28)
+li $reg45, 0
+sw $reg45, 8($reg28)
+li $reg46, 0
+sw $reg46, 12($reg28)
+move $a0, $reg38
+li $a1, 5
+move $a2, $reg28
+jal initArray
+sw $reg29, 0($reg39)
+addiu $reg47, $fp, -12
+move $reg37, $reg47
+li $a0, 400
+jal malloc
+move $reg30, $v0
+move $a0, $reg30
+li $a1, 100
+la $reg48, L2
+move $a2, $reg48
+jal initArray
+sw $reg30, 0($reg37)
+addiu $reg49, $fp, -16
+move $reg36, $reg49
+li $a0, 16
+jal malloc
+move $reg31, $v0
+la $reg50, L3
+sw $reg50, 0($reg31)
+la $reg51, L4
+sw $reg51, 4($reg31)
+li $reg52, 2432
+sw $reg52, 8($reg31)
+li $reg53, 44
+sw $reg53, 12($reg31)
+sw $reg31, 0($reg36)
+addiu $reg54, $fp, -20
+move $reg35, $reg54
+li $a0, 8
+jal malloc
+move $reg33, $v0
+la $reg55, L5
+sw $reg55, 0($reg33)
+addiu $reg56, $reg33, 4
+move $reg34, $reg56
+li $a0, 12
+jal malloc
+move $reg32, $v0
+move $a0, $reg32
+li $a1, 3
+li $a2, 1900
+jal initArray
+sw $reg32, 0($reg34)
+sw $reg33, 0($reg35)
+li $reg57, 1
+li $reg60, 4
+li $reg61, 0
+mult $reg61, $reg60
+mflo $reg59
+lw $reg62, -4($fp)
+addu $reg58, $reg62, $reg59
+sw $reg57, 0($reg58)
+li $reg63, 3
+li $reg66, 4
+li $reg67, 9
+mult $reg67, $reg66
+mflo $reg65
+lw $reg68, -4($fp)
+addu $reg64, $reg68, $reg65
+sw $reg63, 0($reg64)
+la $reg69, L6
+li $reg73, 4
+li $reg74, 3
+mult $reg74, $reg73
+mflo $reg72
+lw $reg75, -8($fp)
+addu $reg71, $reg75, $reg72
+lw $reg70, 0($reg71)
+sw $reg69, 0($reg70)
+li $reg76, 23
+li $reg80, 4
+li $reg81, 1
+mult $reg81, $reg80
+mflo $reg79
+lw $reg82, -8($fp)
+addu $reg78, $reg82, $reg79
+lw $reg77, 0($reg78)
+sw $reg76, 12($reg77)
+la $reg83, L7
+li $reg86, 4
+li $reg87, 34
+mult $reg87, $reg86
+mflo $reg85
+lw $reg88, -12($fp)
+addu $reg84, $reg88, $reg85
+sw $reg83, 0($reg84)
+la $reg89, L8
+lw $reg90, -16($fp)
+sw $reg89, 0($reg90)
+li $reg91, 2323
+li $reg94, 4
+li $reg95, 0
+mult $reg95, $reg94
+mflo $reg93
+lw $reg97, -20($fp)
+lw $reg96, 4($reg97)
+addu $reg92, $reg96, $reg93
+sw $reg91, 0($reg92)
+li $reg98, 2323
+li $reg101, 4
+li $reg102, 2
+mult $reg102, $reg101
+mflo $reg100
+lw $reg104, -20($fp)
+lw $reg103, 4($reg104)
+addu $reg99, $reg103, $reg100
+sw $reg98, 0($reg99)
+j L9
+L9:
+li $v0, 10
+syscall
+reg41: fp
+reg40: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27
+reg27: reg40 fp a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg42: fp
+reg39: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg29 reg38 reg28 reg43 reg44 reg45 reg46
+reg29: fp reg39 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg28 reg43 reg44 reg45 reg46
+reg38: fp reg39 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg28 reg43 reg44 reg45 reg46
+reg28: reg29 reg38 fp reg39 reg43 reg44 reg45 reg46 a0 a1
+reg43: reg29 reg38 fp reg28 reg39
+reg44: fp reg29 reg38 reg39 reg28
+reg45: reg29 reg38 reg39 reg28 fp
+reg46: reg38 reg29 reg39 fp reg28
+reg47: fp
+reg37: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg30 reg48
+reg30: reg37 fp a1 reg48 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg48: a0 reg30 a1 fp reg37
+reg49: fp
+reg36: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg31 reg50 reg51 reg52 reg53
+reg31: reg36 fp reg50 reg51 reg52 reg53
+reg50: reg36 fp reg31
+reg51: reg36 fp reg31
+reg52: reg36 fp reg31
+reg53: reg36 fp reg31
+reg54: fp
+reg35: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg33 reg55 reg56 reg34 reg32
+reg33: fp reg35 reg55 reg56 reg34 a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg32
+reg55: reg33 fp reg35
+reg56: reg33 reg35 fp
+reg34: reg33 reg35 fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg32
+reg32: reg33 reg35 fp reg34 a1 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a0 a3 t9 v0 t5
+reg57: fp reg60 reg61 reg59 reg62 reg58
+reg60: reg57 fp reg61
+reg61: reg57 reg60 fp
+reg59: reg57 fp reg62
+reg62: reg57 reg59 fp
+reg58: reg57 fp
+reg63: fp reg66 reg67 reg65 reg68 reg64
+reg66: reg63 fp reg67
+reg67: reg66 fp reg63
+reg65: reg63 fp reg68
+reg68: reg65 fp reg63
+reg64: reg63 fp
+reg69: fp reg73 reg74 reg72 reg75 reg71 reg70
+reg73: reg69 fp reg74
+reg74: reg69 fp reg73
+reg72: fp reg69 reg75
+reg75: reg69 fp reg72
+reg71: reg69 fp
+reg70: fp reg69
+reg76: fp reg80 reg81 reg79 reg82 reg78 reg77
+reg80: reg76 fp reg81
+reg81: reg80 fp reg76
+reg79: fp reg76 reg82
+reg82: reg76 fp reg79
+reg78: fp reg76
+reg77: reg76 fp
+reg83: fp reg86 reg87 reg85 reg88 reg84
+reg86: reg83 fp reg87
+reg87: reg86 fp reg83
+reg85: reg83 fp reg88
+reg88: reg85 fp reg83
+reg84: reg83 fp
+reg89: fp reg90
+reg90: fp reg89
+reg91: fp reg94 reg95 reg93 reg97 reg96 reg92
+reg94: reg91 fp reg95
+reg95: reg91 fp reg94
+reg93: fp reg91 reg97 reg96
+reg97: reg91 fp reg93
+reg96: reg91 fp reg93
+reg92: fp reg91
+reg98: fp reg101 reg102 reg100 reg104 reg103 reg99
+reg101: fp reg98 reg102
+reg102: reg101 fp reg98
+reg100: fp reg98 reg104 reg103
+reg104: reg100 reg98
+reg103: reg98 reg100
+reg99: reg98
+
+
+testcases/test43.tig
+testcases/test43.tig
+Line 4: Error: Attempt to declare a variable of no type
+Line 6: Error: Undefined variable: a
+Line 6: Error: Type mismatch. Expected int
+
+testcases/test44.tig
+testcases/test44.tig
+main:
+L1:
+li $reg27, 0
+sw $reg27, -4($fp)
+li $reg28, 0
+sw $reg28, -4($fp)
+j L0
+L0:
+li $v0, 10
+syscall
+reg27: fp
+reg28: fp
+
+
+testcases/test45.tig
+testcases/test45.tig
+Line 5: Error: Need type constraint
+
+testcases/test46.tig
+testcases/test46.tig
+main:
+L4:
+li $reg28, 0
+sw $reg28, -4($fp)
+lw $reg29, -4($fp)
+beq $reg29, $zero, L0
+L0:
+li $reg30, 1
+move $reg27, $reg30
+lw $reg31, -4($fp)
+bne $reg31, $zero, L1
+L2:
+li $reg32, 0
+move $reg27, $reg32
+L1:
+j L3
+L3:
+li $v0, 10
+syscall
+reg28: fp
+reg29: fp
+reg30: fp
+reg27: fp
+reg31:
+reg32:
+
+
+testcases/test47.tig
+testcases/test47.tig
+main:
+L1:
+li $reg27, 4
+sw $reg27, -4($fp)
+j L0
+L0:
+li $v0, 10
+syscall
+reg27: fp
+
+
+testcases/test48.tig
+testcases/test48.tig
+main:
+L3:
+li $reg27, 0
+j L2
+L2:
+li $v0, 10
+syscall
+reg27:
+
+L0:
+L5:
+lw $reg28, -8($fp)
+move $v0, $reg28
+j L4
+L4:
+jr $ra
+reg28: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+L1:
+L7:
+lw $reg29, -8($fp)
+move $v0, $reg29
+j L6
+L6:
+jr $ra
+reg29: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+
+testcases/test49.tig
+testcases/test49.tig
+Line 5: syntax error, unexpected NIL, expecting FUNCTION or IN or TYPE or VAR
+
+testcases/test5.tig
+testcases/test5.tig
+main:
+L1:
+addiu $reg29, $fp, -4
+move $reg28, $reg29
+li $a0, 8
+jal malloc
+move $reg27, $v0
+li $reg30, 0
+sw $reg30, 0($reg27)
+li $reg31, 0
+sw $reg31, 4($reg27)
+sw $reg27, 0($reg28)
+lw $reg32, -4($fp)
+j L0
+L0:
+li $v0, 10
+syscall
+reg29: fp
+reg28: fp a0 a2 t1 v1 ra t4 t3 t0 t2 t6 t8 t7 a1 a3 t9 v0 t5 reg27 reg30 reg31
+reg27: fp reg28 reg30 reg31
+reg30: reg28 reg27 fp
+reg31: reg28 reg27 fp
+reg32:
+
+
+testcases/test6.tig
+testcases/test6.tig
+main:
+L5:
+move $a0, $fp
+li $a1, 0
+la $reg27, L3
+move $a2, $reg27
+jal L0
+j L4
+L4:
+li $v0, 10
+syscall
+reg27: a0 a1
+
+L0:
+L7:
+move $a0, $fp
+lw $reg29, -8($fp)
+addiu $reg28, $reg29, 1
+move $a1, $reg28
+jal L1
+j L6
+L6:
+jr $ra
+reg29: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg28: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+
+L1:
+L9:
+move $a0, $fp
+lw $reg30, -8($fp)
+move $a1, $reg30
+la $reg31, L2
+move $a2, $reg31
+jal L0
+j L8
+L8:
+jr $ra
+reg30: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg31: s7 s6 sp a0 fp a1 s2 s1 s5 s0 s4 s3
+
+
+testcases/test7.tig
+testcases/test7.tig
+main:
+L6:
+move $a0, $fp
+li $a1, 0
+la $reg27, L4
+move $a2, $reg27
+jal L0
+j L5
+L5:
+li $v0, 10
+syscall
+reg27: a0 a1
+
+L0:
+L8:
+move $a0, $fp
+lw $reg29, -8($fp)
+addiu $reg28, $reg29, 1
+move $a1, $reg28
+jal L1
+li $reg30, 0
+move $v0, $reg30
+j L7
+L7:
+jr $ra
+reg29: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg28: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg30: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+L1:
+L10:
+move $a0, $fp
+lw $reg31, -8($fp)
+move $a1, $reg31
+la $reg32, L2
+move $a2, $reg32
+jal L0
+la $reg33, L3
+move $v0, $reg33
+j L9
+L9:
+jr $ra
+reg31: s7 s6 sp a0 fp s2 s1 s5 s0 s4 s3
+reg32: s7 s6 sp a0 fp a1 s2 s1 s5 s0 s4 s3
+reg33: s7 s6 sp ra v1 fp s2 s1 s5 s0 s4 s3
+
+
+testcases/test8.tig
+testcases/test8.tig
+main:
+L6:
+li $reg28, 1
+move $reg27, $reg28
+li $reg29, 20
+li $reg30, 10
+bgt $reg30, $reg29, L0
+L1:
+li $reg31, 0
+move $reg27, $reg31
+L0:
+beq $reg27, $zero, L3
+L2:
+L4:
+j L5
+L3:
+j L4
+L5:
+li $v0, 10
+syscall
+reg28:
+reg27: reg29 reg30
+reg29: reg27 reg30
+reg30: reg29 reg27
+reg31:
+
+
+testcases/test9.tig
+testcases/test9.tig
+Line 3: Error: Type mismatch. Types of then-else differ
+

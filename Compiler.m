@@ -16,6 +16,8 @@
 #import "Trace.h"
 #import "MipsFrame.h"
 #import "Assem.h"
+#import "AssemFlowGraph.h"
+#import "Liveness.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -46,14 +48,18 @@ int main(int argc, const char * argv[])
 //          TreeStmtList *list;
 //      		for (list = trace.stmts; list; list = list.tail)
 //        		treeprint(list.head);
-          for (AssemInstr *instr in [((TRProcFrag *)frag).frame codegenUsingStmts:trace.stmts])
+          NSArray *instrs = [((TRProcFrag *)frag).frame codegenUsingStmts:trace.stmts];
+          for (AssemInstr *instr in instrs)
             //NSLog(@"%@", [instr formatWithObject:((TRProcFrag *)frag).frame]);
             printf("%s", [[instr formatWithObject:((TRProcFrag *)frag).frame] cStringUsingEncoding:NSASCIIStringEncoding]);
+          AssemFlowGraph *flowgraph = [AssemFlowGraph assemFlowGraphWithInstructions:instrs];
+          //[flowgraph print];
+          Liveness *liveness = [Liveness livenessWithFlowGraph:flowgraph];
+          [liveness printUsingTempMap:frame];
         }
       }
     }
   }
-  putchar('\n');
   [translator release];
   fclose(fin);
   [pool drain];
