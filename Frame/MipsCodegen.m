@@ -143,11 +143,18 @@
 - (TmpTemp *)munchCall:(TreeCall *)aCall
 {
   NSAssert([aCall.func isMemberOfClass:[TreeName class]], @"Bad Call in munchCall:");
+	TmpTemp *r = [TmpTemp temp];
+	[instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
+																				 destinationTemp:r
+																							sourceTemp:[frame.specialregs objectAtIndex:4]]];
   TmpTempList *args = [self munchArgs:aCall.args];
   [instructions addObject:[AssemOper operWithString:[NSString stringWithFormat:@"jal %@\n",
                                                      ((TreeName *)aCall.func).label.name]
                                 destinationTempList:self.calldefs
                                      sourceTempList:args]];
+	[instructions addObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
+																				 destinationTemp:[frame.specialregs objectAtIndex:4]
+																							sourceTemp:r]];
 	return frame.rv;
 }
 - (TmpTempList *)munchArgs:(TreeExprList *)args
