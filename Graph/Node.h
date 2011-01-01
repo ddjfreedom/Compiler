@@ -14,11 +14,11 @@
 {
 	Graph *graph;
   int key;
-  NSMutableArray *succs, *preds;
+  NSMutableSet *succs, *preds;
 }
 @property (readonly) Graph* graph;
-@property (readonly) NSMutableArray *succs, *preds;
-@property (readonly) NSArray *adj;
+@property (readonly) NSMutableSet *succs, *preds;
+@property (readonly) NSSet *adj;
 @property (readonly) int key, inDegree, outDegree, degree;
 - (id)initWithGraph:(Graph *)aGraph;
 - (BOOL)canGoToNode:(Node *)aNode;

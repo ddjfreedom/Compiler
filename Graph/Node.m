@@ -13,9 +13,9 @@
 @synthesize key;
 @synthesize graph;
 @synthesize succs, preds;
-- (NSArray *)adj
+- (NSSet *)adj
 {
-  return [succs arrayByAddingObjectsFromArray:preds];
+  return [succs setByAddingObjectsFromSet:preds];
 }
 - (int)inDegree
 {
@@ -37,19 +37,19 @@
 {
   if (self = [super init]) {
   	graph = aGraph;
-    succs = [[NSMutableArray alloc] init];
-    preds = [[NSMutableArray alloc] init];
+    succs = [[NSMutableSet alloc] init];
+    preds = [[NSMutableSet alloc] init];
     key = graph.nodeCount++;
   }
   return self;
 }
 - (BOOL)canGoToNode:(Node *)aNode
 {
-  return [succs indexOfObject:aNode] != NSNotFound;
+  return [succs containsObject:aNode];
 }
 - (BOOL)isComingFromNode:(Node *)aNode
 {
-  return [preds indexOfObject:aNode] != NSNotFound;
+  return [preds containsObject:aNode];
 }
 - (id)copyWithZone:(NSZone *)zone
 {

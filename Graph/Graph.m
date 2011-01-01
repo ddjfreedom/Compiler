@@ -40,9 +40,8 @@
 }
 - (void)removeEdgeFromNode:(Node *)src toNode:(Node *)dst
 {
-  NSUInteger index = [src.succs indexOfObject:dst];
-  NSAssert(index != NSNotFound, @"removeEdgeFromNode:toNode:, edge doesn't exist");
-  [src.succs removeObjectAtIndex:index];
+  NSAssert(![src.succs containsObject:dst], @"removeEdgeFromNode:toNode:, edge doesn't exist");
+  [src.succs removeObject:dst];
   [dst.preds removeObject:src];
 }
 - (void)print
