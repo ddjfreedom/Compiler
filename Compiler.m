@@ -49,9 +49,9 @@ int main(int argc, const char * argv[])
 //      		for (list = trace.stmts; list; list = list.tail)
 //        		treeprint(list.head);
           NSArray *instrs = [((TRProcFrag *)frag).frame codegenUsingStmts:trace.stmts];
-          for (AssemInstr *instr in instrs)
+          //for (AssemInstr *instr in instrs)
             //NSLog(@"%@", [instr formatWithObject:((TRProcFrag *)frag).frame]);
-            printf("%s", [[instr formatWithObject:((TRProcFrag *)frag).frame] cStringUsingEncoding:NSASCIIStringEncoding]);
+						//printf("%s", [[instr formatWithObject:((TRProcFrag *)frag).frame] cStringUsingEncoding:NSASCIIStringEncoding]);
           //AssemFlowGraph *flowgraph = [AssemFlowGraph assemFlowGraphWithInstructions:instrs];
           //[flowgraph print];
 					RegAllocator *regalloc = [RegAllocator regAllocatorWithFrame:frame instructions:instrs];

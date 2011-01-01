@@ -112,8 +112,61 @@ static TmpTempList *returnsink = nil;
     return [NSString stringWithFormat:@"s%d", i];
   return temp.name;
 }
+- (TreeExpr *)storeAccess:(MipsInFrame *)access
+{
+	return [TreeMem memWithExpr:[TreeBinop binopWithLeftExpr:[TreeTemp treeTempWithTemp:self.fp]
+																									binaryOp:TreePlus
+																								 rightExpr:[TreeConst constWithInt:((MipsInFrame *)access).offset]]];
+}
 - (TreeStmt *)procEntryExit1WithStmt:(TreeStmt *)body
 {
+	int i;
+	Access *access;
+	NSMutableArray *callee = [NSMutableArray array];
+	TreeTemp *sp = [TreeTemp treeTempWithTemp:[specialregs objectAtIndex:1]];
+	TreeTemp *framep = [TreeTemp treeTempWithTemp:self.fp];
+	for (i = MIN(3, formals.count-1); i >= 0; --i) {
+		access = [formals objectAtIndex:i];
+		if ([access isMemberOfClass:[MipsInFrame class]]) {
+			body = [TreeSeq seqWithFirstStmt:[TreeMove 
+																				moveWithDestination:[self storeAccess:(MipsInFrame *)access]
+																				source:[TreeTemp treeTempWithTemp:
+																								[argregs objectAtIndex:i]]]
+														secondStmt:body];
+		}
+	}
+	for (TmpTemp *ttemp in calleesave)
+		[callee addObject:[self generateLocal:YES]];
+	body = [TreeSeq seqWithFirstStmt:[TreeMove
+																		moveWithDestination:sp
+																		source:[TreeBinop binopWithLeftExpr:sp
+																															 binaryOp:TreePlus
+																															rightExpr:[TreeConst constWithInt:(wordSize*frameCount)]]]
+												secondStmt:body];
+	i = 0;
+	for (TmpTemp *ttemp in calleesave) {
+		body = [TreeSeq seqWithFirstStmt:[TreeMove
+																			moveWithDestination:[self storeAccess:[callee objectAtIndex:i++]]
+																			source:[TreeTemp treeTempWithTemp:ttemp]]
+													secondStmt:body];
+	}
+	// move $fp, $sp
+	body = [TreeSeq seqWithFirstStmt:[TreeMove moveWithDestination:framep
+																													source:sp]
+												secondStmt:body];
+	i = 0;
+	for (TmpTemp *ttemp in calleesave) {
+		body = [TreeSeq seqWithFirstStmt:body
+													secondStmt:[TreeMove
+																			moveWithDestination:[TreeTemp treeTempWithTemp:ttemp]
+																			source:[self storeAccess:[callee objectAtIndex:i++]]]];
+	}
+	body = [TreeSeq seqWithFirstStmt:body
+												secondStmt:[TreeMove moveWithDestination:sp
+																													source:framep]];
+	body = [TreeSeq seqWithFirstStmt:body
+												secondStmt:[TreeMove moveWithDestination:framep
+																													source:[self storeAccess:[formals objectAtIndex:0]]]];
   return body;
 }
 - (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body
@@ -131,6 +184,10 @@ static TmpTempList *returnsink = nil;
                                              tmpLabel:name]
              atIndex:0];  
   if ([name.name isEqualToString:@"main"]) {
+		[body insertObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
+																			destinationTemp:self.fp
+																					 sourceTemp:[self.specialregs objectAtIndex:1]]
+							 atIndex:1];
     [body addObject:[AssemOper operWithString:@"li $`d0, 10\n"
                           destinationTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:2]]
                                sourceTempList:nil]];
