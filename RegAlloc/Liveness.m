@@ -7,6 +7,8 @@
 //
 
 #import "Liveness.h"
+#import "RegAllocator.h"
+#import "Edge.h"
 
 static BOOL *marked = NULL;
 
@@ -59,7 +61,7 @@ static BOOL *marked = NULL;
     [sortedNodes insertObject:node atIndex:0];
   }
 }
-- (void)constructInterferenceGraphUsingFlowGraph:(FlowGraph *)flowGraph
+- (void)buildInterferenceGraphUsingFlowGraph:(FlowGraph *)flowGraph
 {
   int n = flowGraph.nodeCount;
   Node *newnode;
@@ -70,7 +72,7 @@ static BOOL *marked = NULL;
   [self livenessAnalysisOnFlowGraph:flowGraph];
   // add nodes
   for (Node *node in flowGraph.nodes) {
-    for (TmpTemp *temp in [[flowGraph defOfNode:node] 
+    for (TmpTemp *temp in [[flowGraph defOfNode:node]
                            setByAddingObjectsFromSet:[flowGraph useOfNode:node]]) {
       if (![tempnodeMap objectForKey:temp.name]) {
         newnode = [self addNode];
@@ -79,7 +81,22 @@ static BOOL *marked = NULL;
       }
     }
   }
-  // add edges
+	[allocator buildPrecoloredList];
+	// Add move to moveList
+	allocator.moveList = malloc(nodes.count * sizeof(NSMutableSet *));
+	memset(allocator.moveList, 0, nodes.count * sizeof(NSMutableSet *));
+	for (Node *node in flowGraph.nodes) {
+		if ([flowGraph isMove:node]) {
+			Node *dst = [tempnodeMap objectForKey:[[flowGraph defOfNode:node] anyObject]];
+			Node *src = [tempnodeMap objectForKey:[[flowGraph useOfNode:node] anyObject]];
+			Edge *moveedge = [Edge edgeWithNode1:dst node2:src];
+			if (!(allocator.moveList)[node.key])
+				(allocator.moveList)[node.key] = [[NSMutableSet alloc] init];
+			[(allocator.moveList)[node.key] addObject:moveedge];
+			[allocator.worksetMoves addObject:moveedge];
+		}
+	}
+	// add edges
 	for (Node *node in flowGraph.nodes) {
   	for (TmpTemp *src in [flowGraph defOfNode:node]) {
     	for (TmpTemp *dst in [livemap objectForKey:node]) {
@@ -90,17 +107,29 @@ static BOOL *marked = NULL;
     }
   }
 }
-- (id)initWithFlowGraph:(FlowGraph *)aFlowGraph
+- (id)initWithRegAllocator:(RegAllocator *)anAllocator
 {
   if (self = [super init]) {
     nodes = [[NSMutableArray alloc] init];
+		allocator = anAllocator;
     sortedNodes = [[NSMutableArray alloc] init];
     livemap = [[NSMutableDictionary alloc] init];
     nodetempMap = [[NSMutableDictionary alloc] init];
     tempnodeMap = [[NSMutableDictionary alloc] init];
-    [self constructInterferenceGraphUsingFlowGraph:aFlowGraph];
+		edges = [[NSMutableSet alloc] init];
   }
   return self;
+}
+- (void)addEdgeFromNode:(Node *)src toNode:(Node *)dst
+{
+	Edge *edge = [Edge edgeWithNode1:src node2:dst];
+	if (![edges containsObject:edge]) {
+		[edges addObject:edge];
+		if (![allocator.precolored containsObject:src])
+			[src.succs addObject:dst];
+		if (![allocator.precolored containsObject:dst])
+			[dst.succs addObject:src];
+	}
 }
 - (TmpTemp *)tempWithNode:(Node *)aNode
 {
@@ -128,10 +157,11 @@ static BOOL *marked = NULL;
   [livemap release];
   [nodetempMap release];
   [tempnodeMap release];
+	[edges release];
   [super dealloc];
 }
-+ (id)livenessWithFlowGraph:(FlowGraph *)aFlowGraph
++ (id)livenessWithRegAllocator:(RegAllocator *)anAllocator
 {
-  return [[[Liveness alloc] initWithFlowGraph:aFlowGraph] autorelease];
+  return [[[Liveness alloc] initWithRegAllocator:anAllocator] autorelease];
 }
 @end
