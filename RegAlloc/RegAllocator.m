@@ -7,6 +7,7 @@
 //
 
 #import "RegAllocator.h"
+#import "Assem.h"
 #import "AssemFlowGraph.h"
 #import "TmpTemp.h"
 
@@ -17,7 +18,7 @@
 - (NSSet *)adjacentNodesOfNode:(Node *)aNode;
 - (void)decrementDegreeOfNode:(Node *)aNode;
 - (void)assignColors;
-- (void)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray;
+- (int)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray startAtCount:(int)c;
 @end
 
 @implementation RegAllocator
@@ -48,7 +49,7 @@
 {
 	[liveness buildInterferenceGraphUsingFlowGraph:
 	 [AssemFlowGraph assemFlowGraphWithInstructions:instructions]];
-	[liveness printUsingTempMap:frame];
+	//[liveness printUsingTempMap:frame];
 	[self buildWorkList];
 	while (![self isFinished]) {
 		if ([simplifyWorkSet anyObject])
@@ -110,16 +111,17 @@
 }
 - (void)buildPrecoloredList
 {
+	int total = 0;
 	NSMutableSet *tmpset = [NSMutableSet set];
-	[self addNodesToSet:tmpset usingArray:frame.specialregs];
-	[self addNodesToSet:tmpset usingArray:frame.argregs];
-	[self addNodesToSet:tmpset usingArray:frame.calleesave];
-	[self addNodesToSet:tmpset usingArray:frame.callersave];
+	total = [self addNodesToSet:tmpset usingArray:frame.specialregs startAtCount:total];
+	total += [self addNodesToSet:tmpset usingArray:frame.argregs startAtCount:total];
+	total += [self addNodesToSet:tmpset usingArray:frame.calleesave startAtCount:total];
+	[self addNodesToSet:tmpset usingArray:frame.callersave startAtCount:total];
 	precolored = [[NSSet alloc] initWithSet:tmpset];
 }
-- (void)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray
+- (int)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray startAtCount:(int)c
 {
-	static int i = 0;
+	int i = c;
 	id obj;
 	NSNumber *color;
 	for (TmpTemp *key in anArray) {
@@ -131,12 +133,29 @@
 		}
 		[colortempMap setObject:key forKey:color];
 	}
+	return i;
 }
 - (NSString *)tempMapWithTemp:(TmpTemp *)temp
 {
 	Node *node = [liveness nodeWithTemp:temp];
 	TmpTemp *reg = [colortempMap objectForKey:[nodecolorMap objectForKey:node]];
-	return [frame tempMapWithTemp:reg];
+	if (reg)
+		return [frame tempMapWithTemp:reg];
+	else
+		return [frame tempMapWithTemp:temp];
+}
+- (void)print
+{
+	TmpTemp *def, *use;
+	for (AssemInstr *instr in instructions) {
+		if ([instr isMemberOfClass:[AssemMove class]]) {
+			def = [instr.def lastTemp];
+			use = [instr.use lastTemp];
+			if ([[self tempMapWithTemp:def] isEqualToString:[self tempMapWithTemp:use]])
+				continue;
+		}
+		printf("%s", [[instr formatWithObject:self] cStringUsingEncoding:NSASCIIStringEncoding]);
+	}
 }
 - (void)dealloc
 {

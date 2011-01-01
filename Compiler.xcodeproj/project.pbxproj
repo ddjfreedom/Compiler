@@ -116,6 +116,8 @@
 		8DD76F9A0486AA7600D96B5E /* Compiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* Compiler.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		8DD76F9F0486AA7600D96B5E /* Compiler.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* Compiler.1 */; };
+		966F2CDF12CF0BAD001E29FD /* RegAllocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F2CDE12CF0BAD001E29FD /* RegAllocator.m */; };
+		966F2D9E12CF3249001E29FD /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F2D9D12CF3249001E29FD /* Edge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -431,6 +433,10 @@
 		47E19BEF12BF180A006ED441 /* Proc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Proc.h; path = Frame/Proc.h; sourceTree = "<group>"; };
 		47E19BF012BF180A006ED441 /* Proc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Proc.m; path = Frame/Proc.m; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
+		966F2CDD12CF0BAD001E29FD /* RegAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegAllocator.h; path = RegAlloc/RegAllocator.h; sourceTree = "<group>"; };
+		966F2CDE12CF0BAD001E29FD /* RegAllocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegAllocator.m; path = RegAlloc/RegAllocator.m; sourceTree = "<group>"; };
+		966F2D9C12CF3249001E29FD /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Edge.h; path = Graph/Edge.h; sourceTree = "<group>"; };
+		966F2D9D12CF3249001E29FD /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Edge.m; path = Graph/Edge.m; sourceTree = "<group>"; };
 		C6859EA3029092ED04C91782 /* Compiler.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Compiler.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,6 +484,7 @@
 				474A7C4E12B9F67E00AF309B /* Canonical */,
 				4706F25C12BDC84700A36C7E /* Assem */,
 				471DFA0112CC7BC30069E8D0 /* Graph */,
+				96EC41EF12CF01B50006B2D1 /* RegAlloc */,
 				4765CF3712A7819B00A20AD1 /* TypeChecker.h */,
 				4765CF3812A7819B00A20AD1 /* TypeChecker.m */,
 				477C185C12A8A9410045F672 /* ErrorMessage.h */,
@@ -534,18 +541,18 @@
 		471DFA0112CC7BC30069E8D0 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				471DFA0512CC7BDF0069E8D0 /* AssemFlowGraph.h */,
-				471DFA0612CC7BDF0069E8D0 /* FlowGraph.h */,
-				471DFA0712CC7BDF0069E8D0 /* Graph.h */,
-				471DFA0812CC7BDF0069E8D0 /* InterferenceGraph.h */,
 				471DFA0912CC7BDF0069E8D0 /* Node.h */,
-				471DFA0A12CC7BDF0069E8D0 /* AssemFlowGraph.m */,
-				471DFA0B12CC7BDF0069E8D0 /* FlowGraph.m */,
-				471DFA0C12CC7BDF0069E8D0 /* Graph.m */,
-				471DFA0D12CC7BDF0069E8D0 /* InterferenceGraph.m */,
 				471DFA0E12CC7BDF0069E8D0 /* Node.m */,
-				471DFA1812CC7C090069E8D0 /* Liveness.h */,
-				471DFA1912CC7C090069E8D0 /* Liveness.m */,
+				966F2D9C12CF3249001E29FD /* Edge.h */,
+				966F2D9D12CF3249001E29FD /* Edge.m */,
+				471DFA0712CC7BDF0069E8D0 /* Graph.h */,
+				471DFA0C12CC7BDF0069E8D0 /* Graph.m */,
+				471DFA0612CC7BDF0069E8D0 /* FlowGraph.h */,
+				471DFA0B12CC7BDF0069E8D0 /* FlowGraph.m */,
+				471DFA0512CC7BDF0069E8D0 /* AssemFlowGraph.h */,
+				471DFA0A12CC7BDF0069E8D0 /* AssemFlowGraph.m */,
+				471DFA0812CC7BDF0069E8D0 /* InterferenceGraph.h */,
+				471DFA0D12CC7BDF0069E8D0 /* InterferenceGraph.m */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -888,6 +895,17 @@
 			name = Type;
 			sourceTree = "<group>";
 		};
+		96EC41EF12CF01B50006B2D1 /* RegAlloc */ = {
+			isa = PBXGroup;
+			children = (
+				966F2CDD12CF0BAD001E29FD /* RegAllocator.h */,
+				966F2CDE12CF0BAD001E29FD /* RegAllocator.m */,
+				471DFA1812CC7C090069E8D0 /* Liveness.h */,
+				471DFA1912CC7C090069E8D0 /* Liveness.m */,
+			);
+			name = RegAlloc;
+			sourceTree = "<group>";
+		};
 		C6859EA2029092E104C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1101,6 +1119,8 @@
 				471DFA1212CC7BDF0069E8D0 /* InterferenceGraph.m in Sources */,
 				471DFA1312CC7BDF0069E8D0 /* Node.m in Sources */,
 				471DFA1A12CC7C090069E8D0 /* Liveness.m in Sources */,
+				966F2CDF12CF0BAD001E29FD /* RegAllocator.m in Sources */,
+				966F2D9E12CF3249001E29FD /* Edge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

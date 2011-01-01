@@ -63,7 +63,7 @@ static BOOL *marked = NULL;
 }
 - (void)buildInterferenceGraphUsingFlowGraph:(FlowGraph *)flowGraph
 {
-  int n = flowGraph.nodeCount;
+  int n = flowGraph.nodeCount, i;
   Node *newnode;
   marked = malloc(n * sizeof(BOOL));
   memset(marked, 0, n * sizeof(BOOL));
@@ -84,15 +84,19 @@ static BOOL *marked = NULL;
 	[allocator buildPrecoloredList];
 	// Add move to moveList
 	allocator.moveList = malloc(nodes.count * sizeof(NSMutableSet *));
-	memset(allocator.moveList, 0, nodes.count * sizeof(NSMutableSet *));
+	for (i = 0; i < nodes.count; ++i)
+		(allocator.moveList)[i] = nil;
 	for (Node *node in flowGraph.nodes) {
 		if ([flowGraph isMove:node]) {
 			Node *dst = [tempnodeMap objectForKey:[[flowGraph defOfNode:node] anyObject]];
 			Node *src = [tempnodeMap objectForKey:[[flowGraph useOfNode:node] anyObject]];
 			Edge *moveedge = [Edge edgeWithNode1:dst node2:src];
-			if (!(allocator.moveList)[node.key])
-				(allocator.moveList)[node.key] = [[NSMutableSet alloc] init];
-			[(allocator.moveList)[node.key] addObject:moveedge];
+			if (!(allocator.moveList)[dst.key])
+				(allocator.moveList)[dst.key] = [[NSMutableSet alloc] init];
+			[(allocator.moveList)[dst.key] addObject:moveedge];
+			if (!(allocator.moveList)[src.key])
+				(allocator.moveList)[src.key] = [[NSMutableSet alloc] init];
+			[(allocator.moveList)[src.key] addObject:moveedge];
 			[allocator.worksetMoves addObject:moveedge];
 		}
 	}

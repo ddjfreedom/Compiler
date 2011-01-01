@@ -17,7 +17,7 @@
 #import "MipsFrame.h"
 #import "Assem.h"
 #import "AssemFlowGraph.h"
-#import "Liveness.h"
+#import "RegAllocator.h"
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
@@ -52,14 +52,18 @@ int main(int argc, const char * argv[])
           for (AssemInstr *instr in instrs)
             //NSLog(@"%@", [instr formatWithObject:((TRProcFrag *)frag).frame]);
             printf("%s", [[instr formatWithObject:((TRProcFrag *)frag).frame] cStringUsingEncoding:NSASCIIStringEncoding]);
-          AssemFlowGraph *flowgraph = [AssemFlowGraph assemFlowGraphWithInstructions:instrs];
+          //AssemFlowGraph *flowgraph = [AssemFlowGraph assemFlowGraphWithInstructions:instrs];
           //[flowgraph print];
-          Liveness *liveness = [Liveness livenessWithFlowGraph:flowgraph];
-          [liveness printUsingTempMap:frame];
+					RegAllocator *regalloc = [RegAllocator regAllocatorWithFrame:frame instructions:instrs];
+          //Liveness *liveness = [Liveness livenessWithFlowGraph:flowgraph];
+          //[liveness printUsingTempMap:frame];
+					[regalloc allocateRegisters];
+					[regalloc print];
         }
       }
     }
   }
+	[frame release];
   [translator release];
   fclose(fin);
   [pool drain];
