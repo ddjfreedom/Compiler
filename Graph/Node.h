@@ -13,13 +13,14 @@
 @interface Node : NSObject <NSCopying>
 {
 	Graph *graph;
-  int key;
+  int key, degree;
   NSMutableSet *succs, *preds;
 }
 @property (readonly) Graph* graph;
 @property (readonly) NSMutableSet *succs, *preds;
 @property (readonly) NSSet *adj;
-@property (readonly) int key, inDegree, outDegree, degree;
+@property (readonly) int key, inDegree, outDegree;
+@property (readwrite, assign) int degree;
 - (id)initWithGraph:(Graph *)aGraph;
 - (BOOL)canGoToNode:(Node *)aNode;
 - (BOOL)isComingFromNode:(Node *)aNode;

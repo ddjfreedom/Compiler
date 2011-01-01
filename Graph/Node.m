@@ -10,7 +10,7 @@
 #import "Graph.h"
 
 @implementation Node
-@synthesize key;
+@synthesize key, degree;
 @synthesize graph;
 @synthesize succs, preds;
 - (NSSet *)adj
@@ -27,7 +27,9 @@
 }
 - (int)degree
 {
-  return preds.count + succs.count;
+	if (degree == -1)
+		degree = preds.count + succs.count;
+	return degree;
 }
 - (NSString *)description
 {
@@ -40,6 +42,7 @@
     succs = [[NSMutableSet alloc] init];
     preds = [[NSMutableSet alloc] init];
     key = graph.nodeCount++;
+		degree = -1;
   }
   return self;
 }
@@ -50,6 +53,10 @@
 - (BOOL)isComingFromNode:(Node *)aNode
 {
   return [preds containsObject:aNode];
+}
+- (BOOL)isEqual:(id)object
+{
+	return self == object;
 }
 - (id)copyWithZone:(NSZone *)zone
 {

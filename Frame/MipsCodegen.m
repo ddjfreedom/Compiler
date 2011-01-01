@@ -277,7 +277,7 @@
 }
 - (void)munchCJump:(TreeCJump *)aCJump
 {
-  char *cmd;
+  char *cmd = "";
   switch (aCJump.relationOp) {
   	case TreeEQ: cmd = "beq"; break;
     case TreeNE: cmd = "bne"; break;
