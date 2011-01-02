@@ -140,7 +140,7 @@ static TmpTempList *returnsink = nil;
 	body = [TreeSeq seqWithFirstStmt:[TreeMove
 																		moveWithDestination:sp
 																		source:[TreeBinop binopWithLeftExpr:sp
-																															 binaryOp:TreePlus
+																															 binaryOp:TreeMinus
 																															rightExpr:[TreeConst constWithInt:(wordSize*frameCount)]]]
 												secondStmt:body];
 	i = 0;
@@ -179,11 +179,11 @@ static TmpTempList *returnsink = nil;
 }
 - (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body
 {
-  [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@"%@:\n",
-                                                       name.name]
-                                             tmpLabel:name]
-             atIndex:0];  
   if ([name.name isEqualToString:@"main"]) {
+    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@"tigermain:\n",
+                                                         name.name]
+                                               tmpLabel:name]
+               atIndex:0];    
 		[body insertObject:[AssemMove assemMoveWithString:@"move $`d0, $`s0\n"
 																			destinationTemp:self.fp
 																					 sourceTemp:[self.specialregs objectAtIndex:1]]
@@ -195,9 +195,15 @@ static TmpTempList *returnsink = nil;
                           destinationTempList:nil
                                sourceTempList:nil]];
   } else {
+    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@".globl %@\n.ent %@\n%@:\n",
+                                                         name.name, name.name, name.name]
+                                               tmpLabel:name]
+               atIndex:0];    
     [body addObject:[AssemOper operWithString:@"jr $`s0\n"
     	                    destinationTempList:nil
       	                       sourceTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:4]]]];
+    [body addObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@".end %@\n", name.name]
+                                            tmpLabel:name]];
   }
   return [Proc procWithArray:body];
 }
@@ -213,7 +219,7 @@ static TmpTempList *returnsink = nil;
 }
 - (NSString *)transString:(TRDataFrag *)strlit
 {
-	return [NSString stringWithFormat:@"%@: .asciiz \"%@\"\n", strlit.label.name, strlit.string];
+	return [NSString stringWithFormat:@".data\n%@: .asciiz \"%@\"\n.text\n", strlit.label.name, strlit.string];
 }
 - (void)dealloc
 {

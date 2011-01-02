@@ -1,7 +1,11 @@
 #undef __STDC__
 #include <stdio.h>
-#include <stdlib.h>
-#import <string.h>
+
+void *malloc(int size)
+{
+  void *ans;
+  return ans;
+}
 
 int *initArray(int *base, int size, int init)
 {
@@ -11,31 +15,44 @@ int *initArray(int *base, int size, int init)
 	return base;
 }
 
-void print(char *s)
+char *chars[128];
+int main()
 {
-	printf("%s", s);
+	int i;
+	for (i = 0; i < 128; ++i) {
+		chars[i] = malloc(2);
+    chars[i][0] = i;
+    chars[i][1] = '\0';
+  }
+	return tigermain(0 /* static link!? */);
 }
 
-void printi(int i)
+void exit(int *sl, int i)
 {
-	printf("%d", i);
+}
+
+void print(int *sl, char *s)
+{
+}
+
+void printi(int *sl, int i)
+{
 }
 
 void flush()
 {
-	fflush(stdout);
 }
 
-char chars[128];
-int main()
+char *tigergetchar()
 {
-	int i;
-	for (i = 0; i < 128; ++i)
-		chars[i] = i;
-	return tigermain(0 /* static link!? */);
+	int i = getc(stdin);
+	if (i == EOF)
+		return "";
+	else
+		return chars + i;
 }
 
-int ord(char *s)
+int ord(int *sl, char *s)
 {
 	if (!s[0])
 		return -1;
@@ -43,43 +60,49 @@ int ord(char *s)
 		return s[0];
 }
 
-char *chr(int i)
+char *chr(int *sl, int i)
 {
 	if (i < 0 || i > 127) 
 	{
-		printf("chr(%d) out of range\n", i);
-		exit(1);
+		exit(sl, 1);
 	}
 	return chars + i;
 }
 
-int size(char *s)
+int size(int *sl, char *s)
 { 
-	return strlen(s);
+  int len = 0;
+  for (; *s; s++)
+    len++;
+	return len;
 }
 
-char *substring(char *s, int first, int n)
+char *substring(int *sl, char *s, int first, int n)
 {
-	int length = strlen(s);
+	int length = size(sl, s);
 	if (first < 0 || first + n > length)
 	{
-		printf("substring([%d], %d, %d) out of range\n", length, first, n);
-    exit(1);
+    exit(sl, 1);
 	}
 	if (n == 1)
 		return chars + s[first];
 	else {
 		char *t = malloc((n + 1) * sizeof(char));
-		strncpy(t, s + first, n);
-		t[n] = '\0';
+    int i = 0;
+    while (n > 0) {
+    	t[i] = s[first + i];
+      i++;
+      n--;
+    }
+		t[i] = '\0';
 		return t;
 	}
 }
 
-char *concat(char *a, char *b)
+char *concat(int *sl, char *a, char *b)
 {
-	int lengtha = strlen(a);
-	int lengthb = strlen(b);
+	int lengtha = size(sl, a);
+	int lengthb = size(sl, b);
 	if (lengtha == 0)
 		return b;
 	else if (lengthb == 0)
@@ -87,24 +110,15 @@ char *concat(char *a, char *b)
 	else {
 		int i, n = lengtha + lengthb;
 		char *t = malloc((n + 1) * sizeof(char));
-		strcpy(t, a);
-		strcat(t, b);
-		return t;
+    char *tmp = t;
+    while (*(t++) = *(a++));
+    t--;
+    while (*(t++) = *(b++));
+		return tmp;
 	}
 }
 
-int not(int i)
+int tigernot(int *sl, int i)
 { 
 	return !i;
-}
-
-#undef getchar
-
-char *getchar()
-{
-	int i = getc(stdin);
-	if (i == EOF)
-		return "";
-	else
-		return chars + i;
 }

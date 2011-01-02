@@ -755,7 +755,7 @@
   [env setEntry:[SemanticFuncEntry funcEntryWithFormalParameters:intRecord
                                                       returnType:[SemanticIntType sharedIntType]
                                                            level:tmplevel
-                                                           label:[TmpLabel labelWithString:@"not"]]
+                                                           label:[TmpLabel labelWithString:@"tigernot"]]
       forSymbol:[Symbol symbolWithName:@"not"]];
   [env setEntry:[SemanticFuncEntry funcEntryWithFormalParameters:intRecord
                                                       returnType:[SemanticVoidType sharedVoidType]

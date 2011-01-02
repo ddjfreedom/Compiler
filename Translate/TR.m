@@ -335,7 +335,7 @@ static NSMutableDictionary *dict = nil;
 }
 - (TRExpr *)complementExpr:(TRExpr *)expr
 {
-  return [TREx exWithTreeExpr:[TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:@"not"]]
+  return [TREx exWithTreeExpr:[TreeCall callWithExpr:[TreeName nameWithLabel:[TmpLabel labelWithString:@"tigernot"]]
                                             exprList:[TreeExprList exprListWithExprs:
                                                       [TreeTemp treeTempWithTemp:frame.fp],
                                                       [expr unEx], nil]]];
