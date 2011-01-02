@@ -211,6 +211,10 @@ static TmpTempList *returnsink = nil;
   [self procEntryExit3WithInstructions:instrs];
   return instrs;
 }
+- (NSString *)transString:(TRDataFrag *)strlit
+{
+	return [NSString stringWithFormat:@"%@: .asciiz \"%@\"\n", strlit.label.name, strlit.string];
+}
 - (void)dealloc
 {
   [formals release];

@@ -437,6 +437,7 @@
 		966F2CDE12CF0BAD001E29FD /* RegAllocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegAllocator.m; path = RegAlloc/RegAllocator.m; sourceTree = "<group>"; };
 		966F2D9C12CF3249001E29FD /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Edge.h; path = Graph/Edge.h; sourceTree = "<group>"; };
 		966F2D9D12CF3249001E29FD /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Edge.m; path = Graph/Edge.m; sourceTree = "<group>"; };
+		96A38E5812D028F300BD0DC5 /* runtime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = runtime.c; sourceTree = "<group>"; };
 		C6859EA3029092ED04C91782 /* Compiler.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Compiler.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -475,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				08FB7796FE84155DC02AAC07 /* Compiler.m */,
+				96A38E5812D028F300BD0DC5 /* runtime.c */,
 				47D7D9BE12A243ED005DE04C /* AbstractSyntax */,
 				4765CF0112A76EBF00A20AD1 /* Semantics */,
 				475FA97312ADFB8B002F0399 /* Translate */,

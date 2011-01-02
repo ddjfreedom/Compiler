@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Frame.h"
 #import "TmpTemp.h"
+#import "TRDataFrag.h"
 
 @interface MipsFrame : Frame
 {
@@ -20,4 +21,5 @@
 //@property (readonly) TmpTemp *zero;
 - (id)init;
 - (id)initWithLabel:(TmpLabel *)aLabel boolList:(BoolList *)aBoolList;
+- (NSString *)transString:(TRDataFrag *)strlit;
 @end

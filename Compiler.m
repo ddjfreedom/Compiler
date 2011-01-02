@@ -10,6 +10,7 @@
 #import "TR.h"
 #import "TRFragment.h"
 #import "TRProcFrag.h"
+#import "TRDataFrag.h"
 #import "TRExpr.h"
 #import "Canon.h"
 #import "BasicBlocks.h"
@@ -34,6 +35,9 @@ int main(int argc, const char * argv[])
   	//print(expr);
   	NSArray *procs = [TypeChecker typeCheckProgram:expr withTranslator:translator inFrame:frame];
   	if (procs) {
+			for (TRFragment *frag in procs)
+				if ([frag isMemberOfClass:[TRDataFrag class]])
+					printf("%s", [[frame transString:(TRDataFrag *)frag] cStringUsingEncoding:NSASCIIStringEncoding]);
     	for (TRFragment *frag in procs) {
       	//treeprint(frag);
         if ([frag isMemberOfClass:[TRProcFrag class]]) {
