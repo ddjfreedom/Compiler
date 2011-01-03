@@ -34,6 +34,8 @@ static int counter = 0;
 								frame.calleesave.count + frame.callersave.count - 2;
 		for (i = 0; i < regNumber; ++i)
 			[tmpset addObject:[NSNumber numberWithInt:i]];
+    [tmpset removeObject:[NSNumber numberWithInt:1]]; // $sp
+    [tmpset removeObject:[NSNumber numberWithInt:0]]; // $fp
 		availColors = [[NSSet alloc] initWithSet:tmpset];
 		instructions = [instrs mutableCopyWithZone:NULL];
 		moveList = NULL;

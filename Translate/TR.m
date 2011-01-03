@@ -316,12 +316,20 @@ static NSMutableDictionary *dict = nil;
 - (TRExpr *)callExprWithFunc:(SemanticFuncEntry *)func Arguments:(NSArray *)args level:(TRLevel *)level
 {
   TreeExprList *paras = args.count ? [TreeExprList exprListWithExpr:[(TRExpr *)[args lastObject] unEx]] : nil;
+  TreeExpr *staticlink = [TreeTemp treeTempWithTemp:level.frame.fp];
+  TRLevel *tmplevel = level;
+  if (func.level.parent) { // not library function
+  	while (tmplevel != func.level.parent) {
+  		staticlink = [((TRAccess *)[tmplevel.formals objectAtIndex:0]).acc exprWithFramePointer:staticlink];
+    	tmplevel = tmplevel.parent;
+  	}
+  }
   if (paras) {
     int i = args.count - 2;
     for (; i >= 0; i--)
       paras = [TreeExprList exprListWithExpr:[(TRExpr *)[args objectAtIndex:i] unEx] exprList:paras];
   }
-  paras = [TreeExprList exprListWithExpr:[TreeTemp treeTempWithTemp:func.level.frame.fp] exprList:paras];
+  paras = [TreeExprList exprListWithExpr:staticlink exprList:paras];
   if (func.returnType != [SemanticVoidType sharedVoidType])
   	return [TREx exWithTreeExpr:[TreeCall callWithExpr:[TreeName nameWithLabel:func.label]
     	                                        exprList:paras]];
