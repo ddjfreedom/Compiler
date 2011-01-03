@@ -462,5 +462,64 @@ tigernot:
 	addiu	$sp,$sp,16
 	j	$31
 	.end	tigernot
+	.align	2
+	.globl	strcmp
+	.ent	strcmp
+strcmp:
+	.frame	$fp,24,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+	.mask	0x40000000,-8
+	.fmask	0x00000000,0
+	addiu	$sp,$sp,-24
+	sw	$fp,8($sp)
+	move	$fp,$sp
+	sw	$4,16($fp)
+	sw	$5,20($fp)
+$L47:
+	lw	$2,16($fp)
+	lb	$2,0($2)
+	beq	$2,$0,$L48
+	lw	$2,20($fp)
+	lb	$2,0($2)
+	beq	$2,$0,$L48
+	lw	$2,16($fp)
+	lw	$3,20($fp)
+	lb	$4,0($2)
+	lb	$2,0($3)
+	bne	$4,$2,$L48
+	lw	$2,16($fp)
+	addiu	$2,$2,1
+	sw	$2,16($fp)
+	lw	$2,20($fp)
+	addiu	$2,$2,1
+	sw	$2,20($fp)
+	j	$L47
+$L48:
+	lw	$2,16($fp)
+	lw	$3,20($fp)
+	lb	$4,0($2)
+	lb	$2,0($3)
+	bne	$4,$2,$L49
+	sw	$0,0($fp)
+	j	$L46
+$L49:
+	lw	$2,16($fp)
+	lw	$3,20($fp)
+	lb	$4,0($2)
+	lb	$2,0($3)
+	slt	$2,$2,$4
+	beq	$2,$0,$L51
+	li	$2,1			# 0x1
+	sw	$2,0($fp)
+	j	$L46
+$L51:
+	li	$2,-1			# 0xffffffffffffffff
+	sw	$2,0($fp)
+$L46:
+	lw	$2,0($fp)
+	move	$sp,$fp
+	lw	$fp,8($sp)
+	addiu	$sp,$sp,24
+	j	$31
+	.end	strcmp
 
 	.comm	chars,256
