@@ -1,0 +1,321 @@
+--- a.s	2011-01-03 16:22:01.000000000 +0800
++++ runtime.s	2011-01-03 16:19:20.000000000 +0800
+@@ -1,20 +1,13 @@
+-	.file	1 "runtime.c"
+ 	.text
+ 	.align	2
+ 	.globl	malloc
+ 	.ent	malloc
+ malloc:
+-	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
++	.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
+-	sw	$fp,0($sp)
+-	move	$fp,$sp
+-	sw	$4,8($fp)
+-	move	$2,$0
+-	move	$sp,$fp
+-	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
++	li  $2, 9
++  syscall
+ 	j	$31
+ 	.end	malloc
+ 	.align	2
+@@ -24,31 +17,18 @@
+ 	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
+-	sw	$fp,0($sp)
+-	move	$fp,$sp
+-	sw	$4,8($fp)
+-	sw	$5,12($fp)
+-	move	$sp,$fp
+-	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
++  li  $2, 10
++  syscall
+ 	j	$31
+ 	.end	exit
+ 	.align	2
+-	.globl	print
+-	.ent	print
+ print:
+ 	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
+-	sw	$fp,0($sp)
+-	move	$fp,$sp
+-	sw	$4,8($fp)
+-	sw	$5,12($fp)
+-	move	$sp,$fp
+-	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
++	move  $4, $5
++  li  $2, 4
++  syscall
+ 	j	$31
+ 	.end	print
+ 	.align	2
+@@ -58,14 +38,9 @@
+ 	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
+-	sw	$fp,0($sp)
+-	move	$fp,$sp
+-	sw	$4,8($fp)
+-	sw	$5,12($fp)
+-	move	$sp,$fp
+-	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
++	move  $4, $5
++  li  $2, 1
++  syscall
+ 	j	$31
+ 	.end	printi
+ 	.rdata
+@@ -74,9 +49,9 @@
+ 	.ascii	"\000"
+ 	.text
+ 	.align	2
+-	.globl	tigergetchar
+-	.ent	tigergetchar
+-tigergetchar:
++	.globl	getchar
++	.ent	getchar
++getchar:
+ 	.frame	$fp,40,$31		# vars= 16, regs= 2/0, args= 16, gp= 0
+ 	.mask	0xc0000000,-4
+ 	.fmask	0x00000000,0
+@@ -84,44 +59,20 @@
+ 	sw	$31,36($sp)
+ 	sw	$fp,32($sp)
+ 	move	$fp,$sp
+-	lw	$2,_impure_ptr
+-	lw	$3,4($2)
+-	lw	$2,_impure_ptr
+-	lw	$2,4($2)
+-	lw	$2,4($2)
+-	addiu	$2,$2,-1
+-	sw	$2,4($3)
+-	bgez	$2,$L6
+-	lw	$2,_impure_ptr
+-	lw	$4,_impure_ptr
+-	lw	$5,4($2)
+-	jal	__srget_r
+-	sw	$2,24($fp)
+-	j	$L7
+-$L6:
+-	lw	$2,_impure_ptr
+-	lw	$4,4($2)
+-	lw	$2,0($4)
+-	move	$3,$2
+-	lbu	$3,0($3)
+-	sw	$3,24($fp)
+-	addiu	$2,$2,1
+-	sw	$2,0($4)
+-$L7:
+-	lw	$2,24($fp)
+-	sw	$2,16($fp)
+-	lw	$3,16($fp)
++	move	$fp,$sp
++  li  $4, 2
++  li  $2, 9
++  syscall
++  move $4, $2
++  li  $5, 2
++  li	$2, 8
++  syscall
++	lw	$3,0($4)
+ 	li	$2,-1			# 0xffffffffffffffff
+-	bne	$3,$2,$L8
++  sw	$4,20($fp)
++	bne	$3,$2,$L5
+ 	la	$2,$LC0
+ 	sw	$2,20($fp)
+-	j	$L5
+-$L8:
+-	lw	$2,16($fp)
+-	sll	$3,$2,1
+-	la	$2,chars
+-	addu	$2,$3,$2
+-	sw	$2,20($fp)
+ $L5:
+ 	lw	$2,20($fp)
+ 	move	$sp,$fp
+@@ -129,15 +80,15 @@
+ 	lw	$fp,32($sp)
+ 	addiu	$sp,$sp,40
+ 	j	$31
+-	.end	tigergetchar
++	.end	getchar
+ 	.align	2
+ 	.globl	initArray
+ 	.ent	initArray
+ initArray:
+-	.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
++	.frame	$fp,28,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-16
++	addiu	$sp,$sp,-28
+ 	sw	$fp,8($sp)
+ 	move	$fp,$sp
+ 	sw	$4,16($fp)
+@@ -163,7 +114,7 @@
+ 	lw	$2,16($fp)
+ 	move	$sp,$fp
+ 	lw	$fp,8($sp)
+-	addiu	$sp,$sp,16
++	addiu	$sp,$sp,28
+ 	j	$31
+ 	.end	initArray
+ 	.align	2
+@@ -212,22 +163,16 @@
+ 	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
+-	sw	$fp,0($sp)
+-	move	$fp,$sp
+-	move	$sp,$fp
+-	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
+ 	j	$31
+ 	.end	flush
+ 	.align	2
+ 	.globl	ord
+ 	.ent	ord
+ ord:
+-	.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
++	.frame	$fp,24,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-16
++	addiu	$sp,$sp,-24
+ 	sw	$fp,8($sp)
+ 	move	$fp,$sp
+ 	sw	$4,16($fp)
+@@ -246,17 +191,17 @@
+ 	lw	$2,0($fp)
+ 	move	$sp,$fp
+ 	lw	$fp,8($sp)
+-	addiu	$sp,$sp,16
++	addiu	$sp,$sp,24
+ 	j	$31
+ 	.end	ord
+ 	.align	2
+ 	.globl	chr
+ 	.ent	chr
+ chr:
+-	.frame	$fp,24,$31		# vars= 0, regs= 2/0, args= 16, gp= 0
++	.frame	$fp,32,$31		# vars= 0, regs= 2/0, args= 16, gp= 0
+ 	.mask	0xc0000000,-4
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-24
++	addiu	$sp,$sp,-32
+ 	sw	$31,20($sp)
+ 	sw	$fp,16($sp)
+ 	move	$fp,$sp
+@@ -280,17 +225,17 @@
+ 	move	$sp,$fp
+ 	lw	$31,20($sp)
+ 	lw	$fp,16($sp)
+-	addiu	$sp,$sp,24
++	addiu	$sp,$sp,32
+ 	j	$31
+ 	.end	chr
+ 	.align	2
+ 	.globl	size
+ 	.ent	size
+ size:
+-	.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
++	.frame	$fp,24,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-16
++	addiu	$sp,$sp,-24
+ 	sw	$fp,8($sp)
+ 	move	$fp,$sp
+ 	sw	$4,16($fp)
+@@ -311,17 +256,17 @@
+ 	lw	$2,0($fp)
+ 	move	$sp,$fp
+ 	lw	$fp,8($sp)
+-	addiu	$sp,$sp,16
++	addiu	$sp,$sp,24
+ 	j	$31
+ 	.end	size
+ 	.align	2
+ 	.globl	substring
+ 	.ent	substring
+ substring:
+-	.frame	$fp,48,$31		# vars= 24, regs= 2/0, args= 16, gp= 0
++	.frame	$fp,64,$31		# vars= 24, regs= 2/0, args= 16, gp= 0
+ 	.mask	0xc0000000,-4
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-48
++	addiu	$sp,$sp,-64
+ 	sw	$31,44($sp)
+ 	sw	$fp,40($sp)
+ 	move	$fp,$sp
+@@ -402,17 +347,17 @@
+ 	move	$sp,$fp
+ 	lw	$31,44($sp)
+ 	lw	$fp,40($sp)
+-	addiu	$sp,$sp,48
++	addiu	$sp,$sp,64
+ 	j	$31
+ 	.end	substring
+ 	.align	2
+ 	.globl	concat
+ 	.ent	concat
+ concat:
+-	.frame	$fp,56,$31		# vars= 32, regs= 2/0, args= 16, gp= 0
++	.frame	$fp,68,$31		# vars= 32, regs= 2/0, args= 16, gp= 0
+ 	.mask	0xc0000000,-4
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-56
++	addiu	$sp,$sp,-68
+ 	sw	$31,52($sp)
+ 	sw	$fp,48($sp)
+ 	move	$fp,$sp
+@@ -494,17 +439,17 @@
+ 	move	$sp,$fp
+ 	lw	$31,52($sp)
+ 	lw	$fp,48($sp)
+-	addiu	$sp,$sp,56
++	addiu	$sp,$sp,68
+ 	j	$31
+ 	.end	concat
+ 	.align	2
+ 	.globl	tigernot
+ 	.ent	tigernot
+ tigernot:
+-	.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
++	.frame	$fp,16,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 	.mask	0x40000000,-8
+ 	.fmask	0x00000000,0
+-	addiu	$sp,$sp,-8
++	addiu	$sp,$sp,-16
+ 	sw	$fp,0($sp)
+ 	move	$fp,$sp
+ 	sw	$4,8($fp)
+@@ -514,10 +459,8 @@
+ 	sltu	$2,$2,1
+ 	move	$sp,$fp
+ 	lw	$fp,0($sp)
+-	addiu	$sp,$sp,8
++	addiu	$sp,$sp,16
+ 	j	$31
+ 	.end	tigernot
+ 
+-	.comm	chars,256,4
+-
+-	.extern	_impure_ptr, 4
++	.comm	chars,256

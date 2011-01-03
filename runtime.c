@@ -1,30 +1,9 @@
 #undef __STDC__
 #include <stdio.h>
-
+// use syscall
 void *malloc(int size)
 {
-  void *ans;
-  return ans;
-}
-
-int *initArray(int *base, int size, int init)
-{
-	int i;
-	for(i = 0; i < size; i++)
-		base[i] = init;
-	return base;
-}
-
-char *chars[128];
-int main()
-{
-	int i;
-	for (i = 0; i < 128; ++i) {
-		chars[i] = malloc(2);
-    chars[i][0] = i;
-    chars[i][1] = '\0';
-  }
-	return tigermain(0 /* static link!? */);
+  return NULL;
 }
 
 void exit(int *sl, int i)
@@ -39,9 +18,7 @@ void printi(int *sl, int i)
 {
 }
 
-void flush()
-{
-}
+char chars[256];
 
 char *tigergetchar()
 {
@@ -49,7 +26,31 @@ char *tigergetchar()
 	if (i == EOF)
 		return "";
 	else
-		return chars + i;
+		return chars + 2 * i;
+}
+
+// use generated code
+int *initArray(int *base, int size, int init)
+{
+	int i;
+	for(i = 0; i < size; i++)
+		base[i] = init;
+	return base;
+}
+
+int main()
+{
+	int i;
+	for (i = 0; i < 256; i += 2) {
+    chars[i] = i >> 1;
+    chars[i + 1] = '\0';
+  }
+  tigermain();
+  return 0;
+}
+
+void flush()
+{
 }
 
 int ord(int *sl, char *s)
@@ -66,7 +67,7 @@ char *chr(int *sl, int i)
 	{
 		exit(sl, 1);
 	}
-	return chars + i;
+	return chars + 2 * i;
 }
 
 int size(int *sl, char *s)
@@ -85,7 +86,7 @@ char *substring(int *sl, char *s, int first, int n)
     exit(sl, 1);
 	}
 	if (n == 1)
-		return chars + s[first];
+		return chars + s[first] * 2;
 	else {
 		char *t = malloc((n + 1) * sizeof(char));
     int i = 0;
