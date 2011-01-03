@@ -18,4 +18,5 @@
 @property (readonly) NSString *string;
 @property (readonly) TmpLabel *label;
 + (id)dataFragWithString:(NSString *)aString label:(TmpLabel *)aLabel;
++ (TmpLabel *)labelForString:(NSString *)aString;
 @end

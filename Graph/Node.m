@@ -33,7 +33,7 @@
 }
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"%d <%x>", key, graph];
+  return [NSString stringWithFormat:@"%d <%x> %d", key, graph, degree];
 }
 - (id)initWithGraph:(Graph *)aGraph
 {

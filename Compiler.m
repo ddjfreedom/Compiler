@@ -22,6 +22,7 @@
 
 void print(id expr);
 int parse(FILE *fin, id *exprptr);
+void readinLib(FILE *outfile);
 int main(int argc, const char * argv[])
 {
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -29,15 +30,16 @@ int main(int argc, const char * argv[])
   FILE *fin = fopen(argv[1], "r");
   MipsFrame *frame = [[MipsFrame alloc] init];
   TR *translator = [[TR alloc] initWithFrame:frame];
-  printf("%s\n", argv[1]);
   [ErrorMessage setOutputFile:stdout];
   if (!parse(fin, &expr)) {
   	//print(expr);
   	NSArray *procs = [TypeChecker typeCheckProgram:expr withTranslator:translator inFrame:frame];
   	if (procs) {
+      FILE *outfile = fopen("a.out.s", "w");
+      readinLib(outfile);
 			for (TRFragment *frag in procs)
 				if ([frag isMemberOfClass:[TRDataFrag class]])
-					printf("%s", [[frame transString:(TRDataFrag *)frag] cStringUsingEncoding:NSASCIIStringEncoding]);
+					fprintf(outfile, "%s", [[frame transString:(TRDataFrag *)frag] cStringUsingEncoding:NSASCIIStringEncoding]);
     	for (TRFragment *frag in procs) {
       	//treeprint(frag);
         if ([frag isMemberOfClass:[TRProcFrag class]]) {
@@ -59,10 +61,8 @@ int main(int argc, const char * argv[])
           //AssemFlowGraph *flowgraph = [AssemFlowGraph assemFlowGraphWithInstructions:instrs];
           //[flowgraph print];
 					RegAllocator *regalloc = [RegAllocator regAllocatorWithFrame:frame instructions:instrs];
-          //Liveness *liveness = [Liveness livenessWithFlowGraph:flowgraph];
-          //[liveness printUsingTempMap:frame];
 					[regalloc allocateRegisters];
-					[regalloc print];
+					[regalloc printToFile:outfile];
         }
       }
     }
@@ -72,6 +72,13 @@ int main(int argc, const char * argv[])
   fclose(fin);
   [pool drain];
   return 0;
+}
+void readinLib(FILE *outfile)
+{
+  FILE *input = fopen("runtime.s", "r");
+  int ch;
+  while ((ch = fgetc(input)) != EOF)
+    fputc(ch, outfile);
 }
 int parse(FILE *fin, id *exprptr)
 {

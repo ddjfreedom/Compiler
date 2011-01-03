@@ -57,7 +57,7 @@ static TmpTempList *returnsink = nil;
 {
   if (self = [super init]) {
     name = [aLabel retain];
-    frameCount = 0;
+    frameCount = 1; // 0 for $fp
     wordSize = WORDLENGTH;
     //zero = [[TmpTemp alloc] init];
     if (aBoolList) {
@@ -164,9 +164,6 @@ static TmpTempList *returnsink = nil;
 	body = [TreeSeq seqWithFirstStmt:body
 												secondStmt:[TreeMove moveWithDestination:sp
 																													source:framep]];
-	body = [TreeSeq seqWithFirstStmt:body
-												secondStmt:[TreeMove moveWithDestination:framep
-																													source:[self storeAccess:[formals objectAtIndex:0]]]];
   return body;
 }
 - (NSMutableArray *)procEntryExit2WithInstructions:(NSMutableArray *)body
@@ -175,12 +172,18 @@ static TmpTempList *returnsink = nil;
   	[body addObject:[AssemOper operWithString:@""
     	                    destinationTempList:nil
       	                       sourceTempList:returnsink]];
+  else
+    [body addObject:[AssemOper operWithString:@""
+                          destinationTempList:nil
+                               sourceTempList:[TmpTempList tempListWithTemps:
+                                               [self.specialregs objectAtIndex:0],
+                                               [self.specialregs objectAtIndex:1], nil]]];
   return body;
 }
 - (Proc *)procEntryExit3WithInstructions:(NSMutableArray *)body
 {
   if ([name.name isEqualToString:@"main"]) {
-    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@"tigermain:\n",
+    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@".align 2\n.globl tigermain\ntigermain:\n",
                                                          name.name]
                                                tmpLabel:name]
                atIndex:0];    
@@ -188,6 +191,11 @@ static TmpTempList *returnsink = nil;
 																			destinationTemp:self.fp
 																					 sourceTemp:[self.specialregs objectAtIndex:1]]
 							 atIndex:1];
+    [body insertObject:[AssemOper operWithString:[NSString stringWithFormat:@"addiu $`d0, $`s0, %d\n"
+                                                  ,-(self.wordSize * frameCount)]
+                             destinationTempList:[TmpTempList tempListWithTemp:[self.specialregs objectAtIndex:1]]
+                                  sourceTempList:[TmpTempList tempListWithTemp:[self.specialregs objectAtIndex:1]]]
+               atIndex:2];
     [body addObject:[AssemOper operWithString:@"li $`d0, 10\n"
                           destinationTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:2]]
                                sourceTempList:nil]];
@@ -195,10 +203,19 @@ static TmpTempList *returnsink = nil;
                           destinationTempList:nil
                                sourceTempList:nil]];
   } else {
-    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@".globl %@\n.ent %@\n%@:\n",
+    [body insertObject:[AssemLabel assemLabelWithString:[NSString stringWithFormat:@".align 2\n.globl %@\n.ent %@\n%@:\n",
                                                          name.name, name.name, name.name]
                                                tmpLabel:name]
-               atIndex:0];    
+               atIndex:0];
+    [body insertObject:[AssemOper operWithString:@"sw $`s0, -4($`s1)\n"
+                             destinationTempList:nil
+                                  sourceTempList:[TmpTempList tempListWithTemps:
+                                                  [self.specialregs objectAtIndex:0],
+                                                  [self.specialregs objectAtIndex:1], nil]]
+               atIndex:1];
+    [body addObject:[AssemOper operWithString:@"lw $`d0, -4($`s0)\n"
+                          destinationTempList:[TmpTempList tempListWithTemp:[self.specialregs objectAtIndex:0]]
+                               sourceTempList:[TmpTempList tempListWithTemp:[self.specialregs objectAtIndex:1]]]];
     [body addObject:[AssemOper operWithString:@"jr $`s0\n"
     	                    destinationTempList:nil
       	                       sourceTempList:[TmpTempList tempListWithTemp:[specialregs objectAtIndex:4]]]];
@@ -219,7 +236,7 @@ static TmpTempList *returnsink = nil;
 }
 - (NSString *)transString:(TRDataFrag *)strlit
 {
-	return [NSString stringWithFormat:@".data\n%@: .asciiz \"%@\"\n.text\n", strlit.label.name, strlit.string];
+	return [NSString stringWithFormat:@".align 2\n.rdata\n%@: .asciiz \"%@\"\n.text\n", strlit.label.name, strlit.string];
 }
 - (void)dealloc
 {

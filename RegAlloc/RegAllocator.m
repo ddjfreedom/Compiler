@@ -18,9 +18,10 @@
 - (NSSet *)adjacentNodesOfNode:(Node *)aNode;
 - (void)decrementDegreeOfNode:(Node *)aNode;
 - (void)assignColors;
-- (int)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray startAtCount:(int)c;
+- (void)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray;
 @end
 
+static int counter = 0;
 @implementation RegAllocator
 @synthesize moveList, worksetMoves, precolored;
 - (id)initWithFrame:(MipsFrame *)aFrame instructions:(NSArray *)instrs
@@ -30,7 +31,7 @@
 		int i;
 		frame = [aFrame retain];
 		regNumber = frame.specialregs.count + frame.argregs.count +
-								frame.calleesave.count + frame.callersave.count;
+								frame.calleesave.count + frame.callersave.count - 2;
 		for (i = 0; i < regNumber; ++i)
 			[tmpset addObject:[NSNumber numberWithInt:i]];
 		availColors = [[NSSet alloc] initWithSet:tmpset];
@@ -88,7 +89,8 @@
 {
 	int d = aNode.degree--;
 	if (d == regNumber) {
-		// TODO: spill -> simplify or freeze
+		// TODO: spill -> freeze
+    [simplifyWorkSet addObject:aNode];
 	}
 }
 - (void)assignColors
@@ -111,29 +113,27 @@
 }
 - (void)buildPrecoloredList
 {
-	int total = 0;
+  counter = 0;
 	NSMutableSet *tmpset = [NSMutableSet set];
-	total = [self addNodesToSet:tmpset usingArray:frame.specialregs startAtCount:total];
-	total += [self addNodesToSet:tmpset usingArray:frame.argregs startAtCount:total];
-	total += [self addNodesToSet:tmpset usingArray:frame.calleesave startAtCount:total];
-	[self addNodesToSet:tmpset usingArray:frame.callersave startAtCount:total];
+	[self addNodesToSet:tmpset usingArray:frame.specialregs];
+	[self addNodesToSet:tmpset usingArray:frame.argregs];
+	[self addNodesToSet:tmpset usingArray:frame.calleesave];
+	[self addNodesToSet:tmpset usingArray:frame.callersave];
 	precolored = [[NSSet alloc] initWithSet:tmpset];
 }
-- (int)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray startAtCount:(int)c
+- (void)addNodesToSet:(NSMutableSet *)aSet usingArray:(NSArray *)anArray
 {
-	int i = c;
 	id obj;
 	NSNumber *color;
 	for (TmpTemp *key in anArray) {
 		obj = [liveness nodeWithTemp:key];
-		color = [NSNumber numberWithInt:i++];
+		color = [NSNumber numberWithInt:counter++];
 		if (obj) {
 			[aSet addObject:obj];
 			[nodecolorMap setObject:color forKey:obj];
 		}
 		[colortempMap setObject:key forKey:color];
 	}
-	return i;
 }
 - (NSString *)tempMapWithTemp:(TmpTemp *)temp
 {
@@ -144,7 +144,7 @@
 	else
 		return [frame tempMapWithTemp:temp];
 }
-- (void)print
+- (void)printToFile:(FILE *)outfile
 {
 	TmpTemp *def, *use;
 	for (AssemInstr *instr in instructions) {
@@ -154,7 +154,7 @@
 			if ([[self tempMapWithTemp:def] isEqualToString:[self tempMapWithTemp:use]])
 				continue;
 		}
-		printf("%s", [[instr formatWithObject:self] cStringUsingEncoding:NSASCIIStringEncoding]);
+		fprintf(outfile, "%s", [[instr formatWithObject:self] cStringUsingEncoding:NSASCIIStringEncoding]);
 	}
 }
 - (void)dealloc

@@ -90,8 +90,31 @@ static NSMutableDictionary *dict = nil;
 }
 - (TRExpr *)stringLitWithString:(NSString *)string
 {
-  TmpLabel *label = [TmpLabel label];
-  [frags addObject:[TRDataFrag dataFragWithString:string label:label]];
+  TmpLabel *label;
+  TRDataFrag *datafrag;
+  NSMutableString *datastring = [NSMutableString stringWithString:string];
+  [datastring replaceOccurrencesOfString:@"\\"
+                              withString:@"\\\\"
+                                 options:NSLiteralSearch
+                                   range:NSMakeRange(0, [datastring length])];
+  [datastring replaceOccurrencesOfString:@"\n"
+                              withString:@"\\n"
+                                 options:NSLiteralSearch
+                                   range:NSMakeRange(0, [datastring length])];
+  [datastring replaceOccurrencesOfString:@"\t"
+                              withString:@"\\t"
+                                 options:NSLiteralSearch
+                                   range:NSMakeRange(0, [datastring length])];
+  [datastring replaceOccurrencesOfString:@"\""
+                              withString:@"\\\""
+                                 options:NSLiteralSearch
+                                   range:NSMakeRange(0, [datastring length])];
+  label = [TRDataFrag labelForString:datastring];
+  if (!label) {
+    label = [TmpLabel label];
+  	datafrag = [TRDataFrag dataFragWithString:datastring label:label];
+  	[frags addObject:datafrag];
+  }
   return [TREx exWithTreeExpr:[TreeName nameWithLabel:label]];
 }
 - (TRExpr *)breakExprWithDoneLabel:(TmpLabel *)label

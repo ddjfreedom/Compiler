@@ -33,6 +33,6 @@
 - (id)initWithFrame:(MipsFrame *)aFrame instructions:(NSArray *)instrs;
 - (void)allocateRegisters;
 - (void)buildPrecoloredList;
-- (void)print;
+- (void)printToFile:(FILE *)outfile;
 + (id)regAllocatorWithFrame:(MipsFrame *)aFrame instructions:(NSArray *)instrs;
 @end

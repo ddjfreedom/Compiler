@@ -29,9 +29,13 @@ static NSMutableDictionary *dict = nil;
   if (!dict)
     dict = [[NSMutableDictionary alloc] init];
   TRDataFrag *frag = [dict objectForKey:aString];
-  if (frag) return frag;
+  if (frag) return nil;
   frag = [[[TRDataFrag alloc] initWithString:aString label:aLabel] autorelease];
   [dict setObject:frag forKey:aString];
   return frag;
+}
++ (TmpLabel *)labelForString:(NSString *)aString
+{
+  return ((TRDataFrag *)[dict objectForKey:aString]).label;
 }
 @end
